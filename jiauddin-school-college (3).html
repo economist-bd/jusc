@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>জিয়াউদ্দিন স্কুল এন্ড কলেজ | Jiauddin School & College</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green-deep:#0F3D2E;
+    --green-mid:#175C43;
+    --gold:#D4A017;
+    --gold-light:#F0C64B;
+    --cream:#FBF6EC;
+    --paper:#F4EED9;
+    --maroon:#7A2E2E;
+    --ink:#20261F;
+    --ink-soft:#4A5248;
+    --chalk-bg:#16281D;
+    --white:#FFFFFF;
+    --shadow:0 10px 30px rgba(15,61,46,0.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Hind Siliguri', sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.7;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4,.display{
+    font-family:'Baloo Da 2', sans-serif;
+    color:var(--green-deep);
+    line-height:1.25;
+  }
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  img{max-width:100%;display:block;}
+  .container{max-width:1180px;margin:0 auto;padding:0 24px;}
+  .eyebrow{
+    font-family:'Poppins',sans-serif;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    font-size:0.72rem;
+    color:var(--gold);
+    font-weight:600;
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:13px 28px;border-radius:999px;
+    font-weight:600;font-size:0.98rem;
+    cursor:pointer;border:2px solid transparent;
+    transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+  }
+  .btn-gold{background:var(--gold);color:var(--green-deep);box-shadow:0 8px 20px rgba(212,160,23,0.35);}
+  .btn-gold:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(212,160,23,0.45);}
+  .btn-outline{border-color:rgba(251,246,236,0.6);color:var(--cream);}
+  .btn-outline:hover{background:rgba(251,246,236,0.12);transform:translateY(-3px);}
+  .btn-green{background:var(--green-deep);color:var(--cream);}
+  .btn-green:hover{background:var(--green-mid);transform:translateY(-3px);}
+
+  /* ---------- Top bar ---------- */
+  .topbar{
+    background:var(--ink);color:rgba(251,246,236,0.85);
+    font-size:0.82rem;padding:8px 0;
+  }
+  .topbar .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;}
+  .topbar-left{display:flex;gap:22px;flex-wrap:wrap;}
+  .topbar-left span{display:inline-flex;align-items:center;gap:6px;}
+  .topbar-right{color:var(--gold-light);font-weight:600;}
+
+  /* ---------- Header ---------- */
+  header{
+    background:var(--cream);
+    position:sticky;top:0;z-index:100;
+    box-shadow:0 2px 18px rgba(15,61,46,0.08);
+  }
+  .nav-wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 0;}
+  .brand{display:flex;align-items:center;gap:14px;}
+  .emblem{
+    width:58px;height:58px;border-radius:50%;
+    background:conic-gradient(from 180deg, var(--green-deep), var(--green-mid), var(--gold), var(--green-deep));
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;box-shadow:0 6px 16px rgba(15,61,46,0.3);
+  }
+  .emblem::after{
+    content:"জি";
+    font-family:'Baloo Da 2',sans-serif;
+    color:var(--cream);font-size:1.5rem;font-weight:700;
+    background:var(--green-deep);width:46px;height:46px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .brand-text h1{font-size:1.28rem;}
+  .brand-text p{font-family:'Poppins',sans-serif;font-size:0.72rem;letter-spacing:1px;color:var(--ink-soft);text-transform:uppercase;}
+  nav ul{display:flex;gap:28px;flex-wrap:wrap;}
+  nav a{font-weight:600;font-size:0.95rem;color:var(--ink);position:relative;padding:6px 0;}
+  nav a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--gold);transition:width .3s;}
+  nav a:hover::after{width:100%;}
+  .burger{display:none;font-size:1.6rem;background:none;border:none;color:var(--green-deep);cursor:pointer;}
+
+  @media(max-width:900px){
+    nav{position:fixed;top:0;right:-100%;height:100vh;width:78%;max-width:320px;background:var(--green-deep);padding:100px 30px 30px;transition:right .35s ease;z-index:120;}
+    nav.open{right:0;}
+    nav ul{flex-direction:column;gap:22px;}
+    nav a{color:var(--cream);}
+    .burger{display:block;}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    background:
+      radial-gradient(circle at 85% 20%, rgba(212,160,23,0.25), transparent 45%),
+      linear-gradient(160deg, var(--green-deep) 0%, #0B2F23 65%, var(--chalk-bg) 100%);
+    color:var(--cream);
+    padding:90px 0 110px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background-image:repeating-linear-gradient(45deg, rgba(251,246,236,0.025) 0 2px, transparent 2px 40px);
+    pointer-events:none;
+  }
+  .hero-grid{display:grid;grid-template-columns:1.15fr 0.85fr;gap:50px;align-items:center;position:relative;z-index:2;}
+  .hero h2.display{font-size:clamp(2.1rem,4vw,3.3rem);margin:16px 0 20px;color:var(--cream);}
+  .hero h2.display em{font-style:normal;color:var(--gold-light);}
+  .hero p.lead{font-size:1.08rem;color:rgba(251,246,236,0.85);max-width:520px;margin-bottom:34px;}
+  .hero-actions{display:flex;gap:16px;flex-wrap:wrap;}
+  .hero-badge{
+    display:inline-flex;align-items:center;gap:10px;
+    background:rgba(251,246,236,0.1);border:1px solid rgba(251,246,236,0.25);
+    padding:8px 16px;border-radius:999px;font-size:0.85rem;margin-bottom:18px;
+  }
+  .hero-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--gold);animation:pulse 1.8s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
+
+  .hero-visual{
+    position:relative;
+    background:rgba(251,246,236,0.06);
+    border:1px solid rgba(251,246,236,0.2);
+    border-radius:24px;padding:28px;
+    backdrop-filter:blur(6px);
+  }
+  .hero-visual h3{color:var(--gold-light);font-size:1.05rem;margin-bottom:14px;}
+  .hero-stat-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .hero-stat{background:rgba(0,0,0,0.18);border-radius:14px;padding:16px;}
+  .hero-stat b{display:block;font-family:'Baloo Da 2',sans-serif;font-size:1.6rem;color:var(--gold-light);}
+  .hero-stat span{font-size:0.82rem;color:rgba(251,246,236,0.75);}
+
+  /* ---------- Notice ticker ---------- */
+  .ticker-wrap{
+    background:var(--maroon);color:var(--cream);
+    display:flex;align-items:center;overflow:hidden;
+    box-shadow:0 4px 14px rgba(0,0,0,0.15);
+  }
+  .ticker-label{
+    background:var(--gold);color:var(--green-deep);font-weight:700;
+    padding:12px 20px;flex-shrink:0;display:flex;align-items:center;gap:8px;
+    font-size:0.9rem;z-index:2;position:relative;
+    clip-path:polygon(0 0,100% 0,88% 100%,0 100%);
+    padding-right:36px;
+  }
+  .ticker-track{display:flex;white-space:nowrap;animation:scroll-left 32s linear infinite;padding:12px 0;}
+  .ticker-track span{padding:0 40px;font-size:0.92rem;font-weight:500;}
+  .ticker-wrap:hover .ticker-track{animation-play-state:paused;}
+  @keyframes scroll-left{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+  /* ---------- Section basics ---------- */
+  section{padding:86px 0;}
+  .sec-head{max-width:640px;margin-bottom:48px;}
+  .sec-head .eyebrow{margin-bottom:10px;display:block;}
+  .sec-head h2{font-size:clamp(1.6rem,3vw,2.3rem);}
+  .sec-head p{color:var(--ink-soft);margin-top:14px;}
+  .bg-alt{background:var(--paper);}
+
+  /* ---------- About ---------- */
+  .about-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:56px;align-items:center;}
+  .about-card{
+    background:var(--green-deep);color:var(--cream);border-radius:22px;padding:34px;
+    position:relative;overflow:hidden;
+  }
+  .about-card::after{
+    content:"";position:absolute;width:220px;height:220px;background:var(--gold);
+    opacity:0.15;border-radius:50%;top:-70px;right:-70px;
+  }
+  .about-card h3{color:var(--gold-light);font-size:1.3rem;margin-bottom:14px;}
+  .about-card p{color:rgba(251,246,236,0.85);font-size:0.95rem;}
+  .about-list{margin-top:18px;display:grid;gap:10px;}
+  .about-list li{display:flex;gap:10px;font-size:0.92rem;color:rgba(251,246,236,0.9);}
+  .about-list li::before{content:"✓";color:var(--gold-light);font-weight:700;}
+  .about-copy h3{font-size:1.05rem;color:var(--maroon);margin:22px 0 8px;}
+  .about-copy h3:first-child{margin-top:0;}
+  .about-copy p{color:var(--ink-soft);}
+
+  /* ---------- Chalkboard message (signature element) ---------- */
+  .chalk{
+    background:
+      radial-gradient(ellipse at top left, rgba(255,255,255,0.05), transparent 60%),
+      var(--chalk-bg);
+    border-radius:22px;padding:50px 44px;position:relative;
+    border:10px solid #6b4a2f;
+    box-shadow:inset 0 0 40px rgba(0,0,0,0.4), var(--shadow);
+  }
+  .chalk::before{
+    content:"";position:absolute;inset:10px;border-radius:14px;
+    background-image:
+      radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size:5px 5px;pointer-events:none;
+  }
+  .chalk h3{color:#F4EED9;font-size:1.4rem;margin-bottom:18px;font-family:'Baloo Da 2',sans-serif;}
+  .chalk p{color:rgba(244,238,217,0.88);font-size:1.02rem;position:relative;z-index:1;}
+  .chalk-sign{margin-top:26px;text-align:right;color:var(--gold-light);font-weight:700;font-family:'Baloo Da 2',sans-serif;}
+  .chalk-sign span{display:block;font-size:0.78rem;color:rgba(244,238,217,0.65);font-weight:400;font-family:'Hind Siliguri',sans-serif;}
+
+  /* ---------- Stats strip ---------- */
+  .stats-strip{background:var(--green-deep);padding:50px 0;}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center;}
+  .stats-grid b{display:block;font-family:'Baloo Da 2',sans-serif;font-size:2.2rem;color:var(--gold-light);}
+  .stats-grid span{color:rgba(251,246,236,0.8);font-size:0.9rem;}
+
+  /* ---------- Notice board ---------- */
+  .notice-list{display:grid;gap:16px;}
+  .notice-item{
+    display:flex;align-items:center;gap:20px;
+    background:var(--white);border-radius:16px;padding:18px 22px;
+    box-shadow:var(--shadow);border-left:5px solid var(--gold);
+    transition:transform .2s;
+  }
+  .notice-item:hover{transform:translateX(6px);}
+  .notice-date{
+    flex-shrink:0;width:66px;text-align:center;background:var(--paper);border-radius:12px;padding:8px 0;
+  }
+  .notice-date b{display:block;font-family:'Baloo Da 2',sans-serif;font-size:1.3rem;color:var(--maroon);}
+  .notice-date span{font-size:0.72rem;color:var(--ink-soft);}
+  .notice-body{flex:1;}
+  .notice-body h4{font-size:1rem;font-family:'Hind Siliguri',sans-serif;font-weight:600;color:var(--ink);}
+  .tag-new{background:var(--maroon);color:var(--cream);font-size:0.68rem;padding:2px 10px;border-radius:999px;margin-left:8px;vertical-align:middle;}
+  .notice-dl{
+    flex-shrink:0;width:40px;height:40px;border-radius:50%;background:var(--green-deep);color:var(--cream);
+    display:flex;align-items:center;justify-content:center;font-size:1.1rem;
+  }
+
+  /* ---------- Academic tabs ---------- */
+  .tabs{display:flex;gap:12px;margin-bottom:30px;flex-wrap:wrap;}
+  .tab-btn{
+    padding:11px 22px;border-radius:999px;border:2px solid var(--green-deep);
+    background:transparent;color:var(--green-deep);font-weight:600;cursor:pointer;font-family:'Hind Siliguri',sans-serif;font-size:0.94rem;
+    transition:all .25s;
+  }
+  .tab-btn.active,.tab-btn:hover{background:var(--green-deep);color:var(--cream);}
+  .tab-panel{display:none;}
+  .tab-panel.active{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .class-card{background:var(--white);border-radius:16px;padding:24px;box-shadow:var(--shadow);}
+  .class-card h4{font-size:1.05rem;color:var(--green-deep);margin-bottom:8px;}
+  .class-card p{font-size:0.85rem;color:var(--ink-soft);margin-bottom:14px;}
+  .class-card .links{display:flex;gap:10px;flex-wrap:wrap;}
+  .pill-link{font-size:0.8rem;font-weight:600;background:var(--paper);color:var(--maroon);padding:6px 14px;border-radius:999px;}
+
+  /* ---------- Results ---------- */
+  .result-box{
+    background:var(--green-deep);border-radius:22px;padding:44px;color:var(--cream);
+    display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;
+  }
+  .result-form{display:grid;gap:14px;}
+  .result-form select,.result-form input{
+    padding:13px 16px;border-radius:10px;border:none;font-family:'Hind Siliguri',sans-serif;font-size:0.95rem;
+  }
+  .result-note{background:rgba(251,246,236,0.08);border-radius:14px;padding:20px;font-size:0.88rem;color:rgba(251,246,236,0.85);border:1px dashed rgba(251,246,236,0.3);}
+
+  /* ---------- Teachers ---------- */
+  .teacher-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+  .teacher-card{background:var(--white);border-radius:18px;padding:26px 20px;text-align:center;box-shadow:var(--shadow);transition:transform .25s;}
+  .teacher-card:hover{transform:translateY(-6px);}
+  .avatar{
+    width:78px;height:78px;border-radius:50%;margin:0 auto 14px;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Baloo Da 2',sans-serif;font-size:1.5rem;color:var(--cream);font-weight:700;
+  }
+  .teacher-card h4{font-size:1rem;margin-bottom:4px;}
+  .teacher-card span{font-size:0.82rem;color:var(--ink-soft);}
+
+  /* ---------- Gallery (illustrative, no stock photos) ---------- */
+  .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:150px;gap:16px;}
+  .g-item{border-radius:16px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:16px;color:var(--cream);font-weight:600;font-size:0.9rem;}
+  .g-item span{position:relative;z-index:1;}
+  .g-item::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.55));}
+  .g1{grid-column:span 2;grid-row:span 2;background:linear-gradient(135deg,#175C43,#0F3D2E);}
+  .g2{background:linear-gradient(135deg,#D4A017,#7A2E2E);}
+  .g3{background:linear-gradient(135deg,#7A2E2E,#3d1414);}
+  .g4{background:linear-gradient(135deg,#0F3D2E,#16281D);}
+  .g5{grid-column:span 2;background:linear-gradient(135deg,#D4A017,#175C43);}
+  .g-icon{position:absolute;top:16px;right:16px;font-size:1.4rem;opacity:0.85;z-index:1;}
+
+  /* ---------- Useful links ---------- */
+  .links-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  .link-card{
+    background:var(--white);border-radius:14px;padding:18px;display:flex;align-items:center;gap:12px;
+    box-shadow:var(--shadow);border:1px solid rgba(15,61,46,0.06);transition:border-color .2s, transform .2s;
+  }
+  .link-card:hover{border-color:var(--gold);transform:translateY(-4px);}
+  .link-ic{width:38px;height:38px;border-radius:10px;background:var(--paper);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+  .link-card h4{font-size:0.9rem;}
+  .link-card span{font-size:0.75rem;color:var(--ink-soft);}
+
+  /* ---------- Videos ---------- */
+  .video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .video-card{background:var(--white);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);}
+  .video-thumb{height:160px;background:linear-gradient(135deg,var(--green-deep),var(--chalk-bg));display:flex;align-items:center;justify-content:center;position:relative;}
+  .play-btn{width:52px;height:52px;border-radius:50%;background:var(--gold);color:var(--green-deep);display:flex;align-items:center;justify-content:center;font-size:1.3rem;}
+  .video-info{padding:16px 18px;}
+  .video-info h4{font-size:0.95rem;margin-bottom:4px;}
+  .video-info span{font-size:0.78rem;color:var(--ink-soft);}
+
+  /* ---------- Admission CTA ---------- */
+  .admission{
+    background:linear-gradient(120deg, var(--maroon), #4a1c1c);
+    border-radius:26px;padding:54px;color:var(--cream);
+    display:grid;grid-template-columns:1.3fr 0.7fr;gap:40px;align-items:center;
+  }
+  .admission h2{color:var(--cream);font-size:1.9rem;margin-bottom:14px;}
+  .admission p{color:rgba(251,246,236,0.85);}
+  .admission-steps{display:flex;flex-direction:column;gap:10px;}
+  .astep{background:rgba(251,246,236,0.1);border-radius:12px;padding:14px 18px;font-size:0.9rem;display:flex;gap:10px;align-items:center;}
+  .astep b{color:var(--gold-light);}
+
+  /* ---------- Contact ---------- */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;}
+  .contact-info{display:grid;gap:18px;}
+  .cinfo-item{display:flex;gap:16px;align-items:flex-start;background:var(--white);border-radius:14px;padding:18px;box-shadow:var(--shadow);}
+  .cinfo-ic{width:42px;height:42px;border-radius:10px;background:var(--green-deep);color:var(--gold-light);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+  .cinfo-item h4{font-size:0.92rem;margin-bottom:3px;}
+  .cinfo-item p{font-size:0.86rem;color:var(--ink-soft);}
+  .map-box{border-radius:16px;overflow:hidden;box-shadow:var(--shadow);min-height:340px;}
+  .map-box iframe{width:100%;height:100%;min-height:340px;border:0;}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--ink);color:rgba(251,246,236,0.75);padding:60px 0 24px;}
+  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:34px;margin-bottom:40px;}
+  .footer-grid h4{color:var(--cream);font-size:1rem;margin-bottom:16px;font-family:'Baloo Da 2',sans-serif;}
+  .footer-grid ul{display:grid;gap:10px;font-size:0.88rem;}
+  .footer-grid ul a:hover{color:var(--gold-light);}
+  .foot-brand{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+  .foot-brand .emblem{width:44px;height:44px;}
+  .foot-brand .emblem::after{width:36px;height:36px;font-size:1.1rem;}
+  .foot-brand h3{color:var(--cream);font-size:1.05rem;}
+  .social-row{display:flex;gap:10px;margin-top:16px;}
+  .social-row a{width:36px;height:36px;border-radius:50%;background:rgba(251,246,236,0.08);display:flex;align-items:center;justify-content:center;}
+  .social-row a:hover{background:var(--gold);color:var(--ink);}
+  .foot-bottom{border-top:1px solid rgba(251,246,236,0.12);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:0.82rem;}
+
+  /* ---------- Scroll reveal ---------- */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.show{opacity:1;transform:translateY(0);}
+
+  /* ---------- Back to top ---------- */
+  .top-btn{
+    position:fixed;bottom:28px;right:28px;width:48px;height:48px;border-radius:50%;
+    background:var(--gold);color:var(--green-deep);display:flex;align-items:center;justify-content:center;
+    font-size:1.2rem;box-shadow:0 8px 20px rgba(0,0,0,0.25);opacity:0;pointer-events:none;transition:opacity .3s;z-index:90;
+  }
+  .top-btn.show{opacity:1;pointer-events:auto;}
+
+  /* ---------- Responsive ---------- */
+  @media(max-width:980px){
+    .hero-grid,.about-grid,.result-box,.admission,.contact-grid{grid-template-columns:1fr;}
+    .stats-grid{grid-template-columns:repeat(2,1fr);}
+    .tab-panel.active,.teacher-grid,.links-grid,.video-grid{grid-template-columns:repeat(2,1fr);}
+    .gallery-grid{grid-template-columns:repeat(2,1fr);}
+    .g1,.g5{grid-column:span 2;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media(max-width:560px){
+    .stats-grid,.tab-panel.active,.teacher-grid,.links-grid,.video-grid,.gallery-grid,.footer-grid{grid-template-columns:1fr 1fr;}
+    .g1{grid-column:span 2;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-left">
+      <span>📞 ০১৭XX-XXXXXX</span>
+      <span>✉️ info@jiauddinsc.edu.bd</span>
+      <span>📍 ভাটগাঁও, ব্রাহ্মণ কাচুরী, কিশোরগঞ্জ সদর</span>
+    </div>
+    <div class="topbar-right">শিক্ষাবর্ষ ২০২৬ চলছে</div>
+  </div>
+</div>
+
+<header>
+  <div class="container nav-wrap">
+    <div class="brand">
+      <div class="emblem"></div>
+      <div class="brand-text">
+        <h1>জিয়াউদ্দিন স্কুল এন্ড কলেজ</h1>
+        <p>Jiauddin School & College · Kishoreganj</p>
+      </div>
+    </div>
+    <nav id="mainNav">
+      <ul>
+        <li><a href="#home">হোম</a></li>
+        <li><a href="#about">আমাদের সম্পর্কে</a></li>
+        <li><a href="#notice">নোটিশ বোর্ড</a></li>
+        <li><a href="#academic">একাডেমিক</a></li>
+        <li><a href="#result">ফলাফল</a></li>
+        <li><a href="#teachers">শিক্ষকমণ্ডলী</a></li>
+        <li><a href="#gallery">গ্যালারি</a></li>
+        <li><a href="#links">গুরুত্বপূর্ণ লিংক</a></li>
+        <li><a href="#contact">যোগাযোগ</a></li>
+      </ul>
+    </nav>
+    <button class="burger" id="burgerBtn">☰</button>
+  </div>
+</header>
+
+<section id="home" class="hero" style="padding-top:70px;">
+  <div class="container hero-grid">
+    <div>
+      <div class="hero-badge"><span class="dot"></span> ভর্তি চলছে — শিক্ষাবর্ষ ২০২৬</div>
+      <span class="eyebrow" style="color:var(--gold-light)">কিশোরগঞ্জ সদর, কিশোরগঞ্জ</span>
+      <h2 class="display">জ্ঞানের আলোয় গড়ি <em>আগামীর প্রজন্ম</em></h2>
+      <p class="lead">শিশু শ্রেণি থেকে উচ্চ মাধ্যমিক পর্যন্ত মানসম্মত ও নৈতিকতাসম্পন্ন শিক্ষার এক বিশ্বস্ত ঠিকানা — জিয়াউদ্দিন স্কুল এন্ড কলেজ। ভাটগাঁও, ব্রাহ্মণ কাচুরীর বুকে দাঁড়িয়ে থাকা এই প্রতিষ্ঠানটি প্রতিটি শিক্ষার্থীর মেধা ও চরিত্র গঠনে নিরলসভাবে কাজ করে যাচ্ছে।</p>
+      <div class="hero-actions">
+        <a href="#academic" class="btn btn-gold">🎓 ভর্তি তথ্য দেখুন</a>
+        <a href="#notice" class="btn btn-outline">📋 নোটিশ বোর্ড</a>
+      </div>
+    </div>
+    <div class="hero-visual reveal">
+      <h3>প্রতিষ্ঠানের এক নজরে</h3>
+      <div class="hero-stat-row">
+        <div class="hero-stat"><b>১৯৯৮</b><span>প্রতিষ্ঠাকাল</span></div>
+        <div class="hero-stat"><b>১৮০০+</b><span>শিক্ষার্থী</span></div>
+        <div class="hero-stat"><b>৭৫+</b><span>শিক্ষক-শিক্ষিকা</span></div>
+        <div class="hero-stat"><b>৯৬%</b><span>গড় পাসের হার</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker-wrap">
+  <div class="ticker-label">🔔 সর্বশেষ নোটিশ</div>
+  <div class="ticker-track" id="tickerTrack">
+    <span>০৫ আগস্ট ২০২৬ — একাদশ শ্রেণিতে ভর্তি কার্যক্রম শুরু</span>
+    <span>২৮ জুলাই ২০২৬ — বার্ষিক ক্রীড়া প্রতিযোগিতার সময়সূচি প্রকাশ</span>
+    <span>২০ জুলাই ২০২৬ — নবম শ্রেণির অর্ধবার্ষিক পরীক্ষার রুটিন প্রকাশিত</span>
+    <span>১২ জুলাই ২০২৬ — এসএসসি ফলাফল ২০২৬ প্রকাশিত হয়েছে</span>
+    <span>০৫ আগস্ট ২০২৬ — একাদশ শ্রেণিতে ভর্তি কার্যক্রম শুরু</span>
+    <span>২৮ জুলাই ২০২৬ — বার্ষিক ক্রীড়া প্রতিযোগিতার সময়সূচি প্রকাশ</span>
+    <span>২০ জুলাই ২০২৬ — নবম শ্রেণির অর্ধবার্ষিক পরীক্ষার রুটিন প্রকাশিত</span>
+    <span>১২ জুলাই ২০২৬ — এসএসসি ফলাফল ২০২৬ প্রকাশিত হয়েছে</span>
+  </div>
+</div>
+
+<div class="stats-strip">
+  <div class="container stats-grid">
+    <div class="reveal"><b>২৮+</b><span>বছরের শিক্ষা সেবা</span></div>
+    <div class="reveal"><b>১২</b><span>শ্রেণি (প্লে-এইচএসসি)</span></div>
+    <div class="reveal"><b>৩</b><span>বিজ্ঞান, মানবিক, ব্যবসায় শাখা</span></div>
+    <div class="reveal"><b>৫০+</b><span>শিক্ষাবৃত্তি ও অনুদান</span></div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="container about-grid">
+    <div class="about-card reveal">
+      <span class="eyebrow" style="color:var(--gold-light)">লক্ষ্য ও উদ্দেশ্য</span>
+      <h3>আমরা যা বিশ্বাস করি</h3>
+      <p>প্রতিটি শিশুর মধ্যে লুকিয়ে থাকা সম্ভাবনাকে বিকশিত করাই আমাদের মূল লক্ষ্য। আধুনিক শিক্ষা পদ্ধতির সাথে ধর্মীয় ও নৈতিক মূল্যবোধের সমন্বয়ে আমরা গড়ে তুলছি আগামীর যোগ্য নাগরিক।</p>
+      <ul class="about-list">
+        <li>মানসম্মত পাঠদান ও অভিজ্ঞ শিক্ষকমণ্ডলী</li>
+        <li>নিয়মিত মূল্যায়ন ও অভিভাবক যোগাযোগ</li>
+        <li>খেলাধুলা, সংস্কৃতি ও সহশিক্ষা কার্যক্রম</li>
+        <li>নিরাপদ ও শৃঙ্খলাপূর্ণ শিক্ষা পরিবেশ</li>
+      </ul>
+    </div>
+    <div class="about-copy reveal">
+      <span class="eyebrow">আমাদের সম্পর্কে</span>
+      <h2 style="margin-top:10px;">জিয়াউদ্দিন স্কুল এন্ড কলেজের পথচলা</h2>
+      <h3>ইতিহাস ও ঐতিহ্য</h3>
+      <p>কিশোরগঞ্জ সদর উপজেলার ভাটগাঁও, ব্রাহ্মণ কাচুরী এলাকায় প্রতিষ্ঠিত এই বিদ্যাপীঠ দীর্ঘদিন ধরে এলাকার শিক্ষার্থীদের জন্য মানসম্মত শিক্ষার সুযোগ তৈরি করে আসছে। শিশু শ্রেণি থেকে উচ্চ মাধ্যমিক পর্যন্ত বিস্তৃত শিক্ষা কার্যক্রমের মাধ্যমে প্রতিষ্ঠানটি এলাকাবাসীর আস্থার প্রতীক হয়ে উঠেছে।</p>
+      <h3>শিক্ষা কার্যক্রম</h3>
+      <p>বাংলা মাধ্যমে জাতীয় শিক্ষাক্রম অনুসরণ করে পাঠদান পরিচালিত হয়। মাধ্যমিক স্তরে বিজ্ঞান, মানবিক ও ব্যবসায় শিক্ষা — এই তিনটি শাখায় শিক্ষার্থীরা তাদের আগ্রহ অনুযায়ী বিষয় নির্বাচনের সুযোগ পায়।</p>
+    </div>
+  </div>
+
+  <div class="container" style="margin-top:60px;">
+    <div class="chalk reveal">
+      <span class="eyebrow" style="color:var(--gold-light)">প্রধান শিক্ষকের বাণী</span>
+      <h3 style="margin-top:10px;">প্রিয় শিক্ষার্থী ও অভিভাবকবৃন্দ,</h3>
+      <p>শিক্ষা কেবল পাঠ্যবইয়ের মধ্যে সীমাবদ্ধ নয় — এটি চরিত্র, মূল্যবোধ ও মানবিকতার শিক্ষা। আমরা প্রতিটি শিক্ষার্থীকে শুধু পরীক্ষার ফলাফলের জন্য নয়, জীবনের প্রতিটি ক্ষেত্রে সফল হওয়ার উপযোগী করে গড়ে তুলতে বদ্ধপরিকর। আপনাদের আস্থা ও সহযোগিতাই আমাদের এই পথচলার মূল শক্তি।</p>
+      <div class="chalk-sign">মোঃ ইমরান হোসেন<span>প্রধান শিক্ষক, জিয়াউদ্দিন স্কুল এন্ড কলেজ</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="notice" class="bg-alt">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">নোটিশ বোর্ড</span>
+      <h2>সাম্প্রতিক ঘোষণা ও বিজ্ঞপ্তি</h2>
+      <p>ভর্তি, পরীক্ষার রুটিন ও প্রাতিষ্ঠানিক সকল গুরুত্বপূর্ণ ঘোষণা এখানে নিয়মিত হালনাগাদ করা হয়।</p>
+    </div>
+    <div class="notice-list">
+      <div class="notice-item reveal">
+        <div class="notice-date"><b>০৫</b><span>আগস্ট</span></div>
+        <div class="notice-body"><h4>একাদশ শ্রেণিতে ভর্তি বিজ্ঞপ্তি ২০২৬ <span class="tag-new">নতুন</span></h4></div>
+        <div class="notice-dl">⬇</div>
+      </div>
+      <div class="notice-item reveal">
+        <div class="notice-date"><b>২৮</b><span>জুলাই</span></div>
+        <div class="notice-body"><h4>বার্ষিক ক্রীড়া প্রতিযোগিতা ২০২৬ — সময়সূচি প্রকাশ</h4></div>
+        <div class="notice-dl">⬇</div>
+      </div>
+      <div class="notice-item reveal">
+        <div class="notice-date"><b>২০</b><span>জুলাই</span></div>
+        <div class="notice-body"><h4>নবম শ্রেণির অর্ধবার্ষিক পরীক্ষার রুটিন</h4></div>
+        <div class="notice-dl">⬇</div>
+      </div>
+      <div class="notice-item reveal">
+        <div class="notice-date"><b>১২</b><span>জুলাই</span></div>
+        <div class="notice-body"><h4>এসএসসি ফলাফল ২০২৬ প্রকাশিত হয়েছে</h4></div>
+        <div class="notice-dl">⬇</div>
+      </div>
+      <div class="notice-item reveal">
+        <div class="notice-date"><b>০১</b><span>জুলাই</span></div>
+        <div class="notice-body"><h4>নতুন শিক্ষাবর্ষের বই বিতরণ কার্যক্রম</h4></div>
+        <div class="notice-dl">⬇</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="academic">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">একাডেমিক তথ্য</span>
+      <h2>শ্রেণি, রুটিন ও সিলেবাস</h2>
+      <p>প্রতিটি স্তরের ক্লাস রুটিন ও সিলেবাস সহজে খুঁজে নিন।</p>
+    </div>
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="t1">প্রাথমিক (প্লে–৫ম)</button>
+      <button class="tab-btn" data-tab="t2">মাধ্যমিক (৬ষ্ঠ–১০ম)</button>
+      <button class="tab-btn" data-tab="t3">উচ্চ মাধ্যমিক (একাদশ–দ্বাদশ)</button>
+    </div>
+    <div class="tab-panel active" id="t1">
+      <div class="class-card"><h4>প্লে ও নার্সারি</h4><p>মৌলিক বর্ণ পরিচিতি ও সৃজনশীল কার্যক্রম</p><div class="links"><span class="pill-link">রুটিন</span><span class="pill-link">সিলেবাস</span></div></div>
+      <div class="class-card"><h4>১ম – ৩য় শ্রেণি</h4><p>বাংলা, ইংরেজি, গণিত ও পরিবেশ পরিচিতি</p><div class="links"><span class="pill-link">রুটিন</span><span class="pill-link">সিলেবাস</span></div></div>
+      <div class="class-card"><h4>৪র্থ – ৫ম শ্রেণি</h4><p>প্রাথমিক শিক্ষা সমাপনী প্রস্তুতি</p><div class="links"><span class="pill-link">রুটিন</span><span class="pill-link">সিলেবাস</span></div></div>
+    </div>
+    <div class="tab-panel" id="t2">
+      <div class="class-card"><h4>৬ষ্ঠ – ৭ম শ্রেণি</h4><p>জাতীয় শিক্ষাক্রম অনুযায়ী পূর্ণাঙ্গ পাঠ্যক্রম</p><div class="links"><span class="pill-link">রুটিন</span><span class="pill-link">সিলেবাস</span></div></div>
+      <div class="class-card"><h4>৮ম শ্রেণি</h4><p>জেএসসি সমমান মূল্যায়ন প্রস্তুতি</p><div class="links"><span class="pill-link">রুটিন</span><span class="pill-link">সিলেবাস</span></div></div>
+      <div class="class-card"><h4>৯ম – ১০ম শ্রেণি</h4><p>বিজ্ঞান, মানবিক ও ব্যবসায় শাখা — এসএসসি প্রস্তুতি</p><div class="links"><span class="pill-link">রুটিন</span><span class="pill-link">সিলেবাস</span></div></div>
+    </div>
+    <div class="tab-panel" id="t3">
+      <div class="class-card"><h4>একাদশ শ্রেণি</h4><p>বিজ্ঞান, মানবিক ও ব্যবসায় শিক্ষা শাখা</p><div class="links"><span class="pill-link">রুটিন</span><span class="pill-link">সিলেবাস</span></div></div>
+      <div class="class-card"><h4>দ্বাদশ শ্রেণি</h4><p>এইচএসসি চূড়ান্ত পরীক্ষার প্রস্তুতি</p><div class="links"><span class="pill-link">রুটিন</span><span class="pill-link">সিলেবাস</span></div></div>
+      <div class="class-card"><h4>মডেল টেস্ট</h4><p>বোর্ড পরীক্ষা পূর্ববর্তী মূল্যায়ন সময়সূচি</p><div class="links"><span class="pill-link">রুটিন</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="result" class="bg-alt">
+  <div class="container">
+    <div class="result-box reveal">
+      <div>
+        <span class="eyebrow" style="color:var(--gold-light)">ফলাফল অনুসন্ধান</span>
+        <h2 style="color:var(--cream);margin-top:10px;">রোল নম্বর দিয়ে ফলাফল দেখুন</h2>
+        <p style="color:rgba(251,246,236,0.85);margin-top:10px;">পরীক্ষা, শ্রেণি ও রোল নম্বর নির্বাচন করে সহজেই ফলাফল যাচাই করুন। এসএসসি ও এইচএসসি পরীক্ষার্থীরা বোর্ডের অফিসিয়াল ফলাফলের জন্য নিচের গুরুত্বপূর্ণ লিংক অংশে যেতে পারেন।</p>
+        <div class="result-note" style="margin-top:20px;">📌 বোর্ড পরীক্ষার (এসএসসি/এইচএসসি) মূল ফলাফল যাচাইয়ের জন্য <strong>eboardresults.com</strong> ব্যবহার করুন — লিংক নিচে "গুরুত্বপূর্ণ লিংক" অংশে দেওয়া আছে।</div>
+      </div>
+      <div class="result-form">
+        <select>
+          <option>পরীক্ষা নির্বাচন করুন</option>
+          <option>বার্ষিক পরীক্ষা</option>
+          <option>অর্ধবার্ষিক পরীক্ষা</option>
+          <option>নির্বাচনী পরীক্ষা</option>
+        </select>
+        <select>
+          <option>শ্রেণি নির্বাচন করুন</option>
+          <option>৬ষ্ঠ শ্রেণি</option>
+          <option>৭ম শ্রেণি</option>
+          <option>৮ম শ্রেণি</option>
+          <option>৯ম শ্রেণি</option>
+          <option>১০ম শ্রেণি</option>
+        </select>
+        <input type="text" placeholder="রোল নম্বর লিখুন">
+        <button class="btn btn-gold" style="justify-content:center;">ফলাফল দেখুন</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="teachers">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">শিক্ষকমণ্ডলী</span>
+      <h2>আমাদের নিবেদিতপ্রাণ শিক্ষকবৃন্দ</h2>
+      <p>অভিজ্ঞ ও যোগ্য শিক্ষকমণ্ডলী প্রতিটি শিক্ষার্থীর সাফল্যের পেছনে কাজ করে চলেছেন।</p>
+    </div>
+    <div class="teacher-grid">
+      <div class="teacher-card reveal"><div class="avatar" style="background:var(--green-deep)">ইঃ</div><h4>মোঃ ইমরান হোসেন</h4><span>প্রধান শিক্ষক</span></div>
+      <div class="teacher-card reveal"><div class="avatar" style="background:var(--maroon)">রঃ</div><h4>রহিমা খাতুন</h4><span>সহকারী প্রধান শিক্ষক</span></div>
+      <div class="teacher-card reveal"><div class="avatar" style="background:var(--gold)">কঃ</div><h4>কামরুল ইসলাম</h4><span>সিনিয়র শিক্ষক, বিজ্ঞান</span></div>
+      <div class="teacher-card reveal"><div class="avatar" style="background:var(--green-mid)">সঃ</div><h4>সালমা আক্তার</h4><span>সিনিয়র শিক্ষক, বাংলা</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery" class="bg-alt">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">গ্যালারি</span>
+      <h2>ক্যাম্পাস জীবনের ঝলক</h2>
+      <p>শ্রেণিকক্ষ, খেলাধুলা ও প্রাতিষ্ঠানিক আয়োজনের কিছু মুহূর্ত।</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="g-item g1 reveal"><span class="g-icon">🏫</span><span>প্রধান একাডেমিক ভবন</span></div>
+      <div class="g-item g2 reveal"><span class="g-icon">📚</span><span>গ্রন্থাগার</span></div>
+      <div class="g-item g3 reveal"><span class="g-icon">🔬</span><span>বিজ্ঞানাগার</span></div>
+      <div class="g-item g4 reveal"><span class="g-icon">⚽</span><span>খেলার মাঠ</span></div>
+      <div class="g-item g5 reveal"><span class="g-icon">🕌</span><span>বার্ষিক সাংস্কৃতিক অনুষ্ঠান</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="links">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">গুরুত্বপূর্ণ লিংক</span>
+      <h2>শিক্ষার্থী ও অভিভাবকদের জন্য প্রয়োজনীয় লিংক</h2>
+      <p>শিক্ষা বোর্ড, ফলাফল ও অন্যান্য শিক্ষামূলক ওয়েবসাইটের সংক্ষিপ্ত তালিকা।</p>
+    </div>
+    <div class="links-grid">
+      <a class="link-card reveal" href="https://www.eboardresults.com" target="_blank" rel="noopener"><div class="link-ic">📊</div><div><h4>Education Board Results</h4><span>eboardresults.com</span></div></a>
+      <a class="link-card reveal" href="https://www.dshe.gov.bd" target="_blank" rel="noopener"><div class="link-ic">🏛️</div><div><h4>মাধ্যমিক ও উচ্চশিক্ষা অধিদপ্তর</h4><span>dshe.gov.bd</span></div></a>
+      <a class="link-card reveal" href="https://www.nctb.gov.bd" target="_blank" rel="noopener"><div class="link-ic">📘</div><div><h4>জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড</h4><span>nctb.gov.bd</span></div></a>
+      <a class="link-card reveal" href="https://www.dhakaeducationboard.gov.bd" target="_blank" rel="noopener"><div class="link-ic">🎓</div><div><h4>ঢাকা শিক্ষা বোর্ড</h4><span>dhakaeducationboard.gov.bd</span></div></a>
+      <a class="link-card reveal" href="https://www.banglapedia.org" target="_blank" rel="noopener"><div class="link-ic">📖</div><div><h4>বাংলাপিডিয়া</h4><span>banglapedia.org</span></div></a>
+      <a class="link-card reveal" href="https://muktopaath.gov.bd" target="_blank" rel="noopener"><div class="link-ic">💻</div><div><h4>মুক্তপাঠ ই-লার্নিং</h4><span>muktopaath.gov.bd</span></div></a>
+      <a class="link-card reveal" href="https://www.moedu.gov.bd" target="_blank" rel="noopener"><div class="link-ic">🏢</div><div><h4>শিক্ষা মন্ত্রণালয়</h4><span>moedu.gov.bd</span></div></a>
+      <a class="link-card reveal" href="#contact"><div class="link-ic">✉️</div><div><h4>প্রতিষ্ঠানের সাথে যোগাযোগ</h4><span>Contact Form</span></div></a>
+    </div>
+  </div>
+</section>
+
+<section class="bg-alt">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">ভিডিও রিসোর্স</span>
+      <h2>শিক্ষামূলক ভিডিও সংগ্রহ</h2>
+      <p>শিক্ষার্থীদের জন্য সহায়ক টিউটোরিয়াল ও ক্লাস রেকর্ডিং।</p>
+    </div>
+    <div class="video-grid">
+      <div class="video-card reveal"><div class="video-thumb"><div class="play-btn">▶</div></div><div class="video-info"><h4>নবম শ্রেণি — গণিত অধ্যায় ৩</h4><span>২২ মিনিট</span></div></div>
+      <div class="video-card reveal"><div class="video-thumb"><div class="play-btn">▶</div></div><div class="video-info"><h4>ইংরেজি গ্রামার বেসিক</h4><span>১৮ মিনিট</span></div></div>
+      <div class="video-card reveal"><div class="video-thumb"><div class="play-btn">▶</div></div><div class="video-info"><h4>বিজ্ঞান ব্যবহারিক ক্লাস</h4><span>২৫ মিনিট</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="admission reveal">
+      <div>
+        <span class="eyebrow" style="color:var(--gold-light)">ভর্তি তথ্য</span>
+        <h2>২০২৬ শিক্ষাবর্ষে ভর্তি চলছে</h2>
+        <p>প্লে থেকে দ্বাদশ শ্রেণি পর্যন্ত সকল স্তরে সীমিত সংখ্যক আসনে ভর্তি চলছে। আজই আবেদন করুন এবং আপনার সন্তানের ভবিষ্যৎ গড়ার যাত্রা শুরু করুন।</p>
+        <a href="#contact" class="btn btn-gold" style="margin-top:20px;">📝 আবেদন করুন</a>
+      </div>
+      <div class="admission-steps">
+        <div class="astep"><b>১.</b> অনলাইন বা সরাসরি ফরম সংগ্রহ</div>
+        <div class="astep"><b>২.</b> প্রয়োজনীয় কাগজপত্র জমা</div>
+        <div class="astep"><b>৩.</b> ভর্তি নিশ্চিতকরণ ও ফি পরিশোধ</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="bg-alt">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">যোগাযোগ</span>
+      <h2>আমাদের সাথে যোগাযোগ করুন</h2>
+      <p>যেকোনো তথ্যের জন্য সরাসরি প্রতিষ্ঠানে যোগাযোগ করুন অথবা নিচের ঠিকানায় আসুন।</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="cinfo-item reveal"><div class="cinfo-ic">📍</div><div><h4>ঠিকানা</h4><p>ভাটগাঁও, ব্রাহ্মণ কাচুরী, কিশোরগঞ্জ সদর, কিশোরগঞ্জ</p></div></div>
+        <div class="cinfo-item reveal"><div class="cinfo-ic">📞</div><div><h4>ফোন</h4><p>০১৭XX-XXXXXX (অফিস)</p></div></div>
+        <div class="cinfo-item reveal"><div class="cinfo-ic">✉️</div><div><h4>ইমেইল</h4><p>info@jiauddinsc.edu.bd</p></div></div>
+        <div class="cinfo-item reveal"><div class="cinfo-ic">🕐</div><div><h4>অফিস সময়</h4><p>শনি – বৃহস্পতিবার, সকাল ৯টা – বিকাল ৪টা</p></div></div>
+      </div>
+      <div class="map-box reveal">
+        <iframe src="https://www.google.com/maps?q=Kishoreganj%20Sadar%2C%20Kishoreganj%2C%20Bangladesh&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="foot-brand">
+          <div class="emblem"></div>
+          <h3>জিয়াউদ্দিন স্কুল এন্ড কলেজ</h3>
+        </div>
+        <p style="font-size:0.88rem;max-width:320px;">কিশোরগঞ্জ সদরের ভাটগাঁও, ব্রাহ্মণ কাচুরীতে অবস্থিত একটি মানসম্মত শিক্ষাপ্রতিষ্ঠান — যেখানে জ্ঞান, মূল্যবোধ ও ভবিষ্যতের সেতুবন্ধন তৈরি হয়।</p>
+        <div class="social-row">
+          <a href="#" aria-label="Facebook">📘</a>
+          <a href="#" aria-label="YouTube">▶️</a>
+          <a href="#" aria-label="WhatsApp">💬</a>
+        </div>
+      </div>
+      <div>
+        <h4>দ্রুত লিংক</h4>
+        <ul>
+          <li><a href="#about">আমাদের সম্পর্কে</a></li>
+          <li><a href="#notice">নোটিশ বোর্ড</a></li>
+          <li><a href="#academic">একাডেমিক</a></li>
+          <li><a href="#result">ফলাফল</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>শিক্ষার্থী কর্নার</h4>
+        <ul>
+          <li><a href="#teachers">শিক্ষকমণ্ডলী</a></li>
+          <li><a href="#gallery">গ্যালারি</a></li>
+          <li><a href="#links">গুরুত্বপূর্ণ লিংক</a></li>
+          <li><a href="#contact">ভর্তি তথ্য</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>যোগাযোগ</h4>
+        <ul>
+          <li>ভাটগাঁও, ব্রাহ্মণ কাচুরী</li>
+          <li>কিশোরগঞ্জ সদর, কিশোরগঞ্জ</li>
+          <li>info@jiauddinsc.edu.bd</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© ২০২৬ জিয়াউদ্দিন স্কুল এন্ড কলেজ। সর্বস্বত্ব সংরক্ষিত।</span>
+      <span>Designed by MH Academy</span>
+    </div>
+  </div>
+</footer>
+
+<button class="top-btn" id="topBtn">↑</button>
+
+<script>
+  // Mobile nav toggle
+  const burger = document.getElementById('burgerBtn');
+  const nav = document.getElementById('mainNav');
+  burger.addEventListener('click', () => nav.classList.toggle('open'));
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+
+  // Tabs
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  // Scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Back to top
+  const topBtn = document.getElementById('topBtn');
+  window.addEventListener('scroll', () => {
+    topBtn.classList.toggle('show', window.scrollY > 500);
+  });
+  topBtn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+
+  // Ticker duplicate check (ensures seamless loop even on wide screens)
+  const track = document.getElementById('tickerTrack');
+</script>
+
+</body>
+</html>
