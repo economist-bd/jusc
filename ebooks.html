@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ই-বুক লাইব্রেরি | জিয়াউদ্দিন স্কুল এন্ড কলেজ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="images/icon1.jpg" type="image/jpeg">
+<style>
+  :root{
+    --green-deep:#0F3D2E; --green-mid:#175C43;
+    --gold:#D4A017; --gold-light:#F0C64B;
+    --cream:#FBF6EC; --paper:#F4EED9;
+    --maroon:#7A2E2E; --ink:#20261F; --ink-soft:#4A5248;
+    --white:#FFFFFF; --shadow:0 10px 30px rgba(15,61,46,0.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Hind Siliguri',sans-serif;background:var(--cream);color:var(--ink);line-height:1.7;}
+  h1,h2,h3,h4{font-family:'Baloo Da 2',sans-serif;color:var(--green-deep);}
+  a{text-decoration:none;color:inherit;}
+  .container{max-width:1180px;margin:0 auto;padding:0 24px;}
+  .eyebrow{font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:2px;font-size:.72rem;color:var(--gold);font-weight:600;}
+  .btn{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border-radius:999px;font-weight:600;font-size:.8rem;cursor:pointer;border:none;}
+  .btn-gold{background:var(--gold);color:var(--green-deep);}
+  .btn-outline{background:var(--paper);color:var(--green-deep);}
+
+  .topbar{background:var(--ink);color:rgba(251,246,236,.85);font-size:.82rem;padding:8px 0;}
+  .topbar .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;}
+  .topbar-left{display:flex;gap:22px;flex-wrap:wrap;}
+  .topbar-right a{color:var(--gold-light);font-weight:600;}
+
+  header{background:var(--cream);position:sticky;top:0;z-index:100;box-shadow:0 2px 18px rgba(15,61,46,.08);}
+  .nav-wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 0;flex-wrap:wrap;gap:12px;}
+  .brand{display:flex;align-items:center;gap:14px;}
+  .brand img{width:52px;height:52px;border-radius:50%;object-fit:cover;box-shadow:0 6px 16px rgba(15,61,46,.3);}
+  .brand-text h1{font-size:1.1rem;}
+  .brand-text p{font-family:'Poppins',sans-serif;font-size:.68rem;letter-spacing:1px;color:var(--ink-soft);text-transform:uppercase;}
+  nav ul{display:flex;gap:18px;flex-wrap:wrap;list-style:none;}
+  nav a{font-weight:600;font-size:.88rem;color:var(--ink);}
+  nav a.active{color:var(--maroon);}
+
+  .page-hero{background:linear-gradient(160deg,var(--green-deep) 0%, #0B2F23 65%);padding:56px 0;color:var(--cream);text-align:center;}
+  .page-hero h2{color:var(--cream);font-size:clamp(1.6rem,3vw,2.2rem);}
+  .page-hero p{color:rgba(251,246,236,.8);margin-top:10px;}
+
+  section{padding:56px 0;}
+  .toolbar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;margin-bottom:28px;}
+  .status{font-size:.88rem;color:var(--ink-soft);}
+  .spinner{width:18px;height:18px;border:3px solid var(--paper);border-top-color:var(--gold);border-radius:50%;display:inline-block;animation:spin 0.8s linear infinite;vertical-align:middle;margin-right:8px;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .search-box{padding:10px 16px;border-radius:999px;border:1.5px solid #e2ddd0;font-family:'Hind Siliguri',sans-serif;font-size:.88rem;min-width:220px;background:var(--white);}
+
+  .book-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .book-card{background:var(--white);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;}
+  .book-thumb{height:190px;background:var(--paper);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;}
+  .book-thumb img{width:100%;height:100%;object-fit:cover;}
+  .book-thumb .pdf-icon{font-size:3rem;}
+  .book-type-badge{position:absolute;top:10px;right:10px;background:var(--green-deep);color:var(--gold-light);font-size:.65rem;padding:3px 10px;border-radius:999px;font-weight:700;}
+  .book-info{padding:14px 16px;flex:1;display:flex;flex-direction:column;}
+  .book-info h4{font-size:.9rem;margin-bottom:10px;}
+  .book-actions{display:flex;gap:8px;margin-top:auto;flex-wrap:wrap;}
+
+  .empty-state{text-align:center;padding:60px 20px;color:var(--ink-soft);background:var(--paper);border-radius:16px;}
+  .empty-state h3{margin-bottom:10px;}
+
+  .modal{position:fixed;inset:0;background:rgba(15,20,15,.92);display:none;align-items:center;justify-content:center;z-index:999;padding:20px;}
+  .modal.open{display:flex;}
+  .modal-inner{background:#fff;width:min(900px,95vw);height:88vh;border-radius:12px;overflow:hidden;position:relative;display:flex;flex-direction:column;}
+  .modal-inner iframe,.modal-inner img{width:100%;height:100%;object-fit:contain;border:0;background:#525659;}
+  .modal-close{position:absolute;top:10px;right:14px;font-size:1.6rem;color:#fff;background:rgba(0,0,0,.4);border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;z-index:2;}
+
+  footer{background:var(--ink);color:rgba(251,246,236,.75);padding:36px 0;text-align:center;font-size:.85rem;}
+  footer a{color:var(--gold-light);}
+
+  @media(max-width:900px){ .book-grid{grid-template-columns:repeat(3,1fr);} }
+  @media(max-width:600px){ .book-grid{grid-template-columns:repeat(2,1fr);} }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-left"><span>📞 01728135864</span><span>✉️ mojibur.p.jusc@gmail.com</span></div>
+    <div class="topbar-right"><a href="index.html#admission">একাদশ শ্রেণিতে ভর্তি আবেদন করুন »</a></div>
+  </div>
+</div>
+
+<header>
+  <div class="container nav-wrap">
+    <div class="brand">
+      <img src="images/icon1.jpg" alt="Logo">
+      <div class="brand-text">
+        <h1>জিয়াউদ্দিন স্কুল এন্ড কলেজ</h1>
+        <p>Jiauddin School & College</p>
+      </div>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">হোম</a></li>
+        <li><a href="photos.html">ফটো গ্যালারি</a></li>
+        <li><a href="videos.html">ভিডিও গ্যালারি</a></li>
+        <li><a href="ebooks.html" class="active">ই-বুক</a></li>
+        <li><a href="students_photos.html">শিক্ষার্থীদের ছবি</a></li>
+        <li><a href="blog.html">ব্লগ</a></li>
+        <li><a href="contact.html">যোগাযোগ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="container">
+    <span class="eyebrow" style="color:var(--gold-light)">লাইব্রেরি</span>
+    <h2 style="margin-top:8px;">ই-বুক লাইব্রেরি</h2>
+    <p>ebooks ফোল্ডারে থাকা সব বই ও নথি এখানে স্বয়ংক্রিয়ভাবে দেখানো হয় — পড়ুন ও ডাউনলোড করুন</p>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div class="toolbar">
+      <div class="status" id="statusText"><span class="spinner"></span> বই খোঁজা হচ্ছে...</div>
+      <input type="text" class="search-box" id="searchBox" placeholder="🔍 বই খুঁজুন..." style="display:none;">
+    </div>
+    <div class="book-grid" id="bookGrid"></div>
+    <div class="empty-state" id="emptyState" style="display:none;">
+      <h3>এখনো কোনো ই-বুক পাওয়া যায়নি</h3>
+      <p><code>ebooks</code> ফোল্ডারে <code>ebook1.pdf</code>, <code>ebook2.pdf</code> (অথবা <code>.jpg</code> / <code>.png</code>) এভাবে নাম দিয়ে ফাইল রাখুন, স্বয়ংক্রিয়ভাবে এখানে দেখা যাবে।</p>
+    </div>
+  </div>
+</section>
+
+<div class="modal" id="viewModal">
+  <div class="modal-inner">
+    <button class="modal-close" id="modalClose">&times;</button>
+    <div id="modalContent" style="width:100%;height:100%;"></div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    © ২০২৬ জিয়াউদ্দিন স্কুল এন্ড কলেজ। <a href="index.html">হোমপেজে ফিরে যান</a>
+  </div>
+</footer>
+
+<script>
+/*
+  AUTOMATIC E-BOOK DISCOVERY
+  --------------------------------------------------------
+  Static hosting can't list a folder's contents, so this
+  script checks (via fetch HEAD requests) whether files
+  named ebook1, ebook2, ebook3 ... exist in /ebooks/ with
+  extension .pdf, .jpg, .jpeg or .png, and only shows the
+  ones that are actually there. Just drop new files into
+  /ebooks/ named ebook<number>.<ext> and they appear here
+  automatically — no code editing needed.
+*/
+const MAX_INDEX = 150;
+const EXTENSIONS = ['pdf','jpg','jpeg','png'];
+const FOLDER = 'ebooks/';
+
+let found = [];
+let checked = 0;
+const totalChecks = MAX_INDEX;
+const grid = document.getElementById('bookGrid');
+const statusText = document.getElementById('statusText');
+const emptyState = document.getElementById('emptyState');
+const searchBox = document.getElementById('searchBox');
+
+async function checkIndex(index){
+  for(const ext of EXTENSIONS){
+    const url = FOLDER + 'ebook' + index + '.' + ext;
+    try{
+      const res = await fetch(url, {method:'HEAD', cache:'no-store'});
+      if(res.ok){
+        found.push({src:url, index, type: ext==='pdf' ? 'pdf' : 'image'});
+        break;
+      }
+    }catch(e){ /* ignore, file not reachable */ }
+  }
+  checked++;
+  if(checked >= totalChecks){ renderGrid(); }
+}
+
+function renderGrid(filterText){
+  grid.innerHTML = '';
+  found.sort((a,b)=>a.index-b.index);
+  const list = filterText
+    ? found.filter(f => ('ই-বুক '+f.index).includes(filterText))
+    : found;
+
+  if(found.length === 0){
+    statusText.style.display = 'none';
+    emptyState.style.display = 'block';
+    return;
+  }
+  statusText.textContent = found.length + 'টি ফাইল পাওয়া গেছে';
+  searchBox.style.display = 'inline-block';
+
+  list.forEach(item=>{
+    const card = document.createElement('div');
+    card.className = 'book-card';
+    const thumbHtml = item.type === 'pdf'
+      ? '<div class="pdf-icon">📕</div>'
+      : '<img src="'+item.src+'" alt="ebook '+item.index+'" loading="lazy">';
+    card.innerHTML =
+      '<div class="book-thumb">'+thumbHtml+'<span class="book-type-badge">'+(item.type==='pdf'?'PDF':'ছবি')+'</span></div>'+
+      '<div class="book-info">'+
+        '<h4>ই-বুক '+item.index+'</h4>'+
+        '<div class="book-actions">'+
+          '<button class="btn btn-gold" data-view="'+item.src+'" data-type="'+item.type+'">👁️ পড়ুন</button>'+
+          '<a class="btn btn-outline" href="'+item.src+'" download>⬇️ ডাউনলোড</a>'+
+        '</div>'+
+      '</div>';
+    grid.appendChild(card);
+  });
+
+  grid.querySelectorAll('[data-view]').forEach(btn=>{
+    btn.addEventListener('click', ()=>openModal(btn.dataset.view, btn.dataset.type));
+  });
+}
+
+searchBox.addEventListener('input', ()=> renderGrid(searchBox.value.trim()));
+
+for(let i=1;i<=MAX_INDEX;i++){ checkIndex(i); }
+
+// Modal viewer
+const modal = document.getElementById('viewModal');
+const modalContent = document.getElementById('modalContent');
+function openModal(src, type){
+  modalContent.innerHTML = type === 'pdf'
+    ? '<iframe src="'+src+'"></iframe>'
+    : '<img src="'+src+'" style="object-fit:contain;">';
+  modal.classList.add('open');
+}
+document.getElementById('modalClose').addEventListener('click', ()=>{
+  modal.classList.remove('open'); modalContent.innerHTML='';
+});
+modal.addEventListener('click', (e)=>{ if(e.target === modal){ modal.classList.remove('open'); modalContent.innerHTML=''; } });
+</script>
+</body>
+</html>

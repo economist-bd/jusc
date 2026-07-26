@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ব্লগ ও পেজ সমূহ | জিয়াউদ্দিন স্কুল এন্ড কলেজ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="images/icon1.jpg" type="image/jpeg">
+<style>
+  :root{
+    --green-deep:#0F3D2E; --green-mid:#175C43;
+    --gold:#D4A017; --gold-light:#F0C64B;
+    --cream:#FBF6EC; --paper:#F4EED9;
+    --maroon:#7A2E2E; --ink:#20261F; --ink-soft:#4A5248;
+    --white:#FFFFFF; --shadow:0 10px 30px rgba(15,61,46,0.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Hind Siliguri',sans-serif;background:var(--cream);color:var(--ink);line-height:1.7;}
+  h1,h2,h3,h4{font-family:'Baloo Da 2',sans-serif;color:var(--green-deep);}
+  a{text-decoration:none;color:inherit;}
+  .container{max-width:1180px;margin:0 auto;padding:0 24px;}
+  .eyebrow{font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:2px;font-size:.72rem;color:var(--gold);font-weight:600;}
+  .btn{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:999px;font-weight:600;font-size:.82rem;cursor:pointer;border:none;background:var(--gold);color:var(--green-deep);}
+
+  .topbar{background:var(--ink);color:rgba(251,246,236,.85);font-size:.82rem;padding:8px 0;}
+  .topbar .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;}
+  .topbar-left{display:flex;gap:22px;flex-wrap:wrap;}
+  .topbar-right a{color:var(--gold-light);font-weight:600;}
+
+  header{background:var(--cream);position:sticky;top:0;z-index:100;box-shadow:0 2px 18px rgba(15,61,46,.08);}
+  .nav-wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 0;flex-wrap:wrap;gap:12px;}
+  .brand{display:flex;align-items:center;gap:14px;}
+  .brand img{width:52px;height:52px;border-radius:50%;object-fit:cover;box-shadow:0 6px 16px rgba(15,61,46,.3);}
+  .brand-text h1{font-size:1.1rem;}
+  .brand-text p{font-family:'Poppins',sans-serif;font-size:.68rem;letter-spacing:1px;color:var(--ink-soft);text-transform:uppercase;}
+  nav ul{display:flex;gap:18px;flex-wrap:wrap;list-style:none;}
+  nav a{font-weight:600;font-size:.88rem;color:var(--ink);}
+  nav a.active{color:var(--maroon);}
+
+  .page-hero{background:linear-gradient(160deg,var(--green-deep) 0%, #0B2F23 65%);padding:56px 0;color:var(--cream);text-align:center;}
+  .page-hero h2{color:var(--cream);font-size:clamp(1.6rem,3vw,2.2rem);}
+  .page-hero p{color:rgba(251,246,236,.8);margin-top:10px;}
+
+  section{padding:56px 0;}
+  .toolbar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;margin-bottom:28px;}
+  .status{font-size:.88rem;color:var(--ink-soft);}
+  .spinner{width:18px;height:18px;border:3px solid var(--paper);border-top-color:var(--gold);border-radius:50%;display:inline-block;animation:spin 0.8s linear infinite;vertical-align:middle;margin-right:8px;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+
+  .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .blog-card{background:var(--white);border-radius:16px;box-shadow:var(--shadow);padding:22px;display:flex;flex-direction:column;gap:10px;transition:transform .2s;}
+  .blog-card:hover{transform:translateY(-4px);}
+  .blog-ic{width:44px;height:44px;border-radius:12px;background:var(--paper);display:flex;align-items:center;justify-content:center;font-size:1.2rem;}
+  .blog-card h4{font-size:1rem;}
+  .blog-card .fname{font-size:.75rem;color:var(--ink-soft);word-break:break-all;}
+  .blog-actions{margin-top:auto;display:flex;gap:8px;}
+
+  .empty-state{text-align:center;padding:60px 20px;color:var(--ink-soft);background:var(--paper);border-radius:16px;}
+  .empty-state h3{margin-bottom:10px;}
+  .empty-state pre{background:var(--white);border-radius:10px;padding:14px;margin-top:14px;font-size:.85rem;text-align:left;overflow-x:auto;}
+
+  footer{background:var(--ink);color:rgba(251,246,236,.75);padding:36px 0;text-align:center;font-size:.85rem;}
+  footer a{color:var(--gold-light);}
+
+  @media(max-width:900px){ .blog-grid{grid-template-columns:repeat(2,1fr);} }
+  @media(max-width:600px){ .blog-grid{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-left"><span>📞 01728135864</span><span>✉️ mojibur.p.jusc@gmail.com</span></div>
+    <div class="topbar-right"><a href="index.html#admission">একাদশ শ্রেণিতে ভর্তি আবেদন করুন »</a></div>
+  </div>
+</div>
+
+<header>
+  <div class="container nav-wrap">
+    <div class="brand">
+      <img src="images/icon1.jpg" alt="Logo">
+      <div class="brand-text">
+        <h1>জিয়াউদ্দিন স্কুল এন্ড কলেজ</h1>
+        <p>Jiauddin School & College</p>
+      </div>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">হোম</a></li>
+        <li><a href="photos.html">ফটো গ্যালারি</a></li>
+        <li><a href="videos.html">ভিডিও গ্যালারি</a></li>
+        <li><a href="ebooks.html">ই-বুক</a></li>
+        <li><a href="students_photos.html">শিক্ষার্থীদের ছবি</a></li>
+        <li><a href="blog.html" class="active">ব্লগ</a></li>
+        <li><a href="contact.html">যোগাযোগ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="container">
+    <span class="eyebrow" style="color:var(--gold-light)">ব্লগ ও পেজ সমূহ</span>
+    <h2 style="margin-top:8px;">ব্লগ / এইচটিএমএল পেজ লাইব্রেরি</h2>
+    <p>html ফোল্ডারে থাকা সব পেজ এখানে স্বয়ংক্রিয়ভাবে তালিকা আকারে দেখানো হয়</p>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div class="toolbar">
+      <div class="status" id="statusText"><span class="spinner"></span> পেজ খোঁজা হচ্ছে...</div>
+    </div>
+    <div class="blog-grid" id="blogGrid"></div>
+    <div class="empty-state" id="emptyState" style="display:none;">
+      <h3>এখনো কোনো পেজ পাওয়া যায়নি</h3>
+      <p>
+        সাধারণ ছবি/ভিডিও ফাইলের নাম <code>icon1</code>, <code>video1</code> এর মতো ক্রমিক সংখ্যায় হয় বলে সেগুলো স্বয়ংক্রিয়ভাবে খুঁজে বের করা যায়।
+        কিন্তু ব্লগ/এইচটিএমএল পেজের নাম সাধারণত অর্থবহ হয় (যেমন <code>notice-2026.html</code>) — তাই এই পেজগুলোর জন্য একটি ছোট্ট তালিকা ফাইল দরকার।
+      </p>
+      <p><code>html/files.txt</code> নামে একটি ফাইল তৈরি করুন এবং সেখানে প্রতি লাইনে একটি করে ফাইলের নাম লিখুন, যেমন:</p>
+      <pre>notice-2026.html
+sports-day-2026.html
+admission-guide.html</pre>
+      <p>নতুন পেজ যোগ করতে চাইলে শুধু এই <code>files.txt</code> এ এক লাইন যোগ করলেই সেটি এখানে স্বয়ংক্রিয়ভাবে দেখা যাবে — পুরো ব্লগ পেজ আবার নতুন করে বানাতে হবে না।</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    © ২০২৬ জিয়াউদ্দিন স্কুল এন্ড কলেজ। <a href="index.html">হোমপেজে ফিরে যান</a>
+  </div>
+</footer>
+
+<script>
+/*
+  AUTOMATIC BLOG / HTML PAGE DISCOVERY
+  --------------------------------------------------------
+  Static hosting has no folder-listing API, and blog/tool
+  page filenames are usually descriptive (not numbered), so
+  instead of guessing filenames this page reads a plain-text
+  manifest: html/files.txt — one filename per line.
+
+  To add a new page to the blog: just add its filename as a
+  new line in html/files.txt. This page fetches each listed
+  file, reads its <title>, and lists it below automatically.
+*/
+const MANIFEST = 'html/files.txt';
+const FOLDER = 'html/';
+
+const grid = document.getElementById('blogGrid');
+const statusText = document.getElementById('statusText');
+const emptyState = document.getElementById('emptyState');
+
+async function loadManifest(){
+  try{
+    const res = await fetch(MANIFEST, {cache:'no-store'});
+    if(!res.ok) throw new Error('manifest not found');
+    const text = await res.text();
+    const files = text.split('\n').map(l=>l.trim()).filter(l=>l.length>0 && !l.startsWith('#'));
+    if(files.length === 0){ showEmpty(); return; }
+    await renderPages(files);
+  }catch(e){
+    showEmpty();
+  }
+}
+
+function showEmpty(){
+  statusText.style.display = 'none';
+  emptyState.style.display = 'block';
+}
+
+async function renderPages(files){
+  statusText.textContent = files.length + 'টি পেজ পাওয়া গেছে';
+  let renderedCount = 0;
+  for(const filename of files){
+    const url = FOLDER + filename;
+    let title = filename;
+    try{
+      const res = await fetch(url, {cache:'no-store'});
+      if(res.ok){
+        const html = await res.text();
+        const match = html.match(/<title>(.*?)<\/title>/i);
+        if(match && match[1].trim()) title = match[1].trim();
+        renderedCount++;
+      } else {
+        continue; // file listed but missing, skip
+      }
+    }catch(e){ continue; }
+
+    const card = document.createElement('div');
+    card.className = 'blog-card';
+    card.innerHTML =
+      '<div class="blog-ic">📄</div>'+
+      '<h4>'+title+'</h4>'+
+      '<div class="fname">'+filename+'</div>'+
+      '<div class="blog-actions">'+
+        '<a class="btn" href="'+url+'" target="_blank" rel="noopener">পড়ুন »</a>'+
+      '</div>';
+    grid.appendChild(card);
+  }
+  if(renderedCount === 0){ showEmpty(); }
+}
+
+loadManifest();
+</script>
+</body>
+</html>
