@@ -1,0 +1,26 @@
+{
+  "name": "জিয়াউদ্দিন স্কুল এন্ড কলেজ",
+  "short_name": "Jiauddin S&C",
+  "description": "জিয়াউদ্দিন স্কুল এন্ড কলেজ, কিশোরগঞ্জ - Jiauddin School & College official website",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#FBF6EC",
+  "theme_color": "#0F3D2E",
+  "lang": "bn",
+  "icons": [
+    {
+      "src": "images/55.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "images/55.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
