@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>যোগাযোগ | জিয়াউদ্দিন স্কুল এন্ড কলেজ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="images/icon1.jpg" type="image/jpeg">
+<style>
+  :root{
+    --green-deep:#0F3D2E; --green-mid:#175C43;
+    --gold:#D4A017; --gold-light:#F0C64B;
+    --cream:#FBF6EC; --paper:#F4EED9;
+    --maroon:#7A2E2E; --ink:#20261F; --ink-soft:#4A5248;
+    --white:#FFFFFF; --shadow:0 10px 30px rgba(15,61,46,0.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Hind Siliguri',sans-serif;background:var(--cream);color:var(--ink);line-height:1.7;}
+  h1,h2,h3,h4{font-family:'Baloo Da 2',sans-serif;color:var(--green-deep);}
+  a{text-decoration:none;color:inherit;}
+  .container{max-width:1180px;margin:0 auto;padding:0 24px;}
+  .eyebrow{font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:2px;font-size:.72rem;color:var(--gold);font-weight:600;}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;border-radius:999px;font-weight:600;font-size:.98rem;cursor:pointer;border:none;}
+  .btn-gold{background:var(--gold);color:var(--green-deep);box-shadow:0 8px 20px rgba(212,160,23,.35);}
+
+  .topbar{background:var(--ink);color:rgba(251,246,236,.85);font-size:.82rem;padding:8px 0;}
+  .topbar .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;}
+  .topbar-left{display:flex;gap:22px;flex-wrap:wrap;}
+  .topbar-right a{color:var(--gold-light);font-weight:600;}
+
+  header{background:var(--cream);position:sticky;top:0;z-index:100;box-shadow:0 2px 18px rgba(15,61,46,.08);}
+  .nav-wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 0;flex-wrap:wrap;gap:12px;}
+  .brand{display:flex;align-items:center;gap:14px;}
+  .brand img{width:52px;height:52px;border-radius:50%;object-fit:cover;box-shadow:0 6px 16px rgba(15,61,46,.3);}
+  .brand-text h1{font-size:1.1rem;}
+  .brand-text p{font-family:'Poppins',sans-serif;font-size:.68rem;letter-spacing:1px;color:var(--ink-soft);text-transform:uppercase;}
+  nav ul{display:flex;gap:20px;flex-wrap:wrap;list-style:none;}
+  nav a{font-weight:600;font-size:.9rem;color:var(--ink);}
+  nav a.active{color:var(--maroon);}
+
+  .page-hero{background:linear-gradient(160deg,var(--green-deep) 0%, #0B2F23 65%);padding:56px 0;color:var(--cream);text-align:center;}
+  .page-hero h2{color:var(--cream);font-size:clamp(1.6rem,3vw,2.2rem);}
+  .page-hero p{color:rgba(251,246,236,.8);margin-top:10px;}
+
+  section{padding:56px 0;}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;}
+  .contact-info{display:grid;gap:16px;}
+  .cinfo-item{display:flex;gap:14px;align-items:flex-start;background:var(--white);border-radius:14px;padding:16px;box-shadow:var(--shadow);}
+  .cinfo-ic{width:40px;height:40px;border-radius:10px;background:var(--green-deep);color:var(--gold-light);display:flex;align-items:center;justify-content:center;font-size:1.05rem;flex-shrink:0;}
+  .cinfo-item h4{font-size:.9rem;margin-bottom:2px;}
+  .cinfo-item p{font-size:.84rem;color:var(--ink-soft);}
+  .map-box{border-radius:16px;overflow:hidden;box-shadow:var(--shadow);min-height:260px;margin-top:16px;}
+  .map-box iframe{width:100%;height:100%;min-height:260px;border:0;}
+
+  .contact-form-card{background:var(--white);border-radius:20px;padding:34px;box-shadow:var(--shadow);}
+  .contact-form-card h3{margin-bottom:6px;}
+  .contact-form-card > p{color:var(--ink-soft);font-size:.9rem;margin-bottom:20px;}
+  .form-group{margin-bottom:16px;}
+  .form-group label{display:block;font-size:.85rem;font-weight:600;color:var(--green-deep);margin-bottom:6px;}
+  .form-group input,.form-group select,.form-group textarea{
+    width:100%;padding:12px 14px;border-radius:10px;border:1.5px solid #e2ddd0;
+    font-family:'Hind Siliguri',sans-serif;font-size:.94rem;background:var(--paper);
+  }
+  .form-group textarea{resize:vertical;min-height:120px;}
+  .form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--gold);background:var(--white);}
+  .form-note{font-size:.78rem;color:var(--ink-soft);margin-top:12px;text-align:center;}
+  .success-msg{display:none;background:#e5f3ea;border:1px solid #b7dfc4;color:var(--green-deep);padding:16px;border-radius:12px;margin-bottom:20px;font-size:.9rem;}
+  .success-msg.show{display:block;}
+
+  footer{background:var(--ink);color:rgba(251,246,236,.75);padding:36px 0;text-align:center;font-size:.85rem;}
+  footer a{color:var(--gold-light);}
+
+  @media(max-width:900px){ .contact-grid{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-left"><span>📞 01728135864</span><span>✉️ mojibur.p.jusc@gmail.com</span></div>
+    <div class="topbar-right"><a href="index.html#admission">একাদশ শ্রেণিতে ভর্তি আবেদন করুন »</a></div>
+  </div>
+</div>
+
+<header>
+  <div class="container nav-wrap">
+    <div class="brand">
+      <img src="images/icon1.jpg" alt="Logo">
+      <div class="brand-text">
+        <h1>জিয়াউদ্দিন স্কুল এন্ড কলেজ</h1>
+        <p>Jiauddin School & College</p>
+      </div>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">হোম</a></li>
+        <li><a href="photos.html">ফটো গ্যালারি</a></li>
+        <li><a href="videos.html">ভিডিও গ্যালারি</a></li>
+        <li><a href="contact.html" class="active">যোগাযোগ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="container">
+    <span class="eyebrow" style="color:var(--gold-light)">যোগাযোগ</span>
+    <h2 style="margin-top:8px;">আমাদের সাথে যোগাযোগ করুন</h2>
+    <p>আপনার নাম, মোবাইল নম্বর ও বিস্তারিত লিখে সরাসরি আমাদের কাছে বার্তা পাঠান</p>
+  </div>
+</div>
+
+<section>
+  <div class="container contact-grid">
+    <div>
+      <div class="contact-info">
+        <div class="cinfo-item"><div class="cinfo-ic">📍</div><div><h4>ঠিকানা</h4><p>Bhatgaon, Brahmon Kachury, Kishoreganj Sadar - 2300</p></div></div>
+        <div class="cinfo-item"><div class="cinfo-ic">📞</div><div><h4>ফোন</h4><p>01728135864</p></div></div>
+        <div class="cinfo-item"><div class="cinfo-ic">✉️</div><div><h4>ইমেইল</h4><p>mojibur.p.jusc@gmail.com</p></div></div>
+        <div class="cinfo-item"><div class="cinfo-ic">📘</div><div><h4>ফেসবুক পেজ</h4><p><a href="https://web.facebook.com/profile.php?id=61559907220994" target="_blank" rel="noopener">Jiauddin School & College</a></p></div></div>
+      </div>
+      <div class="map-box">
+        <iframe src="https://www.google.com/maps?q=Kishoreganj%20Sadar%2C%20Kishoreganj%2C%20Bangladesh&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+
+    <div class="contact-form-card">
+      <h3>বার্তা পাঠান</h3>
+      <p>নিচের ফরমটি পূরণ করুন — আপনার বার্তা সরাসরি আমাদের ই-মেইলে পৌঁছে যাবে।</p>
+
+      <div class="success-msg" id="successMsg">✅ ধন্যবাদ! আপনার বার্তা সফলভাবে পাঠানো হয়েছে। আমরা শীঘ্রই যোগাযোগ করব।</div>
+
+      <form id="contactForm" action="https://formspree.io/f/xldbznvv" method="POST">
+        <div class="form-group">
+          <label>আপনার নাম *</label>
+          <input type="text" name="name" required placeholder="পুরো নাম লিখুন">
+        </div>
+        <div class="form-group">
+          <label>মোবাইল নম্বর *</label>
+          <input type="tel" name="mobile" required placeholder="যেমনঃ 01XXXXXXXXX">
+        </div>
+        <div class="form-group">
+          <label>ই-মেইল (যদি থাকে)</label>
+          <input type="email" name="email" placeholder="you@example.com">
+        </div>
+        <div class="form-group">
+          <label>বিস্তারিত লিখুন *</label>
+          <textarea name="message" required placeholder="আপনার প্রশ্ন বা বার্তা বিস্তারিত লিখুন..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-gold" style="width:100%;justify-content:center;">বার্তা পাঠান</button>
+        <p class="form-note">এই ফরমটি Formspree এর মাধ্যমে সরাসরি ই-মেইলে জমা হয়।</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    © ২০২৬ জিয়াউদ্দিন স্কুল এন্ড কলেজ। <a href="index.html">হোমপেজে ফিরে যান</a>
+  </div>
+</footer>
+
+<script>
+  const form = document.getElementById('contactForm');
+  const successMsg = document.getElementById('successMsg');
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    const data = new FormData(form);
+    try{
+      const res = await fetch(form.action, {
+        method:'POST',
+        body:data,
+        headers:{ 'Accept':'application/json' }
+      });
+      if(res.ok){
+        successMsg.classList.add('show');
+        form.reset();
+        successMsg.scrollIntoView({behavior:'smooth', block:'center'});
+      } else {
+        alert('দুঃখিত, বার্তা পাঠাতে সমস্যা হয়েছে। আবার চেষ্টা করুন।');
+      }
+    }catch(err){
+      alert('দুঃখিত, বার্তা পাঠাতে সমস্যা হয়েছে। আবার চেষ্টা করুন।');
+    }
+  });
+</script>
+</body>
+</html>

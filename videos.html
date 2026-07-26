@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ভিডিও গ্যালারি | জিয়াউদ্দিন স্কুল এন্ড কলেজ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="images/icon1.jpg" type="image/jpeg">
+<style>
+  :root{
+    --green-deep:#0F3D2E; --green-mid:#175C43;
+    --gold:#D4A017; --gold-light:#F0C64B;
+    --cream:#FBF6EC; --paper:#F4EED9;
+    --maroon:#7A2E2E; --ink:#20261F; --ink-soft:#4A5248;
+    --white:#FFFFFF; --shadow:0 10px 30px rgba(15,61,46,0.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Hind Siliguri',sans-serif;background:var(--cream);color:var(--ink);line-height:1.7;}
+  h1,h2,h3,h4{font-family:'Baloo Da 2',sans-serif;color:var(--green-deep);}
+  a{text-decoration:none;color:inherit;}
+  .container{max-width:1180px;margin:0 auto;padding:0 24px;}
+  .eyebrow{font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:2px;font-size:.72rem;color:var(--gold);font-weight:600;}
+
+  .topbar{background:var(--ink);color:rgba(251,246,236,.85);font-size:.82rem;padding:8px 0;}
+  .topbar .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;}
+  .topbar-left{display:flex;gap:22px;flex-wrap:wrap;}
+  .topbar-right a{color:var(--gold-light);font-weight:600;}
+
+  header{background:var(--cream);position:sticky;top:0;z-index:100;box-shadow:0 2px 18px rgba(15,61,46,.08);}
+  .nav-wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 0;flex-wrap:wrap;gap:12px;}
+  .brand{display:flex;align-items:center;gap:14px;}
+  .brand img{width:52px;height:52px;border-radius:50%;object-fit:cover;box-shadow:0 6px 16px rgba(15,61,46,.3);}
+  .brand-text h1{font-size:1.1rem;}
+  .brand-text p{font-family:'Poppins',sans-serif;font-size:.68rem;letter-spacing:1px;color:var(--ink-soft);text-transform:uppercase;}
+  nav ul{display:flex;gap:20px;flex-wrap:wrap;list-style:none;}
+  nav a{font-weight:600;font-size:.9rem;color:var(--ink);}
+  nav a.active{color:var(--maroon);}
+
+  .page-hero{background:linear-gradient(160deg,var(--green-deep) 0%, #0B2F23 65%);padding:56px 0;color:var(--cream);text-align:center;}
+  .page-hero h2{color:var(--cream);font-size:clamp(1.6rem,3vw,2.2rem);}
+  .page-hero p{color:rgba(251,246,236,.8);margin-top:10px;}
+
+  section{padding:56px 0;}
+  .toolbar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;margin-bottom:28px;}
+  .status{font-size:.88rem;color:var(--ink-soft);}
+  .spinner{width:18px;height:18px;border:3px solid var(--paper);border-top-color:var(--gold);border-radius:50%;display:inline-block;animation:spin 0.8s linear infinite;vertical-align:middle;margin-right:8px;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+
+  .video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .video-card{background:var(--white);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);}
+  .video-card video{width:100%;display:block;background:#000;aspect-ratio:16/9;object-fit:cover;}
+  .video-info{padding:14px 16px;}
+  .video-info h4{font-size:.92rem;}
+
+  .empty-state{text-align:center;padding:60px 20px;color:var(--ink-soft);background:var(--paper);border-radius:16px;}
+  .empty-state h3{margin-bottom:10px;}
+
+  footer{background:var(--ink);color:rgba(251,246,236,.75);padding:36px 0;text-align:center;font-size:.85rem;}
+  footer a{color:var(--gold-light);}
+
+  @media(max-width:900px){ .video-grid{grid-template-columns:repeat(2,1fr);} }
+  @media(max-width:600px){ .video-grid{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-left"><span>📞 01728135864</span><span>✉️ mojibur.p.jusc@gmail.com</span></div>
+    <div class="topbar-right"><a href="index.html#admission">একাদশ শ্রেণিতে ভর্তি আবেদন করুন »</a></div>
+  </div>
+</div>
+
+<header>
+  <div class="container nav-wrap">
+    <div class="brand">
+      <img src="images/icon1.jpg" alt="Logo">
+      <div class="brand-text">
+        <h1>জিয়াউদ্দিন স্কুল এন্ড কলেজ</h1>
+        <p>Jiauddin School & College</p>
+      </div>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">হোম</a></li>
+        <li><a href="photos.html">ফটো গ্যালারি</a></li>
+        <li><a href="videos.html" class="active">ভিডিও গ্যালারি</a></li>
+        <li><a href="contact.html">যোগাযোগ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="container">
+    <span class="eyebrow" style="color:var(--gold-light)">গ্যালারি</span>
+    <h2 style="margin-top:8px;">ভিডিও গ্যালারি</h2>
+    <p>videos ফোল্ডারে থাকা সব ভিডিও এখানে স্বয়ংক্রিয়ভাবে দেখানো হয়</p>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div class="toolbar">
+      <div class="status" id="statusText"><span class="spinner"></span> ভিডিও খোঁজা হচ্ছে...</div>
+    </div>
+    <div class="video-grid" id="videoGrid"></div>
+    <div class="empty-state" id="emptyState" style="display:none;">
+      <h3>এখনো কোনো ভিডিও পাওয়া যায়নি</h3>
+      <p><code>videos</code> ফোল্ডারে <code>video1.mp4</code>, <code>video2.mp4</code> ... এভাবে নাম দিয়ে ভিডিও রাখুন, স্বয়ংক্রিয়ভাবে এখানে দেখা যাবে।</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    © ২০২৬ জিয়াউদ্দিন স্কুল এন্ড কলেজ। <a href="index.html">হোমপেজে ফিরে যান</a>
+  </div>
+</footer>
+
+<script>
+/*
+  AUTOMATIC VIDEO DISCOVERY
+  --------------------------------------------------------
+  Same idea as the photo gallery: static hosting can't list
+  a folder's contents from the browser, so this script tries
+  to load a range of likely filenames from /videos/
+  (video1, video2, video3 ...) and only displays the ones
+  that actually exist. Drop new files into /videos/ named
+  video<number>.<ext> and they appear here automatically.
+*/
+const MAX_INDEX = 60;
+const EXTENSIONS = ['mp4','webm','ogg'];
+const FOLDER = 'videos/';
+
+let found = [];
+let checked = 0;
+const totalChecks = MAX_INDEX * EXTENSIONS.length;
+const grid = document.getElementById('videoGrid');
+const statusText = document.getElementById('statusText');
+const emptyState = document.getElementById('emptyState');
+
+function tryLoad(index, extIdx){
+  if(extIdx >= EXTENSIONS.length){
+    checked += (EXTENSIONS.length - extIdx);
+    finishIfDone();
+    return;
+  }
+  const ext = EXTENSIONS[extIdx];
+  const src = FOLDER + 'video' + index + '.' + ext;
+  const v = document.createElement('video');
+  v.preload = 'metadata';
+  v.onloadedmetadata = function(){
+    found.push({src, index});
+    checked += (EXTENSIONS.length - extIdx);
+    finishIfDone();
+  };
+  v.onerror = function(){
+    tryLoad(index, extIdx + 1);
+  };
+  v.src = src;
+}
+
+function finishIfDone(){
+  if(checked >= totalChecks){ renderGallery(); }
+}
+
+function renderGallery(){
+  found.sort((a,b)=>a.index-b.index);
+  if(found.length === 0){
+    statusText.style.display = 'none';
+    emptyState.style.display = 'block';
+    return;
+  }
+  statusText.textContent = found.length + 'টি ভিডিও পাওয়া গেছে';
+  found.forEach((item)=>{
+    const div = document.createElement('div');
+    div.className = 'video-card';
+    div.innerHTML = '<video controls preload="metadata" src="'+item.src+'"></video>'+
+      '<div class="video-info"><h4>ভিডিও '+item.index+'</h4></div>';
+    grid.appendChild(div);
+  });
+}
+
+for(let i=1;i<=MAX_INDEX;i++){ tryLoad(i,0); }
+</script>
+</body>
+</html>
