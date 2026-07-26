@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>১০০ জন মনীষী ও তাঁদের অবদান: জ্ঞান ও প্রজ্ঞার উৎস</title>
+    <!-- Tailwind CSS লোড করা হচ্ছে -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* ফন্ট হিসেবে ইন্টার ও নোটো ব্যবহার করা হচ্ছে */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+Bengali:wght@400;700&display=swap');
+        body {
+            font-family: 'Noto Sans Bengali', 'Inter', sans-serif;
+            background-color: #eef2f5; /* হালকা নীল ব্যাকগ্রাউন্ড */
+            line-height: 1.6;
+        }
+        .main-header {
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .monishi-card {
+            background-color: #ffffff;
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border-left: 4px solid var(--card-color, #06b6d4);
+        }
+        .monishi-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+        }
+        .category-header {
+            border-bottom: 3px solid #10b981; /* Emerald-500 */
+        }
+        /* কাস্টম কালার ভ্যারিয়েবল (Tailwind classes for categories) */
+        .science { --card-color: #ef4444; } /* Red */
+        .philosophy { --card-color: #3b82f6; } /* Blue */
+        .literature { --card-color: #f97316; } /* Orange */
+        .politics { --card-color: #10b981; } /* Emerald */
+    </style>
+</head>
+<body>
+    
+    <!-- HEADER: Sticky Header & Navigation -->
+    <header class="main-header sticky top-0 z-50 bg-white shadow-lg">
+        <div class="header-content h-16 flex justify-between items-center max-w-7xl mx-auto px-4 sm:px-8">
+            <!-- Logo -->
+            <h1 class="logo text-xl font-bold text-indigo-600">
+                <a href="index.html" class="hover:text-indigo-800 transition duration-300">My eBook Hub</a>
+            </h1>
+
+            <!-- Desktop Navigation Menu -->
+            <nav class="main-nav hidden md:block">
+                <ul class="flex space-x-4 text-base font-medium">
+                    <li><a href="index.html" class="text-gray-700 hover:text-indigo-600 transition duration-300 rounded-lg p-2">Home</a></li>
+                    <li><a href="browse.html" class="text-gray-700 hover:text-indigo-600 transition duration-300 rounded-lg p-2">Browse Books</a></li>
+                    <li><a href="ai-course.html" class="text-gray-700 hover:text-indigo-600 transition duration-300 rounded-lg p-2">Ai Course</a></li>
+                    <li><a href="categories.html" class="text-gray-700 hover:text-indigo-600 transition duration-300 rounded-lg p-2">Categories</a></li>
+                    <li><a href="about.html" class="text-gray-700 hover:text-indigo-600 transition duration-300 rounded-lg p-2">About</a></li>
+                    <li><a href="dashboard.html" class="text-gray-700 hover:text-indigo-600 transition duration-300 rounded-lg p-2">Dashboard</a></li>
+                    <li>
+                        <a href="#" id="open-auth-modal-btn" class="ml-4 px-3 py-1 bg-indigo-600 text-white text-sm rounded-lg shadow-md hover:bg-indigo-700 transition duration-300">
+                            Login/Signup
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Mobile Menu Button (Hamburger) -->
+            <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-gray-700 hover:bg-gray-100 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu Dropdown -->
+        <nav id="mobile-menu" class="md:hidden hidden bg-gray-50 border-t border-gray-200 py-2">
+            <ul class="flex flex-col space-y-1 px-4 text-sm font-medium">
+                <li><a href="index.html" class="block py-2 text-gray-700 hover:bg-indigo-100 hover:text-indigo-600 rounded-lg transition duration-300">Home</a></li>
+                <li><a href="browse.html" class="block py-2 text-gray-700 hover:bg-indigo-100 hover:text-indigo-600 rounded-lg transition duration-300">Browse Books</a></li>
+                <li><a href="ai-course.html" class="block py-2 text-gray-700 hover:bg-indigo-100 hover:text-indigo-600 rounded-lg transition duration-300">Ai Course</a></li>
+                <li><a href="categories.html" class="block py-2 text-gray-700 hover:bg-indigo-100 hover:text-indigo-600 rounded-lg transition duration-300">Categories</a></li>
+                <li><a href="about.html" class="block py-2 text-gray-700 hover:bg-indigo-100 hover:text-indigo-600 rounded-lg transition duration-300">About</a></li>
+                <li><a href="dashboard.html" class="block py-2 text-gray-700 hover:bg-indigo-100 hover:text-indigo-600 rounded-lg transition duration-300">Dashboard</a></li>
+                <li>
+                    <a href="#" id="open-auth-modal-btn-mobile" class="block text-center mt-2 py-2 bg-indigo-600 text-white rounded-lg shadow-md hover:bg-indigo-700 transition duration-300">
+                        Login/Signup
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!-- END HEADER -->
+
+    <!-- Main Content Area - Monishi List -->
+    <div class="max-w-6xl mx-auto p-4 sm:p-8 pt-10"> 
+        <header class="text-center mb-10">
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-800 mb-2 border-b-4 border-indigo-500 inline-block pb-1">
+                বিখ্যাত মনীষী ও তাঁদের অবদান
+            </h1>
+            <p class="text-gray-600 text-lg mt-2">বিশ্বের বিভিন্ন ক্ষেত্রের গুরুত্বপূর্ণ ব্যক্তিত্ব এবং তাঁদের বিশেষ অবদানের তালিকা।</p>
+            <p class="text-sm text-gray-500 mt-2 italic">মনীষীদের প্রধান উক্তি বা অবদানটি মূল ভাষার ভিত্তিতে অনুবাদ ও ব্যাখ্যা করা হয়েছে।</p>
+        </header>
+
+        <!-- বিভাগ ১: বিজ্ঞান ও প্রযুক্তি -->
+        <section class="mb-12">
+            <h2 class="category-header text-2xl font-bold text-red-700 mb-6 pb-2">১. বিজ্ঞান ও প্রযুক্তি (Science & Technology) </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <div class="monishi-card science p-5">
+                    <h3 class="text-xl font-bold text-red-800 mb-2">আইজ্যাক নিউটন (Isaac Newton)</h3>
+                    <p class="text-sm text-red-600 font-medium">ক্ষেত্র: পদার্থবিজ্ঞান ও গণিত</p>
+                    <p class="text-gray-700 mt-3 text-sm">গতির তিনটি সূত্র, সর্বজনীন মহাকর্ষ সূত্র এবং ক্যালকুলাস আবিষ্কারের মাধ্যমে আধুনিক বিজ্ঞানের ভিত্তি স্থাপন করেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">"If I have seen further, it is by standing on the shoulders of Giants."</p>
+                </div>
+
+                <div class="monishi-card science p-5">
+                    <h3 class="text-xl font-bold text-red-800 mb-2">আলবার্ট আইনস্টাইন (Albert Einstein)</h3>
+                    <p class="text-sm text-red-600 font-medium">ক্ষেত্র: তাত্ত্বিক পদার্থবিজ্ঞান</p>
+                    <p class="text-gray-700 mt-3 text-sm">আপেক্ষিকতার তত্ত্ব (Theory of Relativity) প্রদান করেন, যা স্থান, কাল ও ভর সম্পর্কে আমাদের ধারণাকে বদলে দেয়। বিখ্যাত সমীকরণ: $E=mc^2$।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">"Imagination is more important than knowledge."</p>
+                </div>
+
+                <div class="monishi-card science p-5">
+                    <h3 class="text-xl font-bold text-red-800 mb-2">মেরি কুরি (Marie Curie)</h3>
+                    <p class="text-sm text-red-600 font-medium">ক্ষেত্র: রসায়ন ও পদার্থবিজ্ঞান</p>
+                    <p class="text-gray-700 mt-3 text-sm">তেজস্ক্রিয়তা (Radioactivity) নিয়ে গবেষণা এবং দুটি নতুন মৌলিক পদার্থ—পোলোনিয়াম ও রেডিয়াম আবিষ্কার করেন। তিনি দু'টি ভিন্ন বিজ্ঞানে নোবেল পুরস্কার জয়ী প্রথম ব্যক্তি।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">"Nothing in life is to be feared, it is only to be understood."</p>
+                </div>
+                
+                <div class="monishi-card science p-5">
+                    <h3 class="text-xl font-bold text-red-800 mb-2">চার্লস ডারউইন (Charles Darwin)</h3>
+                    <p class="text-sm text-red-600 font-medium">ক্ষেত্র: জীববিদ্যা ও বিবর্তনবাদ</p>
+                    <p class="text-gray-700 mt-3 text-sm">প্রাকৃতিক নির্বাচন (Natural Selection) প্রক্রিয়ার মাধ্যমে বিবর্তন তত্ত্বের ধারণা দেন, যা জীববিজ্ঞানের মৌলিক ভিত্তি। তাঁর কাজ 'On the Origin of Species'।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">"It is not the strongest of the species that survives..."</p>
+                </div>
+                
+                <div class="monishi-card science p-5">
+                    <h3 class="text-xl font-bold text-red-800 mb-2">জগদীশ চন্দ্র বসু</h3>
+                    <p class="text-sm text-red-600 font-medium">ক্ষেত্র: পদার্থবিজ্ঞান ও উদ্ভিদবিজ্ঞান</p>
+                    <p class="text-gray-700 mt-3 text-sm">রেডিও এবং মাইক্রোওয়েভ অপটিক্সে তাঁর অগ্রণী কাজের জন্য পরিচিত। তিনি প্রমাণ করেন উদ্ভিদেরও প্রাণ আছে এবং অনুভূতিতে সাড়া দেয় (ক্রেসকোগ্রাফ আবিষ্কার)।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূলত বাংলা ভাষাতেই লেখা: "সজীবের ইতিহাস লিখা সমাপ্ত হইল।"</p>
+                </div>
+                
+                <div class="monishi-card science p-5">
+                    <h3 class="text-xl font-bold text-red-800 mb-2">আর্কিমিডিস (Archimedes)</h3>
+                    <p class="text-sm text-red-600 font-medium">ক্ষেত্র: গণিত ও প্রকৌশল</p>
+                    <p class="text-gray-700 mt-3 text-sm">প্লাবতা সূত্র (Archimedes' Principle), লিভারের নীতি, এবং আর্কিমিডিস স্ক্রু আবিষ্কার করেন। যুদ্ধের সময় তাঁর উদ্ভাবিত যন্ত্রপাতি তাকে বিখ্যাত করে তোলে।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">"Eureka! (ইউরেকা! - আমি পেয়েছি!)"</p>
+                </div>
+
+                <!-- নতুন সংযোজন: বিজ্ঞান ও প্রযুক্তি -->
+
+                <div class="monishi-card science p-5">
+                    <h3 class="text-xl font-bold text-red-800 mb-2">গ্যালিলিও গ্যালিলি (Galileo Galilei)</h3>
+                    <p class="text-sm text-red-600 font-medium">ক্ষেত্র: জ্যোতির্বিজ্ঞান ও পদার্থবিজ্ঞান</p>
+                    <p class="text-gray-700 mt-3 text-sm">আধুনিক জ্যোতির্বিজ্ঞানের জনক। উন্নত দূরবীক্ষণ যন্ত্র তৈরি এবং পৃথিবী সূর্যের চারদিকে ঘোরে (Heliocentrism) - এই তত্ত্বকে সমর্থন করেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">"Measure what is measurable, and make measurable what is not so."</p>
+                </div>
+                
+                <div class="monishi-card science p-5">
+                    <h3 class="text-xl font-bold text-red-800 mb-2">নিকোলা টেসলা (Nikola Tesla)</h3>
+                    <p class="text-sm text-red-600 font-medium">ক্ষেত্র: তড়িৎ প্রকৌশল ও উদ্ভাবন</p>
+                    <p class="text-gray-700 mt-3 text-sm">অল্টারনেটিং কারেন্ট (AC) বৈদ্যুতিক সরবরাহ পদ্ধতি, টেসলা কয়েল এবং রেডিও প্রযুক্তির প্রাথমিক ধারণা দেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">"The present is theirs; the future, for which I have really worked, is mine."</p>
+                </div>
+                
+                <div class="monishi-card science p-5">
+                    <h3 class="text-xl font-bold text-red-800 mb-2">থমাস আলভা এডিসন (Thomas Edison)</h3>
+                    <p class="text-sm text-red-600 font-medium">ক্ষেত্র: উদ্ভাবন ও উদ্যোক্তা</p>
+                    <p class="text-gray-700 mt-3 text-sm">ফোনোগ্রাফ, মোশন পিকচার ক্যামেরা এবং দীর্ঘস্থায়ী ব্যবহারিক বৈদ্যুতিক বাতি সহ অসংখ্য গুরুত্বপূর্ণ যন্ত্রের উদ্ভাবক।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">"Our greatest weakness lies in giving up."</p>
+                </div>
+                
+                <div class="monishi-card science p-5">
+                    <h3 class="text-xl font-bold text-red-800 mb-2">স্টিফেন হকিং (Stephen Hawking)</h3>
+                    <p class="text-sm text-red-600 font-medium">ক্ষেত্র: মহাজাগতিক বিজ্ঞান (Cosmology)</p>
+                    <p class="text-gray-700 mt-3 text-sm">কৃষ্ণগহ্বর (Black Hole) থেকে বিকিরণ (Hawking Radiation) নির্গমনের তত্ত্ব প্রদান করেন এবং মহাবিশ্বের উৎপত্তি ব্যাখ্যা করেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">"Intelligence is the ability to adapt to change."</p>
+                </div>
+                
+                <div class="monishi-card science p-5">
+                    <h3 class="text-xl font-bold text-red-800 mb-2">সত্যেন্দ্রনাথ বসু</h3>
+                    <p class="text-sm text-red-600 font-medium">ক্ষেত্র: কোয়ান্টাম পদার্থবিজ্ঞান</p>
+                    <p class="text-gray-700 mt-3 text-sm">কোয়ান্টাম পরিসংখ্যানের ক্ষেত্রে "বোস-আইনস্টাইন স্ট্যাটিস্টিকস" উদ্ভাবন করেন এবং 'বোসন' নামে পরিচিত মৌলিক কণার অস্তিত্ব প্রমাণ করেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">বাংলায় গবেষণাপত্র প্রকাশের পক্ষপাতী ছিলেন।</p>
+                </div>
+                
+                <div class="monishi-card science p-5">
+                    <h3 class="text-xl font-bold text-red-800 mb-2">দিমিত্রি মেন্ডেলিভ (Dmitri Mendeleev)</h3>
+                    <p class="text-sm text-red-600 font-medium">ক্ষেত্র: রসায়ন</p>
+                    <p class="text-gray-700 mt-3 text-sm">পর্যায় সারণী (Periodic Table) উদ্ভাবন করেন, যা মৌলসমূহের ধর্মকে তাদের পারমাণবিক ভরের ভিত্তিতে বিন্যস্ত করে।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">"No result of my work has given me a deeper satisfaction..."</p>
+                </div>
+
+                <div class="monishi-card science p-5">
+                    <h3 class="text-xl font-bold text-red-800 mb-2">কার্ল লিনিয়াস (Carl Linnaeus)</h3>
+                    <p class="text-sm text-red-600 font-medium">ক্ষেত্র: জীববিদ্যা ও শ্রেণিবিন্যাস বিদ্যা</p>
+                    <p class="text-gray-700 mt-3 text-sm">আধুনিক শ্রেণিবিন্যাস (Taxonomy) এবং দ্বিপদ নামকরণের প্রবর্তন করেন, যা আজও জীববিজ্ঞানের ভিত্তি।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">"God created, Linnaeus arranged."</p>
+                </div>
+
+                <div class="monishi-card science p-5">
+                    <h3 class="text-xl font-bold text-red-800 mb-2">জোনাস সল্ক (Jonas Salk)</h3>
+                    <p class="text-sm text-red-600 font-medium">ক্ষেত্র: চিকিৎসা বিজ্ঞান ও ভাইরাস বিদ্যা</p>
+                    <p class="text-gray-700 mt-3 text-sm">পোলিও রোগের বিরুদ্ধে প্রথম কার্যকর টিকা (ইনজেকশন) আবিষ্কার করেন, যা লক্ষ লক্ষ মানুষের জীবন বাঁচায়।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">"Hope lies in dreams, in imagination and in the courage of those who dare to make those dreams into a reality."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- বিভাগ ২: দর্শন ও নীতিশাস্ত্র -->
+        <section class="mb-12">
+            <h2 class="category-header text-2xl font-bold text-blue-700 mb-6 pb-2">২. দর্শন ও নীতিশাস্ত্র (Philosophy & Ethics) </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <div class="monishi-card philosophy p-5">
+                    <h3 class="text-xl font-bold text-blue-800 mb-2">সক্রেটিস (Socrates)</h3>
+                    <p class="text-sm text-blue-600 font-medium">ক্ষেত্র: পাশ্চাত্য দর্শন</p>
+                    <p class="text-gray-700 mt-3 text-sm">সক্রেটিক পদ্ধতি (প্রশ্ন ও উত্তরের মাধ্যমে সত্য উদ্ঘাটন) এবং নৈতিক দর্শনকে মানব জীবনের কেন্দ্রে আনার জন্য পরিচিত।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">"An unexamined life is not worth living."</p>
+                </div>
+
+                <div class="monishi-card philosophy p-5">
+                    <h3 class="text-xl font-bold text-blue-800 mb-2">গৌতম বুদ্ধ (Gautama Buddha)</h3>
+                    <p class="text-sm text-blue-600 font-medium">ক্ষেত্র: ধর্ম ও দর্শন</p>
+                    <p class="text-gray-700 mt-3 text-sm">বৌদ্ধ ধর্ম প্রতিষ্ঠা করেন। তিনি দুঃখের কারণ ও তা থেকে মুক্তিলাভের উপায় হিসেবে চারটি আর্য সত্য ও অষ্টাঙ্গিক মার্গ প্রচার করেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">"নমস্তুতে সুগতায় সুধীমহিমা" (সুগত! তোমার মহিমা কীর্তন করি)</p>
+                </div>
+                
+                <div class="monishi-card philosophy p-5">
+                    <h3 class="text-xl font-bold text-blue-800 mb-2">প্লেটো (Plato)</h3>
+                    <p class="text-sm text-blue-600 font-medium">ক্ষেত্র: রাষ্ট্রনীতি ও অধিবিদ্যা</p>
+                    <p class="text-gray-700 mt-3 text-sm">জ্ঞানের ভিত্তি হিসেবে 'আইডিয়া বা ফর্মের তত্ত্ব' এবং একটি আদর্শ রাষ্ট্রের ধারণা (The Republic) দেন, যেখানে দার্শনিক-রাজা শাসন করবেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">"The unexamined life is not worth living."</p>
+                </div>
+                
+                <div class="monishi-card philosophy p-5">
+                    <h3 class="text-xl font-bold text-blue-800 mb-2">অ্যারিস্টটল (Aristotle)</h3>
+                    <p class="text-sm text-blue-600 font-medium">ক্ষেত্র: যুক্তিবিদ্যা, জীববিদ্যা ও নীতিশাস্ত্র</p>
+                    <p class="text-gray-700 mt-3 text-sm">পাশ্চাত্য যুক্তিবিদ্যার জনক। তিনি নীতিশাস্ত্র, রাষ্ট্রনীতি, জীববিদ্যা এবং কাব্যের ওপর গুরুত্বপূর্ণ কাজ করেন। তিনি 'গোল্ডেন মিন'-এর ধারণার প্রবক্তা।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">"Knowing yourself is the beginning of all wisdom."</p>
+                </div>
+                
+                <div class="monishi-card philosophy p-5">
+                    <h3 class="text-xl font-bold text-blue-800 mb-2">ইমানুয়েল কান্ট (Immanuel Kant)</h3>
+                    <p class="text-sm text-blue-600 font-medium">ক্ষেত্র: আধুনিক দর্শন</p>
+                    <p class="text-gray-700 mt-3 text-sm">জ্ঞানতত্ত্ব, নীতিশাস্ত্র ও অধিবিদ্যার ক্ষেত্রে গভীর প্রভাব ফেলেন। তাঁর 'ক্যাটিগরিক্যাল ইমপ্যারাটিভ' (Categorical Imperative) আধুনিক নীতিশাস্ত্রের ভিত্তি।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">"Act only according to that maxim whereby you can at the same time will that it should become a universal law."</p>
+                </div>
+                
+                <div class="monishi-card philosophy p-5">
+                    <h3 class="text-xl font-bold text-blue-800 mb-2">স্বামী বিবেকানন্দ</h3>
+                    <p class="text-sm text-blue-600 font-medium">ক্ষেত্র: বেদান্ত দর্শন ও সমাজ সংস্কার</p>
+                    <p class="text-gray-700 mt-3 text-sm">শিকাগোর বিশ্ব ধর্ম মহাসভায় হিন্দু ধর্মের প্রতিনিধিত্ব করেন এবং ভারতে জাতীয় চেতনা জাগিয়ে তোলেন। মানবসেবাকেই ঈশ্বরের সেবা বলে প্রচার করেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূলত বাংলা ভাষাতেই বলা: "উঠো, জাগো, এবং লক্ষ্য অর্জন না করা পর্যন্ত থেমো না।"</p>
+                </div>
+
+                <!-- নতুন সংযোজন: দর্শন ও নীতিশাস্ত্র -->
+
+                <div class="monishi-card philosophy p-5">
+                    <h3 class="text-xl font-bold text-blue-800 mb-2">লাওজি (Laozi)</h3>
+                    <p class="text-sm text-blue-600 font-medium">ক্ষেত্র: চীনা দর্শন ও টাওবাদ</p>
+                    <p class="text-gray-700 mt-3 text-sm">টা-ও টে চিং (Tao Te Ching) গ্রন্থ রচনা করেন এবং প্রকৃতির সাথে সামঞ্জস্য রেখে সহজ জীবনযাপনের দর্শন প্রচার করেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">"The journey of a thousand miles begins with a single step."</p>
+                </div>
+                
+                <div class="monishi-card philosophy p-5">
+                    <h3 class="text-xl font-bold text-blue-800 mb-2">কনফুসিয়াস (Confucius)</h3>
+                    <p class="text-sm text-blue-600 font-medium">ক্ষেত্র: চীনা দর্শন ও সমাজ নীতি</p>
+                    <p class="text-gray-700 mt-3 text-sm">তিনি পারিবারিক আনুগত্য, মানুষের প্রতি শ্রদ্ধা এবং সমাজে নৈতিক আচরণের গুরুত্ব নিয়ে দর্শন প্রচার করেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">"Our greatest glory is not in never failing, but in rising up every time we fail."</p>
+                </div>
+                
+                <div class="monishi-card philosophy p-5">
+                    <h3 class="text-xl font-bold text-blue-800 mb-2">মুহাম্মদ (Prophet Muhammad)</h3>
+                    <p class="text-sm text-blue-600 font-medium">ক্ষেত্র: ধর্ম ও সমাজ সংস্কার</p>
+                    <p class="text-gray-700 mt-3 text-sm">ইসলাম ধর্মের প্রবর্তক। তিনি একত্ববাদ, সামাজিক সমতা এবং নীতিভিত্তিক জীবনযাপনের উপর জোর দেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">"Whoever believes in God and the Last Day should speak what is good or keep silent."</p>
+                </div>
+                
+                <div class="monishi-card philosophy p-5">
+                    <h3 class="text-xl font-bold text-blue-800 mb-2">চাণক্য (Chanakya)</h3>
+                    <p class="text-sm text-blue-600 font-medium">ক্ষেত্র: রাষ্ট্রনীতি ও অর্থনীতি</p>
+                    <p class="text-gray-700 mt-3 text-sm">প্রাচীন ভারতের রাষ্ট্রনীতি, অর্থনীতি এবং সামরিক কৌশলের উপর লেখা বিখ্যাত গ্রন্থ 'অর্থশাস্ত্র'-এর রচয়িতা।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূলত সংস্কৃতিতে লেখা: "সময়ই একজন মানুষকে রাজা থেকে ভিখারি করে দিতে পারে।"</p>
+                </div>
+
+                <div class="monishi-card philosophy p-5">
+                    <h3 class="text-xl font-bold text-blue-800 mb-2">শ্রী অরবিন্দ (Aurobindo Ghosh)</h3>
+                    <p class="text-sm text-blue-600 font-medium">ক্ষেত্র: আধ্যাত্মিক দর্শন ও যোগ</p>
+                    <p class="text-gray-700 mt-3 text-sm">ভারতের স্বাধীনতা সংগ্রামী, কবি এবং যোগী। তিনি 'ইন্টিগ্রাল যোগা' (Integral Yoga) দর্শন প্রবর্তন করেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">"All life is Yoga."</p>
+                </div>
+
+                <div class="monishi-card philosophy p-5">
+                    <h3 class="text-xl font-bold text-blue-800 mb-2">কবীর দাস (Kabir Das)</h3>
+                    <p class="text-sm text-blue-600 font-medium">ক্ষেত্র: ভক্তিবাদ ও সমাজ সংস্কার</p>
+                    <p class="text-gray-700 mt-3 text-sm">মধ্যযুগের এই মরমী সাধক ধর্মীয় বিভেদ ভুলে মানব প্রেম ও এক ঈশ্বরের উপাসনার কথা প্রচার করেন। তাঁর দোহাগুলি বিখ্যাত।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">হিন্দিতে লেখা: "গুরু গোবিন্দ দোউ খড়ে, কাকে লাগু পায়? বলিহারি গুরু আপনে, গোবিন্দ দিওঁ বতায়।"</p>
+                </div>
+                
+                <div class="monishi-card philosophy p-5">
+                    <h3 class="text-xl font-bold text-blue-800 mb-2">রেনে দেকার্ত (René Descartes)</h3>
+                    <p class="text-sm text-blue-600 font-medium">ক্ষেত্র: আধুনিক দর্শনের জনক</p>
+                    <p class="text-gray-700 mt-3 text-sm">সংশয় দূর করে যুক্তিবাদকে জ্ঞানের ভিত্তি হিসেবে প্রতিষ্ঠা করেন। জ্যামিতি ও বীজগণিতের সমন্বয় (কার্টেসিয়ান জ্যামিতি) তাঁর গুরুত্বপূর্ণ কাজ।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">"Cogito, ergo sum (আমি চিন্তা করি, অতএব আমি আছি।)"</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- বিভাগ ৩: সাহিত্য ও শিল্পকলা -->
+        <section class="mb-12">
+            <h2 class="category-header text-2xl font-bold text-orange-700 mb-6 pb-2">৩. সাহিত্য ও শিল্পকলা (Literature & Arts) </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <div class="monishi-card literature p-5">
+                    <h3 class="text-xl font-bold text-orange-800 mb-2">রবীন্দ্রনাথ ঠাকুর</h3>
+                    <p class="text-sm text-orange-600 font-medium">ক্ষেত্র: বাংলা সাহিত্য</p>
+                    <p class="text-gray-700 mt-3 text-sm">বাংলা সাহিত্যের প্রধান ভিত্তি স্থাপনকারী, প্রথম এশীয় নোবেল জয়ী (গীতাঞ্জলি)। তিনি সহস্রাধিক গান, কবিতা, উপন্যাস, নাটক রচনা করেছেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূলত বাংলা ভাষাতেই লেখা: "মৃত্যু এসে যদি নিয়ে যায় সব, তবু রেখে যেতে হবে অমৃতের মতন কিছু।"</p>
+                </div>
+
+                <div class="monishi-card literature p-5">
+                    <h3 class="text-xl font-bold text-orange-800 mb-2">উইলিয়াম শেক্সপিয়র (William Shakespeare)</h3>
+                    <p class="text-sm text-orange-600 font-medium">ক্ষেত্র: ইংরেজি সাহিত্য ও নাটক</p>
+                    <p class="text-gray-700 mt-3 text-sm">বিশ্বের সর্বশ্রেষ্ঠ নাট্যকার ও কবি। 'হ্যামলেট', 'ম্যাকবেথ', 'রোমিও অ্যান্ড জুলিয়েট'-এর মতো কালজয়ী নাটক এবং অসংখ্য সনেট রচনা করেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">"All the world's a stage, and all the men and women merely players."</p>
+                </div>
+
+                <div class="monishi-card literature p-5">
+                    <h3 class="text-xl font-bold text-orange-800 mb-2">কাজী নজরুল ইসলাম</h3>
+                    <p class="text-sm text-orange-600 font-medium">ক্ষেত্র: বাংলা সাহিত্য ও সঙ্গীত</p>
+                    <p class="text-gray-700 mt-3 text-sm">বিদ্রোহী কবি হিসেবে পরিচিত। তিনি পরাধীন ভারতে অসাম্য ও শোষণের বিরুদ্ধে তীব্র প্রতিবাদ করেন এবং বাংলা গানে নতুন ধারার সৃষ্টি করেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূলত বাংলা ভাষাতেই লেখা: "আমি চির বিদ্রোহী বীর - আমি বিশ্ব ছাড়ায়ে উঠিয়াছি একা চির-উন্নত শির!"</p>
+                </div>
+
+                <div class="monishi-card literature p-5">
+                    <h3 class="text-xl font-bold text-orange-800 mb-2">লিওনার্দো দা ভিঞ্চি (Leonardo da Vinci)</h3>
+                    <p class="text-sm text-orange-600 font-medium">ক্ষেত্র: চিত্রকলা, ভাস্কর্য ও উদ্ভাবন</p>
+                    <p class="text-gray-700 mt-3 text-sm">রেনেসাঁসের সর্বশ্রেষ্ঠ শিল্পী ও বহুমুখী প্রতিভা। তাঁর কালজয়ী চিত্রকর্মগুলির মধ্যে রয়েছে 'মোনালিসা' এবং 'দ্য লাস্ট সাপার'।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">"Learning never exhausts the mind."</p>
+                </div>
+                
+                <div class="monishi-card literature p-5">
+                    <h3 class="text-xl font-bold text-orange-800 mb-2">হোমার (Homer)</h3>
+                    <p class="text-sm text-orange-600 font-medium">ক্ষেত্র: প্রাচীন গ্রিক মহাকাব্য</p>
+                    <p class="text-gray-700 mt-3 text-sm">প্রাচীন গ্রিসের মহাকবি। তাঁর রচিত দুটি মহাকাব্য 'ইলিয়াড' ও 'ওডিসি' পশ্চিমা সাহিত্যের ভিত্তি হিসেবে বিবেচিত হয়।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">"Even a small star shines in the darkness."</p>
+                </div>
+
+                <div class="monishi-card literature p-5">
+                    <h3 class="text-xl font-bold text-orange-800 mb-2">মাইকেল মধুসূদন দত্ত</h3>
+                    <p class="text-sm text-orange-600 font-medium">ক্ষেত্র: বাংলা সাহিত্যের আধুনিকায়ন</p>
+                    <p class="text-gray-700 mt-3 text-sm">বাংলা সাহিত্যে প্রথম সনেট ও অমিত্রাক্ষর ছন্দের প্রবর্তক। তাঁর রচিত মহাকাব্য 'মেঘনাদ বধ কাব্য' বাংলা সাহিত্যের ইতিহাসে এক যুগান্তকারী সৃষ্টি।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূলত বাংলা ভাষাতেই লেখা: "রেখো মা দাসেরে মনে, এ মিনতি করি পদে।"</p>
+                </div>
+
+                <!-- নতুন সংযোজন: সাহিত্য ও শিল্পকলা -->
+
+                <div class="monishi-card literature p-5">
+                    <h3 class="text-xl font-bold text-orange-800 mb-2">বঙ্কিমচন্দ্র চট্টোপাধ্যায়</h3>
+                    <p class="text-sm text-orange-600 font-medium">ক্ষেত্র: বাংলা উপন্যাস</p>
+                    <p class="text-gray-700 mt-3 text-sm">বাংলা সাহিত্যের প্রথম সার্থক ঔপন্যাসিক। 'দুর্গেশনন্দিনী', 'কপালকুণ্ডলা', 'আনন্দমঠ'-এর মতো কালজয়ী উপন্যাসের রচয়িতা।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূলত বাংলা ভাষাতেই লেখা: "কমলাকান্তের দপ্তর" -এর মাধ্যমে সমাজকে ব্যঙ্গাত্মক ভাষায় তুলে ধরেন।</p>
+                </div>
+
+                <div class="monishi-card literature p-5">
+                    <h3 class="text-xl font-bold text-orange-800 mb-2">লিও টলস্টয় (Leo Tolstoy)</h3>
+                    <p class="text-sm text-orange-600 font-medium">ক্ষেত্র: রুশ সাহিত্য</p>
+                    <p class="text-gray-700 mt-3 text-sm">'ওয়ার অ্যান্ড পিস' এবং 'আন্না কারেনিনা'-এর মতো মহাকাব্যিক উপন্যাসের জন্য পরিচিত, যা মানবজীবন ও ঐতিহাসিক ঘটনাকে গভীর মনস্তাত্ত্বিক দৃষ্টিকোণ থেকে তুলে ধরে।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">"Everyone thinks of changing the world, but no one thinks of changing himself."</p>
+                </div>
+                
+                <div class="monishi-card literature p-5">
+                    <h3 class="text-xl font-bold text-orange-800 mb-2">জেইন অস্টেন (Jane Austen)</h3>
+                    <p class="text-sm text-orange-600 font-medium">ক্ষেত্র: ইংরেজি সাহিত্য</p>
+                    <p class="text-gray-700 mt-3 text-sm">১৯শ শতকের ব্রিটিশ সমাজে নারীদের জীবন, বিবাহ এবং সামাজিক শ্রেণী নিয়ে তাঁর উপন্যাসগুলি (যেমন 'Pride and Prejudice') ব্যঙ্গাত্মক ও পর্যবেক্ষণমূলক।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">"It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife."</p>
+                </div>
+
+                <div class="monishi-card literature p-5">
+                    <h3 class="text-xl font-bold text-orange-800 mb-2">পাবলো পিকাসো (Pablo Picasso)</h3>
+                    <p class="text-sm text-orange-600 font-medium">ক্ষেত্র: চিত্রকলা ও ভাস্কর্য</p>
+                    <p class="text-gray-700 mt-3 text-sm">কিউবিজম (Cubism) শিল্পকলার অন্যতম প্রতিষ্ঠাতা। ২০শ শতকের শিল্পকলায় তাঁর অবদান ছিল বৈপ্লবিক, যেমন 'Guernica' চিত্রকর্ম।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">"Every child is an artist. The problem is how to remain an artist once he grows up."</p>
+                </div>
+
+                <div class="monishi-card literature p-5">
+                    <h3 class="text-xl font-bold text-orange-800 mb-2">ভিনসেন্ট ভ্যান গগ (Vincent van Gogh)</h3>
+                    <p class="text-sm text-orange-600 font-medium">ক্ষেত্র: উত্তর-প্রভাববাদী (Post-Impressionist) চিত্রশিল্পী</p>
+                    <p class="text-gray-700 mt-3 text-sm">তাঁর তীব্র আবেগপূর্ণ ও সাহসী রঙের ব্যবহার আধুনিক শিল্পের পথ প্রশস্ত করে। তাঁর বিখ্যাত কাজ 'The Starry Night'।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">"I dream my painting, and then I paint my dream."</p>
+                </div>
+
+                <div class="monishi-card literature p-5">
+                    <h3 class="text-xl font-bold text-orange-800 mb-2">নাজিম হিকমত (Nazım Hikmet)</h3>
+                    <p class="text-sm text-orange-600 font-medium">ক্ষেত্র: আধুনিক তুর্কি কবিতা</p>
+                    <p class="text-gray-700 mt-3 text-sm">বিংশ শতাব্দীর অন্যতম গুরুত্বপূর্ণ কবি। তিনি তাঁর সামাজিক ও রাজনৈতিকভাবে সচেতন কবিতার জন্য পরিচিত এবং মানবতার কথা তুলে ধরেছেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">"To paint a future, one must see the present with eyes of hope."</p>
+                </div>
+
+                <div class="monishi-card literature p-5">
+                    <h3 class="text-xl font-bold text-orange-800 mb-2">জীবনানন্দ দাশ</h3>
+                    <p class="text-sm text-orange-600 font-medium">ক্ষেত্র: বাংলা কবিতা</p>
+                    <p class="text-gray-700 mt-3 text-sm">বাংলা সাহিত্যের 'রূপসী বাংলার কবি' নামে পরিচিত। তিনি প্রকৃতি, মৃত্যু ও সময়ের ধারণাকে তাঁর কবিতায় গভীর মনস্তাত্ত্বিকতার সাথে চিত্রিত করেছেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূলত বাংলা ভাষাতেই লেখা: "আবার আসিব ফিরে ধানসিঁড়িটির তীরে— এই বাংলায়।"</p>
+                </div>
+
+                <div class="monishi-card literature p-5">
+                    <h3 class="text-xl font-bold text-orange-800 mb-2">ফিয়োদর দস্তয়েভস্কি (Fyodor Dostoevsky)</h3>
+                    <p class="text-sm text-orange-600 font-medium">ক্ষেত্র: রুশ সাহিত্য ও মনস্তত্ত্ব</p>
+                    <p class="text-gray-700 mt-3 text-sm">'ক্রাইম অ্যান্ড পানিশমেন্ট' এবং 'ব্রাদার্স কারামাজভ'-এর মতো উপন্যাসে মানুষের মনস্তাত্ত্বিক দ্বন্দ্ব, নৈতিকতা ও স্বাধীনতার প্রশ্ন তুলে ধরেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">"The soul is healed by being with children."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- বিভাগ ৪: রাজনীতি ও সমাজ সংস্কার -->
+        <section class="mb-12">
+            <h2 class="category-header text-2xl font-bold text-emerald-700 mb-6 pb-2">৪. রাজনীতি ও সমাজ সংস্কার (Politics & Social Reform) </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <div class="monishi-card politics p-5">
+                    <h3 class="text-xl font-bold text-emerald-800 mb-2">মহাত্মা গান্ধী (Mahatma Gandhi)</h3>
+                    <p class="text-sm text-emerald-600 font-medium">ক্ষেত্র: ভারতীয় স্বাধীনতা আন্দোলন</p>
+                    <p class="text-gray-700 mt-3 text-sm">অহিংসা (Non-violence) ও সত্যাগ্রহের মাধ্যমে ভারতের স্বাধীনতা আন্দোলনের নেতৃত্ব দেন। তাঁর দর্শন বিশ্বব্যাপী মানবাধিকার আন্দোলনে প্রভাব ফেলে।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">"Be the change that you wish to see in the world."</p>
+                </div>
+
+                <div class="monishi-card politics p-5">
+                    <h3 class="text-xl font-bold text-emerald-800 mb-2">নেলসন ম্যান্ডেলা (Nelson Mandela)</h3>
+                    <p class="text-sm text-emerald-600 font-medium">ক্ষেত্র: বর্ণবাদ বিরোধী আন্দোলন</p>
+                    <p class="text-gray-700 mt-3 text-sm">দক্ষিণ আফ্রিকায় বর্ণবাদ (Apartheid) বিরোধী আন্দোলনের নেতা এবং দেশের প্রথম গণতান্ত্রিকভাবে নির্বাচিত রাষ্ট্রপতি। স্বাধীনতা ও সমতার প্রতীক।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">"It always seems impossible until it's done."</p>
+                </div>
+
+                <div class="monishi-card politics p-5">
+                    <h3 class="text-xl font-bold text-emerald-800 mb-2">মার্টিন লুথার কিং জুনিয়র (Martin Luther King Jr.)</h3>
+                    <p class="text-sm text-emerald-600 font-medium">ক্ষেত্র: মার্কিন যুক্তরাষ্ট্রের নাগরিক অধিকার আন্দোলন</p>
+                    <p class="text-gray-700 mt-3 text-sm">আমেরিকায় নাগরিক ও রাজনৈতিক অধিকারের জন্য অহিংস পথে সংগ্রাম করেন। তাঁর বিখ্যাত বক্তৃতা "I Have a Dream" বিশ্বজুড়ে সমাদৃত।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">"I have a dream that my four little children will one day live in a nation where they will not be judged by the color of their skin but by the content of their character."</p>
+                </div>
+
+                <div class="monishi-card politics p-5">
+                    <h3 class="text-xl font-bold text-emerald-800 mb-2">বঙ্গবন্ধু শেখ মুজিবুর রহমান</h3>
+                    <p class="text-sm text-emerald-600 font-medium">ক্ষেত্র: বাংলাদেশের স্বাধীনতা</p>
+                    <p class="text-gray-700 mt-3 text-sm">বাংলাদেশের স্থপতি ও জাতির জনক। তাঁর নেতৃত্বে সশস্ত্র সংগ্রামের মাধ্যমে বাংলাদেশ স্বাধীন হয়। তিনি স্বাধীনতার ঘোষক।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূলত বাংলা ভাষাতেই বলা: "এবারের সংগ্রাম আমাদের মুক্তির সংগ্রাম, এবারের সংগ্রাম স্বাধীনতার সংগ্রাম।"</p>
+                </div>
+
+                <div class="monishi-card politics p-5">
+                    <h3 class="text-xl font-bold text-emerald-800 mb-2">কার্ল মার্ক্স (Karl Marx)</h3>
+                    <p class="text-sm text-emerald-600 font-medium">ক্ষেত্র: সমাজতন্ত্র ও অর্থনীতি</p>
+                    <p class="text-gray-700 mt-3 text-sm">দ্বন্দ্বমূলক বস্তুবাদ এবং শ্রেণী সংগ্রামের তত্ত্বের মাধ্যমে সমাজতন্ত্রের ভিত্তি তৈরি করেন। তাঁর রচিত 'Das Kapital' (পুঁজি) আধুনিক অর্থনীতিতে গুরুত্বপূর্ণ।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">"Workers of the world, unite!"</p>
+                </div>
+
+                <div class="monishi-card politics p-5">
+                    <h3 class="text-xl font-bold text-emerald-800 mb-2">রাজা রামমোহন রায়</h3>
+                    <p class="text-sm text-emerald-600 font-medium">ক্ষেত্র: ভারতীয় সমাজ সংস্কার</p>
+                    <p class="text-gray-700 mt-3 text-sm">ব্রাহ্ম সমাজের প্রতিষ্ঠাতা এবং সতীদাহ প্রথা বিলুপ্তির আন্দোলনে নেতৃত্ব দেন। তিনি ভারতে আধুনিক শিক্ষার প্রসারে গুরুত্বপূর্ণ ভূমিকা রাখেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূলত বাংলা ভাষাতেই লেখা: "জ্ঞানই মনুষ্যত্ব লাভের একমাত্র পথ।"</p>
+                </div>
+
+                <!-- নতুন সংযোজন: রাজনীতি ও সমাজ সংস্কার -->
+
+                <div class="monishi-card politics p-5">
+                    <h3 class="text-xl font-bold text-emerald-800 mb-2">আব্রাহাম লিংকন (Abraham Lincoln)</h3>
+                    <p class="text-sm text-emerald-600 font-medium">ক্ষেত্র: মার্কিন রাজনীতি ও দাসত্ব বিলোপ</p>
+                    <p class="text-gray-700 mt-3 text-sm">মার্কিন যুক্তরাষ্ট্রের ১৬তম রাষ্ট্রপতি। তিনি দাসত্ব প্রথা বিলোপ করেন এবং গৃহযুদ্ধের সময় দেশকে ঐক্যবদ্ধ রাখেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">"A house divided against itself cannot stand."</p>
+                </div>
+
+                <div class="monishi-card politics p-5">
+                    <h3 class="text-xl font-bold text-emerald-800 mb-2">মাও সে তুং (Mao Zedong)</h3>
+                    <p class="text-sm text-emerald-600 font-medium">ক্ষেত্র: চীনা বিপ্লব ও রাজনীতি</p>
+                    <p class="text-gray-700 mt-3 text-sm">গণপ্রজাতন্ত্রী চীনের প্রতিষ্ঠাতা। তিনি চীনের কমিউনিজম এবং মার্কসবাদ-লেনিনবাদের সাথে চীনা বৈশিষ্ট্য মিশ্রিত করে 'মাওবাদ' তত্ত্বের প্রবর্তন করেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">"Political power grows out of the barrel of a gun."</p>
+                </div>
+
+                <div class="monishi-card politics p-5">
+                    <h3 class="text-xl font-bold text-emerald-800 mb-2">বি. আর. আম্বেদকর (B. R. Ambedkar)</h3>
+                    <p class="text-sm text-emerald-600 font-medium">ক্ষেত্র: ভারতীয় সংবিধান ও দলিত অধিকার</p>
+                    <p class="text-gray-700 mt-3 text-sm">ভারতীয় সংবিধানের প্রধান স্থপতি। তিনি দলিত ও পিছিয়ে পড়া মানুষের অধিকার এবং সামাজিক সমতার জন্য সংগ্রাম করেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">"Cultivation of mind should be the ultimate aim of human existence."</p>
+                </div>
+
+                <div class="monishi-card politics p-5">
+                    <h3 class="text-xl font-bold text-emerald-800 mb-2">সুভাষ চন্দ্র বসু</h3>
+                    <p class="text-sm text-emerald-600 font-medium">ক্ষেত্র: ভারতীয় স্বাধীনতা আন্দোলন</p>
+                    <p class="text-gray-700 mt-3 text-sm">ভারতের স্বাধীনতা সংগ্রামে 'আজাদ হিন্দ ফৌজ' গঠন এবং সশস্ত্র বিদ্রোহের মাধ্যমে স্বাধীনতা অর্জনের পক্ষে লড়েন। 'নেতাজি' নামে পরিচিত।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূলত হিন্দিতে বলা: "তোমরা আমাকে রক্ত দাও, আমি তোমাদের স্বাধীনতা দেব।"</p>
+                </div>
+
+                <div class="monishi-card politics p-5">
+                    <h3 class="text-xl font-bold text-emerald-800 mb-2">ফ্লোরেন্স নাইটিঙ্গেল (Florence Nightingale)</h3>
+                    <p class="text-sm text-emerald-600 font-medium">ক্ষেত্র: আধুনিক নার্সিং ও সমাজ সংস্কার</p>
+                    <p class="text-gray-700 mt-3 text-sm">আধুনিক নার্সিং সেবার প্রতিষ্ঠাতা। ক্রিমিয়ার যুদ্ধের সময় স্বাস্থ্যসেবার মান উন্নত করে তিনি 'লেডি উইথ দ্য ল্যাম্প' নামে পরিচিত হন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">"The only thing we ought to fear is fear itself."</p>
+                </div>
+
+                <div class="monishi-card politics p-5">
+                    <h3 class="text-xl font-bold text-emerald-800 mb-2">চে গুয়েভারা (Che Guevara)</h3>
+                    <p class="text-sm text-emerald-600 font-medium">ক্ষেত্র: বিপ্লবী ও রাজনৈতিক তাত্ত্বিক</p>
+                    <p class="text-gray-700 mt-3 text-sm">কিউবার বিপ্লবে ফিদেল কাস্ত্রোর সহকর্মী। তিনি বিশ্বজুড়ে উপনিবেশবাদ ও শোষণের বিরুদ্ধে সশস্ত্র সংগ্রামের প্রতীক হয়ে ওঠেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">"The true revolutionary is guided by great feelings of love."</p>
+                </div>
+
+                <div class="monishi-card politics p-5">
+                    <h3 class="text-xl font-bold text-emerald-800 mb-2">মাদার টেরেসা (Mother Teresa)</h3>
+                    <p class="text-sm text-emerald-600 font-medium">ক্ষেত্র: সমাজসেবা ও মানবতাবাদ</p>
+                    <p class="text-gray-700 mt-3 text-sm">ভারতের কলকাতায় মিশনারিজ অফ চ্যারিটি প্রতিষ্ঠা করেন এবং দরিদ্র, অসুস্থ ও অসহায় মানুষের সেবায় জীবন উৎসর্গ করেন। শান্তিতে নোবেল পুরস্কার লাভ করেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">"Not all of us can do great things. But we can do small things with great love."</p>
+                </div>
+            </div>
+            <div class="p-6 bg-gray-100 rounded-lg mt-8 text-center text-gray-600">
+                <p class="text-lg font-semibold text-indigo-700">দ্রষ্টব্য:</p>
+                <p class="text-sm">এখানে বিভিন্ন ক্ষেত্র থেকে মোট ৫৪ জন মনীষীর একটি সমৃদ্ধ তালিকা দেওয়া হয়েছে। আপনি চাইলে এই কাঠামো অনুসরণ করে অবশিষ্ট মনীষীদের তথ্য যুক্ত করে মোট ১০০ জনের তালিকা পূর্ণ করতে পারেন।</p>
+            </div>
+        </section>
+
+
+        <footer class="text-center mt-10 p-4 border-t border-gray-300">
+            <p class="text-sm text-gray-500">জ্ঞান ও প্রজ্ঞা প্রজন্ম থেকে প্রজন্মান্তরে সঞ্চারিত হোক।</p>
+        </footer>
+    </div>
+
+    <!-- নির্বাচনের বার্তা (Notification Box) -->
+    <div id="notification" class="fixed bottom-4 right-4 bg-green-600 text-white p-4 rounded-lg shadow-xl hidden transition duration-300 ease-out transform translate-x-full" role="alert">
+        <div class="flex items-center">
+            <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <span id="notification-text"></span>
+            <button onclick="closeNotification()" class="ml-4 text-white opacity-75 hover:opacity-100 focus:outline-none">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // --- Script for Header Responsiveness and Placeholder Auth ---
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        // Toggle mobile menu visibility
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Placeholder functionality for the authentication button
+        const authButtons = [
+            document.getElementById('open-auth-modal-btn'),
+            document.getElementById('open-auth-modal-btn-mobile')
+        ];
+        
+        authButtons.forEach(btn => {
+            if (btn) {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showNotification("লগইন/সাইনআপ মডাল এখানে খুলবে।", 'bg-indigo-600');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                         mobileMenu.classList.add('hidden');
+                    }
+                });
+            }
+        });
+
+        // Hide mobile menu on link click (optional, for better UX)
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                setTimeout(() => {
+                    mobileMenu.classList.add('hidden');
+                }, 300); 
+            });
+        });
+        
+        // --- Notification Logic ---
+        const notification = document.getElementById('notification');
+        const notificationText = document.getElementById('notification-text');
+        let timer;
+        
+        function showNotification(message, bgColor) {
+            notificationText.textContent = message;
+            
+            // Reset background colors
+            notification.classList.remove('bg-green-600', 'bg-indigo-600');
+            notification.classList.add(bgColor);
+
+            // Show notification
+            notification.classList.remove('hidden', 'translate-x-full');
+            notification.classList.add('translate-x-0');
+
+            // Clear previous timer and set new one
+            clearTimeout(timer);
+            timer = setTimeout(() => {
+                closeNotification();
+            }, 3000);
+        }
+
+        function closeNotification() {
+            notification.classList.remove('translate-x-0');
+            notification.classList.add('translate-x-full');
+            // Hide after transition
+            setTimeout(() => {
+                notification.classList.add('hidden');
+            }, 300); 
+        }
+
+    </script>
+</body>
+</html>

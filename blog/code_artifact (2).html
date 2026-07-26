@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>১১০+ মনীষী ও ইসলামী স্কলারদের সম্মিলিত অবদান</title>
+    <!-- Tailwind CSS লোড করা হচ্ছে -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* ফন্ট হিসেবে ইন্টার ও নোটো ব্যবহার করা হচ্ছে */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+Bengali:wght@400;700&display=swap');
+        body {
+            font-family: 'Noto Sans Bengali', 'Inter', sans-serif;
+            background-color: #eef2f5; 
+            line-height: 1.6;
+        }
+        .main-header {
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .monishi-card {
+            background-color: #ffffff;
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border-left: 4px solid var(--card-color, #06b6d4);
+        }
+        .monishi-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+        }
+        .category-header {
+            border-bottom: 3px solid #10b981; 
+        }
+        /* কাস্টম কালার ভ্যারিয়েবল (Tailwind classes for categories) */
+        .science { --card-color: #ef4444; } /* Red */
+        .philosophy { --card-color: #3b82f6; } /* Blue */
+        .literature { --card-color: #f97316; } /* Orange */
+        .politics { --card-color: #10b981; } /* Emerald */
+        .islamic-fiqh { --card-color: #8b5cf6; } /* Violet */
+        .islamic-tassawuf { --card-color: #ec4899; } /* Pink */
+    </style>
+</head>
+<body>
+    
+    <!-- HEADER: Sticky Header & Navigation (Replicated from previous file) -->
+    <header class="main-header sticky top-0 z-50 bg-white shadow-lg">
+        <div class="header-content h-16 flex justify-between items-center max-w-7xl mx-auto px-4 sm:px-8">
+            <h1 class="logo text-xl font-bold text-indigo-600">
+                <a href="index.html" class="hover:text-indigo-800 transition duration-300">My eBook Hub</a>
+            </h1>
+            <nav class="main-nav hidden md:block">
+                <ul class="flex space-x-4 text-base font-medium">
+                    <li><a href="index.html" class="text-gray-700 hover:text-indigo-600 transition duration-300 rounded-lg p-2">Home</a></li>
+                    <li><a href="browse.html" class="text-gray-700 hover:text-indigo-600 transition duration-300 rounded-lg p-2">Browse Books</a></li>
+                    <li><a href="ai-course.html" class="text-gray-700 hover:text-indigo-600 transition duration-300 rounded-lg p-2">Ai Course</a></li>
+                    <li><a href="categories.html" class="text-gray-700 hover:text-indigo-600 transition duration-300 rounded-lg p-2">Categories</a></li>
+                    <li><a href="about.html" class="text-gray-700 hover:text-indigo-600 transition duration-300 rounded-lg p-2">About</a></li>
+                    <li><a href="dashboard.html" class="text-gray-700 hover:text-indigo-600 transition duration-300 rounded-lg p-2">Dashboard</a></li>
+                    <li>
+                        <a href="#" id="open-auth-modal-btn" class="ml-4 px-3 py-1 bg-indigo-600 text-white text-sm rounded-lg shadow-md hover:bg-indigo-700 transition duration-300">
+                            Login/Signup
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-gray-700 hover:bg-gray-100 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <nav id="mobile-menu" class="md:hidden hidden bg-gray-50 border-t border-gray-200 py-2">
+            <ul class="flex flex-col space-y-1 px-4 text-sm font-medium">
+                <li><a href="index.html" class="block py-2 text-gray-700 hover:bg-indigo-100 hover:text-indigo-600 rounded-lg transition duration-300">Home</a></li>
+                <li><a href="browse.html" class="block py-2 text-gray-700 hover:bg-indigo-100 hover:text-indigo-600 rounded-lg transition duration-300">Browse Books</a></li>
+                <li><a href="ai-course.html" class="block py-2 text-gray-700 hover:bg-indigo-100 hover:text-indigo-600 rounded-lg transition duration-300">Ai Course</a></li>
+                <li><a href="categories.html" class="block py-2 text-gray-700 hover:bg-indigo-100 hover:text-indigo-600 rounded-lg transition duration-300">Categories</a></li>
+                <li><a href="about.html" class="block py-2 text-gray-700 hover:bg-indigo-100 hover:text-indigo-600 rounded-lg transition duration-300">About</a></li>
+                <li><a href="dashboard.html" class="block py-2 text-gray-700 hover:bg-indigo-100 hover:text-indigo-600 rounded-lg transition duration-300">Dashboard</a></li>
+                <li>
+                    <a href="#" id="open-auth-modal-btn-mobile" class="block text-center mt-2 py-2 bg-indigo-600 text-white rounded-lg shadow-md hover:bg-indigo-700 transition duration-300">
+                        Login/Signup
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!-- END HEADER -->
+
+    <!-- Main Content Area - Combined List -->
+    <div class="max-w-6xl mx-auto p-4 sm:p-8 pt-10"> 
+        <header class="text-center mb-10">
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-800 mb-2 border-b-4 border-indigo-500 inline-block pb-1">
+                ১১০+ বিখ্যাত ব্যক্তিত্ব ও তাঁদের অবদান
+            </h1>
+            <p class="text-gray-600 text-lg mt-2">জ্ঞান, বিজ্ঞান, ধর্ম ও ইতিহাসের বিভিন্ন ক্ষেত্রের ব্যক্তিত্ব এবং তাঁদের বিশেষ অবদানের তালিকা।</p>
+            <p class="text-sm text-red-500 mt-2 italic font-bold">⚠️ বিস্তারিত ডেমো লিঙ্কের জন্য, প্রতিটি কার্ডের নিচে দেওয়া "মূল শব্দ" ব্যবহার করে Google/YouTube-এ অনুসন্ধান করুন।</p>
+        </header>
+
+        <!-- বিভাগ ১: বিজ্ঞান ও প্রযুক্তি (Original content) -->
+        <section class="mb-12" id="science">
+            <h2 class="category-header text-2xl font-bold text-red-700 mb-6 pb-2">১. বিজ্ঞান ও প্রযুক্তি (Science & Technology) </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <div class="monishi-card science p-5">
+                    <h3 class="text-xl font-bold text-red-800 mb-2">আইজ্যাক নিউটন (Isaac Newton)</h3>
+                    <p class="text-sm text-red-600 font-medium">ক্ষেত্র: পদার্থবিজ্ঞান ও গণিত</p>
+                    <p class="text-gray-700 mt-3 text-sm">গতির তিনটি সূত্র, সর্বজনীন মহাকর্ষ সূত্র এবং ক্যালকুলাস আবিষ্কারের মাধ্যমে আধুনিক বিজ্ঞানের ভিত্তি স্থাপন করেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Newton Laws of Motion Demo</span></p>
+                </div>
+
+                <div class="monishi-card science p-5">
+                    <h3 class="text-xl font-bold text-red-800 mb-2">আলবার্ট আইনস্টাইন (Albert Einstein)</h3>
+                    <p class="text-sm text-red-600 font-medium">ক্ষেত্র: তাত্ত্বিক পদার্থবিজ্ঞান</p>
+                    <p class="text-gray-700 mt-3 text-sm">আপেক্ষিকতার তত্ত্ব (Theory of Relativity) প্রদান করেন। বিখ্যাত সমীকরণ: $E=mc^2$।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Einstein E=mc2 Explanation</span></p>
+                </div>
+
+                <div class="monishi-card science p-5">
+                    <h3 class="text-xl font-bold text-red-800 mb-2">মেরি কুরি (Marie Curie)</h3>
+                    <p class="text-sm text-red-600 font-medium">ক্ষেত্র: রসায়ন ও পদার্থবিজ্ঞান</p>
+                    <p class="text-gray-700 mt-3 text-sm">তেজস্ক্রিয়তা (Radioactivity) নিয়ে গবেষণা এবং পোলোনিয়াম ও রেডিয়াম আবিষ্কার করেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Marie Curie Radioactivity Work</span></p>
+                </div>
+                
+                <div class="monishi-card science p-5">
+                    <h3 class="text-xl font-bold text-red-800 mb-2">চার্লস ডারউইন (Charles Darwin)</h3>
+                    <p class="text-sm text-red-600 font-medium">ক্ষেত্র: জীববিদ্যা ও বিবর্তনবাদ</p>
+                    <p class="text-gray-700 mt-3 text-sm">প্রাকৃতিক নির্বাচন (Natural Selection) প্রক্রিয়ার মাধ্যমে বিবর্তন তত্ত্বের ধারণা দেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Darwin Natural Selection Theory</span></p>
+                </div>
+                
+                <div class="monishi-card science p-5">
+                    <h3 class="text-xl font-bold text-red-800 mb-2">জগদীশ চন্দ্র বসু</h3>
+                    <p class="text-sm text-red-600 font-medium">ক্ষেত্র: পদার্থবিজ্ঞান ও উদ্ভিদবিজ্ঞান</p>
+                    <p class="text-gray-700 mt-3 text-sm">উদ্ভিদেরও প্রাণ আছে—প্রমাণ করেন (ক্রেসকোগ্রাফ আবিষ্কার)।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Jagadish Chandra Bose Crescograph</span></p>
+                </div>
+                
+                <div class="monishi-card science p-5">
+                    <h3 class="text-xl font-bold text-red-800 mb-2">আর্কিমিডিস (Archimedes)</h3>
+                    <p class="text-sm text-red-600 font-medium">ক্ষেত্র: গণিত ও প্রকৌশল</p>
+                    <p class="text-gray-700 mt-3 text-sm">প্লাবতা সূত্র (Archimedes' Principle), লিভারের নীতি আবিষ্কার করেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Archimedes Principle Demo</span></p>
+                </div>
+
+                <div class="monishi-card science p-5">
+                    <h3 class="text-xl font-bold text-red-800 mb-2">গ্যালিলিও গ্যালিলি (Galileo Galilei)</h3>
+                    <p class="text-sm text-red-600 font-medium">ক্ষেত্র: জ্যোতির্বিজ্ঞান ও পদার্থবিজ্ঞান</p>
+                    <p class="text-gray-700 mt-3 text-sm">আধুনিক জ্যোতির্বিজ্ঞানের জনক। উন্নত দূরবীক্ষণ যন্ত্র তৈরি করেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Galileo Telescope Discoveries</span></p>
+                </div>
+                
+                <div class="monishi-card science p-5">
+                    <h3 class="text-xl font-bold text-red-800 mb-2">নিকোলা টেসলা (Nikola Tesla)</h3>
+                    <p class="text-sm text-red-600 font-medium">ক্ষেত্র: তড়িৎ প্রকৌশল ও উদ্ভাবন</p>
+                    <p class="text-gray-700 mt-3 text-sm">অল্টারনেটিং কারেন্ট (AC) বৈদ্যুতিক সরবরাহ পদ্ধতি, টেসলা কয়েল উদ্ভাবন করেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Nikola Tesla AC Current</span></p>
+                </div>
+                
+                <div class="monishi-card science p-5">
+                    <h3 class="text-xl font-bold text-red-800 mb-2">থমাস আলভা এডিসন (Thomas Edison)</h3>
+                    <p class="text-sm text-red-600 font-medium">ক্ষেত্র: উদ্ভাবন ও উদ্যোক্তা</p>
+                    <p class="text-gray-700 mt-3 text-sm">ফোনোগ্রাফ এবং দীর্ঘস্থায়ী ব্যবহারিক বৈদ্যুতিক বাতি সহ অসংখ্য গুরুত্বপূর্ণ যন্ত্রের উদ্ভাবক।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Thomas Edison Light Bulb</span></p>
+                </div>
+                
+                <div class="monishi-card science p-5">
+                    <h3 class="text-xl font-bold text-red-800 mb-2">স্টিফেন হকিং (Stephen Hawking)</h3>
+                    <p class="text-sm text-red-600 font-medium">ক্ষেত্র: মহাজাগতিক বিজ্ঞান (Cosmology)</p>
+                    <p class="text-gray-700 mt-3 text-sm">কৃষ্ণগহ্বর (Black Hole) থেকে বিকিরণ (Hawking Radiation) নির্গমনের তত্ত্ব প্রদান করেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Stephen Hawking Black Holes</span></p>
+                </div>
+                
+                <div class="monishi-card science p-5">
+                    <h3 class="text-xl font-bold text-red-800 mb-2">সত্যেন্দ্রনাথ বসু</h3>
+                    <p class="text-sm text-red-600 font-medium">ক্ষেত্র: কোয়ান্টাম পদার্থবিজ্ঞান</p>
+                    <p class="text-gray-700 mt-3 text-sm">কোয়ান্টাম পরিসংখ্যানের ক্ষেত্রে "বোস-আইনস্টাইন স্ট্যাটিস্টিকস" উদ্ভাবন করেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Satyendra Nath Bose Boson Theory</span></p>
+                </div>
+                
+                <div class="monishi-card science p-5">
+                    <h3 class="text-xl font-bold text-red-800 mb-2">দিমিত্রি মেন্ডেলিভ (Dmitri Mendeleev)</h3>
+                    <p class="text-sm text-red-600 font-medium">ক্ষেত্র: রসায়ন</p>
+                    <p class="text-gray-700 mt-3 text-sm">পর্যায় সারণী (Periodic Table) উদ্ভাবন করেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Mendeleev Periodic Table</span></p>
+                </div>
+
+                <div class="monishi-card science p-5">
+                    <h3 class="text-xl font-bold text-red-800 mb-2">কার্ল লিনিয়াস (Carl Linnaeus)</h3>
+                    <p class="text-sm text-red-600 font-medium">ক্ষেত্র: জীববিদ্যা ও শ্রেণিবিন্যাস বিদ্যা</p>
+                    <p class="text-gray-700 mt-3 text-sm">আধুনিক শ্রেণিবিন্যাস (Taxonomy) এবং দ্বিপদ নামকরণের প্রবর্তন করেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Linnaeus Taxonomy Binomial Nomenclature</span></p>
+                </div>
+
+                <div class="monishi-card science p-5">
+                    <h3 class="text-xl font-bold text-red-800 mb-2">জোনাস সল্ক (Jonas Salk)</h3>
+                    <p class="text-sm text-red-600 font-medium">ক্ষেত্র: চিকিৎসা বিজ্ঞান ও ভাইরাস বিদ্যা</p>
+                    <p class="text-gray-700 mt-3 text-sm">পোলিও রোগের বিরুদ্ধে প্রথম কার্যকর টিকা আবিষ্কার করেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Jonas Salk Polio Vaccine</span></p>
+                </div>
+
+                <div class="monishi-card science p-5">
+                    <h3 class="text-xl font-bold text-red-800 mb-2">আল-খোয়ারিজমি (Al-Khwarizmi)</h3>
+                    <p class="text-sm text-red-600 font-medium">ক্ষেত্র: গণিত ও জ্যোতির্বিজ্ঞান</p>
+                    <p class="text-gray-700 mt-3 text-sm">বীজগণিত ('Algebra' শব্দের উদ্ভাবক) এবং ভারতীয় সংখ্যা পদ্ধতির প্রচার।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Al-Khwarizmi Algebra and Algorithms</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- বিভাগ ২: দর্শন ও নীতিশাস্ত্র (Original content) -->
+        <section class="mb-12" id="philosophy">
+            <h2 class="category-header text-2xl font-bold text-blue-700 mb-6 pb-2">২. দর্শন ও নীতিশাস্ত্র (Philosophy & Ethics) </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <div class="monishi-card philosophy p-5">
+                    <h3 class="text-xl font-bold text-blue-800 mb-2">সক্রেটিস (Socrates)</h3>
+                    <p class="text-sm text-blue-600 font-medium">ক্ষেত্র: পাশ্চাত্য দর্শন</p>
+                    <p class="text-gray-700 mt-3 text-sm">সক্রেটিক পদ্ধতি (প্রশ্ন ও উত্তরের মাধ্যমে সত্য উদ্ঘাটন) প্রবর্তন করেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Socratic Method Explained</span></p>
+                </div>
+
+                <div class="monishi-card philosophy p-5">
+                    <h3 class="text-xl font-bold text-blue-800 mb-2">গৌতম বুদ্ধ (Gautama Buddha)</h3>
+                    <p class="text-sm text-blue-600 font-medium">ক্ষেত্র: ধর্ম ও দর্শন</p>
+                    <p class="text-gray-700 mt-3 text-sm">বৌদ্ধ ধর্ম প্রতিষ্ঠা করেন। তিনি চারটি আর্য সত্য ও অষ্টাঙ্গিক মার্গ প্রচার করেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Gautama Buddha Four Noble Truths</span></p>
+                </div>
+                
+                <div class="monishi-card philosophy p-5">
+                    <h3 class="text-xl font-bold text-blue-800 mb-2">প্লেটো (Plato)</h3>
+                    <p class="text-sm text-blue-600 font-medium">ক্ষেত্র: রাষ্ট্রনীতি ও অধিবিদ্যা</p>
+                    <p class="text-gray-700 mt-3 text-sm">'আইডিয়া বা ফর্মের তত্ত্ব' এবং একটি আদর্শ রাষ্ট্রের ধারণা (The Republic) দেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Plato Theory of Forms</span></p>
+                </div>
+                
+                <div class="monishi-card philosophy p-5">
+                    <h3 class="text-xl font-bold text-blue-800 mb-2">অ্যারিস্টটল (Aristotle)</h3>
+                    <p class="text-sm text-blue-600 font-medium">ক্ষেত্র: যুক্তিবিদ্যা, জীববিদ্যা ও নীতিশাস্ত্র</p>
+                    <p class="text-gray-700 mt-3 text-sm">পাশ্চাত্য যুক্তিবিদ্যার জনক। তিনি 'গোল্ডেন মিন'-এর ধারণার প্রবক্তা।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Aristotle Logic Golden Mean</span></p>
+                </div>
+                
+                <div class="monishi-card philosophy p-5">
+                    <h3 class="text-xl font-bold text-blue-800 mb-2">ইমানুয়েল কান্ট (Immanuel Kant)</h3>
+                    <p class="text-sm text-blue-600 font-medium">ক্ষেত্র: আধুনিক দর্শন</p>
+                    <p class="text-gray-700 mt-3 text-sm">তাঁর 'ক্যাটিগরিক্যাল ইমপ্যারাটিভ' আধুনিক নীতিশাস্ত্রের ভিত্তি।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Immanuel Kant Categorical Imperative</span></p>
+                </div>
+                
+                <div class="monishi-card philosophy p-5">
+                    <h3 class="text-xl font-bold text-blue-800 mb-2">স্বামী বিবেকানন্দ</h3>
+                    <p class="text-sm text-blue-600 font-medium">ক্ষেত্র: বেদান্ত দর্শন ও সমাজ সংস্কার</p>
+                    <p class="text-gray-700 mt-3 text-sm">শিকাগোর ধর্ম মহাসভায় হিন্দু ধর্মের প্রতিনিধিত্ব করেন। মানবসেবাকেই ঈশ্বরের সেবা বলে প্রচার করেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Swami Vivekananda Chicago Speech</span></p>
+                </div>
+
+                <div class="monishi-card philosophy p-5">
+                    <h3 class="text-xl font-bold text-blue-800 mb-2">লাওজি (Laozi)</h3>
+                    <p class="text-sm text-blue-600 font-medium">ক্ষেত্র: চীনা দর্শন ও টাওবাদ</p>
+                    <p class="text-gray-700 mt-3 text-sm">টা-ও টে চিং (Tao Te Ching) গ্রন্থ রচনা করেন এবং সহজ জীবনযাপনের দর্শন প্রচার করেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Laozi Tao Te Ching Teachings</span></p>
+                </div>
+                
+                <div class="monishi-card philosophy p-5">
+                    <h3 class="text-xl font-bold text-blue-800 mb-2">কনফুসিয়াস (Confucius)</h3>
+                    <p class="text-sm text-blue-600 font-medium">ক্ষেত্র: চীনা দর্শন ও সমাজ নীতি</p>
+                    <p class="text-gray-700 mt-3 text-sm">পারিবারিক আনুগত্য, মানুষের প্রতি শ্রদ্ধা এবং সমাজে নৈতিক আচরণের গুরুত্ব নিয়ে দর্শন প্রচার করেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Confucius Analects and Ethics</span></p>
+                </div>
+                
+                <div class="monishi-card philosophy p-5">
+                    <h3 class="text-xl font-bold text-blue-800 mb-2">মুহাম্মদ (Prophet Muhammad)</h3>
+                    <p class="text-sm text-blue-600 font-medium">ক্ষেত্র: ধর্ম ও সমাজ সংস্কার</p>
+                    <p class="text-gray-700 mt-3 text-sm">ইসলাম ধর্মের প্রবর্তক। একত্ববাদ, সামাজিক সমতা এবং নীতিভিত্তিক জীবনযাপনের উপর জোর দেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Prophet Muhammad Seerah Teachings</span></p>
+                </div>
+                
+                <div class="monishi-card philosophy p-5">
+                    <h3 class="text-xl font-bold text-blue-800 mb-2">চাণক্য (Chanakya)</h3>
+                    <p class="text-sm text-blue-600 font-medium">ক্ষেত্র: রাষ্ট্রনীতি ও অর্থনীতি</p>
+                    <p class="text-gray-700 mt-3 text-sm">প্রাচীন ভারতের রাষ্ট্রনীতি ও সামরিক কৌশলের উপর লেখা বিখ্যাত গ্রন্থ 'অর্থশাস্ত্র'-এর রচয়িতা।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Chanakya Arthashastra Key Principles</span></p>
+                </div>
+
+                <div class="monishi-card philosophy p-5">
+                    <h3 class="text-xl font-bold text-blue-800 mb-2">রেনে দেকার্ত (René Descartes)</h3>
+                    <p class="text-sm text-blue-600 font-medium">ক্ষেত্র: আধুনিক দর্শনের জনক</p>
+                    <p class="text-gray-700 mt-3 text-sm">যুক্তিবাদকে জ্ঞানের ভিত্তি হিসেবে প্রতিষ্ঠা করেন। বিখ্যাত উক্তি: "আমি চিন্তা করি, অতএব আমি আছি।"</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Descartes Cogito Ergo Sum</span></p>
+                </div>
+                
+                <div class="monishi-card philosophy p-5">
+                    <h3 class="text-xl font-bold text-blue-800 mb-2">ইবনে সিনা (Ibn Sina)</h3>
+                    <p class="text-sm text-blue-600 font-medium">ক্ষেত্র: চিকিৎসা ও দর্শন</p>
+                    <p class="text-gray-700 mt-3 text-sm">তাঁর চিকিৎসা বিষয়ক গ্রন্থ 'আল-কানুন ফি আত-তিব্ব' (The Canon of Medicine) মধ্যযুগে ইউরোপে চিকিৎসা শাস্ত্রের ভিত্তি ছিল।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Ibn Sina Canon of Medicine</span></p>
+                </div>
+
+                <div class="monishi-card philosophy p-5">
+                    <h3 class="text-xl font-bold text-blue-800 mb-2">আল-ফারাবী (Al-Farabi)</h3>
+                    <p class="text-sm text-blue-600 font-medium">ক্ষেত্র: দর্শন, যুক্তিবিদ্যা ও রাষ্ট্রনীতি</p>
+                    <p class="text-gray-700 mt-3 text-sm">গ্রিক দর্শনকে ইসলামী কাঠামোর সাথে সমন্বয় করার জন্য পরিচিত।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Al-Farabi Islamic Philosophy</span></p>
+                </div>
+                
+                <div class="monishi-card philosophy p-5">
+                    <h3 class="text-xl font-bold text-blue-800 mb-2">ইবনে রুশদ (Ibn Rushd / Averroes)</h3>
+                    <p class="text-sm text-blue-600 font-medium">ক্ষেত্র: যুক্তিবিদ্যা ও দর্শন</p>
+                    <p class="text-gray-700 mt-3 text-sm">এরিস্টটলীয় দর্শনের ব্যাখ্যা ও ধর্ম ও দর্শনের মধ্যে সামঞ্জস্য আনার চেষ্টা করেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Ibn Rushd on Aristotle</span></p>
+                </div>
+
+                <div class="monishi-card philosophy p-5">
+                    <h3 class="text-xl font-bold text-blue-800 mb-2">ইবনে খলদুন (Ibn Khaldun)</h3>
+                    <p class="text-sm text-blue-600 font-medium">ক্ষেত্র: সমাজতত্ত্ব, ইতিহাস ও অর্থনীতি</p>
+                    <p class="text-gray-700 mt-3 text-sm">আধুনিক সমাজতত্ত্বের জনক হিসেবে পরিচিত। তাঁর বিখ্যাত কাজ 'আল-মুকাদ্দিমাহ'।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Ibn Khaldun Muqaddimah</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- বিভাগ ৩: সাহিত্য ও শিল্পকলা (Original content) -->
+        <section class="mb-12" id="literature">
+            <h2 class="category-header text-2xl font-bold text-orange-700 mb-6 pb-2">৩. সাহিত্য ও শিল্পকলা (Literature & Arts) </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <div class="monishi-card literature p-5">
+                    <h3 class="text-xl font-bold text-orange-800 mb-2">রবীন্দ্রনাথ ঠাকুর</h3>
+                    <p class="text-sm text-orange-600 font-medium">ক্ষেত্র: বাংলা সাহিত্য</p>
+                    <p class="text-gray-700 mt-3 text-sm">প্রথম এশীয় নোবেল জয়ী (গীতাঞ্জলি)। বাংলা সাহিত্য ও সংস্কৃতিতে বিশাল অবদান।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Rabindranath Tagore Gitanjali</span></p>
+                </div>
+
+                <div class="monishi-card literature p-5">
+                    <h3 class="text-xl font-bold text-orange-800 mb-2">উইলিয়াম শেক্সপিয়র (William Shakespeare)</h3>
+                    <p class="text-sm text-orange-600 font-medium">ক্ষেত্র: ইংরেজি সাহিত্য ও নাটক</p>
+                    <p class="text-gray-700 mt-3 text-sm">বিশ্বের সর্বশ্রেষ্ঠ নাট্যকার। 'হ্যামলেট', 'ম্যাকবেথ'-এর মতো কালজয়ী নাটক রচনা করেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Shakespeare Hamlet Summary</span></p>
+                </div>
+
+                <div class="monishi-card literature p-5">
+                    <h3 class="text-xl font-bold text-orange-800 mb-2">কাজী নজরুল ইসলাম</h3>
+                    <p class="text-sm text-orange-600 font-medium">ক্ষেত্র: বাংলা সাহিত্য ও সঙ্গীত</p>
+                    <p class="text-gray-700 mt-3 text-sm">বিদ্রোহী কবি হিসেবে পরিচিত। তিনি পরাধীন ভারতে অসাম্য ও শোষণের বিরুদ্ধে তীব্র প্রতিবাদ করেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Kazi Nazrul Islam Bidrohi Poem</span></p>
+                </div>
+
+                <div class="monishi-card literature p-5">
+                    <h3 class="text-xl font-bold text-orange-800 mb-2">লিওনার্দো দা ভিঞ্চি (Leonardo da Vinci)</h3>
+                    <p class="text-sm text-orange-600 font-medium">ক্ষেত্র: চিত্রকলা, ভাস্কর্য ও উদ্ভাবন</p>
+                    <p class="text-gray-700 mt-3 text-sm">রেনেসাঁসের সর্বশ্রেষ্ঠ শিল্পী। তাঁর কালজয়ী চিত্রকর্মগুলির মধ্যে রয়েছে 'মোনালিসা'।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Leonardo da Vinci Mona Lisa Analysis</span></p>
+                </div>
+                
+                <div class="monishi-card literature p-5">
+                    <h3 class="text-xl font-bold text-orange-800 mb-2">হোমার (Homer)</h3>
+                    <p class="text-sm text-orange-600 font-medium">ক্ষেত্র: প্রাচীন গ্রিক মহাকাব্য</p>
+                    <p class="text-gray-700 mt-3 text-sm">প্রাচীন গ্রিসের মহাকবি। তাঁর রচিত দুটি মহাকাব্য 'ইলিয়াড' ও 'ওডিসি'।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Homer Iliad and Odyssey Summary</span></p>
+                </div>
+
+                <div class="monishi-card literature p-5">
+                    <h3 class="text-xl font-bold text-orange-800 mb-2">মাইকেল মধুসূদন দত্ত</h3>
+                    <p class="text-sm text-orange-600 font-medium">ক্ষেত্র: বাংলা সাহিত্যের আধুনিকায়ন</p>
+                    <p class="text-gray-700 mt-3 text-sm">বাংলা সাহিত্যে প্রথম সনেট ও অমিত্রাক্ষর ছন্দের প্রবর্তক। তাঁর মহাকাব্য 'মেঘনাদ বধ কাব্য'।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Michael Madhusudan Dutt Meghnad Badh Kavya</span></p>
+                </div>
+
+                <div class="monishi-card literature p-5">
+                    <h3 class="text-xl font-bold text-orange-800 mb-2">বঙ্কিমচন্দ্র চট্টোপাধ্যায়</h3>
+                    <p class="text-sm text-orange-600 font-medium">ক্ষেত্র: বাংলা উপন্যাস</p>
+                    <p class="text-gray-700 mt-3 text-sm">বাংলা সাহিত্যের প্রথম সার্থক ঔপন্যাসিক। 'দুর্গেশনন্দিনী', 'আনন্দমঠ'-এর রচয়িতা।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Bankim Chandra Chattopadhyay Anandamath</span></p>
+                </div>
+
+                <div class="monishi-card literature p-5">
+                    <h3 class="text-xl font-bold text-orange-800 mb-2">লিও টলস্টয় (Leo Tolstoy)</h3>
+                    <p class="text-sm text-orange-600 font-medium">ক্ষেত্র: রুশ সাহিত্য</p>
+                    <p class="text-gray-700 mt-3 text-sm">'ওয়ার অ্যান্ড পিস' এবং 'আন্না কারেনিনা'-এর মতো মহাকাব্যিক উপন্যাসের জন্য পরিচিত।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Leo Tolstoy War and Peace Summary</span></p>
+                </div>
+                
+                <div class="monishi-card literature p-5">
+                    <h3 class="text-xl font-bold text-orange-800 mb-2">জেইন অস্টেন (Jane Austen)</h3>
+                    <p class="text-sm text-orange-600 font-medium">ক্ষেত্র: ইংরেজি সাহিত্য</p>
+                    <p class="text-gray-700 mt-3 text-sm">'Pride and Prejudice' সহ তাঁর উপন্যাসগুলি ১৯শ শতকের ব্রিটিশ সমাজকে তুলে ধরে।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Jane Austen Pride and Prejudice Analysis</span></p>
+                </div>
+
+                <div class="monishi-card literature p-5">
+                    <h3 class="text-xl font-bold text-orange-800 mb-2">পাবলো পিকাসো (Pablo Picasso)</h3>
+                    <p class="text-sm text-orange-600 font-medium">ক্ষেত্র: চিত্রকলা ও ভাস্কর্য</p>
+                    <p class="text-gray-700 mt-3 text-sm">কিউবিজম (Cubism) শিল্পকলার অন্যতম প্রতিষ্ঠাতা।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Pablo Picasso Cubism Guernica</span></p>
+                </div>
+
+                <div class="monishi-card literature p-5">
+                    <h3 class="text-xl font-bold text-orange-800 mb-2">জীবনানন্দ দাশ</h3>
+                    <p class="text-sm text-orange-600 font-medium">ক্ষেত্র: বাংলা কবিতা</p>
+                    <p class="text-gray-700 mt-3 text-sm">বাংলা সাহিত্যের 'রূপসী বাংলার কবি'। প্রকৃতি, মৃত্যু ও সময়ের ধারণাকে কবিতায় চিত্রিত করেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Jibanananda Das Banalata Sen Analysis</span></p>
+                </div>
+
+                <div class="monishi-card literature p-5">
+                    <h3 class="text-xl font-bold text-orange-800 mb-2">জালালুদ্দিন রুমি (Rumi)</h3>
+                    <p class="text-sm text-orange-600 font-medium">ক্ষেত্র: তাসাউফ ও পার্সি কাব্য</p>
+                    <p class="text-gray-700 mt-3 text-sm">বিশ্বের অন্যতম জনপ্রিয় কবি ও সুফি সাধক। তাঁর 'মসনবী শরীফ' বিশ্বখ্যাত।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Rumi Masnavi Teachings</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- বিভাগ ৪: রাজনীতি ও সমাজ সংস্কার (Original content) -->
+        <section class="mb-12" id="politics">
+            <h2 class="category-header text-2xl font-bold text-emerald-700 mb-6 pb-2">৪. রাজনীতি ও সমাজ সংস্কার (Politics & Social Reform) </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <div class="monishi-card politics p-5">
+                    <h3 class="text-xl font-bold text-emerald-800 mb-2">মহাত্মা গান্ধী (Mahatma Gandhi)</h3>
+                    <p class="text-sm text-emerald-600 font-medium">ক্ষেত্র: ভারতীয় স্বাধীনতা আন্দোলন</p>
+                    <p class="text-gray-700 mt-3 text-sm">অহিংসা (Non-violence) ও সত্যাগ্রহের মাধ্যমে ভারতের স্বাধীনতা আন্দোলনের নেতৃত্ব দেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Mahatma Gandhi Satyagraha</span></p>
+                </div>
+
+                <div class="monishi-card politics p-5">
+                    <h3 class="text-xl font-bold text-emerald-800 mb-2">নেলসন ম্যান্ডেলা (Nelson Mandela)</h3>
+                    <p class="text-sm text-emerald-600 font-medium">ক্ষেত্র: বর্ণবাদ বিরোধী আন্দোলন</p>
+                    <p class="text-gray-700 mt-3 text-sm">দক্ষিণ আফ্রিকায় বর্ণবাদ (Apartheid) বিরোধী আন্দোলনের নেতা এবং দেশের প্রথম নির্বাচিত রাষ্ট্রপতি।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Nelson Mandela Apartheid</span></p>
+                </div>
+
+                <div class="monishi-card politics p-5">
+                    <h3 class="text-xl font-bold text-emerald-800 mb-2">মার্টিন লুথার কিং জুনিয়র (Martin Luther King Jr.)</h3>
+                    <p class="text-sm text-emerald-600 font-medium">ক্ষেত্র: মার্কিন যুক্তরাষ্ট্রের নাগরিক অধিকার আন্দোলন</p>
+                    <p class="text-gray-700 mt-3 text-sm">আমেরিকায় নাগরিক ও রাজনৈতিক অধিকারের জন্য অহিংস পথে সংগ্রাম করেন। তাঁর বিখ্যাত বক্তৃতা: "I Have a Dream"।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Martin Luther King I Have A Dream Speech</span></p>
+                </div>
+
+                <div class="monishi-card politics p-5">
+                    <h3 class="text-xl font-bold text-emerald-800 mb-2">বঙ্গবন্ধু শেখ মুজিবুর রহমান</h3>
+                    <p class="text-sm text-emerald-600 font-medium">ক্ষেত্র: বাংলাদেশের স্বাধীনতা</p>
+                    <p class="text-gray-700 mt-3 text-sm">বাংলাদেশের স্থপতি ও জাতির জনক। তাঁর নেতৃত্বে সশস্ত্র সংগ্রামের মাধ্যমে বাংলাদেশ স্বাধীন হয়।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Bangabandhu 7th March Speech</span></p>
+                </div>
+
+                <div class="monishi-card politics p-5">
+                    <h3 class="text-xl font-bold text-emerald-800 mb-2">কার্ল মার্ক্স (Karl Marx)</h3>
+                    <p class="text-sm text-emerald-600 font-medium">ক্ষেত্র: সমাজতন্ত্র ও অর্থনীতি</p>
+                    <p class="text-gray-700 mt-3 text-sm">দ্বন্দ্বমূলক বস্তুবাদ এবং শ্রেণী সংগ্রামের তত্ত্বের মাধ্যমে সমাজতন্ত্রের ভিত্তি তৈরি করেন। তাঁর রচিত 'Das Kapital'।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Karl Marx Das Kapital Class Struggle</span></p>
+                </div>
+
+                <div class="monishi-card politics p-5">
+                    <h3 class="text-xl font-bold text-emerald-800 mb-2">রাজা রামমোহন রায়</h3>
+                    <p class="text-sm text-emerald-600 font-medium">ক্ষেত্র: ভারতীয় সমাজ সংস্কার</p>
+                    <p class="text-gray-700 mt-3 text-sm">ব্রাহ্ম সমাজের প্রতিষ্ঠাতা এবং সতীদাহ প্রথা বিলুপ্তির আন্দোলনে নেতৃত্ব দেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Raja Rammohan Roy Sati Abolition</span></p>
+                </div>
+
+                <div class="monishi-card politics p-5">
+                    <h3 class="text-xl font-bold text-emerald-800 mb-2">বি. আর. আম্বেদকর (B. R. Ambedkar)</h3>
+                    <p class="text-sm text-emerald-600 font-medium">ক্ষেত্র: ভারতীয় সংবিধান ও দলিত অধিকার</p>
+                    <p class="text-gray-700 mt-3 text-sm">ভারতীয় সংবিধানের প্রধান স্থপতি। তিনি দলিত ও পিছিয়ে পড়া মানুষের অধিকার ও সামাজিক সমতার জন্য সংগ্রাম করেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">B. R. Ambedkar Indian Constitution</span></p>
+                </div>
+                
+                <div class="monishi-card politics p-5">
+                    <h3 class="text-xl font-bold text-emerald-800 mb-2">সুভাষ চন্দ্র বসু</h3>
+                    <p class="text-sm text-emerald-600 font-medium">ক্ষেত্র: ভারতীয় স্বাধীনতা আন্দোলন</p>
+                    <p class="text-gray-700 mt-3 text-sm">ভারতের স্বাধীনতা সংগ্রামে 'আজাদ হিন্দ ফৌজ' গঠন করেন। বিখ্যাত উক্তি: "তোমরা আমাকে রক্ত দাও, আমি তোমাদের স্বাধীনতা দেব।"</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Subhas Chandra Bose Azad Hind Fauj</span></p>
+                </div>
+                
+                <div class="monishi-card politics p-5">
+                    <h3 class="text-xl font-bold text-emerald-800 mb-2">ফাতিমা মেরনিসি (Fatema Mernissi)</h3>
+                    <p class="text-sm text-emerald-600 font-medium">ক্ষেত্র: ইসলামী নারীবাদ ও সমাজতত্ত্ব</p>
+                    <p class="text-gray-700 mt-3 text-sm">নারীর ভূমিকা নিয়ে গবেষণার মাধ্যমে ইসলামী নারীবাদের ক্ষেত্রে অবদান রাখেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Fatema Mernissi Islamic Feminism</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- বিভাগ ৫: ইসলামী ফিকহ ও হাদীস (Islamic Fiqh & Hadith) -->
+        <section class="mb-12" id="islamic-fiqh">
+            <h2 class="category-header text-2xl font-bold text-violet-700 mb-6 pb-2">৫. ইসলামী ফিকহ ও হাদীস (Islamic Fiqh & Hadith) </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- ফিকহ ও হাদীস স্কলার্স (প্রথম ৩০ জনের তালিকা থেকে) -->
+                
+                <div class="monishi-card islamic-fiqh p-5">
+                    <h3 class="text-xl font-bold text-violet-800 mb-2">ইমাম আবু হানিফা (রহঃ)</h3>
+                    <p class="text-sm text-violet-600 font-medium">ক্ষেত্র: ফিকহ (হানাফি মাযহাবের প্রতিষ্ঠাতা)</p>
+                    <p class="text-gray-700 mt-3 text-sm">ইজতিহাদ ও কিয়াসের মাধ্যমে ইসলামী আইনকে সুসংগঠিত করার জন্য পরিচিত।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Imam Abu Hanifa Fiqh and Qiyas</span></p>
+                </div>
+                
+                <div class="monishi-card islamic-fiqh p-5">
+                    <h3 class="text-xl font-bold text-violet-800 mb-2">ইমাম মালেক ইবনে আনাস (রহঃ)</h3>
+                    <p class="text-sm text-violet-600 font-medium">ক্ষেত্র: ফিকহ ও হাদীস (মালেকি মাযহাব)</p>
+                    <p class="text-gray-700 mt-3 text-sm">তাঁর হাদীস গ্রন্থ 'মুয়াত্তা' ইসলামী আইনের প্রাথমিক উৎসগুলোর অন্যতম।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Imam Malik Muwatta</span></p>
+                </div>
+                
+                <div class="monishi-card islamic-fiqh p-5">
+                    <h3 class="text-xl font-bold text-violet-800 mb-2">ইমাম বুখারী (রহঃ)</h3>
+                    <p class="text-sm text-violet-600 font-medium">ক্ষেত্র: হাদীস সংকলন</p>
+                    <p class="text-gray-700 mt-3 text-sm">হাদীসশাস্ত্রের সর্বশ্রেষ্ঠ সংকলন 'সহীহ বুখারী'-এর রচয়িতা।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Imam Bukhari Sahih Bukhari</span></p>
+                </div>
+
+                <div class="monishi-card islamic-fiqh p-5">
+                    <h3 class="text-xl font-bold text-violet-800 mb-2">ইমাম আল-নাবাবী (Al-Nawawi)</h3>
+                    <p class="text-sm text-violet-600 font-medium">ক্ষেত্র: হাদীস ও শাফেয়ী ফিকহ</p>
+                    <p class="text-gray-700 mt-3 text-sm">তাঁর 'রিয়াদুস সালিহীন' এবং 'শারহ সহীহ মুসলিম' বিশ্বজুড়ে পঠিত।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Imam Nawawi Riyad as-Salihin</span></p>
+                </div>
+                
+                <div class="monishi-card islamic-fiqh p-5">
+                    <h3 class="text-xl font-bold text-violet-800 mb-2">মুফতি মুহাম্মদ তাকি উসমানী</h3>
+                    <p class="text-sm text-violet-600 font-medium">ক্ষেত্র: ইসলামী অর্থনীতি ও ফিকহ</p>
+                    <p class="text-gray-700 mt-3 text-sm">আধুনিক ইসলামী ব্যাংকিং ও ফাইন্যান্সের ভিত্তি স্থাপনে তাঁর ভূমিকা গুরুত্বপূর্ণ।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Mufti Taqi Usmani Islamic Finance</span></p>
+                </div>
+                
+                <div class="monishi-card islamic-fiqh p-5">
+                    <h3 class="text-xl font-bold text-violet-800 mb-2">শায়খ ইউসুফ আল-কারযাভী (রহঃ)</h3>
+                    <p class="text-sm text-violet-600 font-medium">ক্ষেত্র: সমসাময়িক ফিকহ</p>
+                    <p class="text-gray-700 mt-3 text-sm">আধুনিক জীবনের প্রেক্ষাপটে 'ফিকহ আল-আউলায়িয়াত' (অগ্রাধিকারের ফিকহ) প্রবর্তনের জন্য পরিচিত।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Yusuf al-Qaradawi Fiqh Priorities</span></p>
+                </div>
+                
+                <div class="monishi-card islamic-fiqh p-5">
+                    <h3 class="text-xl font-bold text-violet-800 mb-2">আবূ দাউদ (Abu Dawud)</h3>
+                    <p class="text-sm text-violet-600 font-medium">ক্ষেত্র: হাদীস সংকলন</p>
+                    <p class="text-gray-700 mt-3 text-sm">সিহাহ সিত্তাহ-এর অন্যতম হাদীস গ্রন্থ 'সুনানে আবী দাউদ'-এর সংকলক।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Abu Dawud Sunan Hadith</span></p>
+                </div>
+
+                <div class="monishi-card islamic-fiqh p-5">
+                    <h3 class="text-xl font-bold text-violet-800 mb-2">মুহাম্মদ নাসিরুদ্দিন আল-আলবানী (রহঃ)</h3>
+                    <p class="text-sm text-violet-600 font-medium">ক্ষেত্র: হাদীস যাচাই ও গবেষণা</p>
+                    <p class="text-gray-700 mt-3 text-sm">বিংশ শতাব্দীতে হাদীস শাস্ত্রের সনদের বিশ্লেষণ ও যাচাই-বাছাইয়ে তাঁর গুরুত্বপূর্ণ অবদান রয়েছে।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Al-Albani Hadith Research</span></p>
+                </div>
+
+                <div class="monishi-card islamic-fiqh p-5">
+                    <h3 class="text-xl font-bold text-violet-800 mb-2">সাইয়েদ কুতুব (Sayyid Qutb)</h3>
+                    <p class="text-sm text-violet-600 font-medium">ক্ষেত্র: তাফসীর ও ইসলামী আন্দোলন</p>
+                    <p class="text-gray-700 mt-3 text-sm">তাঁর তাফসীর গ্রন্থ 'ফি যিলালিল কুরআন' আধুনিক ইসলামী চিন্তাধারায় গভীর প্রভাব ফেলে।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Sayyid Qutb Fi Zilal al-Quran</span></p>
+                </div>
+
+                <div class="monishi-card islamic-fiqh p-5">
+                    <h3 class="text-xl font-bold text-violet-800 mb-2">ইমাম খোমেইনি (Ayatollah Khomeini)</h3>
+                    <p class="text-sm text-violet-600 font-medium">ক্ষেত্র: শিয়া ফিকহ ও বিপ্লবী তত্ত্ব</p>
+                    <p class="text-gray-700 mt-3 text-sm">শিয়া মাযহাবের আইনশাস্ত্রে তাঁর গভীর জ্ঞান ছিল এবং তিনি ইরানের ইসলামী বিপ্লবের নেতৃত্ব দেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Ayatollah Khomeini Wilayat al-Faqih</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- বিভাগ ৬: ইসলামী দর্শন ও আধ্যাত্মিকতা (Islamic Philosophy & Spirituality) -->
+        <section class="mb-12" id="islamic-tassawuf">
+            <h2 class="category-header text-2xl font-bold text-pink-700 mb-6 pb-2">৬. ইসলামী দর্শন ও আধ্যাত্মিকতা (Islamic Philosophy & Spirituality) </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- দর্শন ও তাসাউফ স্কলার্স (প্রথম ৩০ জনের তালিকা থেকে) -->
+
+                <div class="monishi-card islamic-tassawuf p-5">
+                    <h3 class="text-xl font-bold text-pink-800 mb-2">ইমাম গাযালী (রহঃ)</h3>
+                    <p class="text-sm text-pink-600 font-medium">ক্ষেত্র: তাসাউফ ও দর্শন</p>
+                    <p class="text-gray-700 mt-3 text-sm">ইসলামী ধর্মতত্ত্ব, দর্শন ও সুফিবাদকে একত্রিত করে 'ইহয়াউল উলূম আল-দ্বীন' (Revival of Religious Sciences) রচনা করেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Imam Ghazali Ihya Ulum al-Din</span></p>
+                </div>
+
+                <div class="monishi-card islamic-tassawuf p-5">
+                    <h3 class="text-xl font-bold text-pink-800 mb-2">আল-হাসান আল-বাসরি (Al-Hasan al-Basri)</h3>
+                    <p class="text-sm text-pink-600 font-medium">ক্ষেত্র: প্রাথমিক যুগের তাসাউফ</p>
+                    <p class="text-gray-700 mt-3 text-sm">প্রাথমিক যুগের একজন প্রভাবশালী তাপস এবং ফিকহের ভিত্তি স্থাপনকারীদের অন্যতম।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Al-Hasan al-Basri Biography</span></p>
+                </div>
+                
+                <div class="monishi-card islamic-tassawuf p-5">
+                    <h3 class="text-xl font-bold text-pink-800 mb-2">রাবিয়া আল-আদাবিয়্যা (Rabia Al-Adawiyya)</h3>
+                    <p class="text-sm text-pink-600 font-medium">ক্ষেত্র: নারী সুফি, ঐশ্বরিক প্রেম</p>
+                    <p class="text-gray-700 mt-3 text-sm">নিঃস্বার্থভাবে সৃষ্টিকর্তার প্রতি প্রেমের ধারণা প্রবর্তন করেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Rabia Al-Adawiyya Divine Love</span></p>
+                </div>
+
+                <div class="monishi-card islamic-tassawuf p-5">
+                    <h3 class="text-xl font-bold text-pink-800 mb-2">আব্দুল কাদির জিলানী (রহঃ)</h3>
+                    <p class="text-sm text-pink-600 font-medium">ক্ষেত্র: সুফিবাদ ও হাম্বলী ফিকহ</p>
+                    <p class="text-gray-700 mt-3 text-sm">কাদেরিয়া তরিকার প্রতিষ্ঠাতা, আধ্যাত্মিক পথের পথিকদের জন্য গুরুত্বপূর্ণ ব্যক্তিত্ব।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Abdul Qadir Gilani Qadiriyya</span></p>
+                </div>
+
+                <div class="monishi-card islamic-tassawuf p-5">
+                    <h3 class="text-xl font-bold text-pink-800 mb-2">মুহিউদ্দিন ইবনুল আরাবী (Ibn Arabi)</h3>
+                    <p class="text-sm text-pink-600 font-medium">ক্ষেত্র: আধ্যাত্মিক দর্শন</p>
+                    <p class="text-gray-700 mt-3 text-sm">'ওয়াহদাতুল উজুদ' (অস্তিত্বের ঐক্য) তত্ত্বের মাধ্যমে সুফিবাদে গভীর প্রভাব ফেলেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Ibn Arabi Wahdat al-Wujud</span></p>
+                </div>
+                
+                <div class="monishi-card islamic-tassawuf p-5">
+                    <h3 class="text-xl font-bold text-pink-800 mb-2">মুহাম্মদ ইকবাল (Muhammad Iqbal)</h3>
+                    <p class="text-sm text-pink-600 font-medium">ক্ষেত্র: ইসলামী দর্শন ও কবিতা</p>
+                    <p class="text-gray-700 mt-3 text-sm">তাঁর 'খুদি' (Selfhood) বা আত্ম-সচেতনতার দর্শন মুসলমানদের মধ্যে জাতীয় চেতনা জাগায়।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Muhammad Iqbal Khudi Philosophy</span></p>
+                </div>
+
+                <!-- আধুনিক দাওয়া ও শিক্ষা -->
+                <div class="monishi-card islamic-tassawuf p-5">
+                    <h3 class="text-xl font-bold text-pink-800 mb-2">শায়খ হামযা ইউসুফ (Shaykh Hamza Yusuf)</h3>
+                    <p class="text-sm text-pink-600 font-medium">ক্ষেত্র: ঐতিহ্যবাহী ইসলামী জ্ঞান ও দাওয়া</p>
+                    <p class="text-gray-700 mt-3 text-sm">পশ্চিমা বিশ্বে ইসলামী জ্ঞানকে আধুনিক প্রেক্ষিতে তুলে ধরার জন্য পরিচিত।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Hamza Yusuf Traditional Islam</span></p>
+                </div>
+                
+                <div class="monishi-card islamic-tassawuf p-5">
+                    <h3 class="text-xl font-bold text-pink-800 mb-2">শায়খ উমর সুলেইমান (Shaykh Omar Suleiman)</h3>
+                    <p class="text-sm text-pink-600 font-medium">ক্ষেত্র: দাওয়া ও সামাজিক বিচার</p>
+                    <p class="text-gray-700 mt-3 text-sm">আধুনিক সামাজিক ও রাজনৈতিক প্রেক্ষাপটে ইসলামী শিক্ষা ও ন্যায়বিচারের গুরুত্ব প্রচার করেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Omar Suleiman Yaqeen Institute</span></p>
+                </div>
+                
+                <div class="monishi-card islamic-tassawuf p-5">
+                    <h3 class="text-xl font-bold text-pink-800 mb-2">নওমান আলী খান</h3>
+                    <p class="text-sm text-pink-600 font-medium">ক্ষেত্র: কুরআন ও তাফসীর (আধুনিক ভাষ্য)</p>
+                    <p class="text-gray-700 mt-3 text-sm">কুরআনের ভাষাগত গভীরতা ও অলঙ্কারশাস্ত্রকে আধুনিক বক্তৃতার মাধ্যমে জনপ্রিয় করেন।</p>
+                    <p class="text-xs italic text-gray-500 mt-2">মূল শব্দ: <span class="font-bold">Nouman Ali Khan Bayyinah Tafsir</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ফুটনোট ও নির্দেশিকা -->
+        <footer class="text-center mt-12 p-6 bg-gray-200 rounded-xl">
+            <h3 class="text-lg font-bold text-gray-800 mb-2">বিস্তারিত ডেমো লিঙ্কের জন্য নির্দেশিকা</h3>
+            <p class="text-sm text-gray-700 mb-4">
+                এই প্ল্যাটফর্মের বিধিনিষেধের কারণে সরাসরি কোনো বাইরের লিঙ্ক প্রদান করা সম্ভব নয়।
+                উপরে প্রতিটি ব্যক্তিত্বের নিচে <span class="font-bold text-red-600">মূল শব্দ (Key Word)</span> দেওয়া হয়েছে।
+                এই শব্দটি হুবহু কপি করে গুগল (Google), ইউটিউব (YouTube), অথবা কোনো ডিজিটাল লাইব্রেরিতে অনুসন্ধান করুন।
+                যেমন, "Imam Ghazali Ihya Ulum al-Din" সার্চ করলে আপনি তাঁর কাজের বিস্তারিত বিবরণ বা ডেমো লেকচার সহজেই খুঁজে পাবেন।
+            </p>
+            <p class="text-sm text-gray-500">জ্ঞান ও প্রজ্ঞা প্রজন্ম থেকে প্রজন্মান্তরে সঞ্চারিত হোক।</p>
+        </footer>
+    </div>
+
+    <!-- Script for Header Responsiveness and Placeholder Auth -->
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Placeholder functionality for the authentication button
+        const authButtons = [
+            document.getElementById('open-auth-modal-btn'),
+            document.getElementById('open-auth-modal-btn-mobile')
+        ];
+        
+        authButtons.forEach(btn => {
+            if (btn) {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (!mobileMenu.classList.contains('hidden')) {
+                         mobileMenu.classList.add('hidden');
+                    }
+                    // This is where Firebase/Auth logic would go in a real app
+                });
+            }
+        });
+    </script>
+</body>
+</html>

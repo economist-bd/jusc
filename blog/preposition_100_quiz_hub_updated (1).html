@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MH Academy - 100 Preposition Quiz Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Hind Siliguri', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0f172a;
+            color: #f1f5f9;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+            padding: 20px;
+        }
+
+        body::before, body::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(34, 211, 238, 0.15) 0%, rgba(0,0,0,0) 70%);
+            filter: blur(50px);
+            z-index: 0;
+        }
+        body::before { top: -50px; left: -50px; }
+        body::after { bottom: -50px; right: -50px; }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background: rgba(30, 41, 59, 0.45);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            z-index: 10;
+            position: relative;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 15px;
+        }
+
+        header h1 {
+            font-size: 24px;
+            color: #22d3ee;
+            text-shadow: 0 0 10px rgba(34, 211, 238, 0.3);
+            margin-bottom: 5px;
+        }
+
+        header p {
+            color: #94a3b8;
+            font-size: 14px;
+        }
+
+        /* Rules Button */
+        .rules-btn-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .rules-btn {
+            background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 12px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .rules-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(139, 92, 246, 0.5);
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+        .modal-content {
+            background: rgba(30, 41, 59, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            width: 100%;
+            max-width: 600px;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 25px;
+            position: relative;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+        }
+        .close-modal {
+            position: absolute;
+            top: 15px; right: 15px;
+            background: rgba(255,255,255,0.1);
+            border: none;
+            width: 30px; height: 30px;
+            border-radius: 50%;
+            color: #fff;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background 0.2s;
+        }
+        .close-modal:hover { background: rgba(244, 63, 94, 0.8); }
+
+        .rules-title {
+            color: #22d3ee;
+            font-size: 22px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
+        }
+        .rules-section { margin-bottom: 20px; }
+        .rules-section h3 { color: #facc15; font-size: 18px; margin-bottom: 8px; }
+        .rules-section ul { list-style-type: none; padding-left: 0; }
+        .rules-section li { margin-bottom: 10px; font-size: 15px; color: #cbd5e1; position: relative; padding-left: 20px;}
+        .rules-section li::before { content: '👉'; position: absolute; left: 0; top: 0; font-size: 12px; }
+        .rule-highlight { color: #fff; font-weight: 600; background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px; }
+        .rule-trick { background: rgba(16, 185, 129, 0.1); border-left: 4px solid #10b981; padding: 10px; border-radius: 0 8px 8px 0; margin-top: 10px; font-size: 14px; color: #a7f3d0; }
+
+        /* Progress Bar */
+        .progress-container { margin-bottom: 25px; }
+        .progress-text { display: flex; justify-content: space-between; font-size: 14px; color: #cbd5e1; margin-bottom: 8px; }
+        .progress-bar-bg { width: 100%; height: 8px; background: rgba(255, 255, 255, 0.05); border-radius: 10px; overflow: hidden; }
+        .progress-bar-fill { width: 1%; height: 100%; background: linear-gradient(90deg, #22d3ee, #818cf8); border-radius: 10px; transition: width 0.3s ease; box-shadow: 0 0 8px rgba(34, 211, 238, 0.5); }
+
+        /* Main Quiz Box */
+        .quiz-box { min-height: 250px; }
+        .question-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 20px; margin-bottom: 20px; }
+        .question-num { font-size: 12px; text-transform: uppercase; color: #818cf8; font-weight: 700; letter-spacing: 1px; margin-bottom: 8px; }
+        .question-eng { font-size: 20px; font-weight: 600; color: #ffffff; margin-bottom: 10px; letter-spacing: 0.5px; }
+        .question-bn { font-size: 15px; color: #94a3b8; margin-bottom: 5px; }
+
+        /* Option Buttons */
+        .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
+        @media (max-width: 500px) { .options-grid { grid-template-columns: 1fr; } }
+        .option-btn { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 14px 20px; color: #f1f5f9; font-size: 18px; font-weight: 600; cursor: pointer; transition: all 0.2s ease; text-align: center; }
+        .option-btn:hover:not(:disabled) { background: rgba(34, 211, 238, 0.1); border-color: #22d3ee; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(34, 211, 238, 0.15); }
+        .option-btn.correct { background: rgba(16, 185, 129, 0.2) !important; border-color: #10b981 !important; color: #34d399 !important; box-shadow: 0 0 12px rgba(16, 185, 129, 0.2); }
+        .option-btn.wrong { background: rgba(244, 63, 94, 0.2) !important; border-color: #f43f5e !important; color: #fb7185 !important; box-shadow: 0 0 12px rgba(244, 63, 94, 0.2); }
+
+        /* Rationale Panel */
+        .rationale-panel { background: rgba(129, 140, 248, 0.08); border-left: 4px solid #818cf8; border-radius: 0 12px 12px 0; padding: 15px; margin-top: 20px; display: none; animation: fadeIn 0.3s ease; }
+        .rationale-title { font-weight: 600; color: #818cf8; font-size: 14px; margin-bottom: 4px; }
+        .rationale-text { font-size: 14px; color: #cbd5e1; line-height: 1.5; }
+
+        /* Controls Area */
+        .controls-row { display: flex; justify-content: space-between; align-items: center; margin-top: 25px; gap: 10px; }
+        .nav-btn { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 10px 20px; border-radius: 10px; color: #cbd5e1; font-weight: 600; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; gap: 5px; }
+        .nav-btn:hover:not(:disabled) { background: rgba(255, 255, 255, 0.1); color: #fff; }
+        .nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+        .primary-action-btn { background: linear-gradient(135deg, #22d3ee, #818cf8); border: none; padding: 11px 24px; border-radius: 10px; color: #0f172a; font-weight: 700; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 4px 12px rgba(34, 211, 238, 0.2); }
+        .primary-action-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(34, 211, 238, 0.35); }
+        .grid-toggle-btn { background: transparent; border: 1px dashed rgba(255, 255, 255, 0.2); padding: 10px 15px; border-radius: 10px; color: #94a3b8; font-size: 13px; cursor: pointer; transition: all 0.2s ease; }
+        .grid-toggle-btn:hover { border-color: #22d3ee; color: #22d3ee; }
+
+        /* Grid */
+        .questions-grid-container { margin-top: 25px; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 20px; display: none; }
+        .grid-title { font-size: 14px; color: #94a3b8; margin-bottom: 12px; display: flex; justify-content: space-between; }
+        .q-grid { display: grid; grid-template-columns: repeat(10, 1fr); gap: 8px; max-height: 200px; overflow-y: auto; padding-right: 5px; }
+        @media (max-width: 600px) { .q-grid { grid-template-columns: repeat(6, 1fr); } }
+        .q-grid::-webkit-scrollbar { width: 4px; }
+        .q-grid::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); }
+        .q-grid::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
+        .grid-dot { aspect-ratio: 1; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; font-size: 11px; font-weight: 600; color: #94a3b8; display: flex; justify-content: center; align-items: center; cursor: pointer; transition: all 0.2s ease; }
+        .grid-dot:hover { border-color: #22d3ee; color: #fff; }
+        .grid-dot.current { background: rgba(129, 140, 248, 0.2) !important; border-color: #818cf8 !important; color: #fff !important; box-shadow: 0 0 8px rgba(129, 140, 248, 0.4); }
+        .grid-dot.answered-correct { background: #10b981 !important; border-color: #10b981 !important; color: #fff !important; }
+        .grid-dot.answered-wrong { background: #f43f5e !important; border-color: #f43f5e !important; color: #fff !important; }
+
+        /* Summary Dashboard View */
+        .summary-view { text-align: center; display: none; animation: fadeIn 0.4s ease; }
+        .summary-score-circle { width: 140px; height: 140px; border-radius: 50%; background: rgba(34, 211, 238, 0.05); border: 4px solid #22d3ee; display: flex; flex-direction: column; justify-content: center; align-items: center; margin: 20px auto; box-shadow: 0 0 20px rgba(34, 211, 238, 0.2); }
+        .summary-score-num { font-size: 36px; font-weight: 700; color: #ffffff; }
+        .summary-score-total { font-size: 14px; color: #94a3b8; }
+        .summary-title { font-size: 24px; color: #22d3ee; margin-bottom: 10px; font-weight: 700; }
+        .summary-feedback { font-size: 16px; color: #cbd5e1; margin-bottom: 25px; line-height: 1.6; }
+        .stats-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px; }
+        .stat-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); padding: 15px; border-radius: 12px; }
+        .stat-val-correct { font-size: 22px; font-weight: 700; color: #10b981; }
+        .stat-val-wrong { font-size: 22px; font-weight: 700; color: #f43f5e; }
+        .stat-label { font-size: 12px; color: #94a3b8; margin-top: 4px; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Custom Scrollbar for Modal */
+        .modal-content::-webkit-scrollbar { width: 6px; }
+        .modal-content::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); border-radius: 10px; }
+        .modal-content::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- HEADER PANEL -->
+        <header>
+            <h1>MH Academy</h1>
+            <p>In & On Preposition Challenge — ১০০টি প্রশ্নের মেগা কুইজ</p>
+        </header>
+
+        <!-- RULES BUTTON -->
+        <div class="rules-btn-container">
+            <button class="rules-btn" onclick="openRulesModal()">
+                <span>📖</span> In এবং On এর নিয়মাবলি
+            </button>
+        </div>
+
+        <!-- PROGRESS CONTAINER -->
+        <div class="progress-container" id="progress-area">
+            <div class="progress-text">
+                <span id="progress-count">প্রশ্ন ১ / ১০০</span>
+                <span id="score-counter">স্কোর: ০</span>
+            </div>
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="progress-bar"></div>
+            </div>
+        </div>
+
+        <!-- MAIN QUIZ INTERFACE -->
+        <div class="quiz-box" id="quiz-view">
+            <div class="question-card">
+                <div class="question-num" id="q-number-tag">QUESTION #1</div>
+                <div class="question-eng" id="q-text-eng">Loading question...</div>
+                <div class="question-bn" id="q-text-bn">Loading translation...</div>
+            </div>
+
+            <!-- Options buttons -->
+            <div class="options-grid">
+                <button class="option-btn" onclick="selectAnswer('in')" id="btn-in">in</button>
+                <button class="option-btn" onclick="selectAnswer('on')" id="btn-on">on</button>
+            </div>
+
+            <!-- Rationale container -->
+            <div class="rationale-panel" id="rationale-box">
+                <div class="rationale-title" id="rationale-status">সঠিক উত্তর!</div>
+                <div class="rationale-text" id="rationale-desc">Explanation here.</div>
+            </div>
+
+            <!-- Bottom Navigation Bar -->
+            <div class="controls-row">
+                <button class="nav-btn" id="prev-btn" onclick="navigateQuestion(-1)" disabled>
+                    ← পূর্ববর্তী
+                </button>
+                <button class="grid-toggle-btn" onclick="toggleGrid()">
+                    🔢 প্রশ্ন গ্রিড (১-১০০)
+                </button>
+                <button class="primary-action-btn" id="next-btn" onclick="navigateQuestion(1)" style="display: none;">
+                    পরবর্তী প্রশ্ন →
+                </button>
+                <button class="primary-action-btn" id="finish-btn" onclick="finishQuiz()" style="display: none; background: linear-gradient(135deg, #10b981, #059669); color: white;">
+                    কুইজ শেষ করুন 🏁
+                </button>
+            </div>
+        </div>
+
+        <!-- NAVIGATION GRID VIEW PANEL -->
+        <div class="questions-grid-container" id="grid-panel">
+            <div class="grid-title">
+                <span>যেকোনো প্রশ্নে সরাসরি লাফ দিন:</span>
+                <span style="font-size: 11px;">🟢 সবুজ = সঠিক | 🔴 লাল = ভুল</span>
+            </div>
+            <div class="q-grid" id="dots-grid-target">
+                <!-- Javascript will inject 100 item buttons here -->
+            </div>
+        </div>
+
+        <!-- SUMMARY DASHBOARD RESULTS -->
+        <div class="summary-view" id="summary-view">
+            <div class="summary-title">অভিনন্দন! Challenge Completed! 🎉</div>
+            <p class="summary-feedback" id="summary-msg">আপনি সফলভাবে ১০০টি প্রশ্নের প্রিপজিশন টেস্ট সম্পন্ন করেছেন।</p>
+            
+            <div class="summary-score-circle">
+                <div class="summary-score-num" id="final-score-value">0</div>
+                <div class="summary-score-total">১০০ এর মধ্যে</div>
+            </div>
+
+            <div class="stats-row">
+                <div class="stat-card">
+                    <div class="stat-val-correct" id="stat-correct-count">0</div>
+                    <div class="stat-label">সঠিক উত্তর</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-val-wrong" id="stat-wrong-count">0</div>
+                    <div class="stat-label">ভুল উত্তর</div>
+                </div>
+            </div>
+
+            <button class="primary-action-btn" onclick="restartQuiz()" style="width: 100%;">
+                আবার শুরু করুন 🔄
+            </button>
+        </div>
+    </div>
+
+    <!-- RULES MODAL -->
+    <div class="modal-overlay" id="rulesModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeRulesModal()">✕</button>
+            <h2 class="rules-title">📖 In এবং On ব্যবহারের সহজ নিয়মাবলি</h2>
+            
+            <div class="rules-section">
+                <h3>১. "In" এর ব্যবহার (ভেতরে বা বড় সময়)</h3>
+                <p style="color: #cbd5e1; font-size: 14px; margin-bottom: 10px;">In শব্দটির মানে হলো কোনো কিছুর "ভেতরে" বা "মাঝে" থাকা।</p>
+                <ul>
+                    <li><span class="rule-highlight">জায়গা (কোথায়?):</span> যখন কোনো জিনিস চারদিক দিয়ে ঘেরা কোনো কিছুর ভেতরে থাকে (যেমন- The cat is in the box, The fish is in the pond)। বড় শহর বা দেশের নামের আগেও In বসে (in Dhaka, in Bangladesh)।</li>
+                    <li><span class="rule-highlight">সময় (কখন?):</span> বড় কোনো সময়ের কথা বললে (যেমন- মাস, বছর বা ঋতু) In বসে। (যেমন- in January, in 1971, in winter)।</li>
+                </ul>
+                <div class="rule-trick">💡 মজার ট্রিক: বড় জায়গা (দেশ, শহর) বা বড় সময় (মাস, বছর) হলে চোখ বন্ধ করে In বসিয়ে দেবে!</div>
+            </div>
+
+            <div class="rules-section">
+                <h3>২. "On" এর ব্যবহার (ওপরে বা নির্দিষ্ট দিন)</h3>
+                <p style="color: #cbd5e1; font-size: 14px; margin-bottom: 10px;">On মানে হলো কোনো কিছুর "ওপরে" থাকা, তবে অবশ্যই ছুঁয়ে বা স্পর্শ করে থাকতে হবে!</p>
+                <ul>
+                    <li><span class="rule-highlight">জায়গা (কোথায়?):</span> টেবিল বা মেঝের ওপরে (on the table), দেয়ালের গায়ে (on the wall) অথবা রাস্তার ওপরে (on the road)।</li>
+                    <li><span class="rule-highlight">সময় (কখন?):</span> নির্দিষ্ট কোনো দিন বা তারিখ বোঝাতে সবসময় On বসে। বারের নাম (on Friday), নির্দিষ্ট তারিখ (on the 15th of March), বিশেষ দিন (on Eid day)।</li>
+                </ul>
+                <div class="rule-trick">💡 মজার ট্রিক: নির্দিষ্ট দিন, তারিখ, বার এবং কোনো কিছুর ঠিক ওপরে ছুঁয়ে থাকলে On বসে!</div>
+            </div>
+
+            <div class="rules-section">
+                <h3>৩. মজার ধাঁধা: গাড়ির ক্ষেত্রে কী হবে?</h3>
+                <ul>
+                    <li><span class="rule-highlight">On বসে:</span> যেসব গাড়ির ভেতরে তুমি উঠে দাঁড়াতে বা হাঁটাহাঁটি করতে পারো, সেখানে on বসে! (যেমন: on the bus, on the train, on the plane)।</li>
+                    <li><span class="rule-highlight">In বসে:</span> যেসব গাড়ির ভেতরে শুধু বসে থাকতে হয়, হাঁটা যায় না, সেখানে in বসে! (যেমন: in the car, in the taxi)।</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Injecting the 100 clean generated dataset questions JSON objects
+        const questionsData = [{"id": 1, "eng": "The cat is ___ the box.", "bn": "বিড়ালটি বাক্সের ___ আছে।", "options": ["in", "on"], "correct": "in", "rationale": "বাক্স একটি চারদিক ঘেরা জায়গা বা পাত্র, তাই এর ভেতরে বোঝাতে 'in' বসে।"}, {"id": 2, "eng": "My keys are ___ my bag.", "bn": "আমার চাবিগুলো আমার ব্যাগের ___ আছে।", "options": ["in", "on"], "correct": "in", "rationale": "ব্যাগের ভেতরের আবদ্ধ অংশ বোঝাতে 'in' ব্যবহার করা হয়।"}, {"id": 3, "eng": "The fish is swimming ___ the pond.", "bn": "মাছটি পুকুরের ___ সাঁতার কাটছে।", "options": ["in", "on"], "correct": "in", "rationale": "পানির ভেতরে অবস্থান বোঝাতে সবসময় 'in' ব্যবহার করা হয়।"}, {"id": 4, "eng": "Mom is cooking ___ the kitchen.", "bn": "মা রান্নাঘরের ___ রান্না করছেন।", "options": ["in", "on"], "correct": "in", "rationale": "রুম বা ঘরের চারদিকের সীমানার ভেতরে বোঝাতে 'in' বসে।"}, {"id": 5, "eng": "The pen is ___ the drawer.", "bn": "কলমটি ড্রয়ারের ___ আছে।", "options": ["in", "on"], "correct": "in", "rationale": "ড্রয়ারের ভেতরের বন্ধ জায়গায় কোনো কিছু থাকলে 'in' বসে।"}, {"id": 6, "eng": "There is some milk ___ the glass.", "bn": "গ্লাসের ___ কিছুটা দুধ আছে।", "options": ["in", "on"], "correct": "in", "rationale": "গ্লাস বা যেকোনো পাত্রের ভেতরের তরল বা বস্তুর ক্ষেত্রে 'in' বসে।"}, {"id": 7, "eng": "He has a coin ___ his pocket.", "bn": "তার পকেটের ___ একটি মুদ্রা আছে।", "options": ["in", "on"], "correct": "in", "rationale": "পকেটের ভেতরের আবদ্ধ অংশে কিছু থাকলে 'in' বসে।"}, {"id": 8, "eng": "The toys are ___ the basket.", "bn": "খেলনাগুলো ঝুড়ির ___ আছে।", "options": ["in", "on"], "correct": "in", "rationale": "ঝুড়ি একটি ধারক বা পাত্র, তাই এর ভেতরের জিনিসের জন্য 'in' বসে।"}, {"id": 9, "eng": "We stood ___ a long queue.", "bn": "আমরা একটি দীর্ঘ লাইনের ___ দাঁড়িয়েছিলাম।", "options": ["in", "on"], "correct": "in", "rationale": "লাইন বা সারির (queue/row) মাঝে অবস্থান বোঝাতে 'in' বসে।"}, {"id": 10, "eng": "The letters are ___ the envelope.", "bn": "চিঠিগুলো খামের ___ আছে।", "options": ["in", "on"], "correct": "in", "rationale": "খামের ভেতরে কোনো কিছু সম্পূর্ণ আবৃত থাকলে 'in' বসে।"}, {"id": 11, "eng": "The book is ___ the table.", "bn": "বইটি টেবিলের ___ আছে।", "options": ["in", "on"], "correct": "on", "rationale": "টেবিলের মতো সমতল পৃষ্ঠের ওপরে স্পর্শ করে থাকলে 'on' বসে।"}, {"id": 12, "eng": "The clock is hanging ___ the wall.", "bn": "ঘড়িটি দেয়ালের ___ ঝুলছে।", "options": ["in", "on"], "correct": "on", "rationale": "দেয়ালের পৃষ্ঠের গায়ে লেগে থাকা বা ঝুলে থাকা বোঝাতে 'on' বসে।"}, {"id": 13, "eng": "The laptop is ___ the desk.", "bn": "ল্যাপটপটি ডেস্কের ___ রাখা আছে।", "options": ["in", "on"], "correct": "on", "rationale": "ডেস্কের ওপরের তলে বা পৃষ্ঠে কোনো কিছু স্পর্শ করে থাকলে 'on' বসে।"}, {"id": 14, "eng": "The apple fell ___ the floor.", "bn": "আপেলটি মেঝের ___ পড়ল।", "options": ["in", "on"], "correct": "on", "rationale": "মেঝে বা ফ্লোরের মতো সমতল পৃষ্ঠের ওপরে বোঝালে 'on' বসে।"}, {"id": 15, "eng": "The spider is walking ___ the ceiling.", "bn": "মাকড়সাটি ছাদের ভেতরের অংশের (ceiling) ___ হাঁটছে।", "options": ["in", "on"], "correct": "on", "rationale": "সিলিং বা ছাদের ভেতরের তলে লেগে থাকা বোঝাতে 'on' বসে।"}, {"id": 16, "eng": "Please write your name ___ the paper.", "bn": "দয়া করে কাগজের ___ তোমার নাম লেখো।", "options": ["in", "on"], "correct": "on", "rationale": "কাগজের পৃষ্ঠের বা পাতার ওপরে লেখার ক্ষেত্রে 'on' বসে।"}, {"id": 17, "eng": "The plates are ___ the shelf.", "bn": "প্লেটগুলো তাকের (shelf) ___ আছে।", "options": ["in", "on"], "correct": "on", "rationale": "তাকের সমতল উপরিভাগে কোনো কিছু রাখা থাকলে 'on' ব্যবহার করা হয়।"}, {"id": 18, "eng": "The cat is sitting ___ the mat.", "bn": "বিড়ালটি মাদুরের ___ বসে আছে।", "options": ["in", "on"], "correct": "on", "rationale": "মাদুর বা ম্যাটের ওপরের তলে বসে থাকার কারণে 'on' বসে।"}, {"id": 19, "eng": "There is a fly ___ your nose!", "bn": "তোমার নাকের ___ একটি মাছি বসেছে!", "options": ["in", "on"], "correct": "on", "rationale": "শরীরের কোনো অংশের ত্বকের উপরিভাগে কিছু স্পর্শ করে থাকলে 'on' বসে।"}, {"id": 20, "eng": "The shoes are ___ the doormat.", "bn": "জুতো জোড়া পাপোশের ___ আছে।", "options": ["in", "on"], "correct": "on", "rationale": "পাপোশের উপরিভাগে কোনো কিছু রাখলে 'on' বসে।"}, {"id": 21, "eng": "My birthday is ___ January.", "bn": "আমার জন্মদিন জানুয়ারী মাসে (January) ___।", "options": ["in", "on"], "correct": "in", "rationale": "যেকোনো মাসের নামের আগে সবসময় 'in' বসে।"}, {"id": 22, "eng": "We will meet ___ Friday.", "bn": "আমরা শুক্রবার (Friday) ___ দেখা করব।", "options": ["in", "on"], "correct": "on", "rationale": "সপ্তাহের নির্দিষ্ট যেকোনো বারের নামের আগে 'on' বসে।"}, {"id": 23, "eng": "Bangladesh became independent ___ 1971.", "bn": "বাংলাদেশ ১৯৭১ সালে (1971) ___ স্বাধীন হয়।", "options": ["in", "on"], "correct": "in", "rationale": "যেকোনো বছরের সংখ্যার আগে সবসময় 'in' বসে।"}, {"id": 24, "eng": "The exam starts ___ the 5th of June.", "bn": "পরীক্ষাটি জুনের ৫ তারিখে (5th of June) ___ শুরু হবে।", "options": ["in", "on"], "correct": "on", "rationale": "নির্দিষ্ট কোনো তারিখ বা ডেট বোঝাতে 'on' ব্যবহার করা হয়।"}, {"id": 25, "eng": "We wear warm sweaters ___ winter.", "bn": "আমরা শীতকালে (winter) ___ গরম সোয়েটার পরি।", "options": ["in", "on"], "correct": "in", "rationale": "যেকোনো ঋতুর (Season) নামের আগে 'in' বসে।"}, {"id": 26, "eng": "I get up early ___ the morning.", "bn": "আমি সকালে ___ খুব ভোরে উঠি।", "options": ["in", "on"], "correct": "in", "rationale": "'the morning', 'the afternoon', 'the evening' এর আগে 'in' বসে।"}, {"id": 27, "eng": "Children receive gifts ___ Eid day.", "bn": "ঈদের দিনে (Eid day) ___ শিশুরা উপহার পায়।", "options": ["in", "on"], "correct": "on", "rationale": "নির্দিষ্ট কোনো বিশেষ উৎসবের দিনের নামের আগে 'on' বসে।"}, {"id": 28, "eng": "The flowers bloom ___ spring.", "bn": "বসন্তকালে (spring) ___ ফুল ফোটে।", "options": ["in", "on"], "correct": "in", "rationale": "ঋতুর নামের আগে সবসময় 'in' বসে।"}, {"id": 29, "eng": "What are you doing ___ New Year's Day?", "bn": "নববর্ষের দিনে (New Year's Day) ___ তুমি কী করছ?", "options": ["in", "on"], "correct": "on", "rationale": "নির্দিষ্ট যেকোনো উৎসব বা বিশেষ দিবসের আগে 'on' বসে।"}, {"id": 30, "eng": "The sun sets ___ the evening.", "bn": "সন্ধ্যায় (the evening) ___ সূর্য অস্ত যায়।", "options": ["in", "on"], "correct": "in", "rationale": "দিনের অংশ 'the evening' এর আগে 'in' প্রিপজিশনটি বসে।"}, {"id": 31, "eng": "He was born ___ the 21st century.", "bn": "তিনি একবিংশ শতাব্দীতে (21st century) ___ জন্মগ্রহণ করেন।", "options": ["in", "on"], "correct": "in", "rationale": "শতাব্দী বা দীর্ঘ সময়ের যুগের আগে সবসময় 'in' বসে।"}, {"id": 32, "eng": "We went to the beach ___ a sunny Sunday.", "bn": "একটি রৌদ্রোজ্জ্বল রবিবারে (Sunday) ___ আমরা সৈকতে গিয়েছিলাম।", "options": ["in", "on"], "correct": "on", "rationale": "বারের নামের আগে কোনো বিশেষণ থাকলেও নির্দিষ্ট দিন হওয়ার কারণে 'on' বসে।"}, {"id": 33, "eng": "The company was founded ___ 2015.", "bn": "কোম্পানিটি ২০১৫ সালে (2015) ___ প্রতিষ্ঠিত হয়েছিল।", "options": ["in", "on"], "correct": "in", "rationale": "বছরের আগে সবসময় 'in' বসে।"}, {"id": 34, "eng": "School is closed ___ Independence Day.", "bn": "স্বাধীনতা দিবসে (Independence Day) ___ স্কুল বন্ধ থাকে।", "options": ["in", "on"], "correct": "on", "rationale": "যেকোনো নির্দিষ্ট জাতীয় বা বিশেষ দিবসের আগে 'on' বসে।"}, {"id": 35, "eng": "It gets very hot ___ July.", "bn": "জুলাই মাসে (July) ___ আবহাওয়া খুব গরম হয়ে যায়।", "options": ["in", "on"], "correct": "in", "rationale": "মাসের নামের পূর্বে প্রিপজিশন হিসেবে 'in' বসে।"}, {"id": 36, "eng": "The children are riding ___ the school bus.", "bn": "শিশুরা স্কুল বাসের (bus) ___ চড়ছে।", "options": ["in", "on"], "correct": "on", "rationale": "বাসের ভেতর উঠে দাঁড়ানো ও হাঁটাচলা করা যায়, তাই বাসের ক্ষেত্রে 'on' বসে।"}, {"id": 37, "eng": "We traveled to Sylhet ___ a private car.", "bn": "আমরা একটি ব্যক্তিগত কারের (car) ___ সিলেট গিয়েছিলাম।", "options": ["in", "on"], "correct": "in", "rationale": "কার বা ট্যাক্সির ভেতরে সোজা হয়ে হাঁটা যায় না, শুধু বসে থাকতে হয়, তাই 'in' বসে।"}, {"id": 38, "eng": "He is going to work ___ a bicycle.", "bn": "সে সাইকেলে (bicycle) ___ চড়ে কাজে যাচ্ছে।", "options": ["in", "on"], "correct": "on", "rationale": "সাইকেল, মোটরসাইকেল বা ঘোড়ার ওপরে চড়ে বসার ক্ষেত্রে 'on' বসে।"}, {"id": 39, "eng": "There are hundreds of passengers ___ the train.", "bn": "ট্রেনের (train) ___ শত শত যাত্রী আছেন।", "options": ["in", "on"], "correct": "on", "rationale": "ট্রেনের বগির ভেতর হাঁটাচলা করা সম্ভব, তাই ট্রেনের ক্ষেত্রে 'on' বসে।"}, {"id": 40, "eng": "She is sitting ___ the taxi.", "bn": "সে ট্যাক্সির (taxi) ___ বসে আছে।", "options": ["in", "on"], "correct": "in", "rationale": "ট্যাক্সির ভেতরে শুধু বসে যাতায়াত করা যায় বলে এর ক্ষেত্রে 'in' বসে।"}, {"id": 41, "eng": "The pilot is flying ___ the airplane.", "bn": "পাইলট প্লেনটির (airplane) ___ আছেন।", "options": ["in", "on"], "correct": "on", "rationale": "প্লেন বা বড় বিমানের ভেতর হাঁটাচলা করার জায়গা থাকে, তাই 'on' বসে।"}, {"id": 42, "eng": "We went for a tour ___ a big ship.", "bn": "আমরা একটি বড় জাহাজের (ship) ___ ভ্রমণে গিয়েছিলাম।", "options": ["in", "on"], "correct": "on", "rationale": "জাহাজের ডেকের ওপর বা ভেতরে চলাফেরা করা যায়, তাই জাহাজের ক্ষেত্রে 'on' বসে।"}, {"id": 43, "eng": "He rode ___ a horse during the festival.", "bn": "উৎসবে সে একটি ঘোড়ার (horse) ___ চড়েছিল।", "options": ["in", "on"], "correct": "on", "rationale": "ঘোড়ার পিঠের ওপরে বসার কারণে এখানে 'on' বসে।"}, {"id": 44, "eng": "The generic term is traveling ___ a helicopter.", "bn": "হেলিকপ্টারের (helicopter) ___ ভ্রমণ করা বেশ রোমাঞ্চকর।", "options": ["in", "on"], "correct": "in", "rationale": "হেলিকপ্টার আকারে ছোট এবং এর ভেতরে হাঁটা যায় না, তাই 'in' বসে।"}, {"id": 45, "eng": "The delivery boy is ___ a motorbike.", "bn": "ডেলিভারি বয়টি মোটরবাইকের (motorbike) ___ আছে।", "options": ["in", "on"], "correct": "on", "rationale": "মোটরবাইকের সিটের ওপর বসে থাকার জন্য 'on' বসে।"}, {"id": 46, "eng": "The birds are flying ___ the sky.", "bn": "পাখিগুলো আকাশের (sky) ___ উড়ছে।", "options": ["in", "on"], "correct": "in", "rationale": "আকাশকে একটি বিশাল থ্রি-ডি স্পেস বা ত্রিমাত্রিক এলাকা ধরে 'in the sky' বলা হয়।"}, {"id": 47, "eng": "I saw a beautiful boat ___ the river.", "bn": "আমি নদীর ___ একটি সুন্দর নৌকা দেখলাম।", "options": ["in", "on"], "correct": "on", "rationale": "নৌকাটি নদীর পানির উপরিভাগে (surface) ভাসছে, তাই 'on' বসে।"}, {"id": 48, "eng": "He loves to walk ___ the rain.", "bn": "সে বৃষ্টির (rain) ___ হাঁটতে পছন্দ করে।", "options": ["in", "on"], "correct": "in", "rationale": "বৃষ্টির পরিবেশ বা বৃষ্টির পানির পতনের মাঝে থাকার কারণে 'in' বসে।"}, {"id": 49, "eng": "There are many trees ___ the forest.", "bn": "বনের (forest) ___ অনেক গাছ আছে।", "options": ["in", "on"], "correct": "in", "rationale": "বন বা জঙ্গল একটি সুনির্দিষ্ট ঘেরা এলাকা, তাই এর ক্ষেত্রে 'in' বসে।"}, {"id": 50, "eng": "They live ___ a small island.", "bn": "তারা একটি ছোট দ্বীপের (island) ___ বাস করে।", "options": ["in", "on"], "correct": "on", "rationale": "দ্বীপ একটি ভূখণ্ড যার উপরিভাগে মানুষ থাকে, তাই দ্বীপের আগে 'on' বসে।"}, {"id": 51, "eng": "The cars are moving ___ the road.", "bn": "গাড়িগুলো রাস্তার (road) ___ চলছে।", "options": ["in", "on"], "correct": "on", "rationale": "রাস্তার উপরিভাগে বা সারফেসে গাড়ি চলার কারণে 'on' বসে।"}, {"id": 52, "eng": "Dhaka is located ___ Bangladesh.", "bn": "ঢাকা বাংলাদেশের (Bangladesh) ___ অবস্থিত।", "options": ["in", "on"], "correct": "in", "rationale": "দেশ বা রাষ্ট্রের সীমানার ভেতরে কোনো কিছু বোঝালে 'in' বসে।"}, {"id": 53, "eng": "The cows are grazing ___ the field.", "bn": "গরুগুলো মাঠের (field) ___ ঘাস খাচ্ছে।", "options": ["in", "on"], "correct": "in", "rationale": "মাঠকে একটি ঘেরা এলাকা বিবেচনা করে সাধারণ অবস্থানে 'in the field' বলা হয়।"}, {"id": 54, "eng": "The kids are playing ___ the park.", "bn": "বাচ্চারা পার্কের (park) ___ খেলছে।", "options": ["in", "on"], "correct": "in", "rationale": "পার্ক একটি সীমানা প্রাচীরযুক্ত নির্দিষ্ট জায়গা, তাই এর ভেতরে বোঝালে 'in' বসে।"}, {"id": 55, "eng": "We can see fish ___ the sea.", "bn": "আমরা সমুদ্রের (sea) ___ মাছ দেখতে পাই।", "options": ["in", "on"], "correct": "in", "rationale": "সমুদ্রের পানির গভীরের ভেতরে মাছ থাকে, তাই 'in' বসে।"}, {"id": 56, "eng": "The sign is hanging ___ the entrance.", "bn": "সাইনবোর্ডটি প্রবেশদ্বারের ওপরে দেয়ালের ___ ঝুলছে।", "options": ["in", "on"], "correct": "on", "rationale": "প্রবেশপথ বা দরজার ওপরের দেয়ালে ঝুলে থাকলে 'on' বসে।"}, {"id": 57, "eng": "There is a beautiful garden ___ front of the house.", "bn": "বাড়ির সামনের (___ front of) অংশে একটি সুন্দর বাগান আছে।", "options": ["in", "on"], "correct": "in", "rationale": "এটি একটি ফ্রেজ: 'in front of' মানে সামনে।"}, {"id": 58, "eng": "The monkeys are ___ the tree.", "bn": "বানরগুলো গাছের (tree) ___ আছে।", "options": ["in", "on"], "correct": "in", "rationale": "বানর যখন গাছের ডালপালার ভেতরে লুকিয়ে বা বসে থাকে তখন 'in the tree' বলা হয়।"}, {"id": 59, "eng": "The fruit fell from the branch ___ the grass.", "bn": "ফলটি ডাল থেকে ঘাসের (grass) ___ পড়ল।", "options": ["in", "on"], "correct": "on", "rationale": "ঘাসের ওপরের তলে কোনো কিছু পড়লে বা থাকলে 'on' বসে।"}, {"id": 60, "eng": "He lives ___ Kishoreganj.", "bn": "তিনি কিশোরগঞ্জ (Kishoreganj) ___ বাস করেন।", "options": ["in", "on"], "correct": "in", "rationale": "জেলা বা শহরের নামের পূর্বে প্রিপজিশন হিসেবে 'in' বসে।"}, {"id": 61, "eng": "There are no clouds ___ the sky today.", "bn": "আজ আকাশের (sky) ___ কোনো মেঘ নেই।", "options": ["in", "on"], "correct": "in", "rationale": "আকাশের সীমানার ভেতরে মেঘ থাকার কথা বলা হচ্ছে, তাই 'in' বসবে।"}, {"id": 62, "eng": "The boatmen live ___ the coast.", "bn": "মাঝিরা উপকূলের (coast) ___ বসবাস করে।", "options": ["in", "on"], "correct": "on", "rationale": "উপকূলরেখা বা কোস্ট একটি লাইনের মতো পৃষ্ঠতল, যার সাথে লেগে থাকা জায়গায় 'on' বসে।"}, {"id": 63, "eng": "The model was walking ___ the runway.", "bn": "মডেলটি রানওয়ের (runway) ___ হাঁটছিল।", "options": ["in", "on"], "correct": "on", "rationale": "রানওয়ে বা স্টেজের উপরিভাগে হাঁটার কারণে 'on' বসে।"}, {"id": 64, "eng": "The children love playing ___ the mud.", "bn": "বাচ্চারা কাদার (mud) ___ খেলতে ভালোবাসে।", "options": ["in", "on"], "correct": "in", "rationale": "কাদার ভেতরে হাত-পা ডুবে যায় বা কাদার স্তূপের ভেতরে থাকে, তাই 'in' বসে।"}, {"id": 65, "eng": "We spent our holidays ___ a village.", "bn": "আমরা আমাদের ছুটি একটি গ্রামের (village) ___ কাটিয়েছি।", "options": ["in", "on"], "correct": "in", "rationale": "গ্রামের ভৌগোলিক এলাকার ভেতরে অবস্থান বোঝাতে 'in' বসে।"}, {"id": 66, "eng": "I watched the cartoon ___ TV.", "bn": "আমি টিভিতে (TV) ___ কার্টুনটি দেখেছি।", "options": ["in", "on"], "correct": "on", "rationale": "টিভি, রেডিও বা ইলেকট্রনিক মিডিয়া স্ক্রিনের আগে সবসময় 'on' বসে।"}, {"id": 67, "eng": "She is talking ___ the phone.", "bn": "সে ফোনে (phone) ___ কথা বলছে।", "options": ["in", "on"], "correct": "on", "rationale": "ফোনে কথা বলা বা যোগাযোগের মাধ্যমের আগে 'on' বসে।"}, {"id": 68, "eng": "I found this video ___ YouTube.", "bn": "আমি ইউটিউবে (YouTube) ___ এই ভিডিওটি পেয়েছি।", "options": ["in", "on"], "correct": "on", "rationale": "যেকোনো ওয়েবসাইট, অ্যাপ বা অনলাইন প্ল্যাটফর্মের নামের আগে 'on' বসে।"}, {"id": 69, "eng": "The photo is ___ the computer screen.", "bn": "ছবিটি কম্পিউটারের স্ক্রিনের (screen) ___ আছে।", "options": ["in", "on"], "correct": "on", "rationale": "স্ক্রিন বা ডিসপ্লের ওপরে কোনো কিছু প্রদর্শিত হলে 'on' বসে।"}, {"id": 70, "eng": "He read the news ___ the newspaper.", "bn": "সে সংবাদপত্র বা খবরের কাগজের (newspaper) ___ খবরটি পড়েছে।", "options": ["in", "on"], "correct": "in", "rationale": "কাগজের খবরের ভেতরে বা কলামের তথ্যের ক্ষেত্রে 'in the newspaper' বলা হয়।"}, {"id": 71, "eng": "There are many pictures ___ this book.", "bn": "এই বইয়ের (book) ___ অনেক ছবি আছে।", "options": ["in", "on"], "correct": "in", "rationale": "বইয়ের ভেতরের পাতাগুলোতে কন্টেন্ট থাকলে 'in the book' বলা হয়।"}, {"id": 72, "eng": "Can you see the country ___ the map?", "bn": "তুমি কি মানচিত্রের (map) ___ দেশটি দেখতে পাচ্ছ?", "options": ["in", "on"], "correct": "on", "rationale": "ম্যাপের উপরিভাগে বা সারফেসে কোনো বিন্দু বা রেখা চিহ্নিত থাকলে 'on' বসে।"}, {"id": 73, "eng": "I heard a beautiful song ___ the radio.", "bn": "আমি রেডিওতে (radio) ___ একটি সুন্দর গান শুনেছি।", "options": ["in", "on"], "correct": "on", "rationale": "ব্রডকাস্ট মিডিয়া বা রেডিওর আগে সবসময় 'on' প্রিপজিশন বসে।"}, {"id": 74, "eng": "The details are written ___ page 45.", "bn": "বিস্তারিত তথ্য ৪৫ নম্বর পৃষ্ঠায় (page 45) ___ লেখা আছে।", "options": ["in", "on"], "correct": "on", "rationale": "পৃষ্ঠা নম্বর বা পেজের ওপরের নির্দিষ্ট তলের ক্ষেত্রে 'on page' বসে।"}, {"id": 75, "eng": "She posts regular updates ___ Facebook.", "bn": "সে ফেসবুকে (Facebook) ___ নিয়মিত আপডেট পোস্ট করে।", "options": ["in", "on"], "correct": "on", "rationale": "সোশ্যাল মিডিয়া নেটওয়ার্কের নামের আগে প্রিপজিশন হিসেবে 'on' বসে।"}, {"id": 76, "eng": "The software is running ___ the laptop.", "bn": "সফটওয়্যারটি ল্যাপটপের (laptop) ___ চলছে।", "options": ["in", "on"], "correct": "on", "rationale": "ডিভাইসের ওপর কোনো প্রোগ্রাম চলার অর্থে 'on' ব্যবহার করা হয়।"}, {"id": 77, "eng": "I saved the file ___ a pendrive.", "bn": "আমি ফাইলটি পেনড্রাইভের (pendrive) ___ সেভ করেছি।", "options": ["in", "on"], "correct": "in", "rationale": "স্টোরেজ মেমোরির ভেতরে ডাটা রাখার ক্ষেত্রে 'in' ব্যবহার করা হয়।"}, {"id": 78, "eng": "The calculations are done ___ a calculator.", "bn": "হিসাব নিকাশগুলো ক্যালকুলেটরের (calculator) ___ করা হয়েছে।", "options": ["in", "on"], "correct": "on", "rationale": "ডিভাইস ব্যবহার করে কাজ করার ক্ষেত্রে 'on a calculator' বসে।"}, {"id": 79, "eng": "The text message is ___ my phone.", "bn": "টেক্সট মেসেজটি আমার ফোনের (phone) ___ আছে।", "options": ["in", "on"], "correct": "on", "rationale": "ফোনের স্ক্রিন বা ইন্টারফেসে কিছু থাকলে 'on' বসে।"}, {"id": 80, "eng": "The butter is ___ the plate.", "bn": "মাখনটি প্লেটের ___ আছে।", "options": ["in", "on"], "correct": "on", "rationale": "প্লেটের সমতল উপরিভাগে কিছু রাখার কারণে 'on' বসে।"}, {"id": 81, "eng": "The gold ring is ___ the velvet box.", "bn": "সোনার আংটিটি ভেলভেট বক্সের ___ আছে।", "options": ["in", "on"], "correct": "in", "rationale": "বক্সের ভেতরের সুরক্ষিত জায়গায় থাকার কারণে 'in' বসে।"}, {"id": 82, "eng": "The kids are swimming ___ the pool.", "bn": "বাচ্চারা সুইমিং পুলের ___ সাঁтар কাটছে।", "options": ["in", "on"], "correct": "in", "rationale": "পুলের পানির ভেতরের অংশে সাঁতার কাটার কারণে 'in' বসে।"}, {"id": 83, "eng": "The birds are sitting ___ the roof.", "bn": "পাখিগুলো ছাদের ___ বসে আছে।", "options": ["in", "on"], "correct": "on", "rationale": "ছাদের বাইরের খোলা উপরিভাগে বসার কারণে 'on' বসে।"}, {"id": 84, "eng": "He left his notebook ___ the classroom.", "bn": "সে তার নোটবুকটি ক্লাসরুমের ___ ফেলে এসেছে।", "options": ["in", "on"], "correct": "in", "rationale": "ক্লাসরুমের চার দেয়ালের ভেতরের অংশ বোঝাতে 'in' বসে।"}, {"id": 85, "eng": "The painting is hanging ___ the gallery wall.", "bn": "চিত্রকর্মটি গ্যালারির দেয়ালের ___ ঝুলছে।", "options": ["in", "on"], "correct": "on", "rationale": "দেয়ালের উপরিভাগে ঝোলানোর কারণে 'on' বসে।"}, {"id": 86, "eng": "We sat ___ the front row.", "bn": "আমরা সামনের সারির ___ বসেছিলাম।", "options": ["in", "on"], "correct": "in", "rationale": "সারি বা রো-এর মাঝের আসনে বসার ক্ষেত্রে 'in the row' বসে।"}, {"id": 87, "eng": "The teacher wrote the sentence ___ the blackboard.", "bn": "শিক্ষক বাক্যটি ব্ল্যাকবোর্ডের ___ লিখলেন।", "options": ["in", "on"], "correct": "on", "rationale": "বোর্ডের সমতল লেখার তলের উপরিভাগে বোঝাতে 'on' বসে।"}, {"id": 88, "eng": "The tea is ___ the cup.", "bn": "চা কাপের ___ আছে।", "options": ["in", "on"], "correct": "in", "rationale": "কাপের মতো গভীর পাত্রের ভেতরের তরলের জন্য 'in' বসে।"}, {"id": 89, "eng": "The certificate is kept ___ the file.", "bn": "সার্টিফিকেটটি ফাইলের ___ রাখা আছে।", "options": ["in", "on"], "correct": "in", "rationale": "ফাইলের ভেতরের ফোল্ডারে বা পাতার মাঝে থাকলে 'in' বসে।"}, {"id": 90, "eng": "The cat jumped ___ the chair.", "bn": "বিড়ালটি লাফ দিয়ে চেয়ারের ___ বসল।", "options": ["in", "on"], "correct": "on", "rationale": "চেয়ারের বসার উপরিভাগে বা সিটের ওপর স্পর্শ করার কারণে 'on' বসে।"}, {"id": 91, "eng": "The document is attached ___ the email.", "bn": "ডকুমেন্টটি ইমেইলের ___ সংযুক্ত আছে।", "options": ["in", "on"], "correct": "in", "rationale": "ইমেইলের অভ্যন্তরে বডি বা অ্যাটাচমেন্ট আকারে থাকলে 'in the email' বলা হয়।"}, {"id": 92, "eng": "The actor is standing ___ the stage.", "bn": "অভিনেতাটি স্টেজের ___ দাঁড়িয়ে আছেন।", "options": ["in", "on"], "correct": "on", "rationale": "রঙ্গমঞ্চ বা স্টেজের উপরিভাগে অবস্থান করার কারণে 'on' বসে।"}, {"id": 93, "eng": "The soup is ___ the bowl.", "bn": "সুপটি বাটির ___ আছে।", "options": ["in", "on"], "correct": "in", "rationale": "বাটি বা বোলের ভেতরের গভীর অংশে তরল থাকলে 'in' বসে।"}, {"id": 94, "eng": "The clothes are hanging ___ a hook.", "bn": "কাপড়গুলো একটি হুকের ___ ঝুলছে।", "options": ["in", "on"], "correct": "on", "rationale": "হুকের বাইরের অংশের ওপরে ভর করে ঝোলা বোঝাতে 'on' বসে।"}, {"id": 95, "eng": "We live ___ the earth.", "bn": "আমরা পৃথিবীর ___ বাস করি।", "options": ["in", "on"], "correct": "on", "rationale": "পৃথিবীর মাটির উপরিভাগে (surface) বাস করার কারণে 'on the earth' বলা হয়।"}, {"id": 96, "eng": "There is an error ___ this paragraph.", "bn": "এই অনুচ্ছেদের ___ একটি ভুল আছে।", "options": ["in", "on"], "correct": "in", "rationale": "অনুচ্ছেদ বা প্যারাগ্রাফের ভেতরের লেখার টেক্সটের জন্য 'in' বসে।"}, {"id": 97, "eng": "The price is printed ___ the label.", "bn": "মূল্যটি লেবেলের ___ প্রিন্ট করা আছে।", "options": ["in", "on"], "correct": "on", "rationale": "লেবেল বা ট্যাগের উপরিভাগে লেখা থাকার কারণে 'on' বসে।"}, {"id": 98, "eng": "He spent his childhood ___ a small town.", "bn": "সে তার শৈশব একটি ছোট শহরের ___ কাটিয়েছে।", "options": ["in", "on"], "correct": "in", "rationale": "শহরের ভৌগোলিক সীমানার ভেতরে কাটানোর কারণে 'in' বসে।"}, {"id": 99, "eng": "The ice is floating ___ the water.", "bn": "বরফটি পানির ___ ভাসছে।", "options": ["in", "on"], "correct": "on", "rationale": "পানির উপরিভাগে কোনো কিছু ভেসে থাকার ক্ষেত্রে 'on' বসে।"}];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let userAnswers = new Array(questionsData.length).fill(null);
+
+        window.onload = function() {
+            buildNavigationGrid();
+            loadQuestion();
+        };
+
+        // Modal Functions
+        function openRulesModal() {
+            document.getElementById('rulesModal').classList.add('active');
+        }
+
+        function closeRulesModal() {
+            document.getElementById('rulesModal').classList.remove('active');
+        }
+
+        // Close modal when clicking outside the box
+        document.getElementById('rulesModal').addEventListener('click', function(e) {
+            if(e.target === this) {
+                closeRulesModal();
+            }
+        });
+
+        function buildNavigationGrid() {
+            const gridContainer = document.getElementById('dots-grid-target');
+            gridContainer.innerHTML = '';
+            for (let i = 0; i < questionsData.length; i++) {
+                const btn = document.createElement('button');
+                btn.className = 'grid-dot';
+                btn.innerText = i + 1;
+                btn.id = 'grid-dot-' + i;
+                btn.onclick = () => jumpToQuestion(i);
+                gridContainer.appendChild(btn);
+            }
+        }
+
+        function loadQuestion() {
+            const q = questionsData[currentQuestionIndex];
+            
+            document.getElementById('q-number-tag').innerText = `QUESTION #${q.id}`;
+            document.getElementById('q-text-eng').innerText = q.eng;
+            document.getElementById('q-text-bn').innerText = q.bn;
+            
+            document.getElementById('progress-count').innerText = `প্রশ্ন ${q.id} / ${questionsData.length}`;
+            const progressPercent = ((currentQuestionIndex + 1) / questionsData.length) * 100;
+            document.getElementById('progress-bar').style.width = `${progressPercent}%`;
+            
+            const btnIn = document.getElementById('btn-in');
+            const btnOn = document.getElementById('btn-on');
+            btnIn.className = 'option-btn';
+            btnOn.className = 'option-btn';
+            btnIn.disabled = false;
+            btnOn.disabled = false;
+            
+            const rationaleBox = document.getElementById('rationale-box');
+            rationaleBox.style.display = 'none';
+
+            if (userAnswers[currentQuestionIndex] !== null) {
+                const state = userAnswers[currentQuestionIndex];
+                btnIn.disabled = true;
+                btnOn.disabled = true;
+                
+                if (state.selected === 'in') {
+                    btnIn.classList.add(state.isCorrect ? 'correct' : 'wrong');
+                    if (!state.isCorrect) btnOn.classList.add('correct');
+                } else if (state.selected === 'on') {
+                    btnOn.classList.add(state.isCorrect ? 'correct' : 'wrong');
+                    if (!state.isCorrect) btnIn.classList.add('correct');
+                }
+                
+                document.getElementById('rationale-desc').innerText = q.rationale;
+                const statusTitle = document.getElementById('rationale-status');
+                if (state.isCorrect) {
+                    statusTitle.innerText = "✓ সঠিক উত্তর হয়েছে!";
+                    statusTitle.style.color = "#10b981";
+                    rationaleBox.style.borderLeftColor = "#10b981";
+                } else {
+                    statusTitle.innerText = "× ভুল উত্তর হয়েছে!";
+                    statusTitle.style.color = "#f43f5e";
+                    rationaleBox.style.borderLeftColor = "#f43f5e";
+                }
+                rationaleBox.style.display = 'block';
+            }
+
+            document.getElementById('prev-btn').disabled = (currentQuestionIndex === 0);
+            
+            const nextBtn = document.getElementById('next-btn');
+            const finishBtn = document.getElementById('finish-btn');
+            
+            if (userAnswers[currentQuestionIndex] !== null) {
+                if (currentQuestionIndex === questionsData.length - 1) {
+                    nextBtn.style.display = 'none';
+                    finishBtn.style.display = 'block';
+                } else {
+                    nextBtn.style.display = 'block';
+                    finishBtn.style.display = 'none';
+                }
+            } else {
+                nextBtn.style.display = 'none';
+                finishBtn.style.display = 'none';
+            }
+
+            updateGridHighlights();
+        }
+
+        function selectAnswer(selection) {
+            if (userAnswers[currentQuestionIndex] !== null) return; 
+            
+            const q = questionsData[currentQuestionIndex];
+            const isCorrect = (selection === q.correct);
+            
+            if (isCorrect) score++;
+            document.getElementById('score-counter').innerText = `স্কোর: ${score}`;
+            
+            userAnswers[currentQuestionIndex] = {
+                selected: selection,
+                isCorrect: isCorrect
+            };
+
+            loadQuestion();
+        }
+
+        function navigateQuestion(step) {
+            currentQuestionIndex += step;
+            if (currentQuestionIndex < 0) currentQuestionIndex = 0;
+            if (currentQuestionIndex >= questionsData.length) currentQuestionIndex = questionsData.length - 1;
+            loadQuestion();
+        }
+
+        function jumpToQuestion(index) {
+            currentQuestionIndex = index;
+            loadQuestion();
+        }
+
+        function toggleGrid() {
+            const panel = document.getElementById('grid-panel');
+            panel.style.display = (panel.style.display === 'block') ? 'none' : 'block';
+        }
+
+        function updateGridHighlights() {
+            for (let i = 0; i < questionsData.length; i++) {
+                const dot = document.getElementById('grid-dot-' + i);
+                if (!dot) continue;
+                
+                dot.className = 'grid-dot';
+                
+                if (i === currentQuestionIndex) {
+                    dot.classList.add('current');
+                } else if (userAnswers[i] !== null) {
+                    dot.classList.add(userAnswers[i].isCorrect ? 'answered-correct' : 'answered-wrong');
+                }
+            }
+        }
+
+        function finishQuiz() {
+            document.getElementById('quiz-view').style.display = 'none';
+            document.getElementById('progress-area').style.display = 'none';
+            document.getElementById('grid-panel').style.display = 'none';
+            document.querySelector('.rules-btn-container').style.display = 'none';
+            
+            document.getElementById('final-score-value').innerText = score;
+            document.getElementById('stat-correct-count').innerText = score;
+            document.getElementById('stat-wrong-count').innerText = questionsData.length - score;
+            
+            const msgNode = document.getElementById('summary-msg');
+            if (score >= 90) {
+                msgNode.innerText = "অসাধারণ! আপনি প্রি-পজিশন মাস্টার! 'In' এবং 'On' এর ব্যবহার আপনার একদম নিখুঁত হয়েছে। 🌟";
+            } else if (score >= 70) {
+                msgNode.innerText = "দারুণ পারফরম্যান্স! আপনি খুব ভালো বোঝেন। অল্প কিছু ভুলের জন্য পুরো ১০০ হয়নি, তবে আপনি অনেক এগিয়ে আছেন! 👍";
+            } else {
+                msgNode.innerText = "ভালো চেষ্টা! তবে আরও একটু অনুশীলন করা প্রয়োজন। এই কুইজটি আবার দিলে আপনার সব দ্বিধা কেটে যাবে! 📚";
+            }
+
+            document.getElementById('summary-view').style.display = 'block';
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            score = 0;
+            userAnswers = new Array(questionsData.length).fill(null);
+            
+            document.getElementById('score-counter').innerText = `স্কোর: ০`;
+            document.getElementById('summary-view').style.display = 'none';
+            
+            document.querySelector('.rules-btn-container').style.display = 'block';
+            document.getElementById('quiz-view').style.display = 'block';
+            document.getElementById('progress-area').style.display = 'block';
+            
+            buildNavigationGrid();
+            loadQuestion();
+        }
+    </script>
+</body>
+</html>

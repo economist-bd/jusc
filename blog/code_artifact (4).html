@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ক্লিকেবল বাংলা কোর্সের তালিকা</title>
+    <!-- Tailwind CSS লোড করা হচ্ছে -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* ফন্ট হিসেবে ইন্টার ব্যবহার করা হচ্ছে */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb; /* হালকা ব্যাকগ্রাউন্ড */
+        }
+        .course-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .course-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+            background-color: #e0f2f1; /* হালকা সবুজ-নীল হোভার এফেক্ট */
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- HEADER: Sticky Header & Navigation (New Code Block) -->
+    <header class="main-header sticky top-0 z-50 bg-white shadow-lg">
+        <div class="header-content h-16 flex justify-between items-center max-w-7xl mx-auto px-4 sm:px-8">
+            <!-- Logo -->
+            <h1 class="logo text-xl font-bold text-indigo-600">
+                <a href="index.html" class="hover:text-indigo-800 transition duration-300">My eBook Hub</a>
+            </h1>
+
+            <!-- Desktop Navigation Menu -->
+            <nav class="main-nav hidden md:block">
+                <ul class="flex space-x-4 text-base font-medium">
+                    <li><a href="index.html" class="text-gray-700 hover:text-indigo-600 transition duration-300 rounded-lg p-2">Home</a></li>
+                    <li><a href="browse.html" class="text-gray-700 hover:text-indigo-600 transition duration-300 rounded-lg p-2">Browse Books</a></li>
+                    <li><a href="ai-course.html" class="text-gray-700 hover:text-indigo-600 transition duration-300 rounded-lg p-2">Ai Course</a></li>
+                    <li><a href="categories.html" class="text-gray-700 hover:text-indigo-600 transition duration-300 rounded-lg p-2">Categories</a></li>
+                    <li><a href="about.html" class="text-gray-700 hover:text-indigo-600 transition duration-300 rounded-lg p-2">About</a></li>
+                    <li><a href="dashboard.html" class="text-gray-700 hover:text-indigo-600 transition duration-300 rounded-lg p-2">Dashboard</a></li>
+                    <li>
+                        <a href="#" id="open-auth-modal-btn" class="ml-4 px-3 py-1 bg-indigo-600 text-white text-sm rounded-lg shadow-md hover:bg-indigo-700 transition duration-300">
+                            Login/Signup
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Mobile Menu Button (Hamburger) -->
+            <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-gray-700 hover:bg-gray-100 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu Dropdown -->
+        <nav id="mobile-menu" class="md:hidden hidden bg-gray-50 border-t border-gray-200 py-2">
+            <ul class="flex flex-col space-y-1 px-4 text-sm font-medium">
+                <li><a href="index.html" class="block py-2 text-gray-700 hover:bg-indigo-100 hover:text-indigo-600 rounded-lg transition duration-300">Home</a></li>
+                <li><a href="browse.html" class="block py-2 text-gray-700 hover:bg-indigo-100 hover:text-indigo-600 rounded-lg transition duration-300">Browse Books</a></li>
+                <li><a href="ai-course.html" class="block py-2 text-gray-700 hover:bg-indigo-100 hover:text-indigo-600 rounded-lg transition duration-300">Ai Course</a></li>
+                <li><a href="categories.html" class="block py-2 text-gray-700 hover:bg-indigo-100 hover:text-indigo-600 rounded-lg transition duration-300">Categories</a></li>
+                <li><a href="about.html" class="block py-2 text-gray-700 hover:bg-indigo-100 hover:text-indigo-600 rounded-lg transition duration-300">About</a></li>
+                <li><a href="dashboard.html" class="block py-2 text-gray-700 hover:bg-indigo-100 hover:text-indigo-600 rounded-lg transition duration-300">Dashboard</a></li>
+                <li>
+                    <a href="#" id="open-auth-modal-btn-mobile" class="block text-center mt-2 py-2 bg-indigo-600 text-white rounded-lg shadow-md hover:bg-indigo-700 transition duration-300">
+                        Login/Signup
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!-- END HEADER -->
+
+    <!-- Main Content Area adjusted with pt-20 for sticky header clearance -->
+    <div class="max-w-4xl mx-auto p-4 sm:p-8 pt-20"> 
+        <header class="text-center mb-8">
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-800 mb-2 border-b-4 border-teal-500 inline-block pb-1">
+                বাংলা কোর্সের ক্লিকেবল তালিকা (মোট ৫৬টি কোর্স)
+            </h1>
+            <p class="text-gray-600 text-lg mt-2">আপনার আগ্রহের কোর্সটিতে ক্লিক করুন।</p>
+        </header>
+
+        <!-- কোর্স কার্ডের গ্রিড -->
+        <div id="course-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- --- মূল ৬টি কোর্স --- -->
+            
+            <!-- কোর্স ১: সাহিত্য -->
+            <div onclick="selectCourse('আধুনিক বাংলা সাহিত্য ও কাব্য')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">সাহিত্য ও কাব্য</p>
+                <p class="text-gray-600">আধুনিক এবং ক্লাসিক বাংলা কবিতা, গল্প ও উপন্যাসের গভীর পাঠ।</p>
+            </div>
+
+            <!-- কোর্স ২: ব্যাকরণ -->
+            <div onclick="selectCourse('প্রয়োগিক বাংলা ব্যাকরণ ও শুদ্ধ বানান')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">ব্যাকরণ ও বানান</p>
+                <p class="text-gray-600">বাংলা ব্যাকরণের মূলনীতি এবং প্রমিত বাংলা লেখার কৌশল।</p>
+            </div>
+
+            <!-- কোর্স ৩: যোগাযোগ -->
+            <div onclick="selectCourse('কথ্য বাংলা ও পাবলিক স্পিকিং')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">কথ্য ও যোগাযোগ</p>
+                <p class="text-gray-600">সাবলীলভাবে কথা বলা, উপস্থাপনা এবং কথোপকথনের দক্ষতা।</p>
+            </div>
+            
+            <!-- কোর্স ৪: সৃজনশীল লেখা -->
+            <div onclick="selectCourse('সৃজনশীল গল্প ও প্রবন্ধ লিখন')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">সৃজনশীল লিখন</p>
+                <p class="text-gray-600">গল্প, কবিতা ও প্রবন্ধ লেখার সৃজনশীল দিকনির্দেশনা।</p>
+            </div>
+
+            <!-- কোর্স ৫: ভাষা শিক্ষা -->
+            <div onclick="selectCourse('বিদেশীদের জন্য বাংলা ভাষা শিক্ষা (Beginner)')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">ভাষা শিক্ষা (বিদেশী)</p>
+                <p class="text-gray-600">বাংলা ভাষা শেখার প্রাথমিক স্তরের সম্পূর্ণ নির্দেশিকা।</p>
+            </div>
+
+            <!-- কোর্স ৬: সাংবাদিকতা -->
+            <div onclick="selectCourse('বাংলা সাংবাদিকতা ও সংবাদ লিখন')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">সাংবাদিকতা</p>
+                <p class="text-gray-600">সংবাদ লেখার কৌশল, সম্পাদনা এবং মিডিয়া নীতি।</p>
+            </div>
+
+            <!-- --- পুরোনো ২৫টি কোর্স (৭-৩১) --- -->
+
+            <!-- কোর্স ৭: ছন্দ -->
+            <div onclick="selectCourse('বাংলা ছান্দসিক বিশ্লেষণ ও মাত্রা জ্ঞান')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">ছন্দ ও মাত্রা জ্ঞান</p>
+                <p class="text-gray-600">কবিতার ছন্দ, লয় ও মাত্রার গভীর বিশ্লেষণ ও ব্যবহার।</p>
+            </div>
+            
+            <!-- কোর্স ৮: অলংকার -->
+            <div onclick="selectCourse('বাংলা অলংকার ও বাক্য বিন্যাস')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">অলংকার শাস্ত্র</p>
+                <p class="text-gray-600">উপমা, রূপকসহ বিভিন্ন অলংকারের প্রয়োগ ও শৈলী।</p>
+            </div>
+
+            <!-- কোর্স ৯: ডিজিটাল কনটেন্ট -->
+            <div onclick="selectCourse('ডিজিটাল কনটেন্ট লিখন ও সম্পাদনা')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">ডিজিটাল কনটেন্ট</p>
+                <p class="text-gray-600">ওয়েব, সোশ্যাল মিডিয়া ও ব্লগিংয়ের জন্য কনটেন্ট তৈরি।</p>
+            </div>
+
+            <!-- কোর্স ১০: অনুবাদ -->
+            <div onclick="selectCourse('ইংরেজি থেকে বাংলা অনুবাদ কৌশল')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">অনুবাদ কৌশল</p>
+                <p class="text-gray-600">পেশাদারী মানসম্পন্ন অনুবাদ ও পারিভাষিক শব্দের ব্যবহার।</p>
+            </div>
+
+            <!-- কোর্স ১১: প্রাচীন সাহিত্য -->
+            <div onclick="selectCourse('প্রাচীন ও মধ্যযুগের বাংলা সাহিত্য')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">প্রাচীন সাহিত্য</p>
+                <p class="text-gray-600">চর্যাপদ, শ্রীকৃষ্ণকীর্তনসহ মধ্যযুগের সাহিত্যের আলোচনা।</p>
+            </div>
+
+            <!-- কোর্স ১২: রবীন্দ্র সাহিত্য -->
+            <div onclick="selectCourse('রবীন্দ্র সাহিত্যের বিশেষ পাঠ: উপন্যাস ও ছোটগল্প')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">রবীন্দ্র সাহিত্য</p>
+                <p class="text-gray-600">রবীন্দ্রনাথের সৃষ্টিকর্মের থিমেটিক ও শৈল্পিক বিশ্লেষণ।</p>
+            </div>
+
+            <!-- কোর্স ১৩: নজরুল সাহিত্য -->
+            <div onclick="selectCourse('নজরুল সাহিত্য: বিদ্রোহ, প্রেম ও মানবতাবাদ')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">নজরুল সাহিত্য</p>
+                <p class="text-gray-600">জাতীয় কবি নজরুলের কাব্য ও গানের গভীর পর্যালোচনা।</p>
+            </div>
+
+            <!-- কোর্স ১৪: উপভাষা -->
+            <div onclick="selectCourse('বাংলা উপভাষা পরিচিতি ও আঞ্চলিক ভাষা')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">উপভাষা পরিচিতি</p>
+                <p class="text-gray-600">বাংলাদেশের বিভিন্ন অঞ্চলের উপভাষার ভাষাতাত্ত্বিক দিক।</p>
+            </div>
+
+            <!-- কোর্স ১৫: শিশুসাহিত্য -->
+            <div onclick="selectCourse('শিশুসাহিত্য রচনা ও পরিবেশনা')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">শিশুসাহিত্য</p>
+                <p class="text-gray-600">শিশুদের জন্য উপযোগী গল্প, ছড়া ও নাটক রচনার কৌশল।</p>
+            </div>
+
+            <!-- কোর্স ১৬: নাটক -->
+            <div onclick="selectCourse('বাংলা নাটক ও মঞ্চকলা: তত্ত্ব ও প্রয়োগ')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">নাটক ও মঞ্চকলা</p>
+                <p class="text-gray-600">নাটকের ইতিহাস, নাট্যতত্ত্ব এবং মঞ্চায়নের দিকনির্দেশনা।</p>
+            </div>
+
+            <!-- কোর্স ১৭: চিত্রনাট্য -->
+            <div onclick="selectCourse('চলচ্চিত্র ও মিডিয়ার চিত্রনাট্য লিখন')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">চিত্রনাট্য লিখন</p>
+                <p class="text-gray-600">সিনেমা ও টিভি সিরিজের জন্য স্ক্রিপ্ট লেখার প্রশিক্ষণ।</p>
+            </div>
+
+            <!-- কোর্স ১৮: অফিস বাংলা -->
+            <div onclick="selectCourse('কর্মক্ষেত্রে প্রমিত বাংলা ব্যবহার ও দাপ্তরিক নথি')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">দাপ্তরিক বাংলা</p>
+                <p class="text-gray-600">অফিসের কাজে চিঠিপত্র, প্রতিবেদন ও ইমেইল লেখার নিয়ম।</p>
+            </div>
+
+            <!-- কোর্স ১৯: গবেষণা -->
+            <div onclick="selectCourse('গবেষণামূলক প্রবন্ধ লিখন ও উদ্ধৃতি পদ্ধতি')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">গবেষণা লিখন</p>
+                <p class="text-gray-600">গবেষণাপত্র ও থিসিস লেখার কাঠামো এবং নিয়মাবলী।</p>
+            </div>
+
+            <!-- কোর্স ২০: কবিতা কর্মশালা -->
+            <div onclick="selectCourse('আধুনিক বাংলা কবিতা কর্মশালা ও পঠন')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">কবিতা কর্মশালা</p>
+                <p class="text-gray-600">নতুন ধারার কবিতা লেখা এবং সমসাময়িক কাব্য চর্চা।</p>
+            </div>
+
+            <!-- কোর্স ২১: ছোটগল্প -->
+            <div onclick="selectCourse('ছোটগল্প লেখার নিপুণ কৌশল ও প্লট তৈরি')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">ছোটগল্প কৌশল</p>
+                <p class="text-gray-600">চরিত্রায়ণ, প্লট ডেভেলপমেন্ট এবং সমাপ্তির শিল্প।</p>
+            </div>
+            
+            <!-- কোর্স ২২: সাক্ষাৎকার -->
+            <div onclick="selectCourse('সাক্ষাৎকার গ্রহণ ও প্রতিবেদন তৈরির পদ্ধতি')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">সাক্ষাৎকার/রিপোর্টিং</p>
+                <p class="text-gray-600">কার্যকর প্রশ্ন তৈরি এবং নির্ভরযোগ্য তথ্য সংগ্রহ।</p>
+            </div>
+
+            <!-- কোর্স ২৩: বাংলা ইতিহাস -->
+            <div onclick="selectCourse('বাঙালি জাতি ও ভাষার ইতিহাস: উদ্ভব ও বিকাশ')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">ভাষার ইতিহাস</p>
+                <p class="text-gray-600">ইন্দো-ইউরোপীয় থেকে আধুনিক বাংলা ভাষার যাত্রা।</p>
+            </div>
+
+            <!-- কোর্স ২৪: কপিরাইটিং -->
+            <div onclick="selectCourse('বাংলা বিজ্ঞাপনী লিখন ও কার্যকর কপিরাইটিং')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">কপিরাইটিং</p>
+                <p class="text-gray-600">পণ্যের প্রচার ও বিপণনের জন্য আকর্ষণীয় লেখা।</p>
+            </div>
+
+            <!-- কোর্স ২৫: বিতর্ক -->
+            <div onclick="selectCourse('বিতর্ক ও যুক্তিতর্ক উপস্থাপনা')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">বিতর্ক ও যুক্তি</p>
+                <p class="text-gray-600">যুক্তিনির্ভর বক্তব্য তৈরি এবং বিতর্কে অংশগ্রহণের কৌশল।</p>
+            </div>
+
+            <!-- কোর্স ২৬: সম্পাদনা -->
+            <div onclick="selectCourse('পেশাদারী বাংলা সম্পাদনা ও প্রুফরিডিং')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">সম্পাদনা ও প্রুফরিডিং</p>
+                <p class="text-gray-600">মুদ্রণ ও অনলাইন মাধ্যমে লেখা ত্রুটিমুক্ত করার পদ্ধতি।</p>
+            </div>
+
+            <!-- কোর্স ২৭: ভ্রমণ কাহিনী -->
+            <div onclick="selectCourse('ভ্রমণ কাহিনী লিখন ও প্রকাশ')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">ভ্রমণ কাহিনী</p>
+                <p class="text-gray-600">ব্যক্তিগত অভিজ্ঞতা এবং স্থান বর্ণনা দিয়ে লেখা।</p>
+            </div>
+
+            <!-- কোর্স ২৮: লোকসাহিত্য -->
+            <div onclick="selectCourse('লোকসাহিত্য ও লোকসংস্কৃতি পরিচিতি')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">লোকসাহিত্য</p>
+                <p class="text-gray-600">বাংলাদেশের লোককথা, ধাঁধা, প্রবাদ ও গ্রামীণ ঐতিহ্য।</p>
+            </div>
+
+            <!-- কোর্স ২৯: ক্যালিগ্রাফি -->
+            <div onclick="selectCourse('বাংলা ক্যালিগ্রাফি ও ফন্ট ডিজাইনের প্রাথমিক ধারণা')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">ক্যালিগ্রাফি ও ফন্ট</p>
+                <p class="text-gray-600">বাংলা অক্ষরের শৈল্পিক রূপদান এবং ডিজিটাল ফন্ট তৈরি।</p>
+            </div>
+
+            <!-- কোর্স ৩০: উচ্চতর ব্যাকরণ -->
+            <div onclick="selectCourse('উচ্চতর বাংলা ব্যাকরণ ও ভাষাতত্ত্ব')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">উচ্চতর ব্যাকরণ</p>
+                <p class="text-gray-600">ভাষার গঠন, ধ্বনিতত্ত্ব, রূপতত্ত্ব এবং শব্দার্থতত্ত্ব।</p>
+            </div>
+            
+             <!-- কোর্স ৩১: বিদেশী সাহিত্য -->
+            <div onclick="selectCourse('বিশ্ব সাহিত্যের বাংলা অনুবাদ: বিশ্ব ক্লাসিক পরিচিতি')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">বিশ্ব সাহিত্য (অনুবাদ)</p>
+                <p class="text-gray-600">বিভিন্ন ভাষার ক্লাসিক সাহিত্যের বাংলা অনুবাদ নিয়ে আলোচনা।</p>
+            </div>
+
+            <!-- --- নতুন ২৫টি কোর্স (৩২-৫৬) --- -->
+
+            <!-- কোর্স ৩২: শিক্ষক প্রশিক্ষণ -->
+            <div onclick="selectCourse('বাংলা শিক্ষণ পদ্ধতি ও শিক্ষক প্রশিক্ষণ')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">শিক্ষক প্রশিক্ষণ</p>
+                <p class="text-gray-600">বাংলা ভাষা ও সাহিত্য শিক্ষার আধুনিক পদ্ধতি ও কৌশল।</p>
+            </div>
+            
+            <!-- কোর্স ৩৩: সাহিত্য সমালোচনা -->
+            <div onclick="selectCourse('সাহিত্য তত্ত্ব ও সমালোচনা পদ্ধতি')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">সাহিত্য সমালোচনা</p>
+                <p class="text-gray-600">সাহিত্য বিশ্লেষণ ও সমালোচনার মৌলিক ও প্রায়োগিক ধারণা।</p>
+            </div>
+
+            <!-- কোর্স ৩৪: বিজ্ঞান লিখন -->
+            <div onclick="selectCourse('বৈজ্ঞানিক ও কারিগরি বাংলা লিখন')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">বিজ্ঞান লিখন</p>
+                <p class="text-gray-600">বিজ্ঞান, প্রযুক্তি ও গবেষণামূলক বিষয়বস্তু বাংলায় লেখা।</p>
+            </div>
+
+            <!-- কোর্স ৩৫: আত্মজীবনী লিখন -->
+            <div onclick="selectCourse('আত্মজীবনী ও স্মৃতিচারণমূলক লিখন')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">আত্মজীবনী লিখন</p>
+                <p class="text-gray-600">ব্যক্তিগত জীবনের অভিজ্ঞতা ও স্মৃতিচারণা লেখার কৌশল।</p>
+            </div>
+
+            <!-- কোর্স ৩৬: চলচ্চিত্র ও সাহিত্য -->
+            <div onclick="selectCourse('বাংলা চলচ্চিত্র ও সাহিত্য সম্পর্ক')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">চলচ্চিত্র ও সাহিত্য</p>
+                <p class="text-gray-600">বাংলা সাহিত্য থেকে চলচ্চিত্রে রূপান্তরের শৈলী বিশ্লেষণ।</p>
+            </div>
+
+            <!-- কোর্স ৩৭: ডিজিটাল পুঁথি -->
+            <div onclick="selectCourse('ডিজিটাল আর্কিভিং ও পুঁথি পরিচিতি')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">ডিজিটাল পুঁথি</p>
+                <p class="text-gray-600">পুরাতন বাংলা পুঁথি ও নথিপত্র ডিজিটালভাবে সংরক্ষণ।</p>
+            </div>
+
+            <!-- কোর্স ৩৮: বাংলা কম্পিউটিং -->
+            <div onclick="selectCourse('সফটওয়্যার লোকালইজেশন ও বাংলা কম্পিউটিং')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">বাংলা কম্পিউটিং</p>
+                <p class="text-gray-600">সফটওয়্যার ও ওয়েবসাইটের জন্য বাংলা ভাষার ব্যবহার।</p>
+            </div>
+
+            <!-- কোর্স ৩৯: প্রান্তিক সাহিত্য -->
+            <div onclick="selectCourse('নারী ও প্রান্তিক মানুষের সাহিত্য')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">প্রান্তিক সাহিত্য</p>
+                <p class="text-gray-600">বাংলা সাহিত্যে নারী ও নিম্নবর্গের মানুষের জীবন চিত্রণ।</p>
+            </div>
+
+            <!-- কোর্স ৪০: পরিবেশ লিখন -->
+            <div onclick="selectCourse('পরিবেশ ও প্রকৃতি বিষয়ক বাংলা লেখা')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">পরিবেশ লিখন</p>
+                <p class="text-gray-600">পরিবেশ সচেতনতা ও প্রকৃতি নির্ভর প্রবন্ধ রচনা।</p>
+            </div>
+
+            <!-- কোর্স ৪১: উচ্চাঙ্গ স্পিকিং -->
+            <div onclick="selectCourse('উচ্চাঙ্গ পাবলিক স্পিকিং: বিতর্ক ও উপস্থাপনা')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">উচ্চাঙ্গ স্পিকিং</p>
+                <p class="text-gray-600">জটিল বিষয়ে বক্তব্য রাখা ও শ্রোতাকে প্রভাবিত করার কৌশল।</p>
+            </div>
+
+            <!-- কোর্স ৪২: সমসাময়িক কথাসাহিত্য -->
+            <div onclick="selectCourse('সমসাময়িক বাংলা কথাসাহিত্য (৯০ পরবর্তী)')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">সমসাময়িক কথাসাহিত্য</p>
+                <p class="text-gray-600">১৯৯০ সালের পর প্রকাশিত বাংলা ফিকশন নিয়ে আলোচনা।</p>
+            </div>
+
+            <!-- কোর্স ৪৩: শিশুতোষ ছড়া -->
+            <div onclick="selectCourse('বাংলা ছড়া ও শিশুতোষ কবিতা রচনা')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">শিশুতোষ ছড়া</p>
+                <p class="text-gray-600">ছোটদের জন্য ছন্দময় ও শিক্ষামূলক ছড়া তৈরির কর্মশালা।</p>
+            </div>
+
+            <!-- কোর্স ৪৪: টাইপোগ্রাফি -->
+            <div onclick="selectCourse('বাংলা টাইপোগ্রাফি ও লেআউট ডিজাইন')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">টাইপোগ্রাফি</p>
+                <p class="text-gray-600">বই, পত্রিকা ও বিজ্ঞাপনে বাংলা ফন্টের শৈল্পিক ব্যবহার।</p>
+            </div>
+
+            <!-- কোর্স ৪৫: ভিজ্যুয়াল ভাষা -->
+            <div onclick="selectCourse('ভিজ্যুয়াল মিডিয়ার ভাষা ও বিজ্ঞাপন')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">ভিজ্যুয়াল ভাষা</p>
+                <p class="text-gray-600">বিজ্ঞাপন ও অন্যান্য দৃশ্যের মাধ্যমে বার্তা প্রেরণের ভাষিক দিক।</p>
+            </div>
+
+            <!-- কোর্স ৪৬: সমাজ ভাষাতত্ত্ব -->
+            <div onclick="selectCourse('বাংলা সমাজ ভাষাতত্ত্ব (Sociolinguistics)')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">সমাজ ভাষাতত্ত্ব</p>
+                <p class="text-gray-600">সমাজে ভাষার ব্যবহার ও আঞ্চলিক প্রভাবের বিশ্লেষণ।</p>
+            </div>
+
+            <!-- কোর্স ৪৭: পুরাণ ও সাহিত্য -->
+            <div onclick="selectCourse('পুরাণ, উপকথা ও বাংলা সাহিত্যে তার প্রভাব')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">পুরাণ ও সাহিত্য</p>
+                <p class="text-gray-600">ভারতীয় ও লোকপুরাণের গল্প ও বাংলা সাহিত্যে তার ব্যবহার।</p>
+            </div>
+
+            <!-- কোর্স ৪৮: আইনি অনুবাদ -->
+            <div onclick="selectCourse('আইনি ও প্রযুক্তিগত দলিল অনুবাদ')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">আইনি অনুবাদ</p>
+                <p class="text-gray-600">আইন ও প্রযুক্তি বিষয়ক কঠিন দলিলের নির্ভুল অনুবাদ।</p>
+            </div>
+
+            <!-- কোর্স ৪৯: কল্পকাহিনী লিখন -->
+            <div onclick="selectCourse('ফ্যান্টাসি ও বিজ্ঞান কল্পকাহিনী লিখন')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">কল্পকাহিনী লিখন</p>
+                <p class="text-gray-600">ফ্যান্টাসি এবং সাই-ফাই ঘরানার মৌলিক গল্প তৈরি।</p>
+            </div>
+
+            <!-- কোর্স ৫০: তুলনামূলক সাহিত্য -->
+            <div onclick="selectCourse('তুলনামূলক সাহিত্য: বাংলা ও বিশ্ব')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">তুলনামূলক সাহিত্য</p>
+                <p class="text-gray-600">বাংলা সাহিত্যের সাথে বিশ্ব সাহিত্যের প্রধান ধারার তুলনা।</p>
+            </div>
+
+            <!-- কোর্স ৫১: লোকসংগীত বিশ্লেষণ -->
+            <div onclick="selectCourse('বাংলা লোকসংগীতের ভাষিক বিশ্লেষণ')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">লোকসংগীত বিশ্লেষণ</p>
+                <p class="text-gray-600">লোকসংগীতের ভাষা, শব্দ চয়ন ও সাংস্কৃতিক প্রেক্ষাপট।</p>
+            </div>
+
+            <!-- কোর্স ৫২: মাধ্যমিক শিক্ষকতা -->
+            <div onclick="selectCourse('মাধ্যমিক স্তরে বাংলা পড়ানোর কৌশল')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">মাধ্যমিক শিক্ষকতা</p>
+                <p class="text-gray-600">স্কুল পর্যায়ে বাংলা সাহিত্যের আধুনিক পাঠদান পদ্ধতি।</p>
+            </div>
+
+            <!-- কোর্স ৫৩: দর্শন ও জীবনবোধ -->
+            <div onclick="selectCourse('বাংলা সাহিত্য: দর্শন ও জীবনবোধ')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">দর্শন ও জীবনবোধ</p>
+                <p class="text-gray-600">বাংলা সাহিত্যের মাধ্যমে জীবনের অর্থ ও দার্শনিক চিন্তা।</p>
+            </div>
+
+            <!-- কোর্স ৫৪: বৈশ্বিক বাংলা -->
+            <div onclick="selectCourse('আন্তর্জাতিক ক্ষেত্রে বাংলা ভাষা ও সংস্কৃতি')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">বৈশ্বিক বাংলা</p>
+                <p class="text-gray-600">বিশ্বজুড়ে বাংলা ভাষার গুরুত্ব ও সাংস্কৃতিক প্রসার।</p>
+            </div>
+
+            <!-- কোর্স ৫৫: প্রফেশনাল ব্লগিং -->
+            <div onclick="selectCourse('প্রফেশনাল ব্লগিং ও কনটেন্ট মার্কেটিং')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">প্রফেশনাল ব্লগিং</p>
+                <p class="text-gray-600">ব্লগ থেকে আয় ও সার্চ ইঞ্জিন অপটিমাইজেশন (SEO)।</p>
+            </div>
+
+            <!-- কোর্স ৫৬: প্রমিতকরণ সমস্যা -->
+            <div onclick="selectCourse('বাংলা বানান ও প্রমিতকরণ সমস্যা')" 
+                 class="course-card bg-white p-6 rounded-xl border border-teal-200 text-center">
+                <p class="text-2xl font-bold text-teal-700 mb-2">প্রমিতকরণ সমস্যা</p>
+                <p class="text-gray-600">বাংলা বানানের বিভিন্ন নিয়ম ও প্রমিতকরণের চ্যালেঞ্জ।</p>
+            </div>
+
+        </div>
+
+        <p class="text-center text-sm text-gray-500 mt-10">
+            * এটি একটি নমুনা তালিকা। ক্লিক করার ফলে কোনো নতুন পেজে যাওয়া হবে না, শুধু নির্বাচনের বার্তা দেওয়া হবে।
+        </p>
+    </div>
+
+    <!-- নির্বাচনের বার্তা (Notification Box) -->
+    <div id="notification" class="fixed bottom-4 right-4 bg-green-600 text-white p-4 rounded-lg shadow-xl hidden transition duration-300 ease-out transform" role="alert">
+        <div class="flex items-center">
+            <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <span id="notification-text"></span>
+            <button onclick="closeNotification()" class="ml-4 text-white opacity-75 hover:opacity-100 focus:outline-none">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const notification = document.getElementById('notification');
+        const notificationText = document.getElementById('notification-text');
+        let timer;
+        
+        // --- New Script for Header Responsiveness ---
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        // Toggle mobile menu visibility
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Placeholder functionality for the authentication button
+        document.getElementById('open-auth-modal-btn').addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log("Authentication Modal would open here.");
+        });
+        document.getElementById('open-auth-modal-btn-mobile').addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log("Authentication Modal would open here.");
+        });
+
+        // Hide mobile menu on link click (optional, for better UX)
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                // Wait for the transition to finish before hiding
+                setTimeout(() => {
+                    mobileMenu.classList.add('hidden');
+                }, 300); 
+            });
+        });
+        // --- End New Script for Header Responsiveness ---
+
+
+        /**
+         * কোর্সের নাম নির্বাচন হলে নোটিফিকেশন প্রদর্শন করে।
+         * @param {string} courseName - নির্বাচিত কোর্সের নাম
+         */
+        function selectCourse(courseName) {
+            // নিশ্চিতকরণের বার্তা সেট করা
+            notificationText.textContent = `আপনি "${courseName}" কোর্সটি নির্বাচন করেছেন।`;
+            
+            // নোটিফিকেশন প্রদর্শন করা
+            notification.classList.remove('hidden', 'translate-x-full');
+            notification.classList.add('translate-x-0');
+
+            // পূর্ববর্তী টাইমার থাকলে তা বাতিল করা
+            clearTimeout(timer);
+
+            // ৩ সেকেন্ড পর নোটিফিকেশন বন্ধ করার জন্য টাইমার সেট করা
+            timer = setTimeout(() => {
+                closeNotification();
+            }, 3000);
+        }
+
+        /**
+         * নোটিফিকেশন বক্স বন্ধ করে।
+         */
+        function closeNotification() {
+            notification.classList.remove('translate-x-0');
+            notification.classList.add('translate-x-full');
+            // ট্রানজিশন শেষ হওয়ার পর লুকানোর জন্য সামান্য বিরতি
+            setTimeout(() => {
+                notification.classList.add('hidden');
+            }, 300); 
+        }
+    </script>
+</body>
+</html>

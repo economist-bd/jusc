@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>খোলাফায়ে রাশিদিন (রা.)-এর জীবনকাহিনি</title>
+    <!-- Tailwind CSS লোড করা হচ্ছে -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* ফন্ট হিসেবে ইন্টার ও নোটো ব্যবহার করা হচ্ছে */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+Bengali:wght@400;700&display=swap');
+        body {
+            font-family: 'Noto Sans Bengali', 'Inter', sans-serif;
+            background-color: #f8fbfd; 
+            line-height: 1.8;
+            color: #333;
+        }
+        .header-bg {
+            background-color: #0d47a1; /* Deep Blue */
+        }
+        .main-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .bio-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            border-top: 6px solid;
+            scroll-margin-top: 80px; /* Offset for fixed header */
+        }
+        .bio-header {
+            font-size: 2rem;
+            font-weight: 700;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .sub-heading {
+            color: #0d47a1;
+            font-weight: 700;
+            border-left: 3px solid #1e88e5;
+            padding-left: 0.75rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Dropdown specific styles */
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        .dropdown-menu {
+            display: none;
+            right: 0;
+            min-width: 12rem;
+            z-index: 60;
+            animation: fadeIn 0.3s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive styles for mobile menu */
+        #mobile-menu-items {
+            transition: max-height 0.3s ease-out;
+            max-height: 0;
+            overflow: hidden;
+        }
+        .menu-open #mobile-menu-items {
+            max-height: 500px; /* Large enough height to show all items */
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- HEADER: Sticky Header and Dropdown Navigation -->
+    <header class="header-bg sticky top-0 z-50 shadow-2xl">
+        <div class="main-container h-20 flex justify-between items-center px-4 sm:px-8">
+            <h1 class="text-3xl font-extrabold text-white">
+                <a href="#top" class="hover:text-amber-300 transition duration-300">ইসলামী ইতিহাস</a>
+            </h1>
+            
+            <!-- Desktop Navigation with Dropdown -->
+            <nav class="hidden md:block">
+                <ul class="flex space-x-6 text-lg font-medium">
+                    <!-- Dropdown for Khulafa -->
+                    <li class="relative dropdown">
+                        <a href="#" class="text-white hover:text-amber-300 transition duration-300 flex items-center p-2 rounded-lg">
+                            চার খলিফা (রা.)
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </a>
+                        <ul class="dropdown-menu absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-xl overflow-hidden">
+                            <li><a href="#abubakr" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition duration-200">১. হযরত আবুবকর (রা.)</a></li>
+                            <li><a href="#umar" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition duration-200">২. হযরত উমর (রা.)</a></li>
+                            <li><a href="#uthman" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition duration-200">৩. হযরত উসমান (রা.)</a></li>
+                            <li><a href="#ali" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition duration-200">৪. হযরত আলী (রা.)</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="text-white hover:text-amber-300 transition duration-300 p-2 rounded-lg">অন্যান্য ব্যক্তিত্ব</a></li>
+                    <li><a href="#" class="text-white hover:text-amber-300 transition duration-300 p-2 rounded-lg">সম্পর্কে</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-white hover:bg-blue-600 focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown Content -->
+        <div id="mobile-menu-items" class="md:hidden bg-blue-700">
+            <ul class="flex flex-col space-y-1 px-4 py-2 text-base font-medium">
+                <li><a href="#abubakr" class="block py-2 text-white hover:bg-blue-600 transition duration-200 rounded-md">১. হযরত আবুবকর (রা.)</a></li>
+                <li><a href="#umar" class="block py-2 text-white hover:bg-blue-600 transition duration-200 rounded-md">২. হযরত উমর (রা.)</a></li>
+                <li><a href="#uthman" class="block py-2 text-white hover:bg-blue-600 transition duration-200 rounded-md">৩. হযরত উসমান (রা.)</a></li>
+                <li><a href="#ali" class="block py-2 text-white hover:bg-blue-600 transition duration-200 rounded-md">৪. হযরত আলী (রা.)</a></li>
+                <li><a href="#" class="block py-2 text-white hover:bg-blue-600 transition duration-200 rounded-md">অন্যান্য ব্যক্তিত্ব</a></li>
+            </ul>
+        </div>
+    </header>
+    <!-- END HEADER -->
+
+    <main id="top" class="main-container p-4 sm:p-8 pt-10">
+
+        <section class="text-center mb-10">
+            <h2 class="text-4xl font-extrabold text-gray-800 mb-4">খোলাফায়ে রাশিদিনের স্বর্ণযুগ</h2>
+            <p class="text-lg text-gray-600">ইসলামী ইতিহাসের এই চার মহান নেতার জীবন, নেতৃত্ব এবং অসামান্য অবদান।</p>
+            
+        </section>
+
+        <!-- ১. হযরত আবুবকর সিদ্দীক (রা.) এর জীবনকাহিনি -->
+        <section id="abubakr" class="bio-card" style="border-top-color: #4caf50;"> <!-- Green -->
+            <h2 class="bio-header text-green-700">১. হযরত আবুবকর সিদ্দীক (রা.)</h2>
+            <p class="text-gray-700 text-sm italic font-medium">খিলাফতের সময়কাল: ৬৩২ – ৬৩৪ খ্রিষ্টাব্দ (২ বছর)</p>
+
+            <h3 class="sub-heading text-lg">প্রাথমিক জীবন ও ইসলাম গ্রহণ</h3>
+            <p class="text-gray-700">
+                তাঁর আসল নাম আব্দুল্লাহ ইবনে আবি কুহাফা। আবুবকর ছিল তাঁর উপাধি, যা দ্বারা তিনি অধিক পরিচিত। ইসলাম গ্রহণের পর মহানবী (সা.) তাঁকে 'সিদ্দীক' (সত্যবাদী) উপাধি দেন। তিনি ছিলেন রাসূল (সা.)-এর সবচেয়ে ঘনিষ্ঠ বন্ধু এবং প্রথম পুরুষদের মধ্যে একজন যিনি ইসলাম গ্রহণ করেন।
+            </p>
+
+            <h3 class="sub-heading text-lg">খিলাফতের দায়িত্ব ও গুরুত্বপূর্ণ অবদান</h3>
+            <p class="text-gray-700">
+                মহানবী (সা.)-এর ওফাতের পর মুসলিম উম্মাহর ক্রান্তিকালে তিনি খলিফা নির্বাচিত হন। তাঁর খিলাফতের প্রধান চ্যালেঞ্জগুলো ছিল:
+                <ul class="list-disc ml-6 mt-2 text-gray-700">
+                    <li>**ভণ্ড নবীদের দমন (রিদ্দার যুদ্ধ):** তাঁর বলিষ্ঠ নেতৃত্বে মুসাইলামা আল-কাজ্জাবের মতো ভণ্ড নবীদের উত্থান শক্ত হাতে দমন করা হয়।</li>
+                    <li>**যাকাত দিতে অস্বীকৃতি:** যারা যাকাত দিতে অস্বীকার করেছিল, তাদের বিরুদ্ধে তিনি কঠোর অবস্থান নেন, যার ফলে ইসলামী অর্থনীতির ভিত্তি সুরক্ষিত হয়।</li>
+                    <li>**কুরআন সংকলন:** হযরত উমর (রা.)-এর পরামর্শে তিনি কুরআনকে বিক্ষিপ্ত অবস্থা থেকে একত্রিত করে গ্রন্থ আকারে সংকলনের উদ্যোগ নেন।</li>
+                    <li>**সামরিক অভিযান:** বাইজেন্টাইন ও সাসানীয় সাম্রাজ্যের বিরুদ্ধে সামরিক অভিযান শুরু করেন, যা পরবর্তীতে ইসলামী সাম্রাজ্যের বিস্তৃতি ঘটায়।</li>
+                </ul>
+            </p>
+            
+            <h3 class="sub-heading text-lg">শাহাদাত</h3>
+            <p class="text-gray-700">
+                হিজরী ১৩ সালের জমাদিউল আউয়াল মাসে তিনি গুরুতর অসুস্থ হয়ে পড়েন এবং ৬৩ বছর বয়সে মদিনায় ওফাত লাভ করেন। তাঁকে মসজিদে নববীতে রাসূল (সা.)-এর পাশে দাফন করা হয়।
+            </p>
+        </section>
+
+        <!-- ২. হযরত উমর ইবনুল খাত্তাব (রা.) এর জীবনকাহিনি -->
+        <section id="umar" class="bio-card" style="border-top-color: #ff9800;"> <!-- Orange -->
+            <h2 class="bio-header text-orange-700">২. হযরত উমর ইবনুল খাত্তাব (রা.)</h2>
+            <p class="text-gray-700 text-sm italic font-medium">খিলাফতের সময়কাল: ৬৩৪ – ৬৪৪ খ্রিষ্টাব্দ (১০ বছর)</p>
+
+            <h3 class="sub-heading text-lg">প্রাথমিক জীবন ও ইসলাম গ্রহণ</h3>
+            <p class="text-gray-700">
+                ইসলাম গ্রহণের পূর্বে তিনি ছিলেন মক্কার একজন প্রভাবশালী ও কঠোর নেতা। মহানবী (সা.)-এর দোয়ার ফলে তিনি ইসলাম গ্রহণ করেন। তাঁর ইসলাম গ্রহণের পর মুসলিমরা প্রকাশ্যে কাবা ঘরে নামাজ আদায়ের সাহস পায়। তাঁর উপাধি ছিল 'আল-ফারুক' (সত্য ও মিথ্যার পার্থক্যকারী)।
+            </p>
+
+            <h3 class="sub-heading text-lg">প্রশাসনিক সংস্কার ও সামরিক বিজয়</h3>
+            <p class="text-gray-700">
+                হযরত আবুবকর (রা.)-এর অসিয়ত অনুযায়ী তিনি দ্বিতীয় খলিফা নির্বাচিত হন। তাঁর দশ বছরের শাসনামল ছিল ইসলামের স্বর্ণযুগ।
+                <ul class="list-disc ml-6 mt-2 text-gray-700">
+                    <li>**বিশাল সাম্রাজ্য প্রতিষ্ঠা:** তাঁর আমলে সিরিয়া, ইরাক, মিশর এবং জেরুজালেম মুসলিমদের অধীনে আসে।</li>
+                    <li>**প্রশাসনিক কাঠামো:** তিনি 'দিওয়ান' (প্রশাসনিক দফতর), 'বায়তুল মাল' (রাষ্ট্রীয় কোষাগার), বিচার বিভাগ, এবং নিয়মিত সৈন্যবাহিনীর কাঠামো তৈরি করেন।</li>
+                    <li>**হিজরী সনের প্রবর্তন:** তিনি ইসলামী তারিখ গণনার জন্য হিজরী সন প্রবর্তন করেন।</li>
+                    <li>**জনকল্যাণ:** রাস্তা তৈরি, খাল খনন, পুলিশি ব্যবস্থা, এবং বিনামূল্যে খাদ্যের ব্যবস্থা করে জনকল্যাণমূলক রাষ্ট্র গঠনে মনোযোগ দেন।</li>
+                </ul>
+            </p>
+            
+            <h3 class="sub-heading text-lg">শাহাদাত</h3>
+            <p class="text-gray-700">
+                হিজরী ২৩ সালের যিলহজ মাসে আবু লুলু নামক এক পার্সিয়ান দাস ফজরের নামাজের সময় বিষাক্ত ছুরি দিয়ে তাঁকে আঘাত করে। তিন দিন পর তিনি শাহাদাত বরণ করেন। তাঁকে মসজিদে নববীতে রাসূল (সা.) ও হযরত আবুবকর (রা.)-এর পাশে দাফন করা হয়।
+            </p>
+        </section>
+
+        <!-- ৩. হযরত উসমান গণী (রা.) এর জীবনকাহিনি -->
+        <section id="uthman" class="bio-card" style="border-top-color: #2196f3;"> <!-- Blue -->
+            <h2 class="bio-header text-blue-700">৩. হযরত উসমান গণী (রা.)</h2>
+            <p class="text-gray-700 text-sm italic font-medium">খিলাফতের সময়কাল: ৬৪৪ – ৬৫৬ খ্রিষ্টাব্দ (১২ বছর)</p>
+
+            <h3 class="sub-heading text-lg">প্রাথমিক জীবন ও ইসলাম গ্রহণ</h3>
+            <p class="text-gray-700">
+                তিনি কুরাইশ বংশের বনি উমাইয়া গোত্রের ছিলেন। ইসলামের প্রাথমিক জীবনেই তিনি ইসলাম গ্রহণ করেন এবং তাঁর সম্পদের উদার ব্যবহারের কারণে 'গণী' (দানশীল) উপাধিতে ভূষিত হন। রাসূল (সা.)-এর দু'জন কন্যাকে বিবাহ করার কারণে তিনি 'যুন-নুরাইন' (দুই জ্যোতির অধিকারী) নামে পরিচিত।
+            </p>
+
+            <h3 class="sub-heading text-lg">প্রধান অর্জনসমূহ</h3>
+            <p class="text-gray-700">
+                খিলাফতের শুরুটা ছিল শান্তিময়, কিন্তু শেষদিকে ফিতনা বা গৃহবিবাদ দেখা দেয়।
+                <ul class="list-disc ml-6 mt-2 text-gray-700">
+                    <li>**কুরআনের আদর্শ সংস্করণ:** তাঁর সবচেয়ে গুরুত্বপূর্ণ অবদান হলো কুরআনকে একটি প্রমিত (Standardized) সংস্করণে প্রস্তুত ও বিতরণ করা। বিভিন্ন অঞ্চলের কিরাত (পঠন পদ্ধতি)-এর পার্থক্য দূর করে তিনি 'মুসহাফ-ই-উসমানী' তৈরি করেন, যা আজও ব্যবহৃত হয়।</li>
+                    <li>**ইসলামী নৌবাহিনী:** তিনিই প্রথম শক্তিশালী ইসলামী নৌবাহিনী প্রতিষ্ঠা করেন, যার ফলে ভূমধ্যসাগরে সাইপ্রাসসহ গুরুত্বপূর্ণ অঞ্চলগুলো জয় করা সম্ভব হয়।</li>
+                    <li>**সাম্রাজ্যের সম্প্রসারণ:** তাঁর আমলে উত্তর আফ্রিকা, মধ্য এশিয়া এবং ইরানের বিশাল অংশ পর্যন্ত মুসলিম সাম্রাজ্য বিস্তৃত হয়।</li>
+                    <li>**অর্থনৈতিক সমৃদ্ধি:** তাঁর দানশীলতা ও বাণিজ্য জ্ঞান বায়তুল মালের সম্পদকে বহুগুণে বৃদ্ধি করেছিল।</li>
+                </ul>
+            </p>
+            
+            <h3 class="sub-heading text-lg">শাহাদাত</h3>
+            <p class="text-gray-700">
+                খিলাফতের শেষদিকে কিছু বিদ্রোহী গোষ্ঠীর সৃষ্ট ফিতনার কারণে ৬৫৬ খ্রিষ্টাব্দে তাঁকে নিজ বাসভবনে অবরোধ করা হয়। তিনি শান্তিপূর্ণভাবে অবরোধ মোকাবেলা করার চেষ্টা করেন, কিন্তু বিদ্রোহীরা তাঁকে জিম্মি করে নৃশংসভাবে শহীদ করে। তাঁকে মদিনার জান্নাতুল বাকী কবরস্থানে দাফন করা হয়।
+            </p>
+        </section>
+
+        <!-- ৪. হযরত আলী ইবনে আবি তালিব (রা.) এর জীবনকাহিনি -->
+        <section id="ali" class="bio-card" style="border-top-color: #e53935;"> <!-- Red -->
+            <h2 class="bio-header text-red-700">৪. হযরত আলী ইবনে আবি তালিব (রা.)</h2>
+            <p class="text-gray-700 text-sm italic font-medium">খিলাফতের সময়কাল: ৬৫৬ – ৬৬১ খ্রিষ্টাব্দ (৪ বছর)</p>
+
+            <h3 class="sub-heading text-lg">প্রাথমিক জীবন ও ইসলাম গ্রহণ</h3>
+            <p class="text-gray-700">
+                তিনি ছিলেন মহানবী (সা.)-এর চাচাতো ভাই এবং জামাতা (ফাতেমা (রা.)-এর স্বামী)। বালকদের মধ্যে তিনি প্রথম ইসলাম গ্রহণ করেন। মহানবী (সা.) তাঁকে 'আবু তুরাব' (মাটির পিতা) এবং 'আসাদুল্লাহ' (আল্লাহর সিংহ) উপাধি দেন। তাঁর জ্ঞান, প্রজ্ঞা ও বীরত্ব সর্বজনবিদিত।
+            </p>
+
+            <h3 class="sub-heading text-lg">খিলাফত ও প্রতিকূলতা</h3>
+            <p class="text-gray-700">
+                হযরত উসমান (রা.)-এর শাহাদাতের পর কুফাবাসীর চাপে তিনি খলিফা নির্বাচিত হন। তাঁর খিলাফতের পুরো সময়টাই ছিল আভ্যন্তরীণ ফিতনা ও গৃহযুদ্ধে জর্জরিত।
+                <ul class="list-disc ml-6 mt-2 text-gray-700">
+                    <li>**জ্ঞান ও বিচার:** তাঁর বিচারিক প্রজ্ঞা ও জ্ঞানের গভীরতা তাকে 'বাবুল ইলম' (জ্ঞানের দরজা) নামে পরিচিত করেছে।</li>
+                    <li>**রাজধানী পরিবর্তন:** তিনি প্রশাসনিক সুবিধার জন্য মদিনা থেকে কুফাকে নতুন রাজধানী হিসেবে নির্বাচিত করেন।</li>
+                    <li>**রাজনৈতিক যুদ্ধ:** তিনি উম্মাহর মধ্যে ন্যায় প্রতিষ্ঠা করতে গিয়ে জামাল ও সিফফিনের মতো কঠিন যুদ্ধে লিপ্ত হন।</li>
+                    <li>**অর্থনৈতিক নীতি:** তিনি রাষ্ট্রের সম্পদকে সকলের মধ্যে সমতার ভিত্তিতে বণ্টন করার নীতি গ্রহণ করেন, যা অনেকের কাছে অপ্রিয় ছিল।</li>
+                </ul>
+            </p>
+            
+            <h3 class="sub-heading text-lg">শাহাদাত</h3>
+            <p class="text-gray-700">
+                হিজরী ৪০ সালের রমজান মাসে কুফায় ফজরের নামাজে যাওয়ার সময় তাঁকে এক খারেজি ইবনে মুলজাম বিষাক্ত তলোয়ার দিয়ে আঘাত করে। দুই দিন পর তিনি শাহাদাত বরণ করেন। তাঁকে ইরাকের কুফায় দাফন করা হয়।
+            </p>
+        </section>
+        
+        <!-- ফুটনোট -->
+        <footer class="text-center mt-12 p-6 bg-gray-100 rounded-xl">
+            <p class="text-sm text-gray-600">ইসলামী ইতিহাসের এই মহান চার ব্যক্তিত্বের জীবন অনুসরণীয়। আল্লাহ্‌ তাঁদের প্রতি সন্তুষ্ট থাকুন।</p>
+        </footer>
+        
+    </main>
+
+    <!-- Script for Dropdown and Mobile Menu Toggle -->
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenuContainer = document.getElementById('mobile-menu-items').parentNode; // Parent is header
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuContainer.classList.toggle('menu-open');
+        });
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('#mobile-menu-items a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuContainer.classList.remove('menu-open');
+            });
+        });
+    </script>
+</body>
+</html>

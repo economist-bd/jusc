@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>সেরা ১০০ চলচ্চিত্র - প্রথম ও দ্বিতীয় অংশ</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* ফন্টের জন্য ইন্টার ব্যবহার */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* কাস্টম স্ক্রলবার স্টাইল */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #4A5568; /* Tailwind gray-600 */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1A202C; /* Tailwind gray-900 */
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen">
+
+    <!-- Global Header Navigation (Sticky) -->
+    <header class="bg-gray-800 shadow-xl sticky top-0 z-50 border-b border-indigo-500/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap justify-between items-center py-4">
+            <!-- Logo -->
+            <h1 class="text-3xl font-extrabold">
+                <a href="index.html" class="text-indigo-400 hover:text-indigo-300 transition duration-300">My eBook Hub</a>
+            </h1>
+            
+            <!-- Navigation Links (Responsive) -->
+            <nav class="flex-grow flex justify-end md:justify-center">
+                <!-- Use overflow-x-auto to handle small screens gracefully, prioritizing key links -->
+                <ul class="flex items-center space-x-3 text-sm md:space-x-6 text-gray-300 overflow-x-auto whitespace-nowrap py-1">
+                    <li><a href="index.html" class="hover:text-indigo-400 transition duration-150">Home</a></li>
+                    <li><a href="browse.html" class="hover:text-indigo-400 transition duration-150 hidden sm:inline">Browse Books</a></li>
+                    <li><a href="categories.html" class="hover:text-indigo-400 transition duration-150 hidden sm:inline">Categories</a></li>
+                    <li class="hidden lg:inline"><a href="Special-Discount.html" class="hover:text-indigo-400 transition duration-150">Discount</a></li>
+                    <li><a href="movies-list.html" class="text-indigo-400 font-semibold border-b-2 border-indigo-400 pb-1">Top 100 Movies</a></li>
+                    <li class="hidden sm:inline"><a href="about.html" class="hover:text-indigo-400 transition duration-150">About</a></li>
+                    <li class="hidden lg:inline"><a href="dashboard.html" class="hover:text-indigo-400 transition duration-150">Dashboard</a></li>
+                    <li class="hidden xl:inline"><a href="payment.html" class="hover:text-indigo-400 transition duration-150">Payment</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Login/Signup Button -->
+            <a href="#" id="open-auth-modal-btn" class="ml-4 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md shadow-indigo-500/50">
+                Login/Signup
+            </a>
+        </div>
+    </header>
+    
+    <!-- Main Content Wrapper (Adjusted padding-top to account for sticky header) -->
+    <div class="max-w-7xl mx-auto p-4 sm:p-8 pt-10">
+        
+        <!-- Main Title (Relocated from old header) -->
+        <div class="text-center mb-10">
+            <h1 class="text-4xl sm:text-5xl font-extrabold text-indigo-400 mb-2">🎥 সেরা ১০০ চলচ্চিত্র</h1>
+            <p class="text-xl text-gray-400">বিশ্বজুড়ে প্রশংসিত চলচ্চিত্রের বিস্তারিত বিবরণ (১-৪০)</p>
+        </div>
+
+        <section id="international-movies" class="mb-12">
+            <h2 class="text-3xl font-bold text-indigo-300 border-b border-indigo-500 pb-3 mb-6">আন্তর্জাতিক সেরা ২০ চলচ্চিত্র (১-১০)</h2>
+            
+            <div id="movie-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Movie Card 1: The Shawshank Redemption (১৯৯৪) -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-indigo-500/50 transition duration-300">
+                    <h3 class="text-2xl font-bold text-gray-50 mb-2">The Shawshank Redemption (১৯৯৪)</h3>
+                    <div class="w-full h-48 flex items-center justify-center rounded-lg overflow-hidden mb-4">
+                        <img src="https://placehold.co/400x260/374151/D1D5DB?text=SHAWSHANK%201994" alt="Poster Placeholder for The Shawshank Redemption (1994)" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-sm font-medium text-gray-400">পরিচালক: <span class="text-indigo-400">ফ্র্যাঙ্ক ড্যারাবন্ট</span></p>
+                    <p class="text-sm font-medium text-gray-400 mb-4">ধরণ: <span class="text-yellow-400">ড্রামা</span></p>
+                    <p class="text-gray-300 mb-4 text-justify">দুর্নীতির অভিযোগে অভিযুক্ত অ্যান্ডি ডুফ্রেনের দীর্ঘ কারা জীবন এবং মুক্তির আশা নিয়ে লেখা একটি অনুপ্রেরণামূলক গল্প।</p>
+                    <a href="https://www.youtube.com/results?search_query=The+Shawshank+Redemption+Trailer" target="_blank" class="w-full inline-block text-center bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md shadow-indigo-500/50">
+                        ট্রেলার দেখুন
+                    </a>
+                </div>
+
+                <!-- Movie Card 2: The Godfather (১৯৭২) -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-indigo-500/50 transition duration-300">
+                    <h3 class="text-2xl font-bold text-gray-50 mb-2">The Godfather (১৯৭২)</h3>
+                    <div class="w-full h-48 flex items-center justify-center rounded-lg overflow-hidden mb-4">
+                        <img src="https://placehold.co/400x260/374151/D1D5DB?text=GODFATHER%201972" alt="Poster Placeholder for The Godfather (1972)" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-sm font-medium text-gray-400">পরিচালক: <span class="text-indigo-400">ফ্রান্সিস ফোর্ড কপোলা</span></p>
+                    <p class="text-sm font-medium text-gray-400 mb-4">ধরণ: <span class="text-yellow-400">ক্রাইম, ড্রামা</span></p>
+                    <p class="text-gray-300 mb-4 text-justify">নিউইয়র্কের একটি ইতালীয় মাফিয়া পরিবারের প্রধান ভিটো কর্লিওন এবং তার ছোট ছেলে মাইকেলের ক্ষমতার পালাবদলের মহাকাব্য।</p>
+                    <a href="https://www.youtube.com/results?search_query=The+Godfather+Trailer" target="_blank" class="w-full inline-block text-center bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md shadow-indigo-500/50">
+                        ট্রেলার দেখুন
+                    </a>
+                </div>
+
+                <!-- Movie Card 3: The Dark Knight (২০০৮) -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-indigo-500/50 transition duration-300">
+                    <h3 class="text-2xl font-bold text-gray-50 mb-2">The Dark Knight (২০০৮)</h3>
+                    <div class="w-full h-48 flex items-center justify-center rounded-lg overflow-hidden mb-4">
+                        <img src="https://placehold.co/400x260/374151/D1D5DB?text=DARK%20KNIGHT%202008" alt="Poster Placeholder for The Dark Knight (2008)" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-sm font-medium text-gray-400">পরিচালক: <span class="text-indigo-400">ক্রিস্টোফার নোলান</span></p>
+                    <p class="text-sm font-medium text-gray-400 mb-4">ধরণ: <span class="text-yellow-400">অ্যাকশন, ক্রাইম</span></p>
+                    <p class="text-gray-300 mb-4 text-justify">ব্যাটম্যান ও জোকারের সংঘাত, যা গথাম শহরের নৈতিকতা এবং বিশৃঙ্খলা নিয়ে প্রশ্ন তোলে। নোলানের সেরা সৃষ্টিগুলির মধ্যে একটি।</p>
+                    <a href="https://www.youtube.com/results?search_query=The+Dark+Knight+Trailer" target="_blank" class="w-full inline-block text-center bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md shadow-indigo-500/50">
+                        ট্রেলার দেখুন
+                    </a>
+                </div>
+
+                <!-- Movie Card 4: 12 Angry Men (১৯৫৭) -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-indigo-500/50 transition duration-300">
+                    <h3 class="text-2xl font-bold text-gray-50 mb-2">12 Angry Men (১৯৫৭)</h3>
+                    <div class="w-full h-48 flex items-center justify-center rounded-lg overflow-hidden mb-4">
+                        <img src="https://placehold.co/400x260/374151/D1D5DB?text=12%20ANGRY%20MEN%201957" alt="Poster Placeholder for 12 Angry Men (1957)" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-sm font-medium text-gray-400">পরিচালক: <span class="text-indigo-400">সিডনি লুমেট</span></p>
+                    <p class="text-sm font-medium text-gray-400 mb-4">ধরণ: <span class="text-yellow-400">ড্রামা</span></p>
+                    <p class="text-gray-300 mb-4 text-justify">একটি হত্যা মামলার জুরি হিসাবে ১২ জন মানুষের বিতর্ক এবং একজন যুবকের ভাগ্য নির্ধারণের টানটান চিত্রায়ণ।</p>
+                    <a href="https://www.youtube.com/results?search_query=12+Angry+Men+Trailer" target="_blank" class="w-full inline-block text-center bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md shadow-indigo-500/50">
+                        ট্রেলার দেখুন
+                    </a>
+                </div>
+
+                <!-- Movie Card 5: Schindler's List (১৯৯৩) -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-indigo-500/50 transition duration-300">
+                    <h3 class="text-2xl font-bold text-gray-50 mb-2">Schindler's List (১৯৯৩)</h3>
+                    <div class="w-full h-48 flex items-center justify-center rounded-lg overflow-hidden mb-4">
+                        <img src="https://placehold.co/400x260/374151/D1D5DB?text=SCHINDLER'S%20LIST%201993" alt="Poster Placeholder for Schindler's List (1993)" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-sm font-medium text-gray-400">পরিচালক: <span class="text-indigo-400">স্টিভেন স্পিলবার্গ</span></p>
+                    <p class="text-sm font-medium text-gray-400 mb-4">ধরণ: <span class="text-yellow-400">ইতিহাস, ড্রামা</span></p>
+                    <p class="text-gray-300 mb-4 text-justify">দ্বিতীয় বিশ্বযুদ্ধের সময় হলোকাস্ট থেকে এক জার্মান ব্যবসায়ীর হাতে হাজারো ইহুদির জীবন বাঁচানোর সত্য ঘটনা অবলম্বনে নির্মিত।</p>
+                    <a href="https://www.youtube.com/results?search_query=Schindler%27s+List+Trailer" target="_blank" class="w-full inline-block text-center bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md shadow-indigo-500/50">
+                        ট্রেলার দেখুন
+                    </a>
+                </div>
+
+                <!-- Movie Card 6: Pulp Fiction (১৯৯৪) -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-indigo-500/50 transition duration-300">
+                    <h3 class="text-2xl font-bold text-gray-50 mb-2">Pulp Fiction (১৯৯৪)</h3>
+                    <div class="w-full h-48 flex items-center justify-center rounded-lg overflow-hidden mb-4">
+                        <img src="https://placehold.co/400x260/374151/D1D5DB?text=PULP%20FICTION%201994" alt="Poster Placeholder for Pulp Fiction (1994)" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-sm font-medium text-gray-400">পরিচালক: <span class="text-indigo-400">কোয়েন্টিন টারান্টিনো</span></p>
+                    <p class="text-sm font-medium text-gray-400 mb-4">ধরণ: <span class="text-yellow-400">ক্রাইম, ড্রামা</span></p>
+                    <p class="text-gray-300 mb-4 text-justify">লস অ্যাঞ্জেলেসের মাফিয়া, বক্সার এবং ছিনতাইকারীদের জীবনের বেশ কয়েকটি ঘটনাকে ভিন্ন ভিন্ন দৃষ্টিকোণ থেকে দেখানো হয়েছে।</p>
+                    <a href="https://www.youtube.com/results?search_query=Pulp+Fiction+Trailer" target="_blank" class="w-full inline-block text-center bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md shadow-indigo-500/50">
+                        ট্রেলার দেখুন
+                    </a>
+                </div>
+
+                <!-- Movie Card 7: The Return of the King (২০০৩) -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-indigo-500/50 transition duration-300">
+                    <h3 class="text-2xl font-bold text-gray-50 mb-2">The Return of the King (২০০৩)</h3>
+                    <div class="w-full h-48 flex items-center justify-center rounded-lg overflow-hidden mb-4">
+                        <img src="https://placehold.co/400x260/374151/D1D5DB?text=ROTK%202003" alt="Poster Placeholder for The Return of the King (2003)" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-sm font-medium text-gray-400">পরিচালক: <span class="text-indigo-400">পিটার জ্যাকসন</span></p>
+                    <p class="text-sm font-medium text-gray-400 mb-4">ধরণ: <span class="text-yellow-400">ফ্যান্টাসি, অ্যাডভেঞ্চার</span></p>
+                    <p class="text-gray-300 mb-4 text-justify">জে.আর.আর. টলকিনের উপন্যাসের চূড়ান্ত পর্ব, মধ্য-পৃথিবীকে অন্ধকার শক্তি থেকে বাঁচানোর শেষ লড়াই।</p>
+                    <a href="https://www.youtube.com/results?search_query=The+Lord+of+the+Rings+The+Return+of+the+King+Trailer" target="_blank" class="w-full inline-block text-center bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md shadow-indigo-500/50">
+                        ট্রেলার দেখুন
+                    </a>
+                </div>
+
+                <!-- Movie Card 8: Forrest Gump (১৯৯৪) -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-indigo-500/50 transition duration-300">
+                    <h3 class="text-2xl font-bold text-gray-50 mb-2">Forrest Gump (১৯৯৪)</h3>
+                    <div class="w-full h-48 flex items-center justify-center rounded-lg overflow-hidden mb-4">
+                        <img src="https://placehold.co/400x260/374151/D1D5DB?text=FORREST%20GUMP%201994" alt="Poster Placeholder for Forrest Gump (1994)" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-sm font-medium text-gray-400">পরিচালক: <span class="text-indigo-400">রবার্ট জেমেকিস</span></p>
+                    <p class="text-sm font-medium text-gray-400 mb-4">ধরণ: <span class="text-yellow-400">ড্রামা, রোমান্স</span></p>
+                    <p class="text-gray-300 mb-4 text-justify">একজন সহজ-সরল মনের মানুষের জীবনের অভিজ্ঞতা, যিনি আমেরিকার কয়েক দশকের ঐতিহাসিক ঘটনাগুলির সাক্ষী হন।</p>
+                    <a href="https://www.youtube.com/results?search_query=Forrest+Gump+Trailer" target="_blank" class="w-full inline-block text-center bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md shadow-indigo-500/50">
+                        ট্রেলার দেখুন
+                    </a>
+                </div>
+
+                <!-- Movie Card 9: Inception (২০১০) -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-indigo-500/50 transition duration-300">
+                    <h3 class="text-2xl font-bold text-gray-50 mb-2">Inception (২০১০)</h3>
+                    <div class="w-full h-48 flex items-center justify-center rounded-lg overflow-hidden mb-4">
+                        <img src="https://placehold.co/400x260/374151/D1D5DB?text=INCEPTION%202010" alt="Poster Placeholder for Inception (2010)" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-sm font-medium text-gray-400">পরিচালক: <span class="text-indigo-400">ক্রিস্টোফার নোলান</span></p>
+                    <p class="text-sm font-medium text-gray-400 mb-4">ধরণ: <span class="text-yellow-400">সাই-ফাই, অ্যাকশন</span></p>
+                    <p class="text-gray-300 mb-4 text-justify">একজন চোর, যিনি স্বপ্নের মধ্যে ঢুকে মানুষের গভীরতম গোপন তথ্য চুরি করেন। মনস্তাত্ত্বিক থ্রিলার।</p>
+                    <a href="https://www.youtube.com/results?search_query=Inception+Trailer" target="_blank" class="w-full inline-block text-center bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md shadow-indigo-500/50">
+                        ট্রেলার দেখুন
+                    </a>
+                </div>
+
+                <!-- Movie Card 10: Fight Club (১৯৯৯) -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-indigo-500/50 transition duration-300">
+                    <h3 class="text-2xl font-bold text-gray-50 mb-2">Fight Club (১৯৯৯)</h3>
+                    <div class="w-full h-48 flex items-center justify-center rounded-lg overflow-hidden mb-4">
+                        <img src="https://placehold.co/400x260/374151/D1D5DB?text=FIGHT%20CLUB%201999" alt="Poster Placeholder for Fight Club (1999)" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-sm font-medium text-gray-400">পরিচালক: <span class="text-indigo-400">ডেভিড ফিঞ্চার</span></p>
+                    <p class="text-sm font-medium text-gray-400 mb-4">ধরণ: <span class="text-yellow-400">ড্রামা</span></p>
+                    <p class="text-gray-300 mb-4 text-justify">একজন নিদ্রাহীন কর্মী এবং সাবান বিক্রেতার সঙ্গে তার পরিচয় হওয়া এবং একটি আন্ডারগ্রাউন্ড 'ফাইট ক্লাব' শুরু করার গল্প।</p>
+                    <a href="https://www.youtube.com/results?search_query=Fight+Club+Trailer" target="_blank" class="w-full inline-block text-center bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md shadow-indigo-500/50">
+                        ট্রেলার দেখুন
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- আন্তর্জাতিক সেরা ২০ চলচ্চিত্র (১১-২০) -->
+        <section id="international-movies-11-20" class="mb-12">
+            <h2 class="text-3xl font-bold text-indigo-300 border-b border-indigo-500 pb-3 mb-6">আন্তর্জাতিক সেরা ২০ চলচ্চিত্র (১১-২০)</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Movie Card 11: The Good, the Bad and the Ugly (১৯৬৬) -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-indigo-500/50 transition duration-300">
+                    <h3 class="text-2xl font-bold text-gray-50 mb-2">The Good, the Bad and the Ugly (১৯৬৬)</h3>
+                    <div class="w-full h-48 flex items-center justify-center rounded-lg overflow-hidden mb-4">
+                        <img src="https://placehold.co/400x260/374151/D1D5DB?text=THE%20GOOD%201966" alt="Poster Placeholder for The Good, the Bad and the Ugly (1966)" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-sm font-medium text-gray-400">পরিচালক: <span class="text-indigo-400">সার্জিও লিওন</span></p>
+                    <p class="text-sm font-medium text-gray-400 mb-4">ধরণ: <span class="text-yellow-400">ওয়েস্টার্ন</span></p>
+                    <p class="text-gray-300 mb-4 text-justify">মার্কিন গৃহযুদ্ধের সময় লুকানো সোনার সন্ধানে থাকা তিন বন্দুকবাজের মহাকাব্যিক ওয়েস্টার্ন ফিল্ম।</p>
+                    <a href="https://www.youtube.com/results?search_query=The+Good,+the+Bad+and+the+Ugly+Trailer" target="_blank" class="w-full inline-block text-center bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md shadow-indigo-500/50">
+                        ট্রেলার দেখুন
+                    </a>
+                </div>
+                
+                <!-- Movie Card 12: The Green Mile (১৯৯৯) -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-indigo-500/50 transition duration-300">
+                    <h3 class="text-2xl font-bold text-gray-50 mb-2">The Green Mile (১৯৯৯)</h3>
+                    <div class="w-full h-48 flex items-center justify-center rounded-lg overflow-hidden mb-4">
+                        <img src="https://placehold.co/400x260/374151/D1D5DB?text=GREEN%20MILE%201999" alt="Poster Placeholder for The Green Mile (1999)" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-sm font-medium text-gray-400">পরিচালক: <span class="text-indigo-400">ফ্র্যাঙ্ক ড্যারাবন্ট</span></p>
+                    <p class="text-sm font-medium text-gray-400 mb-4">ধরণ: <span class="text-yellow-400">ড্রামা, ফ্যান্টাসি</span></p>
+                    <p class="text-gray-300 mb-4 text-justify">মৃত্যুদণ্ডপ্রাপ্ত একজন বিশালদেহী কৃষ্ণাঙ্গ পুরুষের অলৌকিক ক্ষমতা এবং জেলের ভেতরে ঘটে যাওয়া মর্মস্পর্শী ঘটনা।</p>
+                    <a href="https://www.youtube.com/results?search_query=The+Green+Mile+Trailer" target="_blank" class="w-full inline-block text-center bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md shadow-indigo-500/50">
+                        ট্রেলার দেখুন
+                    </a>
+                </div>
+
+                <!-- Movie Card 13: Goodfellas (১৯৯০) -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-indigo-500/50 transition duration-300">
+                    <h3 class="text-2xl font-bold text-gray-50 mb-2">Goodfellas (১৯৯০)</h3>
+                    <div class="w-full h-48 flex items-center justify-center rounded-lg overflow-hidden mb-4">
+                        <img src="https://placehold.co/400x260/374151/D1D5DB?text=GOODFELLAS%201990" alt="Poster Placeholder for Goodfellas (1990)" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-sm font-medium text-gray-400">পরিচালক: <span class="text-indigo-400">মার্টিন স্কোরসেজি</span></p>
+                    <p class="text-sm font-medium text-gray-400 mb-4">ধরণ: <span class="text-yellow-400">ক্রাইম, ড্রামা</span></p>
+                    <p class="text-gray-300 mb-4 text-justify">হেনরি হিল নামের একজন মাফিয়া সহযোগী এবং তার গ্যাং-এর উত্থান-পতন নিয়ে তৈরি ক্লাসিক ক্রাইম ফিল্ম।</p>
+                    <a href="https://www.youtube.com/results?search_query=Goodfellas+Trailer" target="_blank" class="w-full inline-block text-center bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md shadow-indigo-500/50">
+                        ট্রেলার দেখুন
+                    </a>
+                </div>
+
+                <!-- Movie Card 14: The Matrix (১৯৯৯) -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-indigo-500/50 transition duration-300">
+                    <h3 class="text-2xl font-bold text-gray-50 mb-2">The Matrix (১৯৯৯)</h3>
+                    <div class="w-full h-48 flex items-center justify-center rounded-lg overflow-hidden mb-4">
+                        <img src="https://placehold.co/400x260/374151/D1D5DB?text=THE%20MATRIX%201999" alt="Poster Placeholder for The Matrix (1999)" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-sm font-medium text-gray-400">পরিচালক: <span class="text-indigo-400">লানা ওয়াকোস্কি, লিলি ওয়াকোস্কি</span></p>
+                    <p class="text-sm font-medium text-gray-400 mb-4">ধরণ: <span class="text-yellow-400">সাই-ফাই, অ্যাকশন</span></p>
+                    <p class="text-gray-300 mb-4 text-justify">একজন হ্যাকার জানতে পারে যে মানুষের বাস্তবতা একটি সিমুলেশন এবং তাকে মানবজাতির মুক্তির জন্য যুদ্ধ করতে হবে।</p>
+                    <a href="https://www.youtube.com/results?search_query=The+Matrix+Trailer" target="_blank" class="w-full inline-block text-center bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md shadow-indigo-500/50">
+                        ট্রেলার দেখুন
+                    </a>
+                </div>
+
+                <!-- Movie Card 15: Seven Samurai (১৯৫৪) -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-indigo-500/50 transition duration-300">
+                    <h3 class="text-2xl font-bold text-gray-50 mb-2">Seven Samurai (১৯৫৪)</h3>
+                    <div class="w-full h-48 flex items-center justify-center rounded-lg overflow-hidden mb-4">
+                        <img src="https://placehold.co/400x260/374151/D1D5DB?text=SEVEN%20SAMURAI%201954" alt="Poster Placeholder for Seven Samurai (1954)" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-sm font-medium text-gray-400">পরিচালক: <span class="text-indigo-400">আকিরা কুরোসাওয়া</span></p>
+                    <p class="text-sm font-medium text-gray-400 mb-4">ধরণ: <span class="text-yellow-400">অ্যাডভেঞ্চার, ড্রামা</span></p>
+                    <p class="text-gray-300 mb-4 text-justify">চাষীদেরকে দস্যুদের হাত থেকে বাঁচানোর জন্য সাতজন সামুরাইয়ের নিয়োগ এবং তাদের বীরত্বের গল্প।</p>
+                    <a href="https://www.youtube.com/results?search_query=Seven+Samurai+Trailer" target="_blank" class="w-full inline-block text-center bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md shadow-indigo-500/50">
+                        ট্রেলার দেখুন
+                    </a>
+                </div>
+
+                <!-- Movie Card 16: Parasite (২০১৯) -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-indigo-500/50 transition duration-300">
+                    <h3 class="text-2xl font-bold text-gray-50 mb-2">Parasite (২০১৯)</h3>
+                    <div class="w-full h-48 flex items-center justify-center rounded-lg overflow-hidden mb-4">
+                        <img src="https://placehold.co/400x260/374151/D1D5DB?text=PARASITE%202019" alt="Poster Placeholder for Parasite (2019)" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-sm font-medium text-gray-400">পরিচালক: <span class="text-indigo-400">বং জুন-হো</span></p>
+                    <p class="text-sm font-medium text-gray-400 mb-4">ধরণ: <span class="text-yellow-400">কমেডি, থ্রিলার</span></p>
+                    <p class="text-gray-300 mb-4 text-justify">দুটি ভিন্ন সামাজিক স্তরের পরিবারের মধ্যেকার সূক্ষ্ম এবং মারাত্মক সংঘাতের গল্প। অস্কার জয়ী দক্ষিণ কোরিয়ান চলচ্চিত্র।</p>
+                    <a href="https://www.youtube.com/results?search_query=Parasite+Trailer" target="_blank" class="w-full inline-block text-center bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md shadow-indigo-500/50">
+                        ট্রেলার দেখুন
+                    </a>
+                </div>
+
+                <!-- Movie Card 17: Léon: The Professional (১৯৯৪) -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-indigo-500/50 transition duration-300">
+                    <h3 class="text-2xl font-bold text-gray-50 mb-2">Léon: The Professional (১৯৯৪)</h3>
+                    <div class="w-full h-48 flex items-center justify-center rounded-lg overflow-hidden mb-4">
+                        <img src="https://placehold.co/400x260/374151/D1D5DB?text=LEON%201994" alt="Poster Placeholder for Léon: The Professional (1994)" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-sm font-medium text-gray-400">পরিচালক: <span class="text-indigo-400">লুক বেসন</span></p>
+                    <p class="text-sm font-medium text-gray-400 mb-4">ধরণ: <span class="text-yellow-400">অ্যাকশন, ড্রামা</span></p>
+                    <p class="text-gray-300 mb-4 text-justify">একজন পেশাদার হিটম্যান এবং তার পরিবারের মৃত্যুর প্রতিশোধ নিতে চাওয়া ১২ বছরের একটি মেয়ের মধ্যেকার সম্পর্ক।</p>
+                    <a href="https://www.youtube.com/results?search_query=Leon+The+Professional+Trailer" target="_blank" class="w-full inline-block text-center bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md shadow-indigo-500/50">
+                        ট্রেলার দেখুন
+                    </a>
+                </div>
+
+                <!-- Movie Card 18: Gladiator (২০০০) -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-indigo-500/50 transition duration-300">
+                    <h3 class="text-2xl font-bold text-gray-50 mb-2">Gladiator (২০০০)</h3>
+                    <div class="w-full h-48 flex items-center justify-center rounded-lg overflow-hidden mb-4">
+                        <img src="https://placehold.co/400x260/374151/D1D5DB?text=GLADIATOR%202000" alt="Poster Placeholder for Gladiator (2000)" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-sm font-medium text-gray-400">পরিচালক: <span class="text-indigo-400">রিডলি স্কট</span></p>
+                    <p class="text-sm font-medium text-gray-400 mb-4">ধরণ: <span class="text-yellow-400">অ্যাকশন, ইতিহাস</span></p>
+                    <p class="text-gray-300 mb-4 text-justify">রোমান জেনারেল ম্যাক্সিমাসের গল্প, যিনি তার পরিবারকে হত্যার প্রতিশোধ নিতে দাস হয়ে গ্ল্যাডিয়েটরের আখড়ায় ফেরেন।</p>
+                    <a href="https://www.youtube.com/results?search_query=Gladiator+Trailer" target="_blank" class="w-full inline-block text-center bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md shadow-indigo-500/50">
+                        ট্রেলার দেখুন
+                    </a>
+                </div>
+
+                <!-- Movie Card 19: Whiplash (২০১৪) -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-indigo-500/50 transition duration-300">
+                    <h3 class="text-2xl font-bold text-gray-50 mb-2">Whiplash (২০১৪)</h3>
+                    <div class="w-full h-48 flex items-center justify-center rounded-lg overflow-hidden mb-4">
+                        <img src="https://placehold.co/400x260/374151/D1D5DB?text=WHIPLASH%202014" alt="Poster Placeholder for Whiplash (2014)" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-sm font-medium text-gray-400">পরিচালক: <span class="text-indigo-400">ড্যামিয়েন চাজেল</span></p>
+                    <p class="text-sm font-medium text-gray-400 mb-4">ধরণ: <span class="text-yellow-400">ড্রামা, মিউজিক</span></p>
+                    <p class="text-gray-300 mb-4 text-justify">একজন উচ্চাকাঙ্ক্ষী ড্রামারের তার কঠোর ও নির্মম শিক্ষকের অধীনে সাফল্য অর্জনের তীব্র সংগ্রাম।</p>
+                    <a href="https://www.youtube.com/results?search_query=Whiplash+Trailer" target="_blank" class="w-full inline-block text-center bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md shadow-indigo-500/50">
+                        ট্রেলার দেখুন
+                    </a>
+                </div>
+
+                <!-- Movie Card 20: Amelie (২০০১) -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-indigo-500/50 transition duration-300">
+                    <h3 class="text-2xl font-bold text-gray-50 mb-2">Amelie (২০০১)</h3>
+                    <div class="w-full h-48 flex items-center justify-center rounded-lg overflow-hidden mb-4">
+                        <img src="https://placehold.co/400x260/374151/D1D5DB?text=AMELIE%202001" alt="Poster Placeholder for Amelie (2001)" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-sm font-medium text-gray-400">পরিচালক: <span class="text-indigo-400">জঁ-পিয়ের জ্যোঁনে</span></p>
+                    <p class="text-sm font-medium text-gray-400 mb-4">ধরণ: <span class="text-yellow-400">কমেডি, রোমান্স</span></p>
+                    <p class="text-gray-300 mb-4 text-justify">প্যারিসের এক লাজুক ওয়েট্রেস অ্যামেলির গল্প, যিনি তার চারপাশে থাকা মানুষের জীবনে ছোট ছোট আনন্দ আনার সিদ্ধান্ত নেন।</p>
+                    <a href="https://www.youtube.com/results?search_query=Amelie+Trailer" target="_blank" class="w-full inline-block text-center bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md shadow-indigo-500/50">
+                        ট্রেলার দেখুন
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- বাংলা সেরা ২০ চলচ্চিত্র (১-১০) -->
+        <section id="bengali-movies" class="mb-12">
+            <h2 class="text-3xl font-bold text-indigo-300 border-b border-indigo-500 pb-3 mb-6">বাংলা সেরা ২০ চলচ্চিত্র (১-১০)</h2>
+            
+            <div id="bengali-movie-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Bengali Movie Card 1: পথের পাঁচালী (১৯৫৫) -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-pink-500/50 transition duration-300">
+                    <h3 class="text-2xl font-bold text-gray-50 mb-2">পথের পাঁচালী (১৯৫৫)</h3>
+                    <div class="w-full h-48 flex items-center justify-center rounded-lg overflow-hidden mb-4">
+                        <img src="https://placehold.co/400x260/4B5563/F472B6?text=Pather%20Panchali%201955" alt="Poster Placeholder for পথের পাঁচালী (1955)" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-sm font-medium text-gray-400">পরিচালক: <span class="text-pink-400">সত্যজিৎ রায়</span></p>
+                    <p class="text-sm font-medium text-gray-400 mb-4">ধরণ: <span class="text-yellow-400">ড্রামা</span></p>
+                    <p class="text-gray-300 mb-4 text-justify">অপু ও দুর্গার শৈশব এবং গ্রামীণ বাংলার এক দরিদ্র পরিবারের জীবনযাত্রার মর্মস্পর্শী চিত্রায়ন।</p>
+                    <a href="https://www.youtube.com/results?search_query=Pather+Panchali+Trailer" target="_blank" class="w-full inline-block text-center bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md shadow-pink-500/50">
+                        ট্রেলার দেখুন
+                    </a>
+                </div>
+
+                <!-- Bengali Movie Card 2: মেঘে ঢাকা তারা (১৯৬০) -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-pink-500/50 transition duration-300">
+                    <h3 class="text-2xl font-bold text-gray-50 mb-2">মেঘে ঢাকা তারা (১৯৬০)</h3>
+                    <div class="w-full h-48 flex items-center justify-center rounded-lg overflow-hidden mb-4">
+                        <img src="https://placehold.co/400x260/4B5563/F472B6?text=Meghe%20Dhaka%20Tara%201960" alt="Poster Placeholder for মেঘে ঢাকা তারা (1960)" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-sm font-medium text-gray-400">পরিচালক: <span class="text-pink-400">ঋত্বিক ঘটক</span></p>
+                    <p class="text-sm font-medium text-gray-400 mb-4">ধরণ: <span class="text-yellow-400">ড্রামা</span></p>
+                    <p class="text-gray-300 mb-4 text-justify">দেশভাগ-পরবর্তী সময়ে এক উদ্বাস্তু পরিবারের বড় মেয়ে নীতার আত্মত্যাগ ও সংগ্রাম।</p>
+                    <a href="https://www.youtube.com/results?search_query=Meghe+Dhaka+Tara+Trailer" target="_blank" class="w-full inline-block text-center bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md shadow-pink-500/50">
+                        ট্রেলার দেখুন
+                    </a>
+                </div>
+
+                <!-- Bengali Movie Card 3: চারুলতা (১৯৬৪) -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-pink-500/50 transition duration-300">
+                    <h3 class="text-2xl font-bold text-gray-50 mb-2">চারুলতা (১৯৬৪)</h3>
+                    <div class="w-full h-48 flex items-center justify-center rounded-lg overflow-hidden mb-4">
+                        <img src="https://placehold.co/400x260/4B5563/F472B6?text=Charulata%201964" alt="Poster Placeholder for চারুলতা (1964)" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-sm font-medium text-gray-400">পরিচালক: <span class="text-pink-400">সত্যজিৎ রায়</span></p>
+                    <p class="text-sm font-medium text-gray-400 mb-4">ধরণ: <span class="text-yellow-400">রোমান্স, ড্রামা</span></p>
+                    <p class="text-gray-300 mb-4 text-justify">উনিশ শতকের বাংলার প্রেক্ষাপটে একাকী চারুলতা এবং তার দেবর অমলের মধ্যেকার জটিল সম্পর্ক। রবীন্দ্রনাথের 'নষ্টনীড়' অবলম্বনে।</p>
+                    <a href="https://www.youtube.com/results?search_query=Charulata+Trailer" target="_blank" class="w-full inline-block text-center bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md shadow-pink-500/50">
+                        ট্রেলার দেখুন
+                    </a>
+                </div>
+
+                <!-- Bengali Movie Card 4: জলসাঘর (১৯৫৮) -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-pink-500/50 transition duration-300">
+                    <h3 class="text-2xl font-bold text-gray-50 mb-2">জলসাঘর (১৯৫৮)</h3>
+                    <div class="w-full h-48 flex items-center justify-center rounded-lg overflow-hidden mb-4">
+                        <img src="https://placehold.co/400x260/4B5563/F472B6?text=Jalsaghar%201958" alt="Poster Placeholder for জলসাঘর (1958)" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-sm font-medium text-gray-400">পরিচালক: <span class="text-pink-400">সত্যজিৎ রায়</span></p>
+                    <p class="text-sm font-medium text-gray-400 mb-4">ধরণ: <span class="text-yellow-400">মিউজিক, ড্রামা</span></p>
+                    <p class="text-gray-300 mb-4 text-justify">একজন ক্ষয়িষ্ণু জমিদারের সঙ্গীতের প্রতি ভালোবাসা এবং তার আভিজাত্য রক্ষার শেষ চেষ্টা।</p>
+                    <a href="https://www.youtube.com/results?search_query=Jalsaghar+Trailer" target="_blank" class="w-full inline-block text-center bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md shadow-pink-500/50">
+                        ট্রেলার দেখুন
+                    </a>
+                </div>
+
+                <!-- Bengali Movie Card 5: অপরাজিত (১৯৫৬) -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-pink-500/50 transition duration-300">
+                    <h3 class="text-2xl font-bold text-gray-50 mb-2">অপরাজিত (১৯৫৬)</h3>
+                    <div class="w-full h-48 flex items-center justify-center rounded-lg overflow-hidden mb-4">
+                        <img src="https://placehold.co/400x260/4B5563/F472B6?text=Aparajito%201956" alt="Poster Placeholder for অপরাজিত (1956)" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-sm font-medium text-gray-400">পরিচালক: <span class="text-pink-400">সত্যজিৎ রায়</span></p>
+                    <p class="text-sm font-medium text-gray-400 mb-4">ধরণ: <span class="text-yellow-400">ড্রামা</span></p>
+                    <p class="text-gray-300 mb-4 text-justify">অপুর কৈশোর এবং যুবক বয়সের গল্প, যেখানে তার মা সর্বজয়ার সঙ্গে তার সম্পর্কের বিবর্তন দেখানো হয়েছে।</p>
+                    <a href="https://www.youtube.com/results?search_query=Aparajito+Trailer" target="_blank" class="w-full inline-block text-center bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md shadow-pink-500/50">
+                        ট্রেলার দেখুন
+                    </a>
+                </div>
+
+                <!-- Bengali Movie Card 6: বাইশে শ্রাবণ (২০১২) -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-pink-500/50 transition duration-300">
+                    <h3 class="text-2xl font-bold text-gray-50 mb-2">বাইশে শ্রাবণ (২০১২)</h3>
+                    <div class="w-full h-48 flex items-center justify-center rounded-lg overflow-hidden mb-4">
+                        <img src="https://placehold.co/400x260/4B5563/F472B6?text=Baishey%20Srabon%202012" alt="Poster Placeholder for বাইশে শ্রাবণ (2012)" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-sm font-medium text-gray-400">পরিচালক: <span class="text-pink-400">সৃজিত মুখার্জি</span></p>
+                    <p class="text-sm font-medium text-gray-400 mb-4">ধরণ: <span class="text-yellow-400">থ্রিলার, ক্রাইম</span></p>
+                    <p class="text-gray-300 mb-4 text-justify">একজন অবসরপ্রাপ্ত পুলিশ অফিসার এবং এক তরুণ কবির মধ্যেকার মনস্তাত্ত্বিক দ্বন্দ্বের থ্রিলার।</p>
+                    <a href="https://www.youtube.com/results?search_query=Baishey+Srabon+Trailer" target="_blank" class="w-full inline-block text-center bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md shadow-pink-500/50">
+                        ট্রেলার দেখুন
+                    </a>
+                </div>
+
+                <!-- Bengali Movie Card 7: ভুবন সোম (১৯৬৯) -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-pink-500/50 transition duration-300">
+                    <h3 class="text-2xl font-bold text-gray-50 mb-2">ভুবন সোম (১৯৬৯)</h3>
+                    <div class="w-full h-48 flex items-center justify-center rounded-lg overflow-hidden mb-4">
+                        <img src="https://placehold.co/400x260/4B5563/F472B6?text=Bhuvan%20Shome%201969" alt="Poster Placeholder for ভুবন সোম (1969)" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-sm font-medium text-gray-400">পরিচালক: <span class="text-pink-400">মৃণাল সেন</span></p>
+                    <p class="text-sm font-medium text-gray-400 mb-4">ধরণ: <span class="text-yellow-400">ড্রামা</span></p>
+                    <p class="text-gray-300 mb-4 text-justify">একজন কঠোর সরকারি কর্মকর্তার জীবনে এক গ্রামীণ মেয়ের অপ্রত্যাশিত প্রভাব। নতুন ধারার ভারতীয় সিনেমার অন্যতম পথিকৃৎ।</p>
+                    <a href="https://www.youtube.com/results?search_query=Bhuvan+Shome+Trailer" target="_blank" class="w-full inline-block text-center bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md shadow-pink-500/50">
+                        ট্রেলার দেখুন
+                    </a>
+                </div>
+
+                <!-- Bengali Movie Card 8: অরণ্যের দিনরাত্রি (১৯৭০) -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-pink-500/50 transition duration-300">
+                    <h3 class="text-2xl font-bold text-gray-50 mb-2">অরণ্যের দিনরাত্রি (১৯৭০)</h3>
+                    <div class="w-full h-48 flex items-center justify-center rounded-lg overflow-hidden mb-4">
+                        <img src="https://placehold.co/400x260/4B5563/F472B6?text=Aranyer%20Din%20Ratri%201970" alt="Poster Placeholder for অরণ্যের দিনরাত্রি (1970)" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-sm font-medium text-gray-400">পরিচালক: <span class="text-pink-400">সত্যজিৎ রায়</span></p>
+                    <p class="text-sm font-medium text-gray-400 mb-4">ধরণ: <span class="text-yellow-400">ড্রামা</span></p>
+                    <p class="text-gray-300 mb-4 text-justify">ছুটির মেজাজে বেড়াতে আসা চার বন্ধুর ব্যক্তিগত সম্পর্ক এবং আদিবাসীদের সঙ্গে তাদের জীবনযাত্রার সংঘাত।</p>
+                    <a href="https://www.youtube.com/results?search_query=Aranyer+Din+Ratri+Trailer" target="_blank" class="w-full inline-block text-center bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md shadow-pink-500/50">
+                        ট্রেলার দেখুন
+                    </a>
+                </div>
+
+                <!-- Bengali Movie Card 9: শঙ্খচিল (২০১৬) -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-pink-500/50 transition duration-300">
+                    <h3 class="text-2xl font-bold text-gray-50 mb-2">শঙ্খচিল (২০১৬)</h3>
+                    <div class="w-full h-48 flex items-center justify-center rounded-lg overflow-hidden mb-4">
+                        <img src="https://placehold.co/400x260/4B5563/F472B6?text=Shankhachil%202016" alt="Poster Placeholder for শঙ্খচিল (2016)" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-sm font-medium text-gray-400">পরিচালক: <span class="text-pink-400">গৌতম ঘোষ</span></p>
+                    <p class="text-sm font-medium text-gray-400 mb-4">ধরণ: <span class="text-yellow-400">ড্রামা</span></p>
+                    <p class="text-gray-300 mb-4 text-justify">ভারত-বাংলাদেশ সীমান্তের সংঘাতপূর্ণ প্রেক্ষাপটে এক পরিবার এবং তাদের অসুস্থ মেয়ের চিকিৎসার গল্প।</p>
+                    <a href="https://www.youtube.com/results?search_query=Shankhachil+Trailer" target="_blank" class="w-full inline-block text-center bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md shadow-pink-500/50">
+                        ট্রেলার দেখুন
+                    </a>
+                </div>
+
+                <!-- Bengali Movie Card 10: আগন্তুক (১৯৯১) -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-pink-500/50 transition duration-300">
+                    <h3 class="text-2xl font-bold text-gray-50 mb-2">আগন্তুক (১৯৯১)</h3>
+                    <div class="w-full h-48 flex items-center justify-center rounded-lg overflow-hidden mb-4">
+                        <img src="https://placehold.co/400x260/4B5563/F472B6?text=Agantuk%201991" alt="Poster Placeholder for আগন্তুক (1991)" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-sm font-medium text-gray-400">পরিচালক: <span class="text-pink-400">সত্যজিৎ রায়</span></p>
+                    <p class="text-sm font-medium text-gray-400 mb-4">ধরণ: <span class="text-yellow-400">ড্রামা</span></p>
+                    <p class="text-gray-300 mb-4 text-justify">বহু বছর পর ফিরে আসা এক দূর সম্পর্কের কাকা এবং তার পরিচয় নিয়ে এক দম্পতির মনে তৈরি হওয়া সন্দেহের গল্প।</p>
+                    <a href="https://www.youtube.com/results?search_query=Agantuk+Trailer" target="_blank" class="w-full inline-block text-center bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md shadow-pink-500/50">
+                        ট্রেলার দেখুন
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- বাংলা সেরা ২০ চলচ্চিত্র (১১-২০) -->
+        <section id="bengali-movies-11-20" class="mb-12">
+            <h2 class="text-3xl font-bold text-indigo-300 border-b border-indigo-500 pb-3 mb-6">বাংলা সেরা ২০ চলচ্চিত্র (১১-২০)</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Bengali Movie Card 11: হীরক রাজার দেশে (১৯৮০) -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-pink-500/50 transition duration-300">
+                    <h3 class="text-2xl font-bold text-gray-50 mb-2">হীরক রাজার দেশে (১৯৮০)</h3>
+                    <div class="w-full h-48 flex items-center justify-center rounded-lg overflow-hidden mb-4">
+                        <img src="https://placehold.co/400x260/4B5563/F472B6?text=Hirak%20Rajar%20Deshe%201980" alt="Poster Placeholder for হীরক রাজার দেশে (1980)" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-sm font-medium text-gray-400">পরিচালক: <span class="text-pink-400">সত্যজিৎ রায়</span></p>
+                    <p class="text-sm font-medium text-gray-400 mb-4">ধরণ: <span class="text-yellow-400">ফ্যান্টাসি, মিউজিক</span></p>
+                    <p class="text-gray-300 mb-4 text-justify">দুষ্ট রাজা হীরকের বিরুদ্ধে একদল সাধারণ মানুষের বিদ্রোহের গল্প। এটি শিশু-কিশোরদের মধ্যে খুবই জনপ্রিয়।</p>
+                    <a href="https://www.youtube.com/results?search_query=Hirak+Rajar+Deshe+Trailer" target="_blank" class="w-full inline-block text-center bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md shadow-pink-500/50">
+                        ট্রেলার দেখুন
+                    </a>
+                </div>
+
+                <!-- Bengali Movie Card 12: কোমল গান্ধার (১৯৬১) -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-pink-500/50 transition duration-300">
+                    <h3 class="text-2xl font-bold text-gray-50 mb-2">কোমল গান্ধার (১৯৬১)</h3>
+                    <div class="w-full h-48 flex items-center justify-center rounded-lg overflow-hidden mb-4">
+                        <img src="https://placehold.co/400x260/4B5563/F472B6?text=Komal%20Gandhar%201961" alt="Poster Placeholder for কোমল গান্ধার (1961)" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-sm font-medium text-gray-400">পরিচালক: <span class="text-pink-400">ঋত্বিক ঘটক</span></p>
+                    <p class="text-sm font-medium text-gray-400 mb-4">ধরণ: <span class="text-yellow-400">ড্রামা</span></p>
+                    <p class="text-gray-300 mb-4 text-justify">দেশভাগ এবং একটি থিয়েটার দলের অভ্যন্তরীণ দ্বন্দ্ব ও আদর্শগত সংঘাতের মনস্তাত্ত্বিক চিত্রায়ণ।</p>
+                    <a href="https://www.youtube.com/results?search_query=Komal+Gandhar+Trailer" target="_blank" class="w-full inline-block text-center bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md shadow-pink-500/50">
+                        ট্রেলার দেখুন
+                    </a>
+                </div>
+
+                <!-- Bengali Movie Card 13: মহানগর (১৯৬৩) -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-pink-500/50 transition duration-300">
+                    <h3 class="text-2xl font-bold text-gray-50 mb-2">মহানগর (১৯৬৩)</h3>
+                    <div class="w-full h-48 flex items-center justify-center rounded-lg overflow-hidden mb-4">
+                        <img src="https://placehold.co/400x260/4B5563/F472B6?text=Mahanagar%201963" alt="Poster Placeholder for মহানগর (1963)" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-sm font-medium text-gray-400">পরিচালক: <span class="text-pink-400">সত্যজিৎ রায়</span></p>
+                    <p class="text-sm font-medium text-gray-400 mb-4">ধরণ: <span class="text-yellow-400">ড্রামা</span></p>
+                    <p class="text-gray-300 mb-4 text-justify">কলকাতার এক মধ্যবিত্ত গৃহবধূর চাকরি নেওয়া এবং পরিবারে সেই কারণে তৈরি হওয়া সামাজিক ও মানসিক টানাপোড়েন।</p>
+                    <a href="https://www.youtube.com/results?search_query=Mahanagar+Trailer" target="_blank" class="w-full inline-block text-center bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md shadow-pink-500/50">
+                        ট্রেলার দেখুন
+                    </a>
+                </div>
+
+                <!-- Bengali Movie Card 14: সোনার কেল্লা (১৯৭৪) -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-pink-500/50 transition duration-300">
+                    <h3 class="text-2xl font-bold text-gray-50 mb-2">সোনার কেল্লা (১৯৭৪)</h3>
+                    <div class="w-full h-48 flex items-center justify-center rounded-lg overflow-hidden mb-4">
+                        <img src="https://placehold.co/400x260/4B5563/F472B6?text=Sonar%20Kella%201974" alt="Poster Placeholder for সোনার কেল্লা (1974)" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-sm font-medium text-gray-400">পরিচালক: <span class="text-pink-400">সত্যজিৎ রায়</span></p>
+                    <p class="text-sm font-medium text-gray-400 mb-4">ধরণ: <span class="text-yellow-400">রহস্য, অ্যাডভেঞ্চার</span></p>
+                    <p class="text-gray-300 mb-4 text-justify">সত্যজিৎ রায়ের তৈরি গোয়েন্দা চরিত্র ফেলুদার প্রথম অভিযান, যেখানে এক ছেলে তার পূর্বজন্মের সোনার কেল্লা মনে করতে পারে।</p>
+                    <a href="https://www.youtube.com/results?search_query=Sonar+Kella+Trailer" target="_blank" class="w-full inline-block text-center bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md shadow-pink-500/50">
+                        ট্রেলার দেখুন
+                    </a>
+                </div>
+
+                <!-- Bengali Movie Card 15: কাঁচের স্বর্গ (১৯৬২) -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-pink-500/50 transition duration-300">
+                    <h3 class="text-2xl font-bold text-gray-50 mb-2">কাঁচের স্বর্গ (১৯৬২)</h3>
+                    <div class="w-full h-48 flex items-center justify-center rounded-lg overflow-hidden mb-4">
+                        <img src="https://placehold.co/400x260/4B5563/F472B6?text=Kancher%20Swarga%201962" alt="Poster Placeholder for কাঁচের স্বর্গ (1962)" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-sm font-medium text-gray-400">পরিচালক: <span class="text-pink-400">তপন সিনহা</span></p>
+                    <p class="text-sm font-medium text-gray-400 mb-4">ধরণ: <span class="text-yellow-400">ড্রামা</span></p>
+                    <p class="text-gray-300 mb-4 text-justify">একজন চিকিৎসক এবং তার মানবিক মূল্যবোধের গল্প, যা সমাজ ও পেশাগত জীবনের জটিলতা তুলে ধরে।</p>
+                    <a href="https://www.youtube.com/results?search_query=Kancher+Swarga+Trailer" target="_blank" class="w-full inline-block text-center bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md shadow-pink-500/50">
+                        ট্রেলার দেখুন
+                    </a>
+                </div>
+
+                <!-- Bengali Movie Card 16: জয় বাবা ফেলুনাথ (১৯৭৯) -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-pink-500/50 transition duration-300">
+                    <h3 class="text-2xl font-bold text-gray-50 mb-2">জয় বাবা ফেলুনাথ (১৯৭৯)</h3>
+                    <div class="w-full h-48 flex items-center justify-center rounded-lg overflow-hidden mb-4">
+                        <img src="https://placehold.co/400x260/4B5563/F472B6?text=Joy%20Baba%20Felunath%201979" alt="Poster Placeholder for জয় বাবা ফেলুনাথ (1979)" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-sm font-medium text-gray-400">পরিচালক: <span class="text-pink-400">সত্যজিৎ রায়</span></p>
+                    <p class="text-sm font-medium text-gray-400 mb-4">ধরণ: <span class="text-yellow-400">রহস্য, অ্যাডভেঞ্চার</span></p>
+                    <p class="text-gray-300 mb-4 text-justify">ফেলুদার বেনারস যাত্রা এবং একটি মূল্যবান গণেশ মূর্তি চুরির রহস্য উন্মোচন।</p>
+                    <a href="https://www.youtube.com/results?search_query=Joy+Baba+Felunath+Trailer" target="_blank" class="w-full inline-block text-center bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md shadow-pink-500/50">
+                        ট্রেলার দেখুন
+                    </a>
+                </div>
+
+                <!-- Bengali Movie Card 17: একদিন প্রতিদিন (১৯৭৯) -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-pink-500/50 transition duration-300">
+                    <h3 class="text-2xl font-bold text-gray-50 mb-2">একদিন প্রতিদিন (১৯৭৯)</h3>
+                    <div class="w-full h-48 flex items-center justify-center rounded-lg overflow-hidden mb-4">
+                        <img src="https://placehold.co/400x260/4B5563/F472B6?text=Ek%20Din%20Pratidin%201979" alt="Poster Placeholder for একদিন প্রতিদিন (1979)" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-sm font-medium text-gray-400">পরিচালক: <span class="text-pink-400">মৃণাল সেন</span></p>
+                    <p class="text-sm font-medium text-gray-400 mb-4">ধরণ: <span class="text-yellow-400">ড্রামা</span></p>
+                    <p class="text-gray-300 mb-4 text-justify">এক মধ্যবিত্ত পরিবারের কর্মজীবী মেয়ে একদিন রাতে বাড়ি না ফেরায় সমাজের চোখে তার পরিবারের সম্মানহানির ভয় ও উদ্বেগ।</p>
+                    <a href="https://www.youtube.com/results?search_query=Ek+Din+Pratidin+Trailer" target="_blank" class="w-full inline-block text-center bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md shadow-pink-500/50">
+                        ট্রেলার দেখুন
+                    </a>
+                </div>
+
+                <!-- Bengali Movie Card 18: সাঁঝের বাতি (১৯৭৬) -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-pink-500/50 transition duration-300">
+                    <h3 class="text-2xl font-bold text-gray-50 mb-2">সাঁঝের বাতি (১৯৭৬)</h3>
+                    <div class="w-full h-48 flex items-center justify-center rounded-lg overflow-hidden mb-4">
+                        <img src="https://placehold.co/400x260/4B5563/F472B6?text=Shanjher%20Baati%201976" alt="Poster Placeholder for সাঁঝের বাতি (1976)" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-sm font-medium text-gray-400">পরিচালক: <span class="text-pink-400">অজয় কর</span></p>
+                    <p class="text-sm font-medium text-gray-400 mb-4">ধরণ: <span class="text-yellow-400">ড্রামা</span></p>
+                    <p class="text-gray-300 mb-4 text-justify">গ্রামের এক সাধারণ মেয়ের আত্মত্যাগ এবং প্রেমের গল্প, যেখানে পারিবারিক বন্ধন এবং মূল্যবোধের গুরুত্ব তুলে ধরা হয়েছে।</p>
+                    <a href="https://www.youtube.com/results?search_query=Shanjher+Baati+Trailer" target="_blank" class="w-full inline-block text-center bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md shadow-pink-500/50">
+                        ট্রেলার দেখুন
+                    </a>
+                </div>
+
+                <!-- Bengali Movie Card 19: বসন্ত বিলাপ (১৯৭৩) -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-pink-500/50 transition duration-300">
+                    <h3 class="text-2xl font-bold text-gray-50 mb-2">বসন্ত বিলাপ (১৯৭৩)</h3>
+                    <div class="w-full h-48 flex items-center justify-center rounded-lg overflow-hidden mb-4">
+                        <img src="https://placehold.co/400x260/4B5563/F472B6?text=Basanta%20Bilap%201973" alt="Poster Placeholder for বসন্ত বিলাপ (1973)" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-sm font-medium text-gray-400">পরিচালক: <span class="text-pink-400">দীনেন গুপ্ত</span></p>
+                    <p class="text-sm font-medium text-gray-400 mb-4">ধরণ: <span class="text-yellow-400">কমেডি, রোমান্স</span></p>
+                    <p class="text-gray-300 mb-4 text-justify">একটি মহিলা এবং পুরুষ হোস্টেলের বাসিন্দাদের মধ্যেকার মজার সংঘাত এবং শেষ পর্যন্ত প্রেম ও বিয়ের গল্প।</p>
+                    <a href="https://www.youtube.com/results?search_query=Basanta+Bilap+Trailer" target="_blank" class="w-full inline-block text-center bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md shadow-pink-500/50">
+                        ট্রেলার দেখুন
+                    </a>
+                </div>
+
+                <!-- Bengali Movie Card 20: কাবুলিওয়ালা (১৯৫৭) -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-pink-500/50 transition duration-300">
+                    <h3 class="text-2xl font-bold text-gray-50 mb-2">কাবুলিওয়ালা (১৯৫৭)</h3>
+                    <div class="w-full h-48 flex items-center justify-center rounded-lg overflow-hidden mb-4">
+                        <img src="https://placehold.co/400x260/4B5563/F472B6?text=Kabuliwala%201957" alt="Poster Placeholder for কাবুলিওয়ালা (1957)" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-sm font-medium text-gray-400">পরিচালক: <span class="text-pink-400">তপন সিনহা</span></p>
+                    <p class="text-sm font-medium text-gray-400 mb-4">ধরণ: <span class="text-yellow-400">ড্রামা</span></p>
+                    <p class="text-gray-300 mb-4 text-justify">কলকাতায় আসা এক আফগান ব্যবসায়ী এবং এক বাঙালি মেয়ের মধ্যে গড়ে ওঠা স্নেহ ও ভালোবাসার সম্পর্ক। রবীন্দ্রনাথের ছোটগল্প অবলম্বনে।</p>
+                    <a href="https://www.youtube.com/results?search_query=Kabuliwala+1957+Trailer" target="_blank" class="w-full inline-block text-center bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md shadow-pink-500/50">
+                        ট্রেলার দেখুন
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center mt-12 pt-6 border-t border-gray-700">
+            <p class="text-gray-500">পরবর্তী ৬০টি চলচ্চিত্র যোগ করার জন্য অনুরোধ করুন।</p>
+        </footer>
+    </div>
+
+</body>
+</html>

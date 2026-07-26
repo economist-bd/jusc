@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="bn" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>এমএইচ একাডেমি | আপনার জীবন ও ব্যবসাকে মাস্টার করুন</title>
+    
+    <!-- SEO & OG Tags -->
+    <meta name="description" content="এমএইচ একাডেমিতে যোগ দিন এবং আপনার সম্ভাবনাকে আনলক করুন, ব্যবসাকে মাস্টার করুন এবং চিরস্থায়ী সুখ অর্জন করুন।">
+    <meta name="keywords" content="এমএইচ একাডেমি, বিজনেস কোচিং, লাইফ কোচিং, হ্যাপিনেস, সাকসেস, ইনফ্লুয়েন্সার">
+    <meta name="author" content="MH Academy">
+    <meta property="og:title" content="এমএইচ একাডেমি | জীবন ও ব্যবসাকে মাস্টার করুন">
+    <meta property="og:description" content="আপনার সম্ভাবনাকে আনলক করুন, ব্যবসাকে মাস্টার করুন এবং চিরস্থায়ী সুখ অর্জন করুন।">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1552581234-26160f608093?auto=format&fit=crop&w=1200&q=80">
+    <meta property="og:url" content="https://mhacademy.com">
+    <meta property="og:type" content="website">
+
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#ed1c24',
+                        secondary: '#1a1a1a',
+                        accent: '#d0a065',
+                        dark: '#0a0a0a'
+                    },
+                    fontFamily: {
+                        sans: ['Hind Siliguri', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Styles & Animations */
+        body { font-family: 'Hind Siliguri', sans-serif; background-color: #f7f8fa; color: #333; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Hind Siliguri', sans-serif; font-weight: 700; }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #ed1c24, #d0a065);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .dropdown-menu { display: none; opacity: 0; transition: opacity 0.3s; }
+        .dropdown:hover .dropdown-menu { display: block; opacity: 1; }
+        
+        /* Toast Notifications */
+        #toast-container { position: fixed; bottom: 20px; right: 20px; z-index: 9999; }
+        .toast { transition: all 0.3s ease; transform: translateY(100%); opacity: 0; }
+        .toast.show { transform: translateY(0); opacity: 1; }
+
+        /* Hide views by default */
+        .app-view { display: none; }
+        .app-view.active { display: block; }
+        
+        /* Loading Spinner */
+        .loader { border: 3px solid #f3f3f3; border-top: 3px solid #ed1c24; border-radius: 50%; width: 24px; height: 24px; animation: spin 1s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc, getDoc, collection, getDocs, updateDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Firebase Configuration (Using provided config with environment fallback)
+        let firebaseConfig = {
+            apiKey: "AIzaSyAjnxMlQqmOQuKXVNn1A9FoU3zD5rZIsp4",
+            authDomain: "mh-academy-7c38f.firebaseapp.com",
+            projectId: "mh-academy-7c38f",
+            storageBucket: "mh-academy-7c38f.firebasestorage.app",
+            messagingSenderId: "13394758895",
+            appId: "1:13394758895:web:ec3a5aaccc10195dbddf1a",
+            measurementId: "G-6NQYTM0662"
+        };
+        
+        try {
+            if(typeof __firebase_config !== 'undefined' && __firebase_config) {
+                firebaseConfig = JSON.parse(__firebase_config);
+            }
+        } catch (e) { console.warn("Using default firebase config"); }
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'mh-academy-v1';
+
+        // Global State
+        window.AppState = {
+            user: null,
+            userRole: 'guest', // guest, student, admin
+            currentView: 'home',
+            enrolledCourses: []
+        };
+
+        // UI Helpers
+        window.showToast = (message, type = 'success') => {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            const bgColor = type === 'error' ? 'bg-red-500' : 'bg-green-500';
+            toast.className = `toast show ${bgColor} text-white px-6 py-3 rounded-lg shadow-lg mb-3 flex items-center gap-3 font-semibold`;
+            toast.innerHTML = `<i class="fas ${type === 'error' ? 'fa-exclamation-circle' : 'fa-check-circle'}"></i> ${message}`;
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        };
+
+        window.switchView = (viewId) => {
+            document.querySelectorAll('.app-view').forEach(el => el.classList.remove('active'));
+            document.getElementById(`view-${viewId}`).classList.add('active');
+            window.scrollTo(0, 0);
+            window.AppState.currentView = viewId;
+            updateNavigation();
+            
+            if(viewId === 'student-dashboard') loadStudentData();
+            if(viewId === 'admin-dashboard') loadAdminData();
+        };
+
+        window.updateNavigation = () => {
+            const guestNav = document.getElementById('nav-guest');
+            const userNav = document.getElementById('nav-user');
+            if (window.AppState.user) {
+                guestNav.classList.add('hidden');
+                userNav.classList.remove('hidden');
+                document.getElementById('nav-user-name').innerText = window.AppState.user.email.split('@')[0];
+                
+                // Show Admin link if admin
+                const adminLink = document.getElementById('nav-link-admin');
+                if(window.AppState.userRole === 'admin') adminLink.classList.remove('hidden');
+                else adminLink.classList.add('hidden');
+            } else {
+                guestNav.classList.remove('hidden');
+                userNav.classList.add('hidden');
+            }
+        };
+
+        window.toggleModal = (modalId) => {
+            const modal = document.getElementById(modalId);
+            modal.classList.toggle('hidden');
+        };
+
+        // Authentication Methods
+        window.handleAuth = async (e, type) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<div class="loader mx-auto"></div>';
+            
+            const email = e.target.email.value;
+            const password = e.target.password.value;
+
+            try {
+                if(type === 'register') {
+                    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                    // Save user profile globally for admin access
+                    const userProfile = {
+                        uid: userCredential.user.uid,
+                        email: email, 
+                        role: email.includes('admin') ? 'admin' : 'student', // Simple rule for demo
+                        enrolledCourses: [],
+                        createdAt: new Date().toISOString()
+                    };
+                    await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'users', userCredential.user.uid), userProfile);
+                    showToast('নিবন্ধন সফল হয়েছে! এমএইচ একাডেমিতে স্বাগতম।');
+                    toggleModal('auth-modal');
+                } else {
+                    await signInWithEmailAndPassword(auth, email, password);
+                    showToast('লগ ইন সফল হয়েছে!');
+                    toggleModal('auth-modal');
+                }
+            } catch (error) {
+                showToast("ইমেইল বা পাসওয়ার্ড ভুল হয়েছে", 'error');
+            } finally {
+                btn.innerHTML = originalText;
+            }
+        };
+
+        window.logout = async () => {
+            try {
+                await signOut(auth);
+                window.AppState.user = null;
+                window.AppState.userRole = 'guest';
+                window.AppState.enrolledCourses = [];
+                switchView('home');
+                showToast('সফলভাবে লগ আউট হয়েছে।');
+            } catch (error) {
+                showToast('লগ আউট করতে সমস্যা হয়েছে।', 'error');
+            }
+        };
+
+        // Real-time listener for Flash Ad
+        window.listenToAd = () => {
+            const adRef = doc(db, 'artifacts', appId, 'public', 'data', 'settings', 'flashAd');
+            onSnapshot(adRef, (docSnap) => {
+                if (docSnap.exists()) {
+                    const adData = docSnap.data();
+                    const adEl = document.getElementById('flash-ad');
+                    if(adData.active) {
+                        adEl.style.display = 'flex';
+                        document.getElementById('flash-ad-text').innerHTML = adData.text || '🔥 ফ্ল্যাশ সেল চলছে! আজই যুক্ত হোন।';
+                    } else {
+                        adEl.style.display = 'none';
+                    }
+                }
+            }, (error) => {
+                console.error("Ad fetch error", error);
+            });
+        };
+
+        // Listen for Auth State Changes
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                window.AppState.user = user;
+                // Fetch Role & Courses from public user profile
+                try {
+                    const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'users', user.uid);
+                    const docSnap = await getDoc(docRef);
+                    if (docSnap.exists()) {
+                        const data = docSnap.data();
+                        window.AppState.userRole = data.role || 'student';
+                        window.AppState.enrolledCourses = data.enrolledCourses || [];
+                        document.getElementById('dash-user-name').innerText = data.email.split('@')[0];
+                        document.getElementById('dash-course-count').innerText = window.AppState.enrolledCourses.length;
+                    } else {
+                        window.AppState.userRole = 'student';
+                    }
+                } catch(e) { console.error("Error fetching role", e); }
+                
+                updateNavigation();
+                if(window.AppState.currentView === 'home' || window.AppState.currentView === 'login') {
+                    switchView(window.AppState.userRole === 'admin' ? 'admin-dashboard' : 'student-dashboard');
+                }
+            } else {
+                window.AppState.user = null;
+                window.AppState.userRole = 'guest';
+                updateNavigation();
+            }
+        });
+
+        // Initialize general listeners
+        window.onload = () => {
+            listenToAd();
+        };
+
+        // Dashboard Data Loading
+        window.loadStudentData = () => {
+            const container = document.getElementById('student-courses-container');
+            const courses = window.AppState.enrolledCourses;
+            
+            if(!courses || courses.length === 0) {
+                container.innerHTML = '<p class="text-gray-500 bg-white p-6 rounded-xl border border-gray-100 shadow-sm text-center">আপনি এখনও কোনো কোর্সে যুক্ত হননি। কোর্স এক্সপ্লোর করুন!</p>';
+                return;
+            }
+
+            let html = '';
+            courses.forEach(course => {
+                html += `
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between hover:border-primary transition">
+                        <div class="flex items-center gap-4">
+                            <div class="w-16 h-16 bg-red-50 rounded-lg flex items-center justify-center text-primary text-2xl"><i class="fas fa-play-circle"></i></div>
+                            <div><h3 class="font-bold text-lg">${course}</h3><p class="text-sm text-gray-500">চলমান...</p></div>
+                        </div>
+                        <button class="bg-primary text-white px-5 py-2 rounded-lg hover:bg-red-700 transition font-semibold">কন্টিনিউ</button>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        };
+
+        window.loadAdminData = async () => {
+            document.getElementById('admin-stats').innerHTML = `
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 text-center"><h3 class="text-4xl font-bold text-primary"><i class="fas fa-spinner fa-spin"></i></h3><p class="text-gray-500 font-semibold">মোট শিক্ষার্থী</p></div>
+            `;
+            
+            // Load Users
+            const usersRef = collection(db, 'artifacts', appId, 'public', 'data', 'users');
+            try {
+                const snapshot = await getDocs(usersRef);
+                const users = [];
+                snapshot.forEach(doc => users.push(doc.data()));
+                
+                document.getElementById('admin-stats').innerHTML = `
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 text-center"><h3 class="text-4xl font-bold text-primary">${users.length}</h3><p class="text-gray-500 font-semibold">মোট ব্যবহারকারী</p></div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 text-center"><h3 class="text-4xl font-bold text-accent">১০+</h3><p class="text-gray-500 font-semibold">অ্যাক্টিভ কোর্স</p></div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 text-center"><h3 class="text-4xl font-bold text-green-500">সক্রিয়</h3><p class="text-gray-500 font-semibold">সিস্টেম স্ট্যাটাস</p></div>
+                `;
+
+                let html = '';
+                users.forEach(u => {
+                    if(u.role === 'admin') return; // Skip admins in management view
+                    const coursesStr = (u.enrolledCourses || []).join(', ');
+                    html += `
+                        <div class="border-b pb-4 mb-4 last:border-0 last:pb-0 last:mb-0">
+                            <div class="flex justify-between items-center mb-2">
+                                <div>
+                                    <p class="font-bold text-gray-800">${u.email}</p>
+                                    <p class="text-xs text-gray-500">যুক্ত কোর্স: ${coursesStr || 'কোনোটি নয়'}</p>
+                                </div>
+                                <button onclick="openCourseManager('${u.uid}', '${coursesStr}')" class="text-primary border border-primary hover:bg-primary hover:text-white px-3 py-1 rounded text-sm transition">ম্যানেজ করুন</button>
+                            </div>
+                        </div>
+                    `;
+                });
+                document.getElementById('admin-users-list').innerHTML = html || '<p class="text-gray-500">কোনো শিক্ষার্থী পাওয়া যায়নি।</p>';
+                
+                // Fetch Current Ad State
+                const adRef = doc(db, 'artifacts', appId, 'public', 'data', 'settings', 'flashAd');
+                const adSnap = await getDoc(adRef);
+                if(adSnap.exists()) {
+                    const adData = adSnap.data();
+                    document.getElementById('ad-text-input').value = adData.text || '';
+                    document.getElementById('ad-active-toggle').checked = adData.active || false;
+                }
+
+            } catch(e) {
+                console.error(e);
+                showToast("ডেটা লোড করতে সমস্যা হয়েছে", "error");
+            }
+        };
+
+        // Admin Ad Update
+        window.saveAdSettings = async (e) => {
+            e.preventDefault();
+            const text = document.getElementById('ad-text-input').value;
+            const active = document.getElementById('ad-active-toggle').checked;
+            try {
+                await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'settings', 'flashAd'), { text, active });
+                showToast("বিজ্ঞাপন সেটিংস আপডেট হয়েছে!");
+            } catch(error) {
+                showToast("আপডেট ব্যর্থ হয়েছে", "error");
+            }
+        };
+
+        // Admin Course Management for User
+        window.openCourseManager = (uid, currentCourses) => {
+            const newCourses = prompt(`শিক্ষার্থীর কোর্সের তালিকা আপডেট করুন (কমা দিয়ে আলাদা করুন):\n\nবর্তমান কোর্স: ${currentCourses}`, currentCourses);
+            if(newCourses !== null) {
+                updateUserCourses(uid, newCourses);
+            }
+        };
+
+        window.updateUserCourses = async (uid, newCoursesStr) => {
+            const coursesArr = newCoursesStr.split(',').map(c => c.trim()).filter(c => c);
+            const userRef = doc(db, 'artifacts', appId, 'public', 'data', 'users', uid);
+            try {
+                await updateDoc(userRef, { enrolledCourses: coursesArr });
+                showToast("শিক্ষার্থীর কোর্স আপডেট করা হয়েছে!");
+                loadAdminData(); // Reload table
+            } catch(e) {
+                showToast("আপডেট ব্যর্থ হয়েছে", "error");
+            }
+        };
+        
+        // Flash Ad Close UI
+        window.closeFlashAd = () => document.getElementById('flash-ad').style.display = 'none';
+
+        // PWA Setup (Inline)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                const swCode = `
+                    self.addEventListener('install', e => e.waitUntil(self.skipWaiting()));
+                    self.addEventListener('activate', e => e.waitUntil(self.clients.claim()));
+                    self.addEventListener('fetch', e => {});
+                `;
+                const blob = new Blob([swCode], {type: 'application/javascript'});
+                navigator.serviceWorker.register(URL.createObjectURL(blob)).catch(err => console.log("PWA SW config failed:", err));
+            });
+        }
+    </script>
+</head>
+<body class="antialiased text-gray-800">
+
+    <!-- Toast Notifications Container -->
+    <div id="toast-container"></div>
+
+    
+    <!-- Flash Advertisement Banner -->
+    <div id="flash-ad" style="display: none;" class="bg-gradient-to-r from-yellow-400 to-yellow-600 text-dark px-4 py-2 justify-between items-center text-sm font-bold shadow-md z-50 relative">
+        <div class="flex-1 text-center" id="flash-ad-text">
+            <!-- Ad text injected by JS -->
+        </div>
+        <button onclick="closeFlashAd()" class="text-dark hover:text-black focus:outline-none p-1"><i class="fas fa-times"></i></button>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="bg-secondary text-white sticky top-0 z-40 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="switchView('home')">
+                    <div class="text-3xl font-extrabold tracking-tighter">MH <span class="text-primary">Academy</span></div>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" onclick="switchView('home')" class="hover:text-primary transition font-semibold">হোম</a>
+                    
+                    <!-- Advanced Dropdown with 10 Pages -->
+                    <div class="relative dropdown group">
+                        <button class="hover:text-primary transition font-semibold flex items-center gap-1">
+                            অন্বেষণ করুন <i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                        <div class="dropdown-menu absolute left-0 mt-2 w-64 bg-white rounded-xl shadow-2xl overflow-hidden text-gray-800 border border-gray-100 z-50">
+                            <div class="grid grid-cols-2 gap-0 p-2">
+                                <a href="#" class="px-4 py-3 hover:bg-gray-50 hover:text-primary transition rounded-lg font-medium text-sm"><i class="fas fa-book mr-2 w-4"></i> আমাদের সম্পর্কে</a>
+                                <a href="#" class="px-4 py-3 hover:bg-gray-50 hover:text-primary transition rounded-lg font-medium text-sm"><i class="fas fa-certificate mr-2 w-4"></i> সার্টিফিকেশন</a>
+                                <a href="#" class="px-4 py-3 hover:bg-gray-50 hover:text-primary transition rounded-lg font-medium text-sm"><i class="fas fa-bullseye mr-2 w-4"></i> আমাদের মিশন</a>
+                                <a href="#" class="px-4 py-3 hover:bg-gray-50 hover:text-primary transition rounded-lg font-medium text-sm"><i class="fas fa-eye mr-2 w-4"></i> ভিশন</a>
+                                <a href="#" class="px-4 py-3 hover:bg-gray-50 hover:text-primary transition rounded-lg font-medium text-sm"><i class="fas fa-star mr-2 w-4"></i> রিভিউ</a>
+                                <a href="#" class="px-4 py-3 hover:bg-gray-50 hover:text-primary transition rounded-lg font-medium text-sm"><i class="fas fa-calendar mr-2 w-4"></i> ইভেন্টসমূহ</a>
+                                <a href="#" class="px-4 py-3 hover:bg-gray-50 hover:text-primary transition rounded-lg font-medium text-sm"><i class="fas fa-shopping-cart mr-2 w-4"></i> বই কিনুন</a>
+                                <a href="#" class="px-4 py-3 hover:bg-gray-50 hover:text-primary transition rounded-lg font-medium text-sm"><i class="fas fa-blog mr-2 w-4"></i> ব্লগ</a>
+                                <a href="#" class="px-4 py-3 hover:bg-gray-50 hover:text-primary transition rounded-lg font-medium text-sm"><i class="fas fa-podcast mr-2 w-4"></i> পডকাস্ট</a>
+                                <a href="#" class="px-4 py-3 hover:bg-gray-50 hover:text-primary transition rounded-lg font-medium text-sm"><i class="fas fa-users mr-2 w-4"></i> গ্রোথ ক্লাব</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 10 Sub-menu Courses Dropdown -->
+                    <div class="relative dropdown group">
+                        <button class="hover:text-primary transition font-semibold flex items-center gap-1">
+                            কোর্সসমূহ <i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                        <div class="dropdown-menu absolute left-0 mt-2 w-64 bg-white rounded-xl shadow-2xl overflow-hidden text-gray-800 border border-gray-100 z-50">
+                            <div class="flex flex-col py-2">
+                                <a href="#" class="px-5 py-2 hover:bg-gray-50 hover:text-primary transition font-medium text-sm border-b border-gray-50 last:border-0"><i class="fas fa-briefcase text-primary w-5"></i> বিজনেস ফান্ডামেন্টালস</a>
+                                <a href="#" class="px-5 py-2 hover:bg-gray-50 hover:text-primary transition font-medium text-sm border-b border-gray-50 last:border-0"><i class="fas fa-brain text-primary w-5"></i> ব্রেইন মাস্টারি প্রটোকল</a>
+                                <a href="#" class="px-5 py-2 hover:bg-gray-50 hover:text-primary transition font-medium text-sm border-b border-gray-50 last:border-0"><i class="fas fa-money-bill-wave text-primary w-5"></i> মানি মাস্টারি</a>
+                                <a href="#" class="px-5 py-2 hover:bg-gray-50 hover:text-primary transition font-medium text-sm border-b border-gray-50 last:border-0"><i class="fas fa-bullhorn text-primary w-5"></i> ডিজিটাল মার্কেটিং প্রো</a>
+                                <a href="#" class="px-5 py-2 hover:bg-gray-50 hover:text-primary transition font-medium text-sm border-b border-gray-50 last:border-0"><i class="fas fa-users text-primary w-5"></i> পাবলিক স্পিকিং</a>
+                                <a href="#" class="px-5 py-2 hover:bg-gray-50 hover:text-primary transition font-medium text-sm border-b border-gray-50 last:border-0"><i class="fas fa-chart-line text-primary w-5"></i> সেলস অ্যান্ড ক্লোজিং</a>
+                                <a href="#" class="px-5 py-2 hover:bg-gray-50 hover:text-primary transition font-medium text-sm border-b border-gray-50 last:border-0"><i class="fas fa-clock text-primary w-5"></i> টাইম ম্যানেজমেন্ট হ্যাকস</a>
+                                <a href="#" class="px-5 py-2 hover:bg-gray-50 hover:text-primary transition font-medium text-sm border-b border-gray-50 last:border-0"><i class="fas fa-video text-primary w-5"></i> কন্টেন্ট ক্রিয়েশন মাস্টারক্লাস</a>
+                                <a href="#" class="px-5 py-2 hover:bg-gray-50 hover:text-primary transition font-medium text-sm border-b border-gray-50 last:border-0"><i class="fas fa-robot text-primary w-5"></i> এআই ফর বিজনেস</a>
+                                <a href="#" class="px-5 py-2 hover:bg-gray-50 hover:text-primary transition font-medium text-sm border-b border-gray-50 last:border-0"><i class="fas fa-crown text-primary w-5"></i> লিডারশিপ রুলস</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Auth Links -->
+                    <div id="nav-guest" class="flex gap-4">
+                        <button onclick="toggleModal('auth-modal'); document.getElementById('auth-form-type').value='login'; document.getElementById('auth-title').innerText='লগ ইন'" class="font-semibold hover:text-gray-300">লগ ইন</button>
+                        <button onclick="toggleModal('auth-modal'); document.getElementById('auth-form-type').value='register'; document.getElementById('auth-title').innerText='অ্যাকাউন্ট তৈরি করুন'" class="bg-primary hover:bg-red-700 px-6 py-2 rounded-full font-bold transition shadow-lg shadow-red-500/30">নিবন্ধন করুন</button>
+                    </div>
+
+                    <!-- User Links -->
+                    <div id="nav-user" class="hidden flex items-center gap-4">
+                        <a href="#" id="nav-link-admin" onclick="switchView('admin-dashboard')" class="hidden text-accent hover:text-white font-bold"><i class="fas fa-shield-alt"></i> অ্যাডমিন</a>
+                        <button onclick="switchView('student-dashboard')" class="font-semibold hover:text-primary">ড্যাশবোর্ড</button>
+                        <div class="flex items-center gap-2 bg-dark px-4 py-1.5 rounded-full border border-gray-700">
+                            <i class="fas fa-user-circle text-gray-400"></i>
+                            <span id="nav-user-name" class="text-sm font-medium"></span>
+                        </div>
+                        <button onclick="logout()" title="লগ আউট" class="text-gray-400 hover:text-white"><i class="fas fa-sign-out-alt"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- View: Landing Page -->
+    <div id="view-home" class="app-view active">
+        <!-- Hero Section -->
+        <header class="relative bg-secondary overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <img src="https://images.unsplash.com/photo-1552581234-26160f608093?auto=format&fit=crop&w=2000&q=80" alt="Success Background" class="w-full h-full object-cover opacity-20">
+                <div class="absolute inset-0 bg-gradient-to-t from-secondary to-transparent"></div>
+            </div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-24 pb-32 flex flex-col md:flex-row items-center">
+                <div class="md:w-3/5 text-center md:text-left">
+                    <span class="inline-block py-1 px-4 rounded-full bg-red-500/20 text-red-400 text-sm font-bold tracking-wider mb-4 border border-red-500/30">#১ বেস্ট-সেলিং মেন্টর</span>
+                    <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight">
+                        বড় স্বপ্ন দেখার <br><span class="gradient-text">সাহস করুন।</span>
+                    </h1>
+                    <p class="text-xl text-gray-300 mb-10 max-w-2xl leading-relaxed">
+                        আপনি কি এমন একটি জীবন যাপন করতে ক্লান্ত যা আপনার আসল ইচ্ছার সাথে মেলে না? আপনার গল্পটি নতুন করে লেখার সময় এসেছে। এমএইচ একাডেমির সাথে বাধা অতিক্রম করুন এবং সমৃদ্ধির পথে যাত্রা শুরু করুন।
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                        <button onclick="toggleModal('auth-modal')" class="bg-primary hover:bg-red-700 text-white px-8 py-4 rounded-full font-bold text-lg transition shadow-[0_0_20px_rgba(237,28,36,0.5)] transform hover:-translate-y-1">ফ্রি ট্রেনিং শুরু করুন <i class="fas fa-arrow-right ml-2"></i></button>
+                        <button class="bg-transparent border-2 border-gray-500 hover:border-white text-white px-8 py-4 rounded-full font-bold text-lg transition">কোর্সগুলো দেখুন</button>
+                    </div>
+                </div>
+                <div class="md:w-2/5 mt-16 md:mt-0 relative">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-primary to-accent rounded-full blur-3xl opacity-30 animate-pulse"></div>
+                    <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=800&q=80" alt="MH Portrait" class="relative z-10 rounded-3xl shadow-2xl border-4 border-white/10 w-full object-cover h-[500px]">
+                    
+                    <!-- Floating Stats Card -->
+                    <div class="absolute bottom-10 -left-10 bg-white p-4 rounded-xl shadow-2xl z-20 flex items-center gap-4 animate-bounce" style="animation-duration: 3s;">
+                        <div class="bg-green-100 text-green-600 p-3 rounded-full text-xl"><i class="fas fa-star"></i></div>
+                        <div>
+                            <p class="text-2xl font-bold text-gray-800">২০,০০০+</p>
+                            <p class="text-xs text-gray-500 font-bold uppercase">উদ্যোক্তা তৈরি</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Featured In (SEO & Trust Building) -->
+        <section class="py-10 bg-white border-b border-gray-100">
+            <div class="max-w-7xl mx-auto px-4 text-center">
+                <p class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-6">যেখানে প্রকাশিত হয়েছে</p>
+                <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition duration-500">
+                    <i class="fab fa-forbes text-4xl hover:text-blue-600" title="Forbes"></i>
+                    <i class="fab fa-yahoo text-4xl hover:text-purple-600" title="Yahoo"></i>
+                    <i class="fab fa-amazon text-4xl hover:text-yellow-600" title="Amazon"></i>
+                    <i class="fab fa-hacker-news text-4xl hover:text-red-600" title="Hacker News"></i>
+                    <i class="fab fa-medium text-4xl hover:text-black" title="Medium"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="py-20 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-secondary mb-4">অবিস্মরণীয় অভিজ্ঞতা</h2>
+                    <div class="h-1 w-24 bg-primary mx-auto rounded-full"></div>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                    <div class="glass-panel p-8 rounded-2xl">
+                        <i class="fas fa-users text-4xl text-accent mb-4"></i>
+                        <h3 class="text-4xl font-extrabold text-secondary mb-2">২৫মি+</h3>
+                        <p class="text-gray-500 font-semibold uppercase text-sm tracking-wider">মানুষের কাছে পৌঁছানো</p>
+                    </div>
+                    <div class="glass-panel p-8 rounded-2xl">
+                        <i class="fas fa-clock text-4xl text-accent mb-4"></i>
+                        <h3 class="text-4xl font-extrabold text-secondary mb-2">৫৭হা+</h3>
+                        <p class="text-gray-500 font-semibold uppercase text-sm tracking-wider">ঘণ্টার অভিজ্ঞতা</p>
+                    </div>
+                    <div class="glass-panel p-8 rounded-2xl">
+                        <i class="fas fa-book-open text-4xl text-accent mb-4"></i>
+                        <h3 class="text-4xl font-extrabold text-secondary mb-2">৫৩হা+</h3>
+                        <p class="text-gray-500 font-semibold uppercase text-sm tracking-wider">বইয়ের পাঠক</p>
+                    </div>
+                    <div class="glass-panel p-8 rounded-2xl">
+                        <i class="fas fa-comment-dots text-4xl text-accent mb-4"></i>
+                        <h3 class="text-4xl font-extrabold text-secondary mb-2">১০২হা+</h3>
+                        <p class="text-gray-500 font-semibold uppercase text-sm tracking-wider">রিভিউ প্রাপ্ত</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Courses Preview Section -->
+        <section class="py-24 bg-secondary text-white relative">
+            <div class="max-w-7xl mx-auto px-4 relative z-10">
+                <div class="flex justify-between items-end mb-12">
+                    <div>
+                        <h2 class="text-4xl font-bold mb-4">আপনার সাফল্যের প্রবেশদ্বার</h2>
+                        <p class="text-gray-400">অসাধারণ ফলাফল অর্জন করুন এবং সব ক্ষেত্রে সমৃদ্ধ হোন।</p>
+                    </div>
+                    <button class="hidden md:block border border-gray-600 hover:border-primary text-white px-6 py-2 rounded-full transition">সব কোর্স দেখুন</button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Course 1 -->
+                    <div class="bg-dark rounded-2xl overflow-hidden border border-gray-800 hover:border-primary transition group cursor-pointer">
+                        <div class="h-48 bg-gray-800 relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=600&q=80" alt="Course" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition duration-500"></div>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs font-bold text-accent uppercase tracking-wider">বিজনেস</span>
+                            <h3 class="text-xl font-bold mt-2 mb-3">বিজনেস ফান্ডামেন্টালস মাস্টারক্লাস</h3>
+                            <p class="text-gray-400 text-sm mb-6 line-clamp-2">শূন্য থেকে একটি স্কেলেবল এবং লাভজনক ব্যবসা তৈরির মূল নীতিগুলো শিখুন।</p>
+                            <button onclick="toggleModal('auth-modal')" class="text-primary font-bold hover:text-white transition flex items-center gap-2">এখনই যুক্ত হোন <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                    <!-- Course 2 -->
+                    <div class="bg-dark rounded-2xl overflow-hidden border border-gray-800 hover:border-primary transition group cursor-pointer">
+                        <div class="h-48 bg-gray-800 relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=80" alt="Course" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs font-bold text-accent uppercase tracking-wider">মাইন্ডসেট</span>
+                            <h3 class="text-xl font-bold mt-2 mb-3">ব্রেইন মাস্টারি প্রটোকল</h3>
+                            <p class="text-gray-400 text-sm mb-6 line-clamp-2">সাফল্য, ফোকাস এবং অটুট আত্মবিশ্বাসের জন্য আপনার মস্তিষ্ককে নতুন করে প্রোগ্রাম করুন।</p>
+                            <button onclick="toggleModal('auth-modal')" class="text-primary font-bold hover:text-white transition flex items-center gap-2">এখনই যুক্ত হোন <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                    <!-- Course 3 -->
+                    <div class="bg-dark rounded-2xl overflow-hidden border border-gray-800 hover:border-primary transition group cursor-pointer">
+                        <div class="h-48 bg-gray-800 relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=600&q=80" alt="Course" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs font-bold text-accent uppercase tracking-wider">সম্পদ</span>
+                            <h3 class="text-xl font-bold mt-2 mb-3">মানি মাস্টারি</h3>
+                            <p class="text-gray-400 text-sm mb-6 line-clamp-2">আধুনিক অর্থনীতিতে সম্পদ আকর্ষণ, পরিচালনা এবং বৃদ্ধি করার শক্তিশালী কৌশল।</p>
+                            <button onclick="toggleModal('auth-modal')" class="text-primary font-bold hover:text-white transition flex items-center gap-2">এখনই যুক্ত হোন <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer / Contact -->
+        <footer class="bg-white border-t border-gray-200 pt-20 pb-10">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                    <div class="md:col-span-2">
+                        <div class="text-3xl font-extrabold tracking-tighter text-secondary mb-4">এমএইচ <span class="text-primary">একাডেমি</span></div>
+                        <p class="text-gray-500 max-w-sm mb-6">ব্যক্তিদের সুখ এবং ব্র্যান্ডগুলোর সাফল্যের ক্ষমতায়নে নিবেদিত একটি জীবন। আজই আমাদের সাথে আপনার জীবনকে মাস্টার করুন।</p>
+                        <div class="flex gap-4">
+                            <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition"><i class="fab fa-youtube"></i></a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-6">কুইক লিংকস</h4>
+                        <ul class="space-y-3 text-gray-500 font-medium">
+                            <li><a href="#" class="hover:text-primary transition">আমাদের সম্পর্কে</a></li>
+                            <li><a href="#" class="hover:text-primary transition">কোর্সসমূহ</a></li>
+                            <li><a href="#" class="hover:text-primary transition">ইভেন্টসমূহ</a></li>
+                            <li><a href="#" class="hover:text-primary transition">বইসমূহ</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-6">যোগাযোগ করুন</h4>
+                        <ul class="space-y-4 text-gray-500 font-medium">
+                            <li class="flex items-start gap-3"><i class="fas fa-map-marker-alt mt-1 text-primary"></i> বারিধারা, ঢাকা-১২১২, বাংলাদেশ</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-phone-alt text-primary"></i> +০৯৬০৯ ৪০০ ৪০০</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-envelope text-primary"></i> support@mhacademy.com</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 font-medium">
+                    <p>&copy; ২০২৬ এমএইচ একাডেমি। সর্বস্বত্ব সংরক্ষিত।</p>
+                    <div class="flex gap-6 mt-4 md:mt-0">
+                        <a href="#" class="hover:text-primary transition">প্রাইভেসি পলিসি</a>
+                        <a href="#" class="hover:text-primary transition">টার্মস অফ সার্ভিস</a>
+                        <a href="#" class="hover:text-primary transition">রিফান্ড পলিসি</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Authentication Modal -->
+    <div id="auth-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center opacity-100 transition-opacity">
+        <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl overflow-hidden mx-4 relative transform scale-100 transition-transform">
+            <button onclick="toggleModal('auth-modal')" class="absolute top-4 right-4 text-gray-400 hover:text-black focus:outline-none w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center"><i class="fas fa-times"></i></button>
+            
+            <div class="p-8">
+                <div class="text-center mb-8">
+                    <h2 id="auth-title" class="text-3xl font-extrabold text-secondary">লগ ইন</h2>
+                    <p class="text-gray-500 mt-2">একাডেমিতে প্রবেশ করতে আপনার তথ্য দিন।</p>
+                </div>
+
+                <form onsubmit="handleAuth(event, document.getElementById('auth-form-type').value)">
+                    <input type="hidden" id="auth-form-type" value="login">
+                    <div class="space-y-5">
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">ইমেইল অ্যাড্রেস</label>
+                            <div class="relative">
+                                <i class="fas fa-envelope absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                                <input type="email" name="email" required class="w-full pl-11 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition font-medium" placeholder="you@example.com">
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-1">
+                                <label class="block text-sm font-bold text-gray-700">পাসওয়ার্ড</label>
+                                <a href="#" class="text-xs text-primary hover:underline font-bold">ভুলে গেছেন?</a>
+                            </div>
+                            <div class="relative">
+                                <i class="fas fa-lock absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                                <input type="password" name="password" required class="w-full pl-11 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition font-medium" placeholder="••••••••">
+                            </div>
+                        </div>
+                        <button type="submit" class="w-full bg-secondary hover:bg-black text-white font-bold py-3.5 rounded-xl transition shadow-lg mt-4">কন্টিনিউ করুন</button>
+                    </div>
+                </form>
+                
+                <div class="mt-8 text-center text-sm font-medium text-gray-500">
+                    অ্যাকাউন্ট নেই? 
+                    <button onclick="document.getElementById('auth-form-type').value = document.getElementById('auth-form-type').value === 'login' ? 'register' : 'login'; document.getElementById('auth-title').innerText = document.getElementById('auth-form-type').value === 'login' ? 'লগ ইন' : 'অ্যাকাউন্ট তৈরি করুন';" class="text-primary hover:underline font-bold focus:outline-none">লগ ইন / নিবন্ধন টগল করুন</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- View: Student Dashboard -->
+    <div id="view-student-dashboard" class="app-view bg-gray-50 min-h-screen pt-10 pb-20">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="mb-10 flex justify-between items-center">
+                <div>
+                    <h1 class="text-3xl font-bold text-secondary">শিক্ষার্থী ড্যাশবোর্ড</h1>
+                    <p class="text-gray-500">স্বাগতম! আপনার শেখার অগ্রগতি এখানে দেখুন।</p>
+                </div>
+                <button class="bg-white border border-gray-200 text-gray-700 px-4 py-2 rounded-lg font-bold shadow-sm hover:bg-gray-50"><i class="fas fa-cog mr-2"></i> সেটিংস</button>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Main Content (Courses) -->
+                <div class="lg:col-span-2 space-y-6">
+                    <h2 class="text-xl font-bold border-b pb-2">আমার কোর্সসমূহ</h2>
+                    <div id="student-courses-container" class="space-y-4">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+                
+                <!-- Sidebar (Profile & Announcements) -->
+                <div class="space-y-6">
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 text-center">
+                        <div class="w-24 h-

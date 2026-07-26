@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>নাইমের স্বপ্ন — একটি ছবির গল্প</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Bangla:ital@0;1&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --clay:#a8462e;
+    --indigo:#1f3a5f;
+    --mustard:#e0a33d;
+    --paper:#f6ecd9;
+    --paper-dark:#efdfc2;
+    --ink:#2b2118;
+    --leaf:#3d5a3d;
+    --thread:#c96a3a;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Hind Siliguri', sans-serif;
+    line-height:1.9;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Tiro Bangla', serif;
+    font-weight:400;
+  }
+
+  /* textured paper background */
+  body{
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(168,70,46,0.05), transparent 40%),
+      radial-gradient(circle at 80% 60%, rgba(31,58,95,0.05), transparent 40%);
+  }
+
+  .kantha-divider{
+    width:100%;
+    height:34px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+  }
+  .kantha-divider svg{width:100%;max-width:900px;height:34px;display:block;}
+
+  /* ===== COVER ===== */
+  .cover{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:40px 20px;
+    background:
+      radial-gradient(ellipse at 50% 15%, #f9e3ae 0%, var(--paper) 55%);
+    position:relative;
+  }
+  .cover-eyebrow{
+    letter-spacing:0.35em;
+    font-size:0.72rem;
+    color:var(--clay);
+    text-transform:uppercase;
+    margin-bottom:18px;
+    font-weight:600;
+  }
+  .cover h1{
+    font-size:clamp(2.6rem, 8vw, 5rem);
+    color:var(--indigo);
+    margin:0 0 8px 0;
+    line-height:1.15;
+  }
+  .cover .subtitle{
+    font-size:1.05rem;
+    color:#6b5a44;
+    margin-bottom:36px;
+    max-width:520px;
+  }
+  .cover-art{width:min(520px, 85vw);margin:10px auto 30px;}
+  .scroll-hint{
+    margin-top:20px;
+    font-size:0.85rem;
+    color:#8a7757;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:6px;
+  }
+  .scroll-hint .arrow{
+    width:1px;height:34px;background:linear-gradient(var(--clay), transparent);
+    animation:pulse 2s infinite ease-in-out;
+  }
+  @keyframes pulse{0%,100%{opacity:.25;}50%{opacity:1;}}
+
+  /* ===== CHAPTER SECTIONS ===== */
+  .chapter{
+    max-width:1080px;
+    margin:0 auto;
+    padding:70px 24px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:56px;
+    align-items:center;
+  }
+  .chapter.reverse .art-col{order:2;}
+  .chapter.reverse .text-col{order:1;}
+  .art-col{display:flex;justify-content:center;}
+  .art-col svg{width:100%;max-width:420px;height:auto;}
+  .text-col .num{
+    font-family:'Tiro Bangla', serif;
+    font-size:0.95rem;
+    color:var(--mustard);
+    background:var(--indigo);
+    display:inline-block;
+    padding:4px 16px;
+    border-radius:20px;
+    margin-bottom:18px;
+    letter-spacing:0.05em;
+  }
+  .text-col h2{
+    font-size:clamp(1.5rem, 3.2vw, 2.1rem);
+    color:var(--indigo);
+    margin:0 0 18px 0;
+  }
+  .text-col p{
+    font-size:1.02rem;
+    color:#3a2f22;
+    margin:0 0 14px 0;
+  }
+  .text-col p.quote{
+    border-left:3px solid var(--clay);
+    padding-left:16px;
+    font-style:italic;
+    color:var(--clay);
+    background:rgba(168,70,46,0.05);
+    padding:12px 16px;
+    border-radius:0 8px 8px 0;
+  }
+
+  @media (max-width:760px){
+    .chapter{grid-template-columns:1fr;gap:28px;padding:50px 20px;}
+    .chapter.reverse .art-col{order:1;}
+    .chapter.reverse .text-col{order:2;}
+    .art-col svg{max-width:300px;}
+  }
+
+  /* ===== CLOSING ===== */
+  .closing{
+    background:var(--indigo);
+    color:var(--paper);
+    text-align:center;
+    padding:90px 24px 100px;
+    position:relative;
+  }
+  .closing h2{
+    font-size:clamp(1.8rem,4vw,2.6rem);
+    color:var(--mustard);
+    margin-bottom:22px;
+  }
+  .closing p{
+    max-width:620px;
+    margin:0 auto 14px;
+    color:#ead9c2;
+    font-size:1.05rem;
+  }
+  .closing .moral{
+    margin-top:36px;
+    font-family:'Tiro Bangla', serif;
+    font-size:1.15rem;
+    color:#fff;
+    border-top:1px solid rgba(255,255,255,0.2);
+    padding-top:28px;
+    max-width:640px;
+    margin-left:auto;margin-right:auto;
+  }
+  .closing-art{margin:0 auto 30px;width:min(300px,60vw);}
+
+  footer{
+    text-align:center;
+    padding:26px;
+    font-size:0.8rem;
+    color:#8a7757;
+    background:var(--paper-dark);
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= COVER ================= -->
+<section class="cover">
+  <div class="cover-eyebrow">একটি সচিত্র গল্প — শান্তিপুর গ্রাম</div>
+  <h1>নাইমের<br>স্বপ্ন</h1>
+  <div class="cover-art">
+    <svg viewBox="0 0 500 300" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="250" cy="90" r="55" fill="#e0a33d"/>
+      <circle cx="250" cy="90" r="55" fill="none" stroke="#c96a3a" stroke-width="2" stroke-dasharray="4 6"/>
+      <!-- distant hills -->
+      <path d="M0,190 Q80,150 180,185 T350,175 T500,195 V300 H0 Z" fill="#3d5a3d" opacity="0.35"/>
+      <path d="M0,210 Q100,180 220,205 T500,215 V300 H0 Z" fill="#3d5a3d" opacity="0.55"/>
+      <!-- ground -->
+      <rect x="0" y="230" width="500" height="70" fill="#a8462e" opacity="0.25"/>
+      <!-- huts -->
+      <g transform="translate(70,190)">
+        <polygon points="0,40 35,10 70,40" fill="#a8462e"/>
+        <rect x="10" y="40" width="50" height="45" fill="#f6ecd9" stroke="#2b2118" stroke-width="2"/>
+        <rect x="28" y="55" width="16" height="30" fill="#1f3a5f"/>
+      </g>
+      <g transform="translate(330,195)">
+        <polygon points="0,35 30,8 60,35" fill="#8a4126"/>
+        <rect x="8" y="35" width="44" height="40" fill="#f6ecd9" stroke="#2b2118" stroke-width="2"/>
+        <rect x="24" y="48" width="14" height="27" fill="#1f3a5f"/>
+      </g>
+      <!-- palm tree -->
+      <g transform="translate(210,150)">
+        <path d="M0,90 Q-4,40 0,0" stroke="#5a3d20" stroke-width="6" fill="none"/>
+        <g stroke="#3d5a3d" stroke-width="6" fill="none" stroke-linecap="round">
+          <path d="M0,0 Q-30,-15 -45,5"/>
+          <path d="M0,0 Q30,-15 45,5"/>
+          <path d="M0,0 Q-25,-30 -15,-45"/>
+          <path d="M0,0 Q25,-30 15,-45"/>
+          <path d="M0,0 Q0,-35 0,-50"/>
+        </g>
+      </g>
+      <!-- small figure of boy looking -->
+      <g transform="translate(255,225)">
+        <circle cx="0" cy="0" r="7" fill="#2b2118"/>
+        <rect x="-6" y="6" width="12" height="20" rx="3" fill="#a8462e"/>
+        <rect x="-6" y="26" width="5" height="14" fill="#2b2118"/>
+        <rect x="1" y="26" width="5" height="14" fill="#2b2118"/>
+      </g>
+      <!-- birds -->
+      <path d="M120,60 q6,-8 12,0 q6,-8 12,0" stroke="#2b2118" stroke-width="2" fill="none"/>
+      <path d="M360,80 q6,-8 12,0 q6,-8 12,0" stroke="#2b2118" stroke-width="2" fill="none"/>
+    </svg>
+  </div>
+  <p class="subtitle">এক দরিদ্র কৃষকের ছেলে, তার মায়ের সাহস আর একজন শিক্ষকের ভালোবাসার গল্প — যেখানে স্বপ্ন হার মানেনি দারিদ্র্যের কাছে।</p>
+  <div class="scroll-hint">গল্প শুরু করতে নিচে যান<div class="arrow"></div></div>
+</section>
+
+<div class="kantha-divider">
+  <svg viewBox="0 0 900 34" preserveAspectRatio="none"><path d="M0,17 Q22,2 44,17 T88,17 T132,17 T176,17 T220,17 T264,17 T308,17 T352,17 T396,17 T440,17 T484,17 T528,17 T572,17 T616,17 T660,17 T704,17 T748,17 T792,17 T836,17 T880,17" fill="none" stroke="#a8462e" stroke-width="2"/></svg>
+</div>
+
+<!-- ================= CHAPTER 1 ================= -->
+<section class="chapter">
+  <div class="art-col">
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="400" height="400" fill="#f6ecd9"/>
+      <!-- school building -->
+      <rect x="60" y="150" width="280" height="150" fill="#e8d9b8" stroke="#2b2118" stroke-width="3"/>
+      <polygon points="40,150 200,90 360,150" fill="#a8462e" stroke="#2b2118" stroke-width="3"/>
+      <rect x="110" y="190" width="45" height="55" fill="#1f3a5f" stroke="#2b2118" stroke-width="2"/>
+      <rect x="230" y="190" width="45" height="55" fill="#1f3a5f" stroke="#2b2118" stroke-width="2"/>
+      <rect x="180" y="220" width="40" height="80" fill="#5a3d20" stroke="#2b2118" stroke-width="2"/>
+      <!-- boy peeking at window, from outside -->
+      <g transform="translate(90,255)">
+        <circle cx="0" cy="0" r="14" fill="#c96a3a" stroke="#2b2118" stroke-width="2"/>
+        <rect x="-11" y="12" width="22" height="34" rx="5" fill="#3d5a3d" stroke="#2b2118" stroke-width="2"/>
+      </g>
+      <!-- sun -->
+      <circle cx="330" cy="60" r="26" fill="#e0a33d"/>
+      <!-- ground -->
+      <rect x="0" y="300" width="400" height="100" fill="#c9a15c" opacity="0.4"/>
+    </svg>
+  </div>
+  <div class="text-col">
+    <span class="num">প্রথম অধ্যায়</span>
+    <h2>জানালার ফাঁকে স্বপ্ন</h2>
+    <p>শান্তিপুর গ্রামের কৃষক করিম মিয়ার ছেলে নাইম। বয়স বারো, চোখে একরাশ স্বপ্ন। স্কুলের পাশ দিয়ে যাওয়ার সময় জানালার ফাঁক দিয়ে উঁকি দিয়ে দেখত ছেলেমেয়েরা বই খুলে পড়ছে।</p>
+    <p>কিন্তু বাবার পক্ষে বই-খাতার খরচ জোগানো সম্ভব ছিল না। প্রতিবার পড়াশোনার কথা তুললেই বাবা রেগে বলতেন —</p>
+    <p class="quote">"পড়াশোনা করে কী হবে? তার চেয়ে আমার সাথে মাঠে চল, কাজ শিখে নে।"</p>
+    <p>নাইম চুপ করে থাকত। মনের ভেতর স্বপ্নটা তবু নিভত না।</p>
+  </div>
+</section>
+
+<div class="kantha-divider">
+  <svg viewBox="0 0 900 34" preserveAspectRatio="none"><path d="M0,17 Q22,32 44,17 T88,17 T132,17 T176,17 T220,17 T264,17 T308,17 T352,17 T396,17 T440,17 T484,17 T528,17 T572,17 T616,17 T660,17 T704,17 T748,17 T792,17 T836,17 T880,17" fill="none" stroke="#1f3a5f" stroke-width="2"/></svg>
+</div>
+
+<!-- ================= CHAPTER 2 ================= -->
+<section class="chapter reverse">
+  <div class="art-col">
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="400" height="400" fill="#f6ecd9"/>
+      <!-- ground -->
+      <rect x="0" y="300" width="400" height="100" fill="#c9a15c" opacity="0.35"/>
+      <!-- teacher figure -->
+      <g transform="translate(160,190)">
+        <circle cx="0" cy="0" r="18" fill="#e0b98a" stroke="#2b2118" stroke-width="2.5"/>
+        <rect x="-22" y="16" width="44" height="70" rx="8" fill="#1f3a5f" stroke="#2b2118" stroke-width="2.5"/>
+        <rect x="-30" y="90" width="16" height="45" fill="#2b2118"/>
+        <rect x="14" y="90" width="16" height="45" fill="#2b2118"/>
+        <rect x="-38" y="30" width="20" height="45" rx="6" fill="#1f3a5f" stroke="#2b2118" stroke-width="2"/>
+      </g>
+      <!-- boy figure smaller, listening -->
+      <g transform="translate(255,230)">
+        <circle cx="0" cy="0" r="13" fill="#c96a3a" stroke="#2b2118" stroke-width="2.5"/>
+        <rect x="-16" y="12" width="32" height="52" rx="7" fill="#a8462e" stroke="#2b2118" stroke-width="2.5"/>
+        <rect x="-22" y="64" width="13" height="34" fill="#2b2118"/>
+        <rect x="9" y="64" width="13" height="34" fill="#2b2118"/>
+      </g>
+      <!-- book in teacher's hand -->
+      <rect x="90" y="220" width="26" height="20" fill="#e0a33d" stroke="#2b2118" stroke-width="2"/>
+      <!-- tree -->
+      <g transform="translate(340,150)">
+        <rect x="-5" y="0" width="10" height="90" fill="#5a3d20"/>
+        <circle cx="0" cy="-20" r="42" fill="#3d5a3d" opacity="0.75"/>
+      </g>
+    </svg>
+  </div>
+  <div class="text-col">
+    <span class="num">দ্বিতীয় অধ্যায়</span>
+    <h2>জাহিদ স্যারের দেখা</h2>
+    <p>স্কুলের জাহিদ স্যার ছিলেন অত্যন্ত দরদি মানুষ। প্রতিদিন যাওয়া-আসার পথে নাইমকে দেখতেন — কখনো গরু চরাতে, কখনো বাজারের ধারে বসে অন্যদের বই পড়া শুনতে।</p>
+    <p>একদিন তিনি ডেকে জিজ্ঞেস করলেন, "তুমি স্কুলে যাও না কেন?"</p>
+    <p class="quote">"স্যার, বাবা রাজি না। টাকা নাই। আমি অনেক বড় হতে চাই, আপনার মতো শিক্ষক হতে চাই।"</p>
+    <p>নাইমের চোখের এই উত্তর জাহিদ স্যারের মনে গেঁথে গেল। তিনি ঠিক করলেন — এই ছেলেটিকে সাহায্য করতেই হবে।</p>
+  </div>
+</section>
+
+<div class="kantha-divider">
+  <svg viewBox="0 0 900 34" preserveAspectRatio="none"><path d="M0,17 Q22,2 44,17 T88,17 T132,17 T176,17 T220,17 T264,17 T308,17 T352,17 T396,17 T440,17 T484,17 T528,17 T572,17 T616,17 T660,17 T704,17 T748,17 T792,17 T836,17 T880,17" fill="none" stroke="#e0a33d" stroke-width="2"/></svg>
+</div>
+
+<!-- ================= CHAPTER 3 ================= -->
+<section class="chapter">
+  <div class="art-col">
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="400" height="400" fill="#f6ecd9"/>
+      <rect x="0" y="290" width="400" height="110" fill="#c96a3a" opacity="0.25"/>
+      <!-- field rows -->
+      <g stroke="#8a5a2d" stroke-width="3" opacity="0.5">
+        <path d="M0,320 H400"/>
+        <path d="M0,340 H400"/>
+        <path d="M0,360 H400"/>
+        <path d="M0,380 H400"/>
+      </g>
+      <!-- boy working, bent over, bigger tool -->
+      <g transform="translate(180,230)">
+        <circle cx="0" cy="0" r="14" fill="#c96a3a" stroke="#2b2118" stroke-width="2.5"/>
+        <path d="M-14,10 Q0,60 40,60" stroke="#a8462e" stroke-width="16" fill="none" stroke-linecap="round"/>
+        <line x1="40" y1="60" x2="70" y2="30" stroke="#5a3d20" stroke-width="5"/>
+        <rect x="-20" y="60" width="12" height="30" fill="#2b2118"/>
+        <rect x="0" y="60" width="12" height="30" fill="#2b2118"/>
+      </g>
+      <!-- sun setting, orange -->
+      <circle cx="330" cy="80" r="30" fill="#a8462e" opacity="0.8"/>
+      <!-- small house in bg, sick father implied by empty doorway -->
+      <g transform="translate(60,190)">
+        <polygon points="0,40 35,10 70,40" fill="#1f3a5f" opacity="0.7"/>
+        <rect x="10" y="40" width="50" height="50" fill="#e8d9b8" stroke="#2b2118" stroke-width="2"/>
+        <rect x="28" y="60" width="16" height="30" fill="#2b2118" opacity="0.6"/>
+      </g>
+    </svg>
+  </div>
+  <div class="text-col">
+    <span class="num">তৃতীয় অধ্যায়</span>
+    <h2>বাবার অসুখ, নাইমের কাঁধে বোঝা</h2>
+    <p>কয়েকদিন পর করিম মিয়া মাঠে কাজ করার সময় হঠাৎ অসুস্থ হয়ে পড়লেন। প্রচণ্ড জ্বরে বিছানায় পড়ে গেলেন, বৈদ্য দেখানোর টাকাও ছিল না ঘরে।</p>
+    <p>সংসারের হাল ধরতে নাইম নিজেই দিনমজুরের কাজে নেমে পড়ল। সকাল থেকে সন্ধ্যা রোদে পুড়ে কাজ করত।</p>
+    <p class="quote">"স্যার, বাবা অসুস্থ। আমার স্বপ্নটা বোধহয় আর পূরণ হবে না।"</p>
+    <p>রাস্তায় জাহিদ স্যারকে এই কথা বলার সময় নাইমের চোখে জল চলে এসেছিল। স্যার বুঝলেন, এবার শুধু কথায় কাজ হবে না।</p>
+  </div>
+</section>
+
+<div class="kantha-divider">
+  <svg viewBox="0 0 900 34" preserveAspectRatio="none"><path d="M0,17 Q22,32 44,17 T88,17 T132,17 T176,17 T220,17 T264,17 T308,17 T352,17 T396,17 T440,17 T484,17 T528,17 T572,17 T616,17 T660,17 T704,17 T748,17 T792,17 T836,17 T880,17" fill="none" stroke="#3d5a3d" stroke-width="2"/></svg>
+</div>
+
+<!-- ================= CHAPTER 4 ================= -->
+<section class="chapter reverse">
+  <div class="art-col">
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="400" height="400" fill="#f6ecd9"/>
+      <!-- inside hut, floor mat -->
+      <rect x="30" y="260" width="340" height="120" fill="#e8d9b8"/>
+      <ellipse cx="200" cy="280" rx="150" ry="14" fill="#c96a3a" opacity="0.3"/>
+      <!-- father sitting -->
+      <g transform="translate(130,190)">
+        <circle cx="0" cy="0" r="16" fill="#d8a878" stroke="#2b2118" stroke-width="2.5"/>
+        <rect x="-20" y="14" width="40" height="55" rx="8" fill="#5a3d20" stroke="#2b2118" stroke-width="2.5"/>
+      </g>
+      <!-- mother standing, pleading, hand gesture -->
+      <g transform="translate(220,175)">
+        <circle cx="0" cy="0" r="15" fill="#e0b98a" stroke="#2b2118" stroke-width="2.5"/>
+        <path d="M-18,14 Q0,4 18,14 L22,90 Q0,100 -22,90 Z" fill="#a8462e" stroke="#2b2118" stroke-width="2.5"/>
+        <circle cx="-3" cy="-4" r="3" fill="#c96a3a"/>
+      </g>
+      <!-- teacher figure standing near door -->
+      <g transform="translate(310,180)">
+        <circle cx="0" cy="0" r="14" fill="#e0b98a" stroke="#2b2118" stroke-width="2.5"/>
+        <rect x="-18" y="12" width="36" height="60" rx="7" fill="#1f3a5f" stroke="#2b2118" stroke-width="2.5"/>
+      </g>
+      <!-- door frame -->
+      <rect x="290" y="130" width="90" height="160" fill="none" stroke="#2b2118" stroke-width="3"/>
+    </svg>
+  </div>
+  <div class="text-col">
+    <span class="num">চতুর্থ অধ্যায়</span>
+    <h2>মায়ের সাহস, শিক্ষকের কথা</h2>
+    <p>জাহিদ স্যার নাইমের মা রহিমা বেগমের সাথে সরাসরি কথা বলার সিদ্ধান্ত নিলেন। সেদিন সন্ধ্যায় তিনি আর রহিমা বেগম দুজনে মিলে করিম মিয়ার সাথে বসলেন।</p>
+    <p class="quote">"নাইমের বই-খাতা, পোশাক, স্কুলের সব খরচ আমি ব্যবস্থা করব। বেতনও মাফ করিয়ে দেব। শুধু ছেলেকে পড়তে দিন।"</p>
+    <p>রহিমা বেগম কেঁদে বললেন, "তুমি একবার ভাবো, ওর স্বপ্নটা নষ্ট করো না।" করিম মিয়ার চোখেও জল এলো। বহুদিনের চাপা কষ্ট আজ গলে গেল।</p>
+    <p>তিনি বললেন, "ঠিক আছে, আমার ছেলে পড়ুক। ওকেও যেন আমার মতো সারাজীবন মাঠে খাটতে না হয়।"</p>
+  </div>
+</section>
+
+<div class="kantha-divider">
+  <svg viewBox="0 0 900 34" preserveAspectRatio="none"><path d="M0,17 Q22,2 44,17 T88,17 T132,17 T176,17 T220,17 T264,17 T308,17 T352,17 T396,17 T440,17 T484,17 T528,17 T572,17 T616,17 T660,17 T704,17 T748,17 T792,17 T836,17 T880,17" fill="none" stroke="#a8462e" stroke-width="2"/></svg>
+</div>
+
+<!-- ================= CHAPTER 5 ================= -->
+<section class="chapter">
+  <div class="art-col">
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="400" height="400" fill="#f6ecd9"/>
+      <!-- classroom -->
+      <rect x="30" y="60" width="340" height="240" fill="#eee0c4" stroke="#2b2118" stroke-width="3"/>
+      <rect x="60" y="90" width="120" height="70" fill="#1f3a5f" stroke="#2b2118" stroke-width="3"/>
+      <path d="M75,110 h90 M75,130 h70 M75,150 h95" stroke="#e0a33d" stroke-width="3" fill="none"/>
+      <!-- desks -->
+      <g transform="translate(90,220)">
+        <rect x="0" y="0" width="60" height="10" fill="#5a3d20"/>
+        <circle cx="15" cy="-14" r="12" fill="#c96a3a" stroke="#2b2118" stroke-width="2"/>
+        <circle cx="45" cy="-14" r="12" fill="#e0b98a" stroke="#2b2118" stroke-width="2"/>
+      </g>
+      <g transform="translate(220,220)">
+        <rect x="0" y="0" width="60" height="10" fill="#5a3d20"/>
+        <circle cx="15" cy="-14" r="12" fill="#d8a878" stroke="#2b2118" stroke-width="2"/>
+        <circle cx="45" cy="-14" r="12" fill="#c96a3a" stroke="#2b2118" stroke-width="2"/>
+      </g>
+      <!-- open book icon center foreground -->
+      <g transform="translate(170,260)">
+        <path d="M0,0 Q20,-10 40,0 L40,25 Q20,15 0,25 Z" fill="#e0a33d" stroke="#2b2118" stroke-width="2"/>
+        <path d="M40,0 Q60,-10 80,0 L80,25 Q60,15 40,25 Z" fill="#f6ecd9" stroke="#2b2118" stroke-width="2"/>
+      </g>
+    </svg>
+  </div>
+  <div class="text-col">
+    <span class="num">পঞ্চম অধ্যায়</span>
+    <h2>নতুন এক পৃথিবী</h2>
+    <p>জাহিদ স্যার প্রধান শিক্ষকের সাথে কথা বলে নাইমের ভর্তির ব্যবস্থা করলেন। বিদ্যালয়ের দরিদ্র তহবিল থেকে বই-খাতা আর পোশাকের ব্যবস্থা হলো। গ্রামের কয়েকজন হৃদয়বান মানুষও এগিয়ে এলেন।</p>
+    <p>প্রথমদিন ক্লাসরুমে বসে নাইমের চোখে যেন এক নতুন পৃথিবী খুলে গেল — বোর্ডে লেখা অক্ষর, বইয়ের পাতার গন্ধ, সহপাঠীদের কোলাহল।</p>
+    <p>রাতে কুপি বাতির আলোয় সে পড়ত, কারণ ঘরে বিদ্যুৎ ছিল না। মা মাঝরাতে উঠে দেখতেন, ছেলে তখনো পড়ছে।</p>
+  </div>
+</section>
+
+<div class="kantha-divider">
+  <svg viewBox="0 0 900 34" preserveAspectRatio="none"><path d="M0,17 Q22,32 44,17 T88,17 T132,17 T176,17 T220,17 T264,17 T308,17 T352,17 T396,17 T440,17 T484,17 T528,17 T572,17 T616,17 T660,17 T704,17 T748,17 T792,17 T836,17 T880,17" fill="none" stroke="#1f3a5f" stroke-width="2"/></svg>
+</div>
+
+<!-- ================= CHAPTER 6 ================= -->
+<section class="chapter reverse">
+  <div class="art-col">
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="400" height="400" fill="#f6ecd9"/>
+      <!-- stage -->
+      <rect x="40" y="260" width="320" height="30" fill="#a8462e"/>
+      <!-- grown naim on stage with medal/certificate -->
+      <g transform="translate(200,190)">
+        <circle cx="0" cy="0" r="20" fill="#c96a3a" stroke="#2b2118" stroke-width="2.5"/>
+        <rect x="-24" y="18" width="48" height="60" rx="8" fill="#1f3a5f" stroke="#2b2118" stroke-width="2.5"/>
+        <circle cx="0" cy="35" r="9" fill="#e0a33d" stroke="#2b2118" stroke-width="2"/>
+      </g>
+      <!-- parents watching, smaller, to side -->
+      <g transform="translate(90,220)">
+        <circle cx="0" cy="0" r="12" fill="#d8a878" stroke="#2b2118" stroke-width="2"/>
+        <rect x="-14" y="10" width="28" height="40" rx="6" fill="#5a3d20" stroke="#2b2118" stroke-width="2"/>
+      </g>
+      <g transform="translate(120,225)">
+        <circle cx="0" cy="0" r="11" fill="#e0b98a" stroke="#2b2118" stroke-width="2"/>
+        <path d="M-13,10 Q0,3 13,10 L15,55 Q0,62 -15,55 Z" fill="#3d5a3d" stroke="#2b2118" stroke-width="2"/>
+      </g>
+      <!-- teacher clapping, other side -->
+      <g transform="translate(300,222)">
+        <circle cx="0" cy="0" r="12" fill="#e0b98a" stroke="#2b2118" stroke-width="2"/>
+        <rect x="-14" y="10" width="28" height="42" rx="6" fill="#1f3a5f" stroke="#2b2118" stroke-width="2"/>
+      </g>
+      <!-- confetti -->
+      <g fill="#e0a33d">
+        <rect x="70" y="80" width="6" height="6" transform="rotate(20 70 80)"/>
+        <rect x="300" y="100" width="6" height="6" transform="rotate(-15 300 100)"/>
+        <rect x="150" y="60" width="6" height="6" transform="rotate(40 150 60)"/>
+      </g>
+      <g fill="#a8462e">
+        <rect x="250" y="70" width="6" height="6" transform="rotate(10 250 70)"/>
+        <rect x="110" y="110" width="6" height="6" transform="rotate(-30 110 110)"/>
+      </g>
+    </svg>
+  </div>
+  <div class="text-col">
+    <span class="num">ষষ্ঠ অধ্যায়</span>
+    <h2>স্বপ্ন থেকে বাস্তবে</h2>
+    <p>বছরের পর বছর কেটে যায়। নাইম প্রতিটি পরীক্ষায় ভালো ফল করে, বৃত্তি পায়। বার্ষিক অনুষ্ঠানে সেরা ফলাফলের জন্য পুরস্কার নিতে গিয়ে সে বলে —</p>
+    <p class="quote">"আমার এই সাফল্যের পেছনে মা-বাবার ত্যাগ আর জাহিদ স্যারের সাহায্য আছে। আমি ওনার মতোই শিক্ষক হতে চাই, যিনি গরিব ঘরের ছেলেমেয়েদের স্বপ্ন দেখতে শেখাবেন।"</p>
+    <p>আজ, বছর কুড়ি পর, সেই নাইমই শান্তিপুর উচ্চ বিদ্যালয়ের একজন শ্রদ্ধেয় শিক্ষক — নিজেও এখন দরিদ্র মেধাবী ছেলেমেয়েদের খুঁজে বের করে তাদের পড়াশোনার ব্যবস্থা করে দেয়।</p>
+  </div>
+</section>
+
+<!-- ================= CLOSING / MORAL ================= -->
+<section class="closing">
+  <div class="closing-art">
+    <svg viewBox="0 0 300 220" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="150" cy="60" r="34" fill="#e0a33d"/>
+      <path d="M20,180 Q150,120 280,180 V220 H20 Z" fill="#f6ecd9" opacity="0.15"/>
+      <g stroke="#f6ecd9" stroke-width="3" fill="none" opacity="0.8">
+        <path d="M60,150 Q150,90 240,150"/>
+      </g>
+      <circle cx="150" cy="150" r="10" fill="#f6ecd9"/>
+    </svg>
+  </div>
+  <h2>শেষ কথা</h2>
+  <p>এই গল্প বলে — দারিদ্র্য কখনো স্বপ্নের পথে চিরস্থায়ী বাধা হতে পারে না, যদি পরিবার আর সমাজের মানুষ একসাথে হাত বাড়ায়।</p>
+  <p class="moral">একজন শিক্ষকের আন্তরিকতা আর একজন মায়ের সাহস একটি শিশুর সারাজীবনের গতিপথ বদলে দিতে পারে।</p>
+</section>
+
+<footer>নাইমের স্বপ্ন — একটি সচিত্র গল্প</footer>
+
+</body>
+</html>
